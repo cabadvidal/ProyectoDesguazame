@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/struct2.css">
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script type="text/javascript" src="/js/main/crear_tablas.js"></script>
+    <script type="text/javascript" src="/js/header/login.js"></script>
+    <script type="text/javascript" src="/js/header/nav.js"></script>
+    <script type="text/javascript" src="/js/verificar_datos/verificar.js"></script>
+    <script type="text/javascript" src="/js/main/api_fetch.js"></script>
+    
+    <script type="text/javascript" src="/js/header/menu_burger.js"></script>
+    <script type="text/javascript" src="/js/error/pop_up_error.js"></script>    
+    <title>Desguazate</title>
+</head>
+
+<body>
+    <img src="img/menu/BG.png" class="background-img" alt="Fondo de la web">
+    <header class="header">
+        <nav class="nav_container"></nav>
+        <div class="header_container">
+            <div class="menu_button">
+                <button id="menu_button">
+                    <img src="img/menu/hamburguesa.png" alt="Menu">
+                </button>
+                <div id="menu_container" class="menu_container hidden"></div>
+                <div id="submenu_container" class="hidden"></div>
+            </div>
+            <div id="welcome-message"></div>
+            <div id="login_button"></div>
+
+
+
+
+        </div>
+        <div class="nav_container_down">
+            <nav class="subnav_container"></nav>
+        </div>
+    </header>
+    <main>
+        <aside>
+
+        </aside>
+        <section>
+            <div id="table-container"></div>
+        </section>
+        
+    </main>
+
+    <footer>
+
+    </footer>
+    <div id="overlay" class="hidden"></div>
+    <div id="error_menu_container" class="hidden"></div>
+    <div id="login_overlay" class="hidden"></div>
+    <div id="login_menu_container" class="hidden"></div>
+</body>
+
+</html>

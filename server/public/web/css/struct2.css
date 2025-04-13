@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+/* Configuración básica */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%; /* Ocupa el 100% de la altura de la pantalla */
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #3E3B3B;
+}
+
+.background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen cubre toda el área */
+    z-index: -1; /* Coloca la imagen debajo del contenido */
+}
+
+/* Header y Footer */
+header {
+    height: 15vh; /* Ocupa el 15% de la altura de la pantalla */
+    display: flex; /* Añadir flexbox */
+    flex-direction: column; /* Disponer elementos en columna */
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#welcome-message {
+    width: 50%;
+    font-size: 24px;
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+}
+
+#cochecitolere {
+    width: 120%;
+    height: 120%;
+    position: relative;
+    transform: translateY(-100%);
+}
+
+#span_name, #span_pass, #input_name, #input_pass {
+    margin-top: 32px;
+    position: relative;
+    transform: translateY(-250%);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 250;
+}
+
+#p_name, #p_pass {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    position: relative;
+    transform: translateY(-250%)
+}
+
+footer {
+    height: 15vh; /* Ocupa el 15% de la altura de la pantalla */
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 70vh; /* Ocupa el 70% de la altura de la pantalla */
+}
+
+/* Section y Aside */
+section {
+    flex: 1; /* Ocupa el espacio restante */
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    overflow: auto;
+}
+
+aside {
+    flex: 0 0 10%; /* Ocupa el 20% del ancho de main */
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2%;
+    overflow: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.header_container {
+    width: 100%;
+    height: 34%;
+    background-color: rgba(223, 223, 223, 0.829); 
+    display: flex;
+}
+
+/* Contenedor de la navegación */
+.nav_container, .nav_container_down {
+    width: 100%;
+    height: 33%;
+    background-color: rgb(27, 166, 210);
+    display: flex;
+    
+}
+
+.subnav_container{
+    position: relative;
+    width: 100%;
+    display: flex; /* Usar flexbox para alinear contenido */
+    justify-content: center; /* Centrar horizontalmente el contenido */
+}
+
+/* Estilo de la lista de navegación */
+#ul_subnav {
+    position: absolute; /* Permite ajustar la posición del botón de manera absoluta dentro del padre */
+    top: 50%; /* Centrado verticalmente */
+    transform: translateY(-50%); /* Centra el botón verticalmente */
+    display: flex;
+    gap: 1vw; /* Espacio entre los botones */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Botones de navegación */
+#ul_subnav li {
+    background-color: white;
+    color: rgb(27, 166, 210);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto hover en los botones */
+#ul_subnav li:hover {
+    background-color: rgb(71, 207, 238, 0.726);
+    color: white;
+}
+
+/* Contenedor del menú de login */
+#login_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Abarca el ancho de la pantalla */
+    height: 100vh; /* Abarca el alto de la pantalla */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+#login_menu_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw; /* Abarca el 80% del ancho de la pantalla */
+    max-width: 400px;
+    height: 60vh; /* Abarca el 60% del alto de la pantalla */
+    max-height: 500px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.menu_button {
+    position: relative;
+    width: 100%;
+}
+
+.menu_button button{
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    height: 90%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-50%); 
+}
+
+.menu_container {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    width: 140px;
+    /*height: 220px;*/
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+#submenu_container {
+    position: absolute;
+    top: 50%;
+    left: 210px;
+    width: 240px;
+    /*height: 220px;*/
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.menu_container ul, #submenu_container ul {
+    margin: 0; 
+    padding: 0; 
+    text-align: left; 
+}
+
+.menu_container ul li, #submenu_container ul li {
+    font-size: 20px;
+    margin: 5px;
+    list-style-type: none;
+}
+
+#login_button {
+    position: relative; /* Permite que el botón se posicione dentro del contenedor padre */
+    width: 100%;
+}
+
+#login_button button {
+    position: absolute; /* Permite ajustar la posición del botón de manera absoluta dentro del padre */
+    right: 3%; /* Margen del 3% desde la derecha del contenedor */
+    top: 50%; /* Centrado verticalmente */
+    transform: translateY(-50%); /* Centra el botón verticalmente */
+    width: 150px;
+    height: 80%;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(27, 166, 210);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#login_button button:hover {
+    background-color: white; 
+    color: rgb(27, 166, 210); 
+}
+
+#login_menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login_menu input {
+    font-size: 1.5em;
+    color: rgb(62, 62, 59);
+    width: 100%;
+    margin-bottom: 2%;
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 1px solid rgb(62, 62, 59);
+    background-color: white;
+
+}
+
+/* Botones de login */
+#button_login, #button_google {
+    width: 80%;
+    max-width: 300px;
+    height: 10vh; /* Tamaño relativo a la pantalla */
+    max-height: 50px;
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: rgb(27, 166, 210);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    margin-top: 5%;
+    position: relative;
+    transform: translateY(-200%);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#button_login:hover, #button_google:hover {
+    background-color: white;
+    color: rgb(27, 166, 210);
+}
+
+/* Botón de cerrar */
+.close_button {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    cursor: pointer;
+    font-size: 2em;
+    color: #333333ab;
+}
+
+.close_button:hover {
+    color: #333333;
+}
+
+
+/****************************/
+
+.class-name-agregar-empleados,
+.class-name-agregar-vendedores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaciado entre grupos */
+    margin-bottom: 20px;
+}
+
+.class-name-agregar-empleados span,
+.class-name-agregar-vendedores span {
+    display: flex;
+    flex-direction: column;
+    width: calc(33.33% - 20px); /* 3 columnas */
+    min-width: 250px;
+}
+
+.class-name-agregar-empleados p,
+.class-name-agregar-vendedores p {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #080808;
+}
+
+.class-name-agregar-empleados input,
+.class-name-agregar-vendedores input,
+.class-name-agregar-empleados select {
+    width: 100%;
+    padding: 8px;
+    border: 0 0 0 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.class-button-agregar {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(27, 166, 210);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: 0.3s;
+}
+
+.class-button-agregar:hover {
+    color: rgb(71, 207, 238);
+    background-color: #f1f1f1;
+}
+/********/
+
+.class-name-consultar table {
+    width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+    border-collapse: collapse; /* Elimina espacios adicionales entre celdas */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.class-name-consultar th, 
+.class-name-consultar td {
+    border-radius: 3px;
+    border: 1px solid rgb(8, 8, 8); /* Aplica borde a la tabla, encabezados y celdas */
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: black;
+    word-wrap: break-word; /* Asegura que las palabras largas se ajusten si es necesario */
+    white-space: normal; /* Permite que el contenido se ajuste y no quede en una sola línea */
+}
+
+.class-name-consultar td input{
+    border-radius: 3px;
+    border: 1px solid rgb(8, 8, 8); /* Aplica borde a la tabla, encabezados y celdas */
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;  /* Ajusta el input al tamaño de su celda */
+    max-width: 100px; /* Limita el tamaño máximo para evitar celdas grandes */
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 75%;
+    word-wrap: break-word; /* Asegura que las palabras largas se ajusten si es necesario */
+    white-space: normal; /* Permite que el contenido se ajuste y no quede en una sola línea */
+}
+
+.class-name-consultar table th {
+    position: sticky;
+    top: 0; /* Fija el encabezado en la parte superior cuando se hace scroll */
+    background-color: white; /* Un color de fondo para destacar */
+    z-index: 1; /* Asegura que el encabezado esté por encima de las filas cuando se hace scroll */
+    border-bottom: 2px solid gray; /* Opcional, para una separación más clara */
+    min-width: 50px; /* Asegura que las cabeceras tengan un ancho mínimo para coincidir con el contenido */
+}
+
+.class-name-consultar tr {
+    border: 1px solid gray; /* Aplica borde a cada fila */
+}
+
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 600px) {
+    #login_menu input {
+        font-size: 1.2em;
+    }
+
+    #button_login, #button_google {
+        font-size: 1.2em;
+    }
+
+    .close_button {
+        font-size: 1.5em;
+    }
+}
+
+/* Fondo negro semi-transparente */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+}
+
+#error_menu_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    height: 30%;
+    transform: translate(-50%, -50%); /* Centra el contenedor */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    background-color: rgba(223, 223, 223);
+    z-index: 1002; /* Un nivel por encima del overlay */
+}
+
+#error_menu {
+    width: 100%;
+    height: 100%; 
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}

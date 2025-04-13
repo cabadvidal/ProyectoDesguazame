@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conf>
+    <url>https://www.dam2.colexio-karbo.com:6010</url>
+    <mysql>
+        <direccion>127.0.0.1</direccion>
+        <usuario>root</usuario>
+        <clave>kalandraka</clave>
+        <bbdd>DESGUACE</bbdd>
+        <puerto>3306</puerto>
+    </mysql>
+
+    <mongo>
+        <direccion>mongodb://localhost:27017</direccion>
+        <bbdd>karbo_cabad</bbdd>
+        <coleccion>pedidos</coleccion>
+        <coleccion2>facturas</coleccion2>
+    </mongo>
+
+    <firebase>
+        <apiKey>AIzaSyBKKFwR-6PWmlu-iYcayKITZHUocvvo5Dk</apiKey>
+        <authDomain>desguace-adb3a.firebaseapp.com</authDomain>
+        <projectId>desguace-adb3a</projectId>
+        <storageBucket>desguace-adb3a.firebasestorage.app</storageBucket>
+        <messagingSenderId>584737072535</messagingSenderId>
+        <appId>1:584737072535:web:147b1d03427210f02750d2</appId>
+        <measurementId>G-Y7NJGR829P</measurementId>
+    </firebase>
+</conf>

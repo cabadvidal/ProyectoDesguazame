@@ -1,0 +1,42 @@
+[14-03-2025 17:13:43] [INFO] Firebase Configuración: cargada
+[14-03-2025 17:13:43] [INFO] MySQL Configuración: cargada
+[14-03-2025 17:13:43] [INFO] Parámetros de mysql:[object Object]
+[14-03-2025 17:13:43] [INFO] Servidor UP, UP, UP puerto escucha: 10010
+[14-03-2025 17:13:43] [INFO] Rutas cargadas correctamente
+[14-03-2025 17:13:43] [INFO] ✅ Cliente conectado con ID: 8xvU_z2tNtpL9LtTAAAB
+[14-03-2025 17:13:49] [INFO] ✅ Cliente conectado con ID: 7NhBuR3oVl3c5uHoAAAD
+[14-03-2025 17:13:53] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[14-03-2025 17:13:53] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: juan.perez@mail.com | Contraseña: contraseña_segura
+[14-03-2025 17:13:53] [INFO] Conexión exitosa a MySQL
+[14-03-2025 17:13:53] [INFO] Resultados de la consulta: [object Object]
+[14-03-2025 17:13:53] [INFO] Conexión a MySQL cerrada
+[14-03-2025 17:13:53] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: FR4igTSRuHTDIAxtRI9Xh08X1ZR2
+[14-03-2025 17:13:53] [INFO] Conexión exitosa a MySQL
+[14-03-2025 17:13:53] [INFO] Resultados de la consulta: [object Object]
+[14-03-2025 17:13:53] [INFO] Conexión a MySQL cerrada
+[14-03-2025 17:13:54] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 41207e601638366c7b1c1b415560aa06eb6336a6e6c29d6b45bcb7cf5dc77358 para el Usuario; juan.perez@mail.com
+[14-03-2025 17:13:54] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || TIPO DE CUENTA en MySQL: ADM
+[14-03-2025 17:13:54] [INFO] ✅ Usuario: juan.perez@mail.com logueado correctamente. Tipo de cuenta: EMPLEADO.
+[14-03-2025 17:13:59] [INFO] ⏳ Temporizador reiniciado para juan.perez@mail.com
+[14-03-2025 17:13:59] [INFO] El usuario: juan.perez@mail.com, realiza la actividad Solicitar datos para la tabla: EMPLEADOS con el token: 41207e601638366c7b1c1b415560aa06eb6336a6e6c29d6b45bcb7cf5dc77358
+[14-03-2025 17:13:59] [INFO] ✅ Ruta /ObtenerDatosTablas ha sido llamada
+[14-03-2025 17:13:59] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosTablas || tabla consultada: EMPLEADOS
+[14-03-2025 17:13:59] [INFO] Conexión exitosa a MySQL
+[14-03-2025 17:13:59] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object]
+[14-03-2025 17:13:59] [INFO] Conexión a MySQL cerrada
+[14-03-2025 17:13:59] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","APELLIDO_A":"Pérez","APELLIDO_B":"Gómez","DIRECCION":"Calle Falsa 123","CODIGO_POSTAL":28001,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345678","MOVIL":"612345678","MAIL":"juan.perez@mail.com","DNI_CIF":"12345678Z","NUMERO_CUENTA":"ES8300001111111111","NUMERO_SS":15155566698,"TIPO_CUENTA":"ADM","TOTAL_VACACIONES":30},{"ID_EMPLEADOS":2,"NOMBRE":"Fran","APELLIDO_A":"Pérez","APELLIDO_B":"Gómez","DIRECCION":"Calle Falsa 456","CODIGO_POSTAL":28001,"CIUDAD":"Coruña","MUNICIPIO":"Arteixo","TELEFONO":"912345678","MOVIL":"611666852","MAIL":"fran.perez@mail.com","DNI_CIF":"87654321Z","NUMERO_CUENTA":"ES8333301111111111","NUMERO_SS":121252445,"TIPO_CUENTA":"GESTOR","TOTAL_VACACIONES":30},{"ID_EMPLEADOS":4,"NOMBRE":"Víctor","APELLIDO_A":"Fernández","APELLIDO_B":"Méndez","DIRECCION":"avd De la desesperanza","CODIGO_POSTAL":15011,"CIUDAD":"La Coruña","MUNICIPIO":"Arteixo","TELEFONO":"981666999","MOVIL":"666999666","MAIL":"victor_desesperado@victor.entregado.com","DNI_CIF":"53166632Q","NUMERO_CUENTA":"ES9121000418450200051332","NUMERO_SS":81234567869,"TIPO_CUENTA":"GESTOR","TOTAL_VACACIONES":30}]
+[14-03-2025 17:14:00] [INFO] ✅ Datos para la tabla EMPLEADOS obtenidos correctamente.
+[14-03-2025 17:14:01] [INFO] ⏳ Temporizador reiniciado para juan.perez@mail.com
+[14-03-2025 17:14:01] [INFO] El usuario: juan.perez@mail.com, realiza la actividad Solicitar datos para agregar a la tabla: EMPLEADOS con el token: 41207e601638366c7b1c1b415560aa06eb6336a6e6c29d6b45bcb7cf5dc77358
+[14-03-2025 17:14:01] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[14-03-2025 17:14:01] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: EMPLEADOS
+[14-03-2025 17:14:01] [INFO] Conexión exitosa a MySQL
+[14-03-2025 17:14:01] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[14-03-2025 17:14:01] [INFO] Conexión a MySQL cerrada
+[14-03-2025 17:14:01] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla EMPLEADOS [{"COLUMN_NAME":"NOMBRE"},{"COLUMN_NAME":"APELLIDO_A"},{"COLUMN_NAME":"APELLIDO_B"},{"COLUMN_NAME":"CONTRASENA"},{"COLUMN_NAME":"DIRECCION"},{"COLUMN_NAME":"CODIGO_POSTAL"},{"COLUMN_NAME":"CIUDAD"},{"COLUMN_NAME":"MUNICIPIO"},{"COLUMN_NAME":"TELEFONO"},{"COLUMN_NAME":"MOVIL"},{"COLUMN_NAME":"MAIL"},{"COLUMN_NAME":"DNI_CIF"},{"COLUMN_NAME":"NUMERO_CUENTA"},{"COLUMN_NAME":"NUMERO_SS"},{"COLUMN_NAME":"TIPO_CUENTA"},{"COLUMN_NAME":"TOTAL_VACACIONES"}]
+[14-03-2025 17:14:01] [INFO] ✅ Obtenidas las columnas correctamente para la tabla EMPLEADOS
+[14-03-2025 17:14:56] [INFO] ⏳ Temporizador reiniciado para juan.perez@mail.com
+[14-03-2025 17:14:56] [INFO] El usuario: juan.perez@mail.com, realiza la actividad Agregar datos para la tabla: EMPLEADOS con el token: 41207e601638366c7b1c1b415560aa06eb6336a6e6c29d6b45bcb7cf5dc77358
+[14-03-2025 17:14:56] [INFO] ✅Ruta /AgregarDatosTabla ha sido llamada
+[14-03-2025 17:14:56] [ERROR] Error registering user: auth/email-already-in-use Firebase: Error (auth/email-already-in-use).
+[14-03-2025 17:14:56] [ERROR] ❌ Error src/api/web_crud.js al registrar usuario en Firebase.
