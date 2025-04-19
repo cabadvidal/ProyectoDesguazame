@@ -45,6 +45,14 @@ function switchDatos(tipo, dato, tabla) {
             return verificarEmail(dato);
         case 'CODIGO_POSTAL':
             return verificarCodigoPostal(dato);
+        case 'PRECIO_COMPRA': case 'PRECIO': case 'SUELDO_BRUTO': case 'PESO':
+            return verificarDecimal(dato);
+        case 'FECHA_YEAR':
+            return verificarYear(dato);
+        case 'FECHA_INICIO_VENTA': case 'FECHA': case 'FECHA_INICIO': case 'FECHA_FINAL':
+            return verificarFecha(dato);
+        case 'HORA_ENTRADA': case 'HORA_SALIDA':
+            return verificarHora(dato);
         default:
             return true;
     }
@@ -261,5 +269,48 @@ function verificarEmail(dato) {
  */
 function verificarCodigoPostal(dato) {
     let regex = /^(?:0?[1-9]|[1-4]\d|5[0-2])\d{3}$/;
+    return regex.test(dato.trim());
+}
+
+/**
+ * Verifica que sea un número decimal con 2 dígitos.
+ * @param {string} dato - Contiene el valor de decimal
+ * @returns {boolean} Devuelve verdadero si es válido, sino falso.
+ */
+function verificarDecimal(dato) {
+    let regex = /^\d+\.\d{2}$/;
+    return regex.test(dato.trim());
+}
+
+/**
+ * Verifica que el valor sea un año válido entre 1900 y 2099.
+ * @param {string} dato - Contiene el año en formato string.
+ * @returns {boolean} Devuelve verdadero si el año es válido.
+ */
+function verificarYear(dato) {
+    let regex = /^(19|20)\d{2}$/;
+    return regex.test(dato.trim());
+}
+
+/**
+ * Verifica que el valor sea una fecha en formato YYYY-MM-DD.
+ * Acepta años entre 1900 y 2099, meses entre 01 y 12 y días entre 01 y 31.
+ * No valida si el día existe en ese mes (ej. no valida si febrero tiene 29).
+ * @param {string} dato - Contiene la fecha.
+ * @returns {boolean} Devuelve verdadero si el formato es correcto.
+ */
+function verificarFecha(dato) {
+    let regex = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+    return regex.test(dato.trim());
+}
+
+/**
+ * Verifica que el valor sea una hora en formato HH:mm:ss (hora de 24 horas).
+ * Acepta horas entre 00 y 23, minutos y segundos entre 00 y 59.
+ * @param {string} dato - Contiene la hora.
+ * @returns {boolean} Devuelve verdadero si el formato es correcto.
+ */
+function verificarHora(dato) {
+    let regex = /^(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d$/;
     return regex.test(dato.trim());
 }

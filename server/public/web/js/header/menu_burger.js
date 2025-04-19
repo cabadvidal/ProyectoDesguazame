@@ -68,9 +68,6 @@ function addSubMenu(option) {
         case 'Vendedores':
             option_submenu = ['Agregar vendedores', 'Consultar vendedores'];
             break;
-        case 'Facturas':
-            option_submenu = ['Agrergar Facturas', 'Consultar facturas'];
-            break;
         case 'Marcas':
             option_submenu = ['Agregar marcas', 'Consultar marcas'];
             break;
@@ -92,7 +89,7 @@ function addSubMenu(option) {
             break;
         }
         case 'Facturas': {
-            option_submenu = ['Modificar Facturas', 'Hacer Factura'];
+            option_submenu = ['Consultar Facturas'];
             break;
         }
     }
