@@ -323,7 +323,9 @@ aside {
 /****************************/
 
 .class-name-agregar-empleados,
-.class-name-agregar-vendedores {
+.class-name-agregar-vendedores,
+.class-name-agregar-nominas,
+.class-name-agregar-piezas {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Espaciado entre grupos */
@@ -331,7 +333,9 @@ aside {
 }
 
 .class-name-agregar-empleados span,
-.class-name-agregar-vendedores span {
+.class-name-agregar-vendedores span,
+.class-name-agregar-nominas span,
+.class-name-agregar-piezas span {
     display: flex;
     flex-direction: column;
     width: calc(33.33% - 20px); /* 3 columnas */
@@ -339,7 +343,9 @@ aside {
 }
 
 .class-name-agregar-empleados p,
-.class-name-agregar-vendedores p {
+.class-name-agregar-vendedores p,
+.class-name-agregar-nominas p,
+.class-name-agregar-piezas p {
     font-weight: bold;
     margin-bottom: 5px;
     color: #080808;
@@ -347,7 +353,11 @@ aside {
 
 .class-name-agregar-empleados input,
 .class-name-agregar-vendedores input,
-.class-name-agregar-empleados select {
+.class-name-agregar-piezas input,
+.class-name-agregar-nominas input,
+.class-name-agregar-empleados select,
+.class-name-agregar-nominas select,
+.class-name-agregar-piezas select {
     width: 100%;
     padding: 8px;
     border: 0 0 0 1px solid #ccc;
