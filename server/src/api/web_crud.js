@@ -2,10 +2,14 @@ import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { app } from "../../desguace.js";
 import { logger } from "../log/log.js";
 import { registrarUsuario, eliminarUsuario } from "../sockets/auth/reg_user.js";
-import {verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas, 
+import {
+    verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
     agregarNominas, modificarDatos
-} from "./funciones_crud.js"
+} from "./funciones_crud.js";
 
+/**
+ * Llamadas a procedimientos para obtener nombre de columnas
+ */
 app.post('/ObtenerNombreColumnas', (req, res) => {
     console.log("✅ Ruta /ObtenerNombreColumnas ha sido llamada");
     let tabla = req.body.tabla;
@@ -46,7 +50,9 @@ app.post('/ObtenerNombreColumnas', (req, res) => {
             res.status(500).json({ error: "Error en la consulta SQL" });
         });
 });
-
+/**
+ * Obtener datos de claves foraneas
+ */
 app.post('/ObtenerDatosClaveForanea', (req, res) => {
     console.log("✅ Ruta /ObtenerDatosClaveForanea ha sido llamada");
     let tabla = req.body.tabla;
@@ -145,10 +151,15 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             sql = ``;
             break;
         case 'VACACIONES':
-            sql = ``;
+            sql = `
+            SELECT v.ID_VACACIONES, v.FECHA_INICIO, v.FECHA_FINAL, v.CONCEDIDAS, dc.DNI_CIF
+            FROM VACACIONES v
+            LEFT JOIN EMPLEADOS e ON v.EMPLEADOS_FK = e.ID_EMPLEADOS
+            LEFT JOIN DATOS_COMUNES dc ON e.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
         case 'MARCAS':
-            sql = `SELECT ID_MARCAS, NOMBRE_MARCA FROM MARCAS`;
+            sql = `
+            SELECT ID_MARCAS, NOMBRE_MARCA FROM MARCAS`;
             break;
         case 'MODELOS':
             tabla = `MODELO`;
@@ -242,6 +253,9 @@ app.put('/AgregarDatosTabla', async (req, res) => {
     }
 });
 
+/**
+ * Hacer updates en tablas
+ */
 app.put('/ModificarDatosTabla', async (req, res) => {
     console.log("✅Ruta /ModificarDatosTabla ha sido llamada");
 
@@ -271,6 +285,12 @@ app.put('/ModificarDatosTabla', async (req, res) => {
             await modificarDatos(datos, res, 'PIEZAS');
         case "NOMINAS":
             await modificarDatos(datos, res, 'NOMINAS');
+            break;
+        case "FACTURAS":
+            await modificarDatos(datos, res, 'FACTURAS');
+            break;
+        case "VACACIONES":
+            await modificarDatos(datos, res, 'VACACIONES');
             break;
         default:
             return res.status(400).json({ error: "Tabla no soportada." });

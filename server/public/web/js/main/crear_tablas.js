@@ -16,17 +16,11 @@ async function realizarAccionNav(dato, menu_seleccionado) {
                 crearTablaAgregar(datos, menu_seleccionado);
             }
             break;
-        case 'consultar':
+        case 'consultar': case 'gestionar':
             datos = await consultarDatos(menu_seleccionado.toUpperCase());
             if (datos) {
                 crearTablaConsulta(datos, menu_seleccionado.toUpperCase());
             }
-            break;
-        case 'eliminar':
-            eliminarDatos(menu_seleccionado.toUpperCase());
-            break;
-        case 'modificar':
-            modificarDatos(menu_seleccionado.toUpperCase());
             break;
         case 'fichar':
             ficharEmpleado();
@@ -398,7 +392,7 @@ function obtenerDatosAgregar(table) {
                     let value = input.value;
                     filaDatos[input.name] = value + '-01';
                 }
-                
+
             }
             // Recoge los selects normales (excepto MODELO_FK)
             if (select && select.name !== 'MODELO_FK') {
@@ -507,7 +501,44 @@ async function crearTablaConsulta(datos, tabla) {
             elemento = document.createElement('input');
             elemento.value = fila[key];
             elemento.name = key;
+            if (key.includes('FECHA') && (tabla.toUpperCase() === 'VACACIONES' || tabla.toUpperCase() === 'FACTURAS')) {
+                elemento.type = 'date';
+
+                // Obtener la fecha como cadena en formato 'YYYY-MM-DD' directamente desde la base de datos
+                let fecha = new Date(fila[key]);
+
+                // Extraer el año, mes y día de la fecha para evitar cualquier ajuste de zona horaria
+                let anio = fecha.getFullYear();
+                let mes = (fecha.getMonth() + 1).toString().padStart(2, '0');  // +1 porque los meses son 0-indexados
+                let dia = fecha.getDate().toString().padStart(2, '0');
+
+                // Crear la fecha en formato 'YYYY-MM-DD'
+                let fechaFormateada = `${anio}-${mes}-${dia}`;
+
+                // Asignar la fecha al input
+                elemento.value = fechaFormateada;
+            }
             elemento.disabled = true;
+
+            if (key === 'CONCEDIDAS' || key === 'VENDIDO') {
+                elemento = document.createElement('select');
+                let option1 = document.createElement('option');
+                option1.value = fila[key];
+                option1.textContent = fila[key] === 0 ? 'NO' : 'SI';
+                elemento.appendChild(option1);
+
+                let option2 = document.createElement('option');
+                option2.value = fila[key] === 0 ? 1 : 0;
+                option2.textContent = fila[key] !== 0 ? 'NO' : 'SI';
+                elemento.appendChild(option2);
+
+                elemento.disabled = true;
+                td.appendChild(elemento);
+                tr_body.appendChild(td);
+                elementosFila.push(elemento);
+                return;
+            }
+
             if (key.includes('TIPO_CUENTA')) {
                 elemento = document.createElement('select');
 
@@ -644,7 +675,7 @@ async function crearTablaConsulta(datos, tabla) {
                 return;
             }
 
-            if (key.includes('CLIENTE') && tabla.toUpperCase() === 'PIEZAS' || key.includes('DNI_CIF') && tabla.toUpperCase() === 'FACTURAS') {
+            if (key.includes('CLIENTE') && tabla.toUpperCase() === 'PIEZAS') {
                 elemento = document.createElement('select');
                 // Agregar opción por defecto (marca de la fila actual)
                 let valorDefecto = document.createElement('option');
@@ -667,6 +698,30 @@ async function crearTablaConsulta(datos, tabla) {
                 return;
             }
 
+            if (key.includes('DNI_CIF') && tabla.toUpperCase() === 'FACTURAS') {
+                elemento = document.createElement('select');
+                // Agregar opción por defecto (marca de la fila actual)
+                let valorDefecto = document.createElement('option');
+                let clienteActual = clientes.find(cliente => cliente.DNI_CIF === fila[key]);
+                let idDefecto = clienteActual ? clienteActual.ID_CLIENTE : '';
+                valorDefecto.value = idDefecto;
+                valorDefecto.innerHTML = fila[key];
+                elemento.name = 'CLIENTE_FK';
+                elemento.appendChild(valorDefecto);
+                clientes.forEach(cliente => {
+                    let option = document.createElement('option');
+                    option.value = cliente.ID_CLIENTE;
+                    option.innerHTML = cliente.DNI_CIF;
+                    elemento.append(option);
+                });
+                elemento.disabled = true;
+
+                td.appendChild(elemento);
+                tr_body.appendChild(td);
+                elementosFila.push(elemento);
+                return;
+            }
+
             if (key.includes('REFERENCIA') && tabla.toUpperCase() === 'FACTURAS') {
                 elemento = document.createElement('select');
                 // Agregar opción por defecto (marca de la fila actual)
@@ -674,6 +729,7 @@ async function crearTablaConsulta(datos, tabla) {
                 let referenciaActual = facturas.find(factura => factura.REFERENCIA === fila[key]);
                 let idDefecto = referenciaActual ? referenciaActual.ID_PIEZAS : '';
                 valorDefecto.value = idDefecto;
+                elemento.name = 'PIEZAS_FK';
                 valorDefecto.innerHTML = fila[key];
                 elemento.appendChild(valorDefecto);
                 facturas.forEach(factura => {
@@ -790,12 +846,20 @@ async function crearTablaConsulta(datos, tabla) {
         let td_Mod = document.createElement('td');
         let button_Mod = document.createElement('button');
         button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
-        button_Mod.addEventListener('click', () => {
+        button_Mod.addEventListener('click', async () => {
             if (button_Mod.innerHTML === '✏️') {
                 button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
                 elementosFila.forEach((elemento, index) => {
                     if (index !== 0) {  // Evitar que el primer elemento se habilite
                         elemento.disabled = false;
+                    }
+                    if (elemento.name === 'BASE' || elemento.name === 'IVA' || elemento.name === 'BASE' || elemento.name === 'PRECIO_PIEZA'
+                        && tabla.toUpperCase() === 'FACTURAS') {
+                        elemento.disabled = true;
+                    }
+
+                    if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'VACACIONES') {
+                        elemento.disabled = true;
                     }
                 });  // Habilitar inputs 
             } else {
@@ -808,6 +872,7 @@ async function crearTablaConsulta(datos, tabla) {
                 let datosModificar = {};
                 // Agregar los datos modificados como un JSON
                 Object.keys(datos[0]).forEach((key, index) => {
+                    console.log(`El valor es ${nuevosDatos[index]} la clave es: ${key}`);
                     if (key === 'NOMBRE_MARCA' && tabla.toUpperCase() === 'MODELOS') {
                         datosModificar['MARCA_MODELO_FK'] = nuevosDatos[index].trim();
                         return;
@@ -820,9 +885,35 @@ async function crearTablaConsulta(datos, tabla) {
                         datosModificar[key] = nuevosDatos[index + 1];
                         return;
                     }
+
+                    if (tabla.toUpperCase() === 'FACTURAS' && key === 'DNI_CIF') {
+                        datosModificar['PIEZAS_FK'] = nuevosDatos[index];
+                        return
+                    }
+                    if (tabla.toUpperCase() === 'FACTURAS' && key === 'PIEZAS_FK') {
+                        datosModificar['PRECIO_PIEZA'] = nuevosDatos[index];
+                        return
+                    }
+                    if (tabla.toUpperCase() === 'FACTURAS' && key === 'FECHA') {
+                        let fecha = nuevosDatos[index];
+                        let formatFecha = fecha.substring(0, 10);
+                        datosModificar['FECHA'] = formatFecha;
+                        return
+                    }
+                    if (tabla.toUpperCase() === 'FACTURAS' && (key === 'REFERENCIA' || key === 'PRECIO_PIEZA')) { return }
+
                     datosModificar[key] = nuevosDatos[index];
                 });
-                popUpError(actualizarDatos(datosModificar, tabla));
+                if (tabla.toUpperCase() === 'VACACIONES') {
+                    let fechaInicio = new Date(datosModificar['FECHA_INICIO']);
+                    let fechaFinal = new Date(datosModificar['FECHA_FINAL']);
+                    if (fechaInicio >= fechaFinal) {
+                        popUpError(`La fecha final: ${datosModificar['FECHA_FINAL']}, tiene que ser superior a la fecha de inicio: ${datosModificar['FECHA_INICIO']}.`)
+                        return;
+                    }
+                }
+                let resultado = await actualizarDatos(datosModificar, tabla);
+                popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
                 console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
             }
         });

@@ -102,6 +102,7 @@ CREATE TABLE VACACIONES (
     ID_VACACIONES INT AUTO_INCREMENT PRIMARY KEY,
     FECHA_INICIO DATE NOT NULL,
     FECHA_FINAL DATE NOT NULL,
+    CONCEDIDAS BOOLEAN DEFAULT 0,
     EMPLEADOS_FK INT NOT NULL,
     FOREIGN KEY (EMPLEADOS_FK) REFERENCES EMPLEADOS(ID_EMPLEADOS) ON DELETE CASCADE,
     CHECK (FECHA_FINAL >= FECHA_INICIO)
@@ -164,6 +165,61 @@ CREATE TABLE LINEA_FACTURA(
     FOREIGN KEY (PIEZAS_FK) REFERENCES PIEZAS(ID_PIEZAS) ON DELETE CASCADE,
     FOREIGN KEY (FACTURA_FK) REFERENCES FACTURA(ID_FACTURAS) ON DELETE CASCADE
 );
+
+-- Actualiza precio de la LINEA_FACTURA
+DELIMITER $$
+
+CREATE PROCEDURE actualizar_precio_linea_factura(
+    IN p_id_linea_factura INT
+)
+BEGIN
+    DECLARE v_piezas_fk INT;
+    DECLARE v_precio_pieza DECIMAL(10,2);
+
+    -- Obtener la clave foránea de PIEZAS asociada a la línea de factura
+    SELECT PIEZAS_FK INTO v_piezas_fk
+    FROM LINEA_FACTURA
+    WHERE ID_LINEA_FACTURA = p_id_linea_factura;
+
+    -- Obtener el precio actual de esa pieza
+    SELECT PRECIO INTO v_precio_pieza
+    FROM PIEZAS
+    WHERE ID_PIEZAS = v_piezas_fk;
+
+    -- Actualizar el precio en la línea de factura
+    UPDATE LINEA_FACTURA
+    SET PRECIO = v_precio_pieza
+    WHERE ID_LINEA_FACTURA = p_id_linea_factura;
+END$$
+
+DELIMITER ;
+
+-- Actualiza la base y el IVA de la factura
+
+DELIMITER //
+
+CREATE PROCEDURE actualizar_precio_total_factura(IN facturaId INT)
+BEGIN
+    DECLARE suma_base DECIMAL(10,2) DEFAULT 0.00;
+    DECLARE valor_iva DECIMAL(10,2) DEFAULT 0.00;
+
+    -- Sumar precios de las líneas de factura asociadas
+    SELECT IFNULL(SUM(PRECIO), 0.00) INTO suma_base
+    FROM LINEA_FACTURA
+    WHERE FACTURA_FK = facturaId;
+
+    -- Calcular IVA (21%)
+    SET valor_iva = ROUND(suma_base * 0.21, 2);
+
+    -- Actualizar la factura con la nueva base e IVA
+    UPDATE FACTURA
+    SET BASE = suma_base,
+        IVA = valor_iva
+    WHERE ID_FACTURAS = facturaId;
+END //
+
+DELIMITER ;
+
 
 
 -- OBTENER NOMBRE COLUMNAS NOMINAS

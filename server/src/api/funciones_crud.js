@@ -26,7 +26,7 @@ async function agregarEmpleado(datos, res) {
 
         // Validar si se insertó correctamente en FIREBASE
         if (!FIREBASE_UID) {
-            console.error("❌ Error src/api/web_crud.js al registrar usuario en Firebase.");
+            console.error("❌ Error src/api/funciones_crud.js al registrar usuario en Firebase.");
             return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
         }
 
@@ -47,7 +47,7 @@ async function agregarEmpleado(datos, res) {
 
         // Validar si se insertó correctamente en DATOS_COMUNES
         if (!resultadoDatosComunes || !resultadoDatosComunes.insertId) {
-            console.error("❌ Error src/api/web_crud.js al insertar en DATOS_COMUNES.");
+            console.error("❌ Error src/api/funciones_crud.js al insertar en DATOS_COMUNES.");
             // Borrar registros
             await eliminarUsuario(FIREBASE_UID);
             return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
@@ -68,7 +68,7 @@ async function agregarEmpleado(datos, res) {
 
         // Verificar si se insertó correctamente en EMPLEADOS
         if (!resultadoEmpleados || resultadoEmpleados.affectedRows === 0) {
-            console.error(`❌ Error src/api/web_crud.js al insertar en EMPLEADOS: ${error}`);
+            console.error(`❌ Error src/api/funciones_crud.js al insertar en EMPLEADOS: ${error}`);
             const sqlBorrar = `DELETE FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
             // Borrar registros
             await realizarConsulta(sqlBorrar, [idDatosComunes]);
@@ -76,11 +76,11 @@ async function agregarEmpleado(datos, res) {
             return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
         }
 
-        console.log(`✅ Datos agregados correctamente en src/api/web_crud.js en la tabla EMPLEADOS con ID_DATOS_COMUNES: ${idDatosComunes}`);
+        console.log(`✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla EMPLEADOS con ID_DATOS_COMUNES: ${idDatosComunes}`);
         return res.status(200).json({ mensaje: `El empleado ${datos.NOMBRE} insertado correctamente en la base de datos.` });
 
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al insertar en EMPLEADOS: ${error}`);
+        console.error(`❌ Error src/api/funciones_crud.js al insertar en EMPLEADOS: ${error}`);
         return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
     }
 }
@@ -105,7 +105,7 @@ async function agregarVendedores(datos, res) {
 
         // Validar si se insertó correctamente en DATOS_COMUNES
         if (!resultadoDatosComunes || !resultadoDatosComunes.insertId) {
-            console.error("❌ Error src/api/web_crud.js al insertar en DATOS_COMUNES.");
+            console.error("❌ Error src/api/funciones_crud.js al insertar en DATOS_COMUNES.");
             return res.status(500).json({ error: `Error al agregar Vendedor ${datos.RAZON_SOCIAL}` });
         }
 
@@ -120,17 +120,17 @@ async function agregarVendedores(datos, res) {
 
         // Verificar si se insertó correctamente en EMPLEADOS
         if (!resultadoVendedor || resultadoVendedor.affectedRows === 0) {
-            console.error(`❌ Error src/api/web_crud.js al insertar en Vendedor: ${error}`);
+            console.error(`❌ Error src/api/funciones_crud.js al insertar en Vendedor: ${error}`);
             const sqlBorrar = `DELETE FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
             // Borrar registros
             await realizarConsulta(sqlBorrar, [idDatosComunes]);
             return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
         }
 
-        console.log(`✅ Datos agregados correctamente en src/api/web_crud.js en la tabla Vendedor con ID_DATOS_COMUNES: ${idDatosComunes}`);
+        console.log(`✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla Vendedor con ID_DATOS_COMUNES: ${idDatosComunes}`);
         return res.status(200).json({ mensaje: `El vendedor ${datos.RAZON_SOCIAL} insertado correctamente en la base de datos.` });
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al insertar en Vendedor: ${error}`);
+        console.error(`❌ Error src/api/funciones_crud.js al insertar en Vendedor: ${error}`);
         return res.status(500).json({ error: `Error al agregar Vendedor ${datos.RAZON_SOCIAL}` });
     }
 }
@@ -151,15 +151,15 @@ async function agregarModelos(datos, res) {
 
         // Validar si se insertó correctamente en Modelo
         if (!resultado || !resultado.insertId) {
-            console.error("❌ Error src/api/web_crud.js al insertar en MODELO.");
+            console.error("❌ Error src/api/funciones_crud.js al insertar en MODELO.");
             return res.status(500).json({ error: `Error al agregar Modelo ${datos.NOMBRE_MODELO}` });
         }
 
-        console.log(`✅ Datos agregados correctamente en src/api/web_crud.js en la tabla MODELO con: ${datos.NOMBRE_MODELO}`);
+        console.log(`✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla MODELO con: ${datos.NOMBRE_MODELO}`);
         return res.status(200).json({ mensaje: `El modelo ${datos.NOMBRE_MODELO} insertado correctamente en la base de datos.` });
 
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al insertar en Modelos: ${error}`);
+        console.error(`❌ Error src/api/funciones_crud.js al insertar en Modelos: ${error}`);
         return res.status(500).json({ error: `Error al agregar Modelos ${datos.NOMBRE_MODELO}` });
     }
 }
@@ -180,15 +180,15 @@ async function agregarMarcas(datos, res) {
 
         // Validar si se insertó correctamente en Modelo
         if (!resultado || !resultado.insertId) {
-            console.error("❌ Error src/api/web_crud.js al insertar en Marcas.");
+            console.error("❌ Error src/api/funciones_crud.js al insertar en Marcas.");
             return res.status(500).json({ error: `Error al agregar Marcas ${datos.NOMBRE_MARCA}` });
         }
 
-        console.log(`✅ Datos agregados correctamente en src/api/web_crud.js en la tabla Marcas con: ${datos.NOMBRE_MARCA}`);
+        console.log(`✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla Marcas con: ${datos.NOMBRE_MARCA}`);
         return res.status(200).json({ mensaje: `La marca ${datos.NOMBRE_MARCA} insertado correctamente en la base de datos.` });
 
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al insertar en Marcas: ${error}`);
+        console.error(`❌ Error src/api/funciones_crud.js al insertar en Marcas: ${error}`);
         return res.status(500).json({ error: `Error al agregar Marcas ${datos.NOMBRE_MARCA}` });
     }
 }
@@ -211,7 +211,7 @@ async function agregarPiezas(datos, res) {
 
         // Validar si se insertó correctamente en Modelo
         if (!resultado || !resultado.insertId) {
-            console.error("❌ Error src/api/web_crud.js al insertar en Piezas.");
+            console.error("❌ Error src/api/funciones_crud.js al insertar en Piezas.");
             return res.status(500).json({ error: `Error al agregar Piezas ${datos.REFERENCIA}` });
         }
 
@@ -225,16 +225,16 @@ async function agregarPiezas(datos, res) {
             valores = [ID, modelo_fk[i]];
             let resultadoModelo = await realizarConsulta(sql_modelo_piezas, valores);
             if (!resultadoModelo || !resultadoModelo.insertId) {
-                console.error("❌ Error src/api/web_crud.js al insertar en Piezas Modelos.");
+                console.error("❌ Error src/api/funciones_crud.js al insertar en Piezas Modelos.");
                 return res.status(500).json({ error: `Error al agregar Piezas ${datos.REFERENCIA} con identificador: ${ID}` });
             }
         }
 
-        console.log(`✅ Datos agregados correctamente en src/api/web_crud.js en la tabla Piezas con: ${datos.REFERENCIA}`);
+        console.log(`✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla Piezas con: ${datos.REFERENCIA}`);
         return res.status(200).json({ mensaje: `La pieza ${datos.REFERENCIA} insertado correctamente en la base de datos.` });
 
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al insertar en Piezas: ${error}`);
+        console.error(`❌ Error src/api/funciones_crud.js al insertar en Piezas: ${error}`);
         return res.status(500).json({ error: `Error al agregar Piezas ${datos.REFERENCIA}` });
     }
 }
@@ -255,15 +255,15 @@ async function agregarNominas(datos, res) {
 
         // Validar si se insertó correctamente en Modelo
         if (!resultado || !resultado.insertId) {
-            console.error("❌ Error src/api/web_crud.js al insertar en Nominas.");
+            console.error("❌ Error src/api/funciones_crud.js al insertar en Nominas.");
             return res.status(500).json({ error: `Error al agregar Nominas mes: ${datos.MES}` });
         }
 
-        console.log(`✅ Datos agregados correctamente en src/api/web_crud.js en la tabla Nominas mes: ${datos.MES}`);
+        console.log(`✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla Nominas mes: ${datos.MES}`);
         return res.status(200).json({ mensaje: `La nomina mes: ${datos.MES} insertado correctamente en la base de datos.` });
 
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al insertar en Nominas: ${error}`);
+        console.error(`❌ Error src/api/funciones_crud.js al insertar en Nominas: ${error}`);
         return res.status(500).json({ error: `Error al agregar Nominas mes: ${datos.MES}` });
     }
 }
@@ -278,13 +278,13 @@ async function agregarNominas(datos, res) {
 async function modificarDatos(datos, res, tabla) {
     try {
         console.log(`Datos son: ${JSON.stringify(datos)}`)
-        const id = Object.values(datos)[0];
-        console.log(`El ID  ${id} a consultar en la tabla ${tabla}`)
+        const ID = Object.values(datos)[0];
+        console.log(`El ID  ${ID} a consultar en la tabla ${tabla}`)
 
         //tabla = tabla.toUpperCase();
 
         if (!verificarTabla(tabla)) {
-            return res.status(404).json({ error: "Tabla de consulta errónea." });
+            return res.status(404).json({ error: "❌ Tabla de consulta errónea." });
         }
 
         // Obtener los datos actuales de la tabla a consultar
@@ -342,6 +342,11 @@ async function modificarDatos(datos, res, tabla) {
                 break;
             }
             case 'VACACIONES': {
+                sqlConsultaDatos = `
+                SELECT FECHA_INICIO, FECHA_FINAL, CONCEDIDAS
+                FROM VACACIONES
+                WHERE ID_VACACIONES = ?
+                `;
                 break;
             }
             case 'PIEZAS': {
@@ -365,15 +370,24 @@ async function modificarDatos(datos, res, tabla) {
                 WHERE p.ID_PIEZAS = ?`;
                 break;
             }
-            case 'FACTURA': {
+            case 'FACTURAS': {
+                sqlConsultaDatos = `
+                SELECT f.ID_FACTURAS, f.BASE, f.IVA, f.TIPO_PAGO, f.FECHA, f.CLIENTE_FK,
+                lf.PIEZAS_FK, lf.PRECIO AS PRECIO_PIEZA
+                FROM FACTURA f
+                JOIN CLIENTE c ON f.CLIENTE_FK = c.ID_CLIENTE
+                JOIN DATOS_COMUNES dc ON c.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES
+                LEFT JOIN LINEA_FACTURA lf ON f.ID_FACTURAS = lf.FACTURA_FK
+                LEFT JOIN PIEZAS p ON lf.PIEZAS_FK = p.ID_PIEZAS
+                WHERE f.ID_FACTURAS = ?`;
                 break;
             }
         }
 
-        const resultadoConsulta = await realizarConsulta(sqlConsultaDatos, [id]);
+        const resultadoConsulta = await realizarConsulta(sqlConsultaDatos, [ID]);
 
         if (!resultadoConsulta || resultadoConsulta.length === 0) {
-            console.error(`❌ Error: datos no encontrados src/api/web_crud.js para tabla: ${tabla}`);
+            console.error(`❌ Error: datos no encontrados src/api/funciones_crud.js para tabla: ${tabla}`);
             return res.status(404).json({ error: "Datos no encontrados." });
         }
         const tablas_comprobar = ['EMPLEADOS', 'VENDEDOR', 'CLIENTES'];
@@ -397,7 +411,7 @@ async function modificarDatos(datos, res, tabla) {
                     if (["NUMERO_SS", "TIPO_CUENTA", "TOTAL_VACACIONES", "DATOS_TARJETA"].includes(key)) {
                         camposActualizarEmpleados.push(`${key} = ?`);
                         valoresActualizarEmpleados.push(value.trim());
-                        console.log(`✅ Dato que se va actualizar src/api/web_crud.js/modificarDatos() con ID ${id}`);
+                        console.log(`✅ Dato que se va actualizar src/api/funciones_crud.js/modificarDatos() con ID ${ID}`);
                     } else {
                         if (key === 'CODIGO_POSTAL') {
                             if (parseInt(datosActuales[key], 10) === parseInt(value.trim(), 10)) {
@@ -406,7 +420,7 @@ async function modificarDatos(datos, res, tabla) {
                         }
                         camposActualizarDatosComunes.push(`${key} = ?`);
                         valoresActualizarDatosComunes.push(value.trim());
-                        console.log(`✅ Dato que se va actualizar src/api/web_crud.js/modificarDatos() con ID ${id}`);
+                        console.log(`✅ Dato que se va actualizar src/api/funciones_crud.js/modificarDatos() con ID ${ID}`);
                     }
                 }
             });
@@ -414,7 +428,7 @@ async function modificarDatos(datos, res, tabla) {
             // Ejecutar actualización solo si hay cambios
             if (camposActualizarEmpleados.length > 0) {
                 const sqlUpdateEmpleados = `UPDATE ${tabla} SET ${camposActualizarEmpleados.join(', ')} WHERE ID_${tabla} = ?;`;
-                valoresActualizarEmpleados.push(id);
+                valoresActualizarEmpleados.push(ID);
                 console.log(`Ejecutando actualización en la tabla: ${tabla}`);
                 await realizarConsulta(sqlUpdateEmpleados, valoresActualizarEmpleados);
             }
@@ -426,7 +440,104 @@ async function modificarDatos(datos, res, tabla) {
                 await realizarConsulta(sqlUpdateDatosComunes, valoresActualizarDatosComunes);
             }
 
-            return res.status(200).json({ mensaje: "Empleado actualizado correctamente" });
+            return res.status(200).json({ mensaje: "✅ Empleado actualizado correctamente" });
+        }
+
+        // UPDATE tabla VACACIONES
+        if (tabla.toUpperCase() === 'VACACIONES') {
+            const datosActuales = resultadoConsulta[0];
+
+            const camposActualizarVacaciones = [];
+            const valoresActualizarVacaciones = [];
+
+            const campos = ["FECHA_INICIO", "FECHA_FINAL", "CONCEDIDAS"];
+
+            campos.forEach(campo => {
+                const valorNuevo = datos[campo]?.toString().trim();
+                const valorActual = datosActuales[campo]?.toString().trim();
+
+                if (valorNuevo && valorNuevo !== valorActual) {
+                    camposActualizarVacaciones.push(`${campo} = ?`);
+                    valoresActualizarVacaciones.push(valorNuevo);
+
+                    console.log(`✅ Campo ${campo} actualizado de '${valorActual}' a '${valorNuevo}'`);
+                }
+            });
+
+            if (camposActualizarVacaciones.length > 0) {
+                const sqlUpdateFacturas = `UPDATE VACACIONES SET ${camposActualizarVacaciones.join(', ')} WHERE ID_VACACIONES = ?;`;
+                valoresActualizarVacaciones.push(ID); // Añadimos el ID al final
+                await realizarConsulta(sqlUpdateFacturas, valoresActualizarVacaciones);
+
+                return res.status(200).json({ mensaje: "✅ Vacaciones actualizada correctamente." });
+
+            }
+            return res.status(200).json({ mensaje: "✅ No hay cambios a realizar en vacaciones." });
+        }
+
+        // UPDATE tabla FACTURAS
+        if (tabla.toUpperCase() === 'FACTURAS') {
+            const datosActuales = resultadoConsulta[0];
+
+            const camposActualizarFacturas = [];
+            const valoresActualizarFacturas = [];
+            const camposActualizarLineaFacturas = [];
+            const valoresActualizarLineaFacturas = [];
+
+            const campos = ["TIPO_PAGO", "FECHA", "CLIENTE_FK", "PIEZAS_FK"];
+            let piezaFK;
+            campos.forEach(campo => {
+                const valorNuevo = datos[campo]?.toString().trim();
+                const valorActual = datosActuales[campo]?.toString().trim();
+
+                if (valorNuevo && valorNuevo !== valorActual) {
+                    if (campo !== 'PIEZAS_FK') {
+                        camposActualizarFacturas.push(`${campo} = ?`);
+                        valoresActualizarFacturas.push(valorNuevo);
+                    } else {
+                        piezaFK = valorActual;
+                        camposActualizarLineaFacturas.push(`${campo} = ?`);
+                        valoresActualizarLineaFacturas.push(valorNuevo);
+                    }
+
+                    console.log(`✅ Campo ${campo} actualizado de '${valorActual}' a '${valorNuevo}'`);
+                }
+            });
+
+            if (camposActualizarFacturas.length > 0) {
+                const sqlUpdateFacturas = `UPDATE FACTURA SET ${camposActualizarFacturas.join(', ')} WHERE ID_FACTURAS = ?;`;
+                valoresActualizarFacturas.push(ID); // Añadimos el ID al final
+                await realizarConsulta(sqlUpdateFacturas, valoresActualizarFacturas);
+                if (camposActualizarLineaFacturas.length <= 0) {
+                    return res.status(200).json({ mensaje: "✅ Factura actualizada correctamente." });
+                }
+            }
+
+            if (camposActualizarLineaFacturas.length > 0) {
+                const sqlLineaFacturaID = `SELECT ID_LINEA_FACTURA FROM LINEA_FACTURA WHERE PIEZAS_FK = ? AND FACTURA_FK = ? AND PRECIO = ?`;
+                console.log(`Puto valor de mierda de la fk ${piezaFK}`)
+                const resultadoLineaFactura = await realizarConsulta(sqlLineaFacturaID, [piezaFK, datos['ID_FACTURAS'], datos['PRECIO_PIEZA']]);
+
+
+                if (resultadoLineaFactura.length === 0) {
+                    return res.status(404).json({ mensaje: "❌ No se encontró la línea de factura para actualizar." });
+                }
+
+                const ID_LINEA_FACTURA = resultadoLineaFactura[0].ID_LINEA_FACTURA;
+
+                const sqlUpdateLineaFactura = `UPDATE LINEA_FACTURA SET ${camposActualizarLineaFacturas.join(', ')} WHERE ID_LINEA_FACTURA = ?;`;
+                valoresActualizarLineaFacturas.push(ID_LINEA_FACTURA);
+                console.log(`✅ Campo PIEZAS_FK actualizado de ${piezaFK} a '${datos['PIEZAS_FK']}'`);
+                await realizarConsulta(sqlUpdateLineaFactura, valoresActualizarLineaFacturas);
+                // Actualización del precio de la nueva pieza
+                await realizarConsulta(`CALL actualizar_precio_linea_factura(?)`, [ID_LINEA_FACTURA]);
+                // Actualiza la base y el IVA de la factura
+                await realizarConsulta(`CALL actualizar_precio_total_factura(?)`, [ID]);
+
+                return res.status(200).json({ mensaje: "✅ Línea de factura actualizada correctamente." });
+            }
+
+            return res.status(200).json({ mensaje: "❌ No hubo cambios en la factura." });
         }
 
         //UPDATE tabla NOMINAS
@@ -451,11 +562,11 @@ async function modificarDatos(datos, res, tabla) {
 
             if (camposActualizarNominas.length > 0) {
                 const sqlUpdateNominas = `UPDATE NOMINAS SET ${camposActualizarNominas.join(', ')} WHERE ID_NOMINAS = ?;`;
-                valoresActualizarNominas.push(id); // Añadimos el ID al final
+                valoresActualizarNominas.push(ID); // Añadimos el ID al final
                 await realizarConsulta(sqlUpdateNominas, valoresActualizarNominas);
-                return res.status(200).json({ mensaje: "Nómina actualizada correctamente." });
+                return res.status(200).json({ mensaje: "✅ Nómina actualizada correctamente." });
             } else {
-                return res.status(200).json({ mensaje: "No hubo cambios en la nómina." });
+                return res.status(200).json({ mensaje: "❌ No hubo cambios en la nómina." });
             }
         }
 
@@ -473,62 +584,62 @@ async function modificarDatos(datos, res, tabla) {
                 // Compara cada campo y añade la consulta de actualización si hay cambios
                 if (datos.DESCRIPCION !== datosActuales.DESCRIPCION) {
                     queries.push("UPDATE PIEZAS SET DESCRIPCION = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.DESCRIPCION, id]);
+                    parametros.push([datos.DESCRIPCION, ID]);
                 }
 
                 if (datos.PESO !== datosActuales.PESO) {
                     queries.push("UPDATE PIEZAS SET PESO = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.PESO, id]);
+                    parametros.push([datos.PESO, ID]);
                 }
 
                 if (datos.PRECIO_COMPRA !== datosActuales.PRECIO_COMPRA) {
                     queries.push("UPDATE PIEZAS SET PRECIO_COMPRA = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.PRECIO_COMPRA, id]);
+                    parametros.push([datos.PRECIO_COMPRA, ID]);
                 }
 
                 if (datos.PRECIO !== datosActuales.PRECIO) {
                     queries.push("UPDATE PIEZAS SET PRECIO = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.PRECIO, id]);
+                    parametros.push([datos.PRECIO, ID]);
                 }
 
                 if (datos.REFERENCIA !== datosActuales.REFERENCIA) {
                     queries.push("UPDATE PIEZAS SET REFERENCIA = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.REFERENCIA, id]);
+                    parametros.push([datos.REFERENCIA, ID]);
                 }
 
                 if (datos.FECHA_YEAR !== datosActuales.FECHA_YEAR) {
                     queries.push("UPDATE PIEZAS SET FECHA_YEAR = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.FECHA_YEAR, id]);
+                    parametros.push([datos.FECHA_YEAR, ID]);
                 }
 
                 if (datos.FECHA_INICIO_VENTA !== datosActuales.FECHA_INICIO_VENTA) {
                     queries.push("UPDATE PIEZAS SET FECHA_INICIO_VENTA = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([fechaInicioVentaFormateada, id]);
+                    parametros.push([fechaInicioVentaFormateada, ID]);
                 }
 
                 if (datos.IMAGENES !== datosActuales.IMAGENES) {
                     queries.push("UPDATE PIEZAS SET IMAGENES = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.IMAGENES, id]);
+                    parametros.push([datos.IMAGENES, ID]);
                 }
 
                 if (datos.CATEGORIAS !== datosActuales.CATEGORIAS) {
                     queries.push("UPDATE PIEZAS SET CATEGORIAS_FK = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.CATEGORIAS, id]);
+                    parametros.push([datos.CATEGORIAS, ID]);
                 }
 
                 if (datos.RAZON_SOCIAL !== datosActuales.RAZON_SOCIAL) {
                     queries.push("UPDATE PIEZAS SET VENDEDOR_FK = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.RAZON_SOCIAL, id]);
+                    parametros.push([datos.RAZON_SOCIAL, ID]);
                 }
 
                 if (datos.EMPLEADO !== datosActuales.EMPLEADO) {
                     queries.push("UPDATE PIEZAS SET EMPLEADO_FK = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.EMPLEADO, id]);
+                    parametros.push([datos.EMPLEADO, ID]);
                 }
 
                 if (datos.VENDIDO !== datosActuales.VENDIDO) {
                     queries.push("UPDATE PIEZAS SET VENDIDO = ? WHERE ID_PIEZAS = ?");
-                    parametros.push([datos.VENDIDO, id]);
+                    parametros.push([datos.VENDIDO, ID]);
                 }
 
                 if (datos.NOMBRE_MODELO !== datosActuales.NOMBRE_MODELO) {
@@ -538,12 +649,12 @@ async function modificarDatos(datos, res, tabla) {
 
                 if (datos.NOMBRE_MARCA !== datosActuales.NOMBRE_MARCA) {
                     queries.push("UPDATE MODELO SET MARCA_MODELO_FK = ? WHERE ID_MODELO = (SELECT MODELO_FK FROM PIEZAS_MODELOS WHERE PIEZAS_FK = ? LIMIT 1)");
-                    parametros.push([datos.NOMBRE_MARCA, id]);
+                    parametros.push([datos.NOMBRE_MARCA, ID]);
                 }
 
                 if (datos.CLIENTE !== datosActuales.CLIENTE) {
                     queries.push("UPDATE FACTURA SET CLIENTE_FK = ? WHERE ID_FACTURAS = (SELECT FACTURA_FK FROM LINEA_FACTURA WHERE PIEZAS_FK = ?)");
-                    parametros.push([datos.CLIENTE, id]);
+                    parametros.push([datos.CLIENTE, ID]);
                 }
 
                 // Verificar si se deben realizar cambios
@@ -551,9 +662,9 @@ async function modificarDatos(datos, res, tabla) {
                     for (let i = 0; i < queries.length; i++) {
                         await realizarConsulta(queries[i], parametros[i]);
                     }
-                    return res.status(200).json({ mensaje: "Datos actualizados correctamente." });
+                    return res.status(200).json({ mensaje: "✅ Datos actualizados correctamente." });
                 } else {
-                    return res.status(200).json({ mensaje: "No hubo cambios en los datos." });
+                    return res.status(200).json({ mensaje: "❌ No hubo cambios en los datos." });
                 }
             }
         }
@@ -571,30 +682,36 @@ async function modificarDatos(datos, res, tabla) {
             if (value && datosActuales[key] !== value.trim()) {
                 camposActualizar.push(`${key} = ?`);
                 valoresActualizar.push(value.trim());
-                console.log(`✅ Dato que se va actualizar src/api/web_crud.js/modificarDatos() con ID ${id}`);
+                console.log(`✅ Dato que se va actualizar src/api/funciones_crud.js/modificarDatos() con ID ${ID}`);
             }
         });
 
         if (camposActualizar.length > 0) {
             const sqlUpdate = `UPDATE ${tabla} SET ${camposActualizar.join(', ')} WHERE ID_${tabla} = ?;`;
-            valoresActualizar.push(id);
+            valoresActualizar.push(ID);
             console.log(`Ejecutando actualización en la tabla: ${tabla}`);
             await realizarConsulta(sqlUpdate, valoresActualizar);
         }
 
-        return res.status(200).json({ mensaje: "Datos actualizados correctamente" });
+        return res.status(200).json({ mensaje: "✅ Datos actualizados correctamente" });
     } catch (error) {
-        console.error(`❌ Error src/api/web_crud.js al modificar en ${tabla}: ${error}`);
-        return res.status(500).json({ error: `Error al modificar Empleado ID ${datos.ID_EMPLEADOS}` });
+        console.error(`❌ Error src/api/funciones_crud.js al modificar en ${tabla}: ${error}`);
+        return res.status(500).json({ error: `❌ Error al modificar datos en la tabla ${tabla}.` });
     }
 }
 
-
+/**
+ * Función que formatea la fecha con formato 'YYYY-MM-DD HH:MM:SS'.
+ * @param {Date} fecha - Contiene el valor de fecha a formatear.
+ * @returns Retorna la fecha formateada.
+ */
 function formatearFecha(fecha) {
     const date = new Date(fecha);
     // Formateamos la fecha como 'YYYY-MM-DD HH:MM:SS'
     return date.toISOString().slice(0, 19).replace('T', ' ');
 }
 
-export {verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas, 
-    agregarNominas, modificarDatos}
+export {
+    verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
+    agregarNominas, modificarDatos
+}

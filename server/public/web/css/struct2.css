@@ -485,3 +485,13 @@ aside {
     justify-content: center; 
     text-align: center; 
 }
+
+
+input:disabled,
+select:disabled {
+  background-color: white !important;
+  color: #000 !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #000 !important; /* para Safari */
+  pointer-events: none; /* Para que siga sin ser editable */
+}
