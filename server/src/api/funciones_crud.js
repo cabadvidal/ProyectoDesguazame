@@ -1,7 +1,7 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 
-const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS',
-    'FICHAJE', 'VACACIONES', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO'
+const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'RESTABLECER_PASS', 
+    'FICHAR', 'VACACIONES', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO', 'PASSWORD'
 ];
 
 /**
@@ -301,6 +301,15 @@ async function modificarDatos(datos, res, tabla) {
                WHERE e.ID_EMPLEADOS = ?;`;
                 break;
             }
+            case 'CLIENTE': {
+                sqlConsultaDatos = `
+               SELECT c.DATOS_COMUNES_FK, c.ID_CLIENTE, dc.NOMBRE, dc.APELLIDO_A, dc.APELLIDO_B, dc.DIRECCION, dc.CODIGO_POSTAL, 
+               dc.CIUDAD, dc.MUNICIPIO, dc.TELEFONO, dc.MOVIL, dc.MAIL, dc.DNI_CIF, dc.NUMERO_CUENTA, c.DATOS_TARJETA 
+               FROM CLIENTE c
+               LEFT JOIN DATOS_COMUNES dc ON c.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES 
+               WHERE c.ID_CLIENTE = ?;`;
+                break;
+            }
             case 'VENDEDOR': {
                 sqlConsultaDatos = `
                 SELECT v.DATOS_COMUNES_FK, dc.RAZON_SOCIAL, dc.DIRECCION, dc.CODIGO_POSTAL, dc.CIUDAD,
@@ -382,6 +391,11 @@ async function modificarDatos(datos, res, tabla) {
                 WHERE f.ID_FACTURAS = ?`;
                 break;
             }
+            case 'FICHAR': {
+                sqlConsultaDatos = `
+                SELECT HORA_ENTRADA, HORA_SALIDA FROM FICHAJE WHERE ID_FICHAJE = ?`;
+                break;
+            }
         }
 
         const resultadoConsulta = await realizarConsulta(sqlConsultaDatos, [ID]);
@@ -390,7 +404,7 @@ async function modificarDatos(datos, res, tabla) {
             console.error(`❌ Error: datos no encontrados src/api/funciones_crud.js para tabla: ${tabla}`);
             return res.status(404).json({ error: "Datos no encontrados." });
         }
-        const tablas_comprobar = ['EMPLEADOS', 'VENDEDOR', 'CLIENTES'];
+        const tablas_comprobar = ['EMPLEADOS', 'VENDEDOR', 'CLIENTE'];
         // Proceso de UPDATE para empleados, vendedores y clientes
         if (tablas_comprobar.some(table => table === tabla)) {
 
@@ -440,7 +454,7 @@ async function modificarDatos(datos, res, tabla) {
                 await realizarConsulta(sqlUpdateDatosComunes, valoresActualizarDatosComunes);
             }
 
-            return res.status(200).json({ mensaje: "✅ Empleado actualizado correctamente" });
+            return res.status(200).json({ mensaje: `✅ ${tabla} actualizado correctamente` });
         }
 
         // UPDATE tabla VACACIONES
@@ -687,6 +701,7 @@ async function modificarDatos(datos, res, tabla) {
         });
 
         if (camposActualizar.length > 0) {
+            if (tabla.toUpperCase() === 'FICHAR') { tabla = 'FICHAJE' }
             const sqlUpdate = `UPDATE ${tabla} SET ${camposActualizar.join(', ')} WHERE ID_${tabla} = ?;`;
             valoresActualizar.push(ID);
             console.log(`Ejecutando actualización en la tabla: ${tabla}`);

@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function createMenuDisplay() {
     let div_container = document.getElementById("menu_container");
+    let div_menu_container = document.getElementById('menu-container');
+    div_menu_container.innerHTML = '';
     div_container.innerHTML = '';
     let div_menu = document.createElement('div');
     div_menu.className = "menu_display";
@@ -35,9 +37,9 @@ function createMenuDisplay() {
     ul.className = "ul_menu";
     let menu_data = [];
     if (tipo_cuenta !== 'ADM') {
-        menu_data = ['Piezas', 'Vendedores', 'Marcas', 'Modelos', 'Categorías', 'Fichar', 'Nominas', 'Vacaciones', 'Facturas'];
+        menu_data = ['Piezas', 'Vendedores', 'Cliente', 'Marcas', 'Modelos', 'Categorías', 'Fichar', 'Nominas', 'Vacaciones', 'Facturas', 'Restablecer Constraseñas'];
     } else {
-        menu_data = ['Piezas', 'Empleados', 'Vendedores', 'Marcas', 'Modelos', 'Categorías', 'Fichar', 'Nominas', 'Vacaciones', 'Facturas'];
+        menu_data = ['Piezas', 'Empleados', 'Vendedores', 'Cliente','Marcas', 'Modelos', 'Categorías', 'Fichar', 'Nominas', 'Vacaciones', 'Facturas', 'Restablecer Constraseñas'];
     }
 
     for (let i = 0; i < menu_data.length; i++) {
@@ -90,6 +92,14 @@ function addSubMenu(option) {
         }
         case 'Facturas': {
             option_submenu = ['Consultar Facturas'];
+            break;
+        }
+        case 'Cliente': {
+            option_submenu = ['Consultar Cliente'];
+            break;
+        }
+        case 'Restablecer Constraseñas': {
+            option_submenu = ['Modificar Contraseñas'];
             break;
         }
     }

@@ -22,14 +22,8 @@ async function realizarAccionNav(dato, menu_seleccionado) {
                 crearTablaConsulta(datos, menu_seleccionado.toUpperCase());
             }
             break;
-        case 'fichar':
-            ficharEmpleado();
-            break;
-        case 'ver':
-            verDatos(menu_seleccionado.toUpperCase());
-            break;
-        case 'solicitar':
-            solicitarAccion(menu_seleccionado.toUpperCase());
+        case 'modificar':
+            modificarPassword();
             break;
         default:
             console.warn(`❌ Acción no reconocida: ${accion}`);
@@ -835,6 +829,32 @@ async function crearTablaConsulta(datos, tabla) {
                 return;
             }
 
+            if (key.includes('HORA_ENTRADA') || key.includes('HORA_SALIDA') && tabla.toUpperCase() === 'FICHAR') {
+                elemento = document.createElement('input');
+                elemento.type = 'datetime-local';
+
+                // Asegurarte que el valor esté en formato correcto para datetime-local
+                if (fila[key]) {
+                    let fechaHora = new Date(fila[key]);
+
+                    // Formatearlo a 'YYYY-MM-DDTHH:MM' que es lo que espera datetime-local
+                    let año = fechaHora.getFullYear();
+                    let mes = (fechaHora.getMonth() + 1).toString().padStart(2, '0');
+                    let dia = fechaHora.getDate().toString().padStart(2, '0');
+                    let horas = fechaHora.getHours().toString().padStart(2, '0');
+                    let minutos = fechaHora.getMinutes().toString().padStart(2, '0');
+
+                    elemento.value = `${año}-${mes}-${dia}T${horas}:${minutos}`;
+                }
+
+                elemento.name = key;
+                elemento.disabled = true;
+                td.appendChild(elemento);
+                tr_body.appendChild(td);
+                elementosFila.push(elemento);
+                return;
+            }
+
             td.appendChild(elemento);
             tr_body.appendChild(td);
             elementosFila.push(elemento);
@@ -858,7 +878,11 @@ async function crearTablaConsulta(datos, tabla) {
                         elemento.disabled = true;
                     }
 
-                    if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'VACACIONES') {
+                    if (elemento.name === 'DNI_CIF' || elemento.name === 'FECHA_INICIO' || elemento.name === 'FECHA_FINAL' && tabla.toUpperCase() === 'VACACIONES') {
+                        elemento.disabled = true;
+                    }
+
+                    if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'FICHAR') {
                         elemento.disabled = true;
                     }
                 });  // Habilitar inputs 
@@ -901,6 +925,7 @@ async function crearTablaConsulta(datos, tabla) {
                         return
                     }
                     if (tabla.toUpperCase() === 'FACTURAS' && (key === 'REFERENCIA' || key === 'PRECIO_PIEZA')) { return }
+                    if (tabla.toUpperCase() === 'FICHAR' && key === 'DNI_CIF') { return }
 
                     datosModificar[key] = nuevosDatos[index];
                 });
@@ -949,4 +974,78 @@ function obtenerDatosFila(datos, idFila) {
 
     resultado = datos[idFila];
     return resultado;
+}
+
+/**
+ * Función que muestra el menú para seleccionar la contraseña de empleados o clientes.
+ * @param {string} accion Contiene la acción para ejecutar en el backend
+ */
+async function modificarPassword() {
+    let div_table_container = document.getElementById('table-container');
+    div_table_container.innerHTML = '';
+
+    let div_menu_container = document.getElementById('menu-container');
+    div_menu_container.innerHTML = '';
+
+    menuModPassword(div_table_container, div_menu_container);
+}
+
+async function menuModPassword(div_table_container, div_menu_container) {
+    div_table_container.innerHTML = '';
+    div_menu_container.innerHTML = '';
+    let div;
+    const COLUMNAS = await obtenerNombresColumnas('PASSWORD');
+    console.log(COLUMNAS)
+
+    div = document.createElement('div');
+    div.className = `class-name-agregar-restablecer-pass`;
+
+    let span = document.createElement('span');
+    let p = document.createElement('p');
+    p.textContent = 'Seleccione un campo de búsqueda';
+
+    let select = document.createElement('select');
+    select.name = 'buscar';
+    let option = document.createElement('option');
+    option.innerHTML = 'Selecciona una opción';
+    select.appendChild(option);
+    COLUMNAS.forEach(col => {
+        option = document.createElement('option');
+        option.innerHTML = col.COLUMN_NAME.replace(/_A/g, '').replace(/_B/g, '').replace('_', ' ');
+        if (col.COLUMN_NAME === 'DNI_CIF') {
+            option.innerHTML = 'DNI';
+        }
+        option.value = col.COLUMN_NAME;
+        select.appendChild(option);
+    });
+
+    let input = document.createElement('input');
+    select.addEventListener('change', () => {
+        //input = document.createElement('input');
+        input.name = select.value;
+        input.placeholder = select.value.replace(/_A/g, '').replace(/_B/g, '').replace('_', ' ');
+        if (select.value === 'DNI_CIF') {
+            input.placeholder = 'DNI';
+        }
+    });
+
+    let button_buscar = document.createElement('button');
+    button_buscar.textContent = 'BUSCAR';
+    button_buscar.addEventListener('click', async() => {
+        console.log(`LLamar a buscar lalallalalaal ${input.value} valor a buscar ${input.name}`);
+        let datos = {};
+        datos[input.name] = input.value;
+        let resultado_busqueda = await consultarDatos('RESTABLECER_PASS', datos);
+        console.log(JSON.stringify(resultado_busqueda));
+        crearTablaConsulta(resultado_busqueda, '');
+    });
+
+    span.appendChild(p);
+    span.appendChild(select);
+    span.appendChild(input);
+    span.appendChild(button_buscar);
+    div.append(span);
+
+    div_menu_container.append(div);
+
 }

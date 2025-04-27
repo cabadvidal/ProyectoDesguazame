@@ -37,6 +37,10 @@ app.post('/ObtenerNombreColumnas', (req, res) => {
             break;
         case 'NOMINAS':
             sql = 'CALL ObtenerNombresColumnasNominas();';
+            break;
+        case 'PASSWORD':
+            sql = 'CALL ObtenerNombresColumnasPassword();';
+            break;
     }
     logger.debug(`/src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: ${tabla}`);
     realizarConsulta(sql)
@@ -114,7 +118,9 @@ app.post('/ObtenerDatosClaveForanea', (req, res) => {
 app.post('/ObtenerDatosTablas', (req, res) => {
     console.log("✅ Ruta /ObtenerDatosTablas ha sido llamada");
     let tabla = req.body.tabla;
-
+    let datos = req.body.datos;
+    let campo;
+    let valor;
     if (!tabla || !verificarTabla(tabla)) {
         return res.status(400).json({ error: `Tabla no encontrada. ${tabla}` });
     }
@@ -125,13 +131,13 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             sql = `SELECT v.ID_VENDEDOR, dc.RAZON_SOCIAL, dc.DNI_CIF, dc.MAIL, dc.DIRECCION, dc.CODIGO_POSTAL,
             dc.CIUDAD, dc.MUNICIPIO, dc.TELEFONO, dc.MOVIL, dc.NUMERO_CUENTA
             FROM VENDEDOR v 
-            JOIN DATOS_COMUNES dc ON v.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
+            LEFT JOIN DATOS_COMUNES dc ON v.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
         case 'CLIENTE':
             sql = `SELECT c.ID_CLIENTE, dc.NOMBRE, dc.APELLIDO_A, dc.APELLIDO_B, dc.DIRECCION, dc.CODIGO_POSTAL, 
-            dc.CIUDAD, dc.MUNICIPIO, dc.TELEFONO, dc.MOVIL, dc.MAIL, dc.DNI_CIF, , dc.NUMERO_CUENTA, c.DATOS_TARJETA 
+            dc.CIUDAD, dc.MUNICIPIO, dc.TELEFONO, dc.MOVIL, dc.MAIL, dc.DNI_CIF, dc.NUMERO_CUENTA, c.DATOS_TARJETA 
             FROM CLIENTE c
-            JOIN DATOS_COMUNES dc ON c.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
+            LEFT JOIN DATOS_COMUNES dc ON c.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
         case 'EMPLEADOS':
             sql = `SELECT e.ID_EMPLEADOS, dc.NOMBRE, dc.APELLIDO_A, dc.APELLIDO_B, dc.DIRECCION, dc.CODIGO_POSTAL, 
@@ -148,7 +154,11 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             JOIN DATOS_COMUNES dc ON e.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
         case 'FICHAR':
-            sql = ``;
+            sql = `
+            SELECT f.ID_FICHAJE, f.HORA_ENTRADA, f.HORA_SALIDA, dc.DNI_CIF
+            FROM FICHAJE f
+            LEFT JOIN EMPLEADOS e ON f.EMPLEADOS_FK = e.ID_EMPLEADOS
+            LEFT JOIN DATOS_COMUNES dc ON e.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
         case 'VACACIONES':
             sql = `
@@ -197,21 +207,44 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             LEFT JOIN LINEA_FACTURA lf ON f.ID_FACTURAS = lf.FACTURA_FK
             LEFT JOIN PIEZAS p ON lf.PIEZAS_FK = p.ID_PIEZAS`;
             break;
+        case 'RESTABLECER_PASS':
+            campo = Object.keys(datos)[0].toUpperCase();
+            valor = Object.values(datos)[0]; 
+            sql = `SELECT dc.ID_DATOS_COMUNES, dc.NOMBRE, dc.MAIL, dc.DNI_CIF, dc.${campo} 
+            FROM DATOS_COMUNES dc 
+            WHERE dc.${campo} LIKE LOWER(CONCAT('%', ?, '%'))`;
+
+            break;
         default:
             sql = `SELECT * FROM ?`;
             break;
     }
     logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || tabla consultada: ${tabla}`);
-    realizarConsulta(sql, tabla)
-        .then(resultado => {
-            logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
-            console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
-            res.json(resultado);
-        })
-        .catch(error => {
-            console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
-            res.status(500).json({ error: "Error en la consulta SQL" });
-        });
+    if (tabla === 'RESTABLECER_PASS') {
+        console.warn(`la consulta sql = ${sql} \n
+        el valor es = ${valor}`);
+        realizarConsulta(sql, [valor])  // <<< SOLO SQL Y VALORES
+            .then(resultado => {
+                logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
+                console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
+                res.json(resultado);
+            })
+            .catch(error => {
+                console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
+                res.status(500).json({ error: "Error en la consulta SQL" });
+            });
+    } else {
+        realizarConsulta(sql, tabla)
+            .then(resultado => {
+                logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
+                console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
+                res.json(resultado);
+            })
+            .catch(error => {
+                console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
+                res.status(500).json({ error: "Error en la consulta SQL" });
+            });
+    }
 });
 
 /**
@@ -291,6 +324,12 @@ app.put('/ModificarDatosTabla', async (req, res) => {
             break;
         case "VACACIONES":
             await modificarDatos(datos, res, 'VACACIONES');
+            break;
+        case "FICHAR":
+            await modificarDatos(datos, res, 'FICHAR');
+            break;
+        case "CLIENTE":
+            await modificarDatos(datos, res, 'CLIENTE');
             break;
         default:
             return res.status(400).json({ error: "Tabla no soportada." });

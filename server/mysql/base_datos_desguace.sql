@@ -1,40 +1,5 @@
 CREATE DATABASE DESGUACE;
 
-
-INSERT INTO DATOS_COMUNES (
-    NOMBRE,
-    APELLIDO_A,
-    APELLIDO_B,
-    CONTRASENA,
-    DIRECCION,
-    CODIGO_POSTAL,
-    CIUDAD,
-    MUNICIPIO,
-    TELEFONO,
-    MOVIL,
-    MAIL,
-    DNI_CIF,
-    FIREBASE_UID,
-    RAZON_SOCIAL,
-    NUMERO_CUENTA
-) VALUES (
-    'Juan',
-    'Pérez',
-    'Gómez',
-    SHA2('contraseña_segura', 256), -- Aplicando SHA2 a la contraseña para generar el hash
-    'Calle Falsa 123',
-    28001,
-    'Madrid',
-    'Madrid',
-    '912345678',
-    '612345678',
-    'juan.perez@mail.com',
-    '12345678Z',
-    'FR4igTSRuHTDIAxtRI9Xh08X1ZR2',
-    NULL,
-    'ES8300001111111111'  
-);
-
 CREATE TABLE CATEGORIAS_PIEZAS(
     ID_CATEGORIAS_PIEZAS INT AUTO_INCREMENT PRIMARY KEY,
     NOMBRE_CATEGORIA VARCHAR(100)
@@ -252,6 +217,22 @@ BEGIN
     AND COLUMN_KEY NOT IN ('PRI', 'MUL')  -- Excluye claves primarias y foráneas
     AND COLUMN_NAME NOT IN ('FIREBASE_UID', 'CONTRASENA', 'DIRECCION', 'CODIGO_POSTAL', 'CIUDAD', 
     'MUNICIPIO', 'TELEFONO', 'MOVIL', 'MAIL', 'NUMERO_CUENTA', 'NOMBRE', 'APELLIDO_A', 'APELLIDO_B', 'VENDIDO'); -- Excluir las columnas específicas
+END //
+
+DELIMITER ;
+
+-- OBTENER NOMBRE COLUMNAS RESTABLECER CONTRASEÑA
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerNombresColumnasPassword()
+BEGIN
+    SELECT COLUMN_NAME 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_SCHEMA = DATABASE() 
+    AND (TABLE_NAME = 'DATOS_COMUNES')
+    AND COLUMN_KEY NOT IN ('PRI', 'MUL')  -- Excluye claves primarias y foráneas
+    AND COLUMN_NAME NOT IN ('FIREBASE_UID', 'RAZON_SOCIAL', 'NUMERO_CUENTA', 'CONTRASENA'); -- Excluir las columnas específicas
 END //
 
 DELIMITER ;

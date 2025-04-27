@@ -1,7 +1,7 @@
 /**
  * Obtiene los nombres de las columnas a mostrar de la tabla.
  * @param {String} tabla Nombre de la tabla a consultar.
- * @returns Devuelve el nombre de las columnas para poder agregar los datos.
+ * @returns {Promise<Object>} Devuelve el nombre de las columnas para poder agregar los datos.
  */
 async function obtenerNombresColumnas(tabla) {
     return new Promise((resolve, reject) => {
@@ -39,7 +39,11 @@ async function obtenerNombresColumnas(tabla) {
             });
     });
 }
-
+/**
+ * Obtiene los datos para generar select con datos asociados a FK
+ * @param {sttring} tabla - Contiene el nombre de la tabla
+ * @returns {Promise<Object>} Devuelve un objecto json con los datos.
+ */
 async function obtenerDatosFK(tabla) {
     return new Promise((resolve, reject) => {
         confirmarConexion(`Solicitar datos para clave foranea de la tabla: ${tabla}`)
@@ -81,11 +85,12 @@ async function obtenerDatosFK(tabla) {
 }
 
 /**
- * Obtiene los datos para la consulta de la tabla
- * @param {String} tabla Contiene el nombre de la consulta
- * @returns Devuelve un objecto json con los datos.
+ * Obtiene los datos para la consulta de la tabla, con o sin datos de búsqueda.
+ * @param {String} tabla - Contiene el nombre de la consulta.
+ * @param {Object} [datos={}] - (Opcional) Datos de búsqueda para la consulta.
+ * @returns {Promise<Object>} Devuelve un objeto JSON con los datos.
  */
-async function consultarDatos(tabla) {
+async function consultarDatos(tabla, datos = {}) {
     return new Promise((resolve, reject) => {
         confirmarConexion(`Solicitar datos para la tabla: ${tabla}`)
             .then((valido) => {
@@ -101,12 +106,12 @@ async function consultarDatos(tabla) {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ tabla: tabla })
+                    body: JSON.stringify({ datos: datos, tabla: tabla })
                 })
                     .then(response => response.json())
                     .then(data => {
                         console.log("Datos recibidos:", data);
-                        if(data.error) {
+                        if (data.error) {
                             popUpError(`❌ ${data.error}`);
                         }
                         resolve(data);
@@ -125,6 +130,12 @@ async function consultarDatos(tabla) {
     });
 }
 
+/**
+ * Agrega datos a una tabla enviándolos al servidor.
+ * @param {Object} datos - Datos a agregar.
+ * @param {string} tabla - Nombre de la tabla donde se agregarán los datos.
+ * @returns {Promise<Object>} - Respuesta del servidor.
+ */
 async function agregarDatos(datos, tabla) {
     return new Promise((resolve, reject) => {
         confirmarConexion(`Agregar datos para la tabla: ${tabla}`)
@@ -162,6 +173,12 @@ async function agregarDatos(datos, tabla) {
     });
 }
 
+/**
+ * Actualiza datos de una tabla enviándolos al servidor.
+ * @param {Object} datos - Datos a actualizar.
+ * @param {string} tabla - Nombre de la tabla donde se actualizarán los datos.
+ * @returns {Promise<Object>} - Respuesta del servidor.
+ */
 async function actualizarDatos(datos, tabla) {
     return new Promise((resolve, reject) => {
         confirmarConexion(`Modificar datos para la tabla: ${tabla}`)
