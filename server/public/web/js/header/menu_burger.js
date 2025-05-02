@@ -1,3 +1,6 @@
+/**
+ * Espera a que el DOM esté completamente cargado para iniciar los eventos de interfaz.
+ */
 document.addEventListener("DOMContentLoaded", function () {
     createMenuDisplay();
 
@@ -26,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/**
+ * Crea el menú principal dinámicamente según el tipo de cuenta.
+ */
 function createMenuDisplay() {
     let div_container = document.getElementById("menu_container");
     let div_menu_container = document.getElementById('menu-container');
@@ -57,6 +63,10 @@ function createMenuDisplay() {
     div_container.appendChild(div_menu);
 }
 
+/**
+ * Genera y muestra el submenú correspondiente según la opción seleccionada.
+ * @param {string} option - Opción del menú principal seleccionada.
+ */
 function addSubMenu(option) {
     let option_submenu = [];
     switch (option) {
@@ -133,13 +143,17 @@ function addSubMenu(option) {
     div_submenu.appendChild(ul);
 }
 
-// Función para cerrar el menú principal
+/**
+ * Cierra el menú principal ocultando su contenedor.
+ */
 function closeMenu() {
     let menuContainer = document.getElementById("menu_container");
     menuContainer.classList.add("hidden");
 }
 
-// Función para cerrar el submenú
+/**
+ * Cierra el submenú ocultando su contenedor.
+ */
 function closeSubMenu() {
     let submenuContainer = document.getElementById("submenu_container");
     submenuContainer.classList.add("hidden");

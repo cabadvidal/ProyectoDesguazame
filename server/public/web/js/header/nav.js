@@ -22,6 +22,8 @@ function createNavBottom(array, menu_seleccionado){
 
 /**
  * Crea la interfaz para poder deslogarse con mensaje de bienvenida
+ * @param {string} nombre - Contiene el nombre del usuario.
+ * @param {string} apellidos - Contiene los apellidos del usuario.
  */
 function createLogin(nombre, apellidos) {
     let divLogin = document.getElementById('login_button');

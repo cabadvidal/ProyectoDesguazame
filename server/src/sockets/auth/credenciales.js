@@ -57,8 +57,6 @@ export async function comprobarCredenciales(socket, datos) {
         // Realiza la consulta a 'MySQL' 
         const resultado = await realizarConsulta(sql, [usuario, password]);
 
-        logger.debug
-
         if (!resultado) {
             socket.emit('token', null);
             return;
@@ -106,10 +104,6 @@ export async function comprobarCredenciales(socket, datos) {
                     user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID);
                     socket.emit('token_cliente', { 'token': token, 'nombre': NOMBRE, 'apellidos': apellidos });
                     break;
-                }
-                case 'VENDEDOR': {
-                    user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID);
-                    socket.emit('token', { 'token': token, 'nombre': NOMBRE, 'apellidos': apellidos, 'tipo_cuenta': CAMPO2 });
                 }
             }
             usuariosConectados.push(user);

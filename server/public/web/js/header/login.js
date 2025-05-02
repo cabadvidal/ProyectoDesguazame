@@ -6,6 +6,10 @@ var nombre = getCookie("nombre" || "");
 var apellidos = getCookie("apellidos" || "");
 var tipo_cuenta = getCookie("tipo_cuenta" || "");
 
+/**
+ * Crea y muestra el menú de login dinámicamente en el DOM.
+ * Incluye campos de email y contraseña, además de botón de acceso.
+ */
 function createMenuLogin() {
     // Mostrar el fondo negro
     let overlay = document.getElementById('login_overlay');
@@ -15,16 +19,6 @@ function createMenuLogin() {
     let login_menu = document.getElementById('login_menu_container');
     login_menu.classList.remove('hidden');
     login_menu.innerHTML = ''; // Limpiar contenido existente
-
-    // Crear el botón de cerrar (X)
-    /*  let close_button = document.createElement('span');
-      close_button.className = 'close_button';
-      close_button.innerText = '✖';
-      close_button.addEventListener('click', function () {
-          overlay.classList.add('hidden');
-          login_menu.classList.add('hidden');
-      });
-      login_menu.appendChild(close_button); */
 
     // Crear el div del menu
     let div_menu = document.createElement('div');
@@ -102,6 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/**
+ * Escucha el token del empleado enviado por el servidor y maneja la sesión.
+ * @param {Object} datos - Datos enviados por el servidor.
+ */
 socket.on("token_empleado", async (datos) => {
     console.log(datos);
     if (datos.nombre !== null & datos.token !== null) {
@@ -131,6 +129,9 @@ socket.on("token_empleado", async (datos) => {
     }
 });
 
+/**
+ * Maneja la respuesta del servidor cuando las credenciales son inválidas.
+ */
 socket.on("token", async (datos) => {
     console.log(datos);
     if (!datos) {
@@ -148,6 +149,11 @@ setInterval(() => {
     }
 }, 60000);
 
+/**
+ * Confirma la conexión y actividad del usuario con el servidor.
+ * @param {string} actividad - Actividad realizada para validar.
+ * @returns {Promise<boolean>} - Retorna true si el token es válido, false si no.
+ */
 function confirmarConexion(actividad) {
     return new Promise((resolve, reject) => {
         if (!token) {
@@ -166,8 +172,16 @@ function confirmarConexion(actividad) {
     });
 }
 
+/**
+ * Maneja error cuando se intenta iniciar sesión con una cuenta de cliente.
+ */
+socket.on("token_cliente", function (){
+    popUpError(`❌ Cuenta introducida de cliente, introduzca una cuenta valida`);
+});
 
-// Esperar a que la conexión esté lista
+/**
+ * Maneja la reconexión automática al servidor si hay token disponible.
+ */
 socket.on("connection", function () {
     console.log("✅ Conectado al servidor Socket.io");
 
@@ -182,7 +196,11 @@ socket.on("connection", function () {
     }
 });
 
-// Manejar la respuesta del servidor tras la verificación del token
+/**
+ * Maneja la respuesta del servidor tras la verificación del token.
+ * 
+ * @param {Object} datos - Contiene el resultado de la validación.
+ */
 socket.on("respuesta verificación", function (datos) {
     if (datos.valido) {
         console.log("✅ Token válido, sesión iniciada.");

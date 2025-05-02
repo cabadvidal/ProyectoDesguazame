@@ -1,7 +1,9 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
+import { modificarContrasena } from "../sockets/auth/reg_user.js";
+import { usuariosConectados } from "../sockets/sockets.js";
 
-const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'RESTABLECER_PASS', 
-    'FICHAR', 'VACACIONES', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO', 'PASSWORD'
+const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'RESTABLECER_PASS',
+    'FICHAR', 'VACACIONES', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO', 'PASSWORD', 'RESTABLECER_PASS'
 ];
 
 /**
@@ -726,7 +728,42 @@ function formatearFecha(fecha) {
     return date.toISOString().slice(0, 19).replace('T', ' ');
 }
 
+/**
+ * Modifica la contraseña almacenada.
+ * @param {Object} datos - Objeto que contiene la información a modificar.
+ * @param {Object} res - Objeto de respuesta HTTP para enviar la respuesta al cliente.  
+ * @returns {Promise<void>} Retorna una respuesta JSON con el resultado de la operación.
+ */
+async function modificarPassword(datos, res) {
+    const sqlUpdatePassword = `UPDATE DATOS_COMUNES SET CONTRASENA = SHA2(?, 256) WHERE ID_DATOS_COMUNES = ?`;
+    const id = datos.ID_DATOS_COMUNES;
+    const pass = datos.RESTABLECER_PASS;
+    try {
+        const resultado = await realizarConsulta(sqlUpdatePassword, [pass, id]);
+
+        if (resultado) {
+            const sqlFIREBASE_UID = `SELECT FIREBASE_UID FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
+            const resultadoFireBase = await realizarConsulta(sqlFIREBASE_UID, id);
+            if (resultadoFireBase) {
+                const FIREBASE_UID = resultadoFireBase[0].FIREBASE_UID;
+
+                const firebaseActualizado = await modificarContrasena(FIREBASE_UID, pass);
+                if (!firebaseActualizado) {
+                    return res.status(200).json({ mensaje: "❌ No se pudo modificar la contraseña." });
+                }
+            }
+            console.log(`✅ src/api/funciones_crud.js Se ha modificado la contraseña ${pass} para el identificador: ${id}.`);
+            return res.status(200).json({ mensaje: "✅ Se ha modificado la contraseña." });
+        } else {
+            return res.status(200).json({ mensaje: "❌ No se pudo modificar la contraseña." });
+        }
+    } catch (error) {
+        console.error(`❌ Error src/api/funciones_crud.js al modificar password: ${error}`);
+        return res.status(500).json({ error: `❌ Error al modificar la contraseña.` });
+    }
+}
+
 export {
     verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
-    agregarNominas, modificarDatos
+    agregarNominas, modificarDatos, modificarPassword
 }

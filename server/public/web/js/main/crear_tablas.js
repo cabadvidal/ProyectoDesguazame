@@ -458,7 +458,8 @@ async function crearTablaConsulta(datos, tabla) {
             }
             th.innerHTML = key.replace(/_A/g, '').replace(/_/g, ' ').replace('FK', '').replace('SS', 'SEG. SOCIAL').replace('FECHA YEAR', 'AÑO'); // Limpiar el nombre de las columnas
         } else {
-            th.innerHTML = (tabla === 'EMPLEADOS' || (tabla === 'CLIENTE' || tabla === 'FACTURAS' || tabla === 'NOMINAS')) ? 'DNI' : 'CIF';
+            th.innerHTML = (tabla === 'EMPLEADOS' || (tabla === 'CLIENTE' || tabla === 'FACTURAS' || tabla === 'NOMINAS'
+                || tabla === 'RESTABLECER_PASS')) ? 'DNI' : 'CIF';
         }
 
         tr.appendChild(th);
@@ -466,7 +467,12 @@ async function crearTablaConsulta(datos, tabla) {
 
     for (let i = 0; i < 2; i++) {
         let th = document.createElement('th');
-        th.innerHTML = i === 0 ? 'MODIFICAR' : 'ELIMINAR';
+        if (tabla === 'RESTABLECER_PASS') {
+            th.innerHTML = i === 0 ? 'MODIFICAR' : 'NUEVA CONTRASEÑA';
+        } else {
+            th.innerHTML = i === 0 ? 'MODIFICAR' : 'ELIMINAR';
+        }
+
         tr.appendChild(th);
     }
 
@@ -861,100 +867,148 @@ async function crearTablaConsulta(datos, tabla) {
         });
 
         let idFila = Object.values(fila)[0];
+        if (tabla !== 'RESTABLECER_PASS') {
+            // Crear los botones de modificar y eliminar
+            let td_Mod = document.createElement('td');
+            let button_Mod = document.createElement('button');
+            button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
+            button_Mod.addEventListener('click', async () => {
+                if (button_Mod.innerHTML === '✏️') {
+                    button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
+                    elementosFila.forEach((elemento, index) => {
+                        if (index !== 0) {  // Evitar que el primer elemento se habilite
+                            elemento.disabled = false;
+                        }
+                        if (elemento.name === 'BASE' || elemento.name === 'IVA' || elemento.name === 'BASE' || elemento.name === 'PRECIO_PIEZA'
+                            && tabla.toUpperCase() === 'FACTURAS') {
+                            elemento.disabled = true;
+                        }
 
-        // Crear los botones de modificar y eliminar
-        let td_Mod = document.createElement('td');
-        let button_Mod = document.createElement('button');
-        button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
-        button_Mod.addEventListener('click', async () => {
-            if (button_Mod.innerHTML === '✏️') {
-                button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
-                elementosFila.forEach((elemento, index) => {
-                    if (index !== 0) {  // Evitar que el primer elemento se habilite
-                        elemento.disabled = false;
-                    }
-                    if (elemento.name === 'BASE' || elemento.name === 'IVA' || elemento.name === 'BASE' || elemento.name === 'PRECIO_PIEZA'
-                        && tabla.toUpperCase() === 'FACTURAS') {
-                        elemento.disabled = true;
-                    }
+                        if (elemento.name === 'DNI_CIF' || elemento.name === 'FECHA_INICIO' || elemento.name === 'FECHA_FINAL' && tabla.toUpperCase() === 'VACACIONES') {
+                            elemento.disabled = true;
+                        }
 
-                    if (elemento.name === 'DNI_CIF' || elemento.name === 'FECHA_INICIO' || elemento.name === 'FECHA_FINAL' && tabla.toUpperCase() === 'VACACIONES') {
-                        elemento.disabled = true;
-                    }
+                        if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'FICHAR') {
+                            elemento.disabled = true;
+                        }
+                    });  // Habilitar inputs 
+                } else {
+                    button_Mod.innerHTML = '✏️';  // Volver al lápiz
+                    elementosFila.forEach(elemento => elemento.disabled = true);  // Deshabilitar edición
 
-                    if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'FICHAR') {
-                        elemento.disabled = true;
-                    }
-                });  // Habilitar inputs 
-            } else {
-                button_Mod.innerHTML = '✏️';  // Volver al lápiz
-                elementosFila.forEach(elemento => elemento.disabled = true);  // Deshabilitar edición
+                    // Obtener nuevos valores del input y select
+                    let nuevosDatos = elementosFila.map(el => el.value);
+                    console.log(`Los datos son ${nuevosDatos}`);
+                    let datosModificar = {};
+                    // Agregar los datos modificados como un JSON
+                    Object.keys(datos[0]).forEach((key, index) => {
+                        console.log(`El valor es ${nuevosDatos[index]} la clave es: ${key}`);
+                        if (key === 'NOMBRE_MARCA' && tabla.toUpperCase() === 'MODELOS') {
+                            datosModificar['MARCA_MODELO_FK'] = nuevosDatos[index].trim();
+                            return;
+                        }
+                        if (key === 'MES') {
+                            datosModificar[key] = nuevosDatos[index] + '-01';
+                            return;
+                        }
+                        if (key === 'EMPLEADOS_FK') {
+                            datosModificar[key] = nuevosDatos[index + 1];
+                            return;
+                        }
 
-                // Obtener nuevos valores del input y select
-                let nuevosDatos = elementosFila.map(el => el.value);
-                console.log(`Los datos son ${nuevosDatos}`);
-                let datosModificar = {};
-                // Agregar los datos modificados como un JSON
-                Object.keys(datos[0]).forEach((key, index) => {
-                    console.log(`El valor es ${nuevosDatos[index]} la clave es: ${key}`);
-                    if (key === 'NOMBRE_MARCA' && tabla.toUpperCase() === 'MODELOS') {
-                        datosModificar['MARCA_MODELO_FK'] = nuevosDatos[index].trim();
-                        return;
-                    }
-                    if (key === 'MES') {
-                        datosModificar[key] = nuevosDatos[index] + '-01';
-                        return;
-                    }
-                    if (key === 'EMPLEADOS_FK') {
-                        datosModificar[key] = nuevosDatos[index + 1];
-                        return;
-                    }
+                        if (tabla.toUpperCase() === 'FACTURAS' && key === 'DNI_CIF') {
+                            datosModificar['PIEZAS_FK'] = nuevosDatos[index];
+                            return
+                        }
+                        if (tabla.toUpperCase() === 'FACTURAS' && key === 'PIEZAS_FK') {
+                            datosModificar['PRECIO_PIEZA'] = nuevosDatos[index];
+                            return
+                        }
+                        if (tabla.toUpperCase() === 'FACTURAS' && key === 'FECHA') {
+                            let fecha = nuevosDatos[index];
+                            let formatFecha = fecha.substring(0, 10);
+                            datosModificar['FECHA'] = formatFecha;
+                            return
+                        }
+                        if (tabla.toUpperCase() === 'FACTURAS' && (key === 'REFERENCIA' || key === 'PRECIO_PIEZA')) { return }
+                        if (tabla.toUpperCase() === 'FICHAR' && key === 'DNI_CIF') { return }
 
-                    if (tabla.toUpperCase() === 'FACTURAS' && key === 'DNI_CIF') {
-                        datosModificar['PIEZAS_FK'] = nuevosDatos[index];
-                        return
+                        datosModificar[key] = nuevosDatos[index];
+                    });
+                    if (tabla.toUpperCase() === 'VACACIONES') {
+                        let fechaInicio = new Date(datosModificar['FECHA_INICIO']);
+                        let fechaFinal = new Date(datosModificar['FECHA_FINAL']);
+                        if (fechaInicio >= fechaFinal) {
+                            popUpError(`La fecha final: ${datosModificar['FECHA_FINAL']}, tiene que ser superior a la fecha de inicio: ${datosModificar['FECHA_INICIO']}.`)
+                            return;
+                        }
                     }
-                    if (tabla.toUpperCase() === 'FACTURAS' && key === 'PIEZAS_FK') {
-                        datosModificar['PRECIO_PIEZA'] = nuevosDatos[index];
-                        return
-                    }
-                    if (tabla.toUpperCase() === 'FACTURAS' && key === 'FECHA') {
-                        let fecha = nuevosDatos[index];
-                        let formatFecha = fecha.substring(0, 10);
-                        datosModificar['FECHA'] = formatFecha;
-                        return
-                    }
-                    if (tabla.toUpperCase() === 'FACTURAS' && (key === 'REFERENCIA' || key === 'PRECIO_PIEZA')) { return }
-                    if (tabla.toUpperCase() === 'FICHAR' && key === 'DNI_CIF') { return }
-
-                    datosModificar[key] = nuevosDatos[index];
-                });
-                if (tabla.toUpperCase() === 'VACACIONES') {
-                    let fechaInicio = new Date(datosModificar['FECHA_INICIO']);
-                    let fechaFinal = new Date(datosModificar['FECHA_FINAL']);
-                    if (fechaInicio >= fechaFinal) {
-                        popUpError(`La fecha final: ${datosModificar['FECHA_FINAL']}, tiene que ser superior a la fecha de inicio: ${datosModificar['FECHA_INICIO']}.`)
-                        return;
-                    }
+                    let resultado = await actualizarDatos(datosModificar, tabla);
+                    popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
+                    console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
                 }
-                let resultado = await actualizarDatos(datosModificar, tabla);
-                popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
-                console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
-            }
-        });
+            });
 
-        td_Mod.appendChild(button_Mod);
-        tr_body.appendChild(td_Mod);
+            td_Mod.appendChild(button_Mod);
+            tr_body.appendChild(td_Mod);
 
-        let td_Del = document.createElement('td');
-        let button_Del = document.createElement('button');
-        button_Del.innerHTML = '❌';  // Ícono de eliminar
-        button_Del.addEventListener('click', () => {
-            // Lógica para eliminar el registro
-            console.log(`Eliminar registro con ID: ${idFila}`);
-        });
-        td_Del.appendChild(button_Del);
-        tr_body.appendChild(td_Del);
+            let td_Del = document.createElement('td');
+            let button_Del = document.createElement('button');
+            button_Del.innerHTML = '❌';  // Ícono de eliminar
+            button_Del.addEventListener('click', () => {
+                // Lógica para eliminar el registro
+                console.log(`Eliminar registro con ID: ${idFila}`);
+            });
+            td_Del.appendChild(button_Del);
+            tr_body.appendChild(td_Del);
+        } else {
+            let td_Mod = document.createElement('td');
+            let button_Mod = document.createElement('button');
+            let input_pass = document.createElement('input');
+            button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
+            button_Mod.addEventListener('click', async () => {
+                if (button_Mod.innerHTML === '✏️') {
+                    button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
+                    input_pass.disabled = false;
+                } else {
+                    button_Mod.innerHTML = '✏️';  // Volver al lápiz
+                    input_pass.disabled = true;
+
+                    // Obtener nuevos valores del input y select
+                    let nuevosDatos = elementosFila.map(el => el.value);
+                    console.log(`Los datos son ${nuevosDatos}`);
+                    let datosModificar = {};
+                    datosModificar['ID_DATOS_COMUNES'] = idFila;
+                    let value = input_pass.value;
+                    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,20}$/;;
+                    const esValida = regex.test(value);
+                    if (!esValida) {
+                        popUpError(`❌ La contraseña: ${value}. Tiene que tener una longitud entre 8 y 20 caracteres.` +
+                            `Contener números, letras minúsculas y mayúsculas.` +
+                            `Y al menos uno de los siguientes caracteres:` +
+                            `¡ " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ \\\` { | } ~ _`);
+                            return;
+                    }
+                    datosModificar[tabla] = input_pass.value;
+
+
+                    let resultado = await actualizarDatos(datosModificar, tabla);
+                    popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
+                    console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
+                }
+            });
+            td_Mod.appendChild(button_Mod);
+            tr_body.appendChild(td_Mod);
+
+            let td_pass = document.createElement('td');
+
+            input_pass.placeholder = 'Nueva Contraseña';
+            input_pass.name = 'RESTABLECER_PASS';
+            input_pass.disabled = true;
+
+            td_pass.appendChild(input_pass);
+            tr_body.appendChild(td_pass);
+        }
 
         table_body.appendChild(tr_body);
     });
@@ -990,6 +1044,11 @@ async function modificarPassword() {
     menuModPassword(div_table_container, div_menu_container);
 }
 
+/**
+ * Crea el menú para buscar el usuario para cambiar la contraseña.
+ * @param {div} div_table_container - Coontiene el div de la tabla
+ * @param {div} div_menu_container  - Contiene el div del menú.
+ */
 async function menuModPassword(div_table_container, div_menu_container) {
     div_table_container.innerHTML = '';
     div_menu_container.innerHTML = '';
@@ -1031,13 +1090,13 @@ async function menuModPassword(div_table_container, div_menu_container) {
 
     let button_buscar = document.createElement('button');
     button_buscar.textContent = 'BUSCAR';
-    button_buscar.addEventListener('click', async() => {
+    button_buscar.addEventListener('click', async () => {
         console.log(`LLamar a buscar lalallalalaal ${input.value} valor a buscar ${input.name}`);
         let datos = {};
         datos[input.name] = input.value;
         let resultado_busqueda = await consultarDatos('RESTABLECER_PASS', datos);
         console.log(JSON.stringify(resultado_busqueda));
-        crearTablaConsulta(resultado_busqueda, '');
+        crearTablaConsulta(resultado_busqueda, 'RESTABLECER_PASS');
     });
 
     span.appendChild(p);

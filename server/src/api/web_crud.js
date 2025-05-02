@@ -1,10 +1,9 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { app } from "../../desguace.js";
 import { logger } from "../log/log.js";
-import { registrarUsuario, eliminarUsuario } from "../sockets/auth/reg_user.js";
 import {
     verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
-    agregarNominas, modificarDatos
+    agregarNominas, modificarDatos, modificarPassword
 } from "./funciones_crud.js";
 
 /**
@@ -300,7 +299,7 @@ app.put('/ModificarDatosTabla', async (req, res) => {
         return res.status(400).json({ error: "Tabla incorrecta." });
     }
     tabla = tabla.toUpperCase();
-
+    console.log(`la tabla q mando es : ${tabla}`)
     switch (tabla) {
         case "EMPLEADOS":
             await modificarDatos(datos, res, tabla);
@@ -330,6 +329,9 @@ app.put('/ModificarDatosTabla', async (req, res) => {
             break;
         case "CLIENTE":
             await modificarDatos(datos, res, 'CLIENTE');
+            break;
+        case "RESTABLECER_PASS":
+            await modificarPassword(datos, res);
             break;
         default:
             return res.status(400).json({ error: "Tabla no soportada." });
