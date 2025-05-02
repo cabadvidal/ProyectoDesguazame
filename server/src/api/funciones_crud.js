@@ -1,6 +1,7 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { modificarContrasena } from "../sockets/auth/reg_user.js";
 import { usuariosConectados } from "../sockets/sockets.js";
+import { generarFactura } from "../factura/factura.js";
 
 const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'RESTABLECER_PASS',
     'FICHAR', 'VACACIONES', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO', 'PASSWORD', 'RESTABLECER_PASS'
@@ -549,8 +550,13 @@ async function modificarDatos(datos, res, tabla) {
                 await realizarConsulta(`CALL actualizar_precio_linea_factura(?)`, [ID_LINEA_FACTURA]);
                 // Actualiza la base y el IVA de la factura
                 await realizarConsulta(`CALL actualizar_precio_total_factura(?)`, [ID]);
+                // Generar factura
+                const resultadoFactura = await generarFactura(ID);
+                if (resultadoFactura) {
+                    return res.status(200).json({ mensaje: "✅ Línea de factura actualizada correctamente." });
+                } 
 
-                return res.status(200).json({ mensaje: "✅ Línea de factura actualizada correctamente." });
+                return res.status(404).json({ mensaje: "❌ Error al generar la factura." });
             }
 
             return res.status(200).json({ mensaje: "❌ No hubo cambios en la factura." });
@@ -742,12 +748,13 @@ async function modificarPassword(datos, res) {
         const resultado = await realizarConsulta(sqlUpdatePassword, [pass, id]);
 
         if (resultado) {
-            const sqlFIREBASE_UID = `SELECT FIREBASE_UID FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
+            const sqlFIREBASE_UID = `SELECT FIREBASE_UID, MAIL FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
             const resultadoFireBase = await realizarConsulta(sqlFIREBASE_UID, id);
             if (resultadoFireBase) {
                 const FIREBASE_UID = resultadoFireBase[0].FIREBASE_UID;
+                const MAIL = resultadoFireBase[0].MAIL;
 
-                const firebaseActualizado = await modificarContrasena(FIREBASE_UID, pass);
+                const firebaseActualizado = await modificarContrasena(FIREBASE_UID, pass, MAIL);
                 if (!firebaseActualizado) {
                     return res.status(200).json({ mensaje: "❌ No se pudo modificar la contraseña." });
                 }
