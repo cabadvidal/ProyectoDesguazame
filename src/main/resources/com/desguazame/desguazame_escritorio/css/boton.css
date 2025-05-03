@@ -1,0 +1,22 @@
+.boton-entrar {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-size: 22px;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-border-color: #1BA6D2;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+}
+
+.boton-entrar:hover {
+    -fx-background-color: rgb(27, 166, 210);
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.boton-entrar:pressed {
+    -fx-background-color: rgb(27, 166, 210);
+    -fx-text-fill: white;
+}

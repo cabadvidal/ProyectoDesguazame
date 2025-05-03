@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-image: url('/com/desguazame/desguazame_escritorio/img/BG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-position: center center;" stylesheets="@css/boton.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desguazame.desguazame_escritorio.controller.ControllerSearch">
+    
+    <children>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+               <children>
+                  <VBox maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+                     <children>
+                        <Button fx:id="btnHelp" maxWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="boton-entrar" text="Ayuda" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="295.0" prefWidth="1283.0" style="-fx-background-color: transparent;">
+                     <children>
+                            <ImageView fitHeight="192.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@img/coche-transparente.png" />
+                                </image>
+                           <VBox.margin>
+                              <Insets bottom="50.0" />
+                           </VBox.margin>
+                            </ImageView>
+                        <Label text="Buscar Piezas" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="36.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0" style="-fx-background-color: transparent;">
+                           <children>
+                              <TextField fx:id="txtSearch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0" text="Buscar...">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ComboBox fx:id="cbCategory" prefWidth="180.0" promptText="Seleccione una Categoría" style="-fx-background-color: white; -fx-border-color: rgb(27, 166, 210);" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+                     <children>
+                        <Button fx:id="btnLogout" maxWidth="200.0" mnemonicParsing="false" onAction="#changeLogin" prefHeight="50.0" prefWidth="200.0" styleClass="boton-entrar" text="Deslogarse" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1920.0" style="-fx-background-color: transparent;" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

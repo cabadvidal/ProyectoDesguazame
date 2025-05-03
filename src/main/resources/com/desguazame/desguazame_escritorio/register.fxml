@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-image: url('/com/desguazame/desguazame_escritorio/img/BG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-position: center center;" stylesheets="@css/boton.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desguazame.desguazame_escritorio.controller.ControllerRegister">
+    
+    <children>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+               <children>
+                  <VBox maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+                     <children>
+                        <Button fx:id="btnHelp" maxWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="boton-entrar" text="Ayuda" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="295.0" prefWidth="1283.0" style="-fx-background-color: transparent;">
+                     <children>
+                            <ImageView fitHeight="384.0" fitWidth="688.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@img/coche-transparente.png" />
+                                </image>
+                           <VBox.margin>
+                              <Insets bottom="50.0" />
+                           </VBox.margin>
+                            </ImageView>
+                        <Label text="Registro de Usuario" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+                     <children>
+                        <Button fx:id="btnBack" maxWidth="200.0" mnemonicParsing="false" onAction="#changeLogin" prefHeight="50.0" prefWidth="200.0" styleClass="boton-entrar" text="Volver" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="535.0" prefWidth="276.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <Label text="Nombre" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtName" maxWidth="300.0" text="Nombre">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Dirección" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtAdress" maxWidth="300.0" text="Dirección">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Municipio" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtMunicipality" maxWidth="300.0" text="Municipio">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Correo electrónico" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtMail" maxWidth="300.0" text="Correo electrónico">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Tarjeta de Crédito" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtCreditCard" maxWidth="300.0" text="Tarjeta de Crédito">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                    <VBox alignment="TOP_CENTER" prefHeight="523.0" prefWidth="384.0" style="-fx-background-color: transparent;">
+                        
+                        <children>
+                        <Label text="Primer Apellido" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtFirstName" maxWidth="300.0" text="Primer Apellido">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Código postal" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtCodePostal" maxWidth="300.0" text="Código postal">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Teléfono" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtPhone" maxWidth="300.0" text="Teléfono">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Documento de identidad" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtDNI" maxWidth="300.0" text="Documento de identidad">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Contraseña" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <PasswordField fx:id="txtPasswordOne" maxWidth="300.0" text="Contraseña">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </PasswordField>
+                            <VBox alignment="TOP_CENTER" style="-fx-background-color: transparent;">
+                                <children>
+                              <Button fx:id="btnEnter" maxWidth="200.0" mnemonicParsing="false" styleClass="boton-entrar" text="Entrar" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="80.0" />
+                                 </VBox.margin>
+                              </Button>
+                                </children>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                </VBox.margin>
+                            </VBox>
+                        </children>
+                    </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="557.0" prefWidth="362.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <Label text="Segundo Apellido" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtSecondName" maxWidth="300.0" text="Segundo Apellido">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Ciudad" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtCity" maxWidth="300.0" text="Ciudad">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Movil" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtCell" maxWidth="300.0" text="Movil">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Número de Cuenta" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="txtBank" maxWidth="300.0" text="Número de Cuenta">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label fx:id="txtPasswordTwo" text="Confirmar Contraseña" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <PasswordField maxWidth="300.0" text="Contraseña">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
