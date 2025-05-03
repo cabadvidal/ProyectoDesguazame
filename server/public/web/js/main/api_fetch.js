@@ -215,3 +215,46 @@ async function actualizarDatos(datos, tabla) {
             });
     });
 }
+
+/**
+ * Elimina datos de una tabla enviándolos al servidor.
+ * @param {Object} datos - Datos a eliminar.
+ * @param {string} tabla - Nombre de la tabla donde se eliminarán los datos.
+ * @returns {Promise<Object>} - Respuesta del servidor.
+ */
+async function eliminarDatos(datos, tabla) {
+    return new Promise((resolve, reject) => {
+        confirmarConexion(`Eliminar datos para la tabla: ${tabla}`)
+            .then((valido) => {
+                if (!valido) {
+                    console.log("Conexión no válida");
+                    popUpError('❌ No se han podido obtener datos.');
+                    reject("Conexión no válida");
+                    return;
+                }
+
+                fetch(`/EliminarRegistrosTabla`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ datos: datos, tabla: tabla })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Datos recibidos:", data);
+                        resolve(data);
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener los datos:", error);
+                        popUpError('❌ No se han podido obtener datos.');
+                        reject(error);
+                    });
+            })
+            .catch(() => {
+                console.log("Error al confirmar conexión");
+                popUpError('❌ No se han podido obtener datos.');
+                reject("Error al confirmar conexión");
+            });
+    });
+}

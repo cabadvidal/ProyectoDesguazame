@@ -955,9 +955,15 @@ async function crearTablaConsulta(datos, tabla) {
             let td_Del = document.createElement('td');
             let button_Del = document.createElement('button');
             button_Del.innerHTML = '❌';  // Ícono de eliminar
-            button_Del.addEventListener('click', () => {
-                // Lógica para eliminar el registro
-                console.log(`Eliminar registro con ID: ${idFila}`);
+            button_Del.addEventListener('click', async () => {
+                if (menuVerificarBorrado(idFila, tabla)) {
+                    let key = Object.keys(fila)[0];
+                    let datosEliminar = [{ [key]: idFila }];
+                    console.log(`Eliminar registro con ID: ${idFila}`);
+                    let resultado = await eliminarDatos(datosEliminar, tabla);
+                    popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
+                }
+                return;
             });
             td_Del.appendChild(button_Del);
             tr_body.appendChild(td_Del);
@@ -987,7 +993,7 @@ async function crearTablaConsulta(datos, tabla) {
                             `Contener números, letras minúsculas y mayúsculas.` +
                             `Y al menos uno de los siguientes caracteres:` +
                             `¡ " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ \\\` { | } ~ _`);
-                            return;
+                        return;
                     }
                     datosModificar[tabla] = input_pass.value;
 
@@ -1107,4 +1113,48 @@ async function menuModPassword(div_table_container, div_menu_container) {
 
     div_menu_container.append(div);
 
+}
+
+/**
+ * Menú para verificar si se quiere eliminar un registro.
+ * @param {int} id - Contiene el número del id del registro a eliminar.
+ * @param {*} tabla - Contiene el nombre de la tabla sobre la que se va eliminar el registro.
+ */
+function menuVerificarBorrado(id, tabla) {
+    // Mostrar el fondo negro
+    let overlay = document.getElementById('overlay');
+    overlay.classList.remove('hidden');
+
+    // Crear el menú 
+    let menu = document.getElementById('error_menu_container');
+    menu.classList.remove('hidden');
+    menu.innerHTML = ''; // Limpiar contenido existente
+
+    // Crear el botón de cerrar (X)
+    let close_button = document.createElement('span');
+    close_button.className = 'close_button';
+    close_button.innerText = '✖';
+    close_button.addEventListener('click', function () {
+        overlay.classList.add('hidden');
+        menu.classList.add('hidden');
+    });
+    menu.appendChild(close_button);
+
+    // Crear div que contendrá el menu donde se muestra el el aviso
+    let div = document.createElement('div');
+    div.id = 'error_menu';
+    let p = document.createElement('p');
+    p.textContent = `Está seguro de que desea eliminar el registro con id: ${id} de la tabla: ${tabla}.`;
+    
+    for (let i = 0; i < 2; i++) {
+        let button = document.createElement('button');
+        button.innerHTML = i === 0 ? '✅ Borrar' : '❌ Cancelar';
+        button.className = 'button_eliminar';
+        button.addEventListener('click', () => {
+            return i === 0 ? true : false;
+        });
+        div.appendChild(button);
+    }
+    div.appendChild(p);
+    menu.appendChild(div);
 }

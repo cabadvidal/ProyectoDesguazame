@@ -1,6 +1,6 @@
 /**
  * Función que muestra diferentes errores en pantalla
- * @param {*} datos Contiene el error a mostrar
+ * @param {string} datos - Contiene el error a mostrar
  */
 function popUpError(datos) {
     // Mostrar el fondo negro

@@ -3,7 +3,7 @@ import { app } from "../../desguace.js";
 import { logger } from "../log/log.js";
 import {
     verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
-    agregarNominas, modificarDatos, modificarPassword
+    agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
 } from "./funciones_crud.js";
 
 /**
@@ -336,4 +336,28 @@ app.put('/ModificarDatosTabla', async (req, res) => {
         default:
             return res.status(400).json({ error: "Tabla no soportada." });
     }
+});
+
+/**
+ * Eliminar registros de la base de datos
+ */
+app.delete('/EliminarRegistrosTabla', async (req, res) => {
+    console.log("✅Ruta /EliminarRegistrosTabla ha sido llamada");
+
+    let { datos, tabla } = req.body;
+    if (!datos || !tabla) {
+        return res.status(400).json({ error: "Datos incompletos." });
+    }
+    if (!verificarTabla(tabla)) {
+        return res.status(400).json({ error: "Tabla incorrecta." });
+    }
+    tabla = tabla.toUpperCase();
+
+    console.log(`Datos recibidos en /src/api/web_crud.js los datos son: ${JSON.stringify(datos)}`);
+    switch(tabla) {
+        case 'CATEGORIAS':
+            tabla = 'CATEGORIAS_PIEZAS';
+            break;
+    }
+    eliminarRegistros(datos, tabla, res);
 });

@@ -554,7 +554,7 @@ async function modificarDatos(datos, res, tabla) {
                 const resultadoFactura = await generarFactura(ID);
                 if (resultadoFactura) {
                     return res.status(200).json({ mensaje: "✅ Línea de factura actualizada correctamente." });
-                } 
+                }
 
                 return res.status(404).json({ mensaje: "❌ Error al generar la factura." });
             }
@@ -770,7 +770,40 @@ async function modificarPassword(datos, res) {
     }
 }
 
+/**
+ * Función para eliminar los registros.
+ * @param {*} datos - Array de objetos con claves primarias
+ * @param {*} tabla - Nombre de la tabla
+ * @param {*} res - Objeto de respuesta de Express
+ * @returns {Promise<void>} Retorna una respuesta JSON con el resultado de la operación.
+ */
+async function eliminarRegistros(datos, tabla, res) {
+    try {
+        
+        const objeto = datos[0]; 
+        const key = Object.keys(objeto)[0];
+        const ID = objeto[key];
+        const sql = `DELETE FROM ${tabla} WHERE ${key} = ?`;
+        console.log(`CONSULTA ELIMINAR Y VALOR: ${sql}, ${ID}`);
+        const resultadoEliminar = await realizarConsulta(sql, ID);
+        if (!resultadoEliminar) {
+            return res.status(500).json({ error: `❌ No se pudo eliminar el registro con id: ${ID}` });
+        }
+
+        const procedimientoEliminar = 'CALL limpiar_registros_huerfanos();';
+        const resultadoProcedimiento = await realizarConsulta(procedimientoEliminar);
+
+        if (resultadoProcedimiento) {
+            return res.status(200).json({ mensaje: `✅ Se ha eliminado el registro con id: ${ID} de la tabla: ${tabla}.` });
+        }
+
+    } catch (error) {
+        console.error(`❌ Error src/api/funciones_crud.js al eliminar datos: ${error}`);
+        return res.status(500).json({ error: `❌ Error al eliminar el registro.` });
+    }
+}
+
 export {
     verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
-    agregarNominas, modificarDatos, modificarPassword
+    agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
 }
