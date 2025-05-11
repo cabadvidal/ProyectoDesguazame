@@ -7,15 +7,42 @@ package com.desguazame.desguazame_escritorio.view;
 import javax.swing.JOptionPane;
 
 /**
- * Clase utilitaria para mostrar mensajes de error mediante JOptionPane.
+ * Clase utilitaria para mostrar mensajes de error mediante {@link JOptionPane}.
+ * <p>
+ * Esta clase proporciona métodos para mostrar mensajes de error
+ * contextualizados basados en la clave y el valor pasados como parámetros. Se
+ * utiliza principalmente para validar campos en formularios y proporcionar
+ * retroalimentación inmediata al usuario.</p>
+ *
+ * <p>
+ * Los métodos definidos en esta clase pueden ser utilizados para mostrar
+ * mensajes de error específicos para cada tipo de entrada, como un correo
+ * electrónico inválido, un teléfono incorrecto o un número de cuenta mal
+ * formado, entre otros.</p>
+ *
+ * <p>
+ * Ejemplo de uso:</p>
+ * <pre>{@code
+ * JOptionError.showError("TELEFONO", "123456789");
+ * }</pre>
+ *
+ * @author Charlie
  */
 public class JOptionError extends JOptionPane {
 
-     /**
+    /**
      * Muestra un mensaje de error contextualizado según la clave y el valor.
      *
-     * @param clave Clave que representa el campo o tipo de error.
-     * @param valor Valor asociado o detalle del error.
+     * <p>
+     * Este método determina el tipo de error basado en la clave proporcionada
+     * (por ejemplo, "NOMBRE", "DNI_CIF", "CODIGO_POSTAL") y muestra un mensaje
+     * de error correspondiente. El mensaje puede incluir detalles adicionales
+     * proporcionados en el valor.</p>
+     *
+     * @param clave Clave que representa el campo o tipo de error. Ejemplos
+     * incluyen "NOMBRE", "TELEFONO", "DNI_CIF".
+     * @param valor Valor asociado o detalle del error. Este parámetro puede ser
+     * el valor ingresado por el usuario o un detalle específico del error.
      */
     public static void showError(String clave, String valor) {
         String message = "";
@@ -68,8 +95,10 @@ public class JOptionError extends JOptionPane {
      * Muestra un cuadro de diálogo de error con un título y mensaje
      * personalizados.
      *
-     * @param title Título de la ventana del mensaje.
-     * @param message Mensaje de error que se desea mostrar.
+     * @param title Título de la ventana del mensaje. Este parámetro define el
+     * encabezado de la ventana de error.
+     * @param message Mensaje de error que se desea mostrar. El mensaje describe
+     * el problema que el usuario debe corregir.
      */
     private static void createError(String title, String message) {
         JOptionPane.showMessageDialog(

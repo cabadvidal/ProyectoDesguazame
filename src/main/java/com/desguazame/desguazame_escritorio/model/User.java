@@ -6,7 +6,23 @@ package com.desguazame.desguazame_escritorio.model;
 
 /**
  * Clase que representa los datos de registro de un usuario.
- * Contiene información personal, de contacto y bancaria.
+ * <p>
+ * Esta clase almacena la información personal, de contacto y bancaria de un
+ * usuario, como su nombre, apellidos, teléfono, dirección de correo
+ * electrónico, número de cuenta bancaria, y otros datos relacionados.</p>
+ *
+ * <p>
+ * Los objetos de esta clase son útiles para representar un registro de usuario
+ * en sistemas de gestión de usuarios, plataformas de autenticación, o en
+ * cualquier sistema que requiera almacenar estos datos.</p>
+ *
+ * <p>
+ * Ejemplo de uso:</p>
+ * <pre>{@code
+ * User usuario = new User("Carlos", "Gómez", "García", "646123456", "carlos.gomez@example.com", "ES123456789012345678901234");
+ * }</pre>
+ *
+ * @author Charlie
  */
 public class User {
 
@@ -26,8 +42,8 @@ public class User {
     private long creditCard;
 
     /**
-     * Constructor de la clase Register.
-     * 
+     * Constructor para crear un nuevo objeto {@code User} con los datos proporcionados.
+     *
      * @param name Nombre del usuario
      * @param fName Primer apellido
      * @param sName Segundo apellido
@@ -60,145 +76,200 @@ public class User {
         this.creditCard = creditCard;
     }
 
-    /** @return Nombre del usuario */
+    /**
+     * @return Nombre del usuario
+     */
     public String getName() {
         return name;
     }
 
-    /** @param name Establece el nombre del usuario */
+    /**
+     * @param name Establece el nombre del usuario
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /** @return Primer apellido */
+    /**
+     * @return Primer apellido
+     */
     public String getfName() {
         return fName;
     }
 
-    /** @param fName Establece el primer apellido */
+    /**
+     * @param fName Establece el primer apellido
+     */
     public void setfName(String fName) {
         this.fName = fName;
     }
 
-    /** @return Segundo apellido */
+    /**
+     * @return Segundo apellido
+     */
     public String getsName() {
         return sName;
     }
 
-    /** @param sName Establece el segundo apellido */
+    /**
+     * @param sName Establece el segundo apellido
+     */
     public void setsName(String sName) {
         this.sName = sName;
     }
 
-    /** @return Contraseña del usuario */
+    /**
+     * @return Contraseña del usuario
+     */
     public String getPassword() {
         return password;
     }
 
-    /** @param password Establece la contraseña del usuario */
+    /**
+     * @param password Establece la contraseña del usuario
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /** @return Dirección del usuario */
+    /**
+     * @return Dirección del usuario
+     */
     public String getAddress() {
         return address;
     }
 
-    /** @param address Establece la dirección del usuario */
+    /**
+     * @param address Establece la dirección del usuario
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
-    /** @return Código postal */
+    /**
+     * @return Código postal
+     */
     public int getCodePostal() {
         return codePostal;
     }
 
-    /** @param codePostal Establece el código postal */
+    /**
+     * @param codePostal Establece el código postal
+     */
     public void setCodePostal(int codePostal) {
         this.codePostal = codePostal;
     }
 
-    /** @return Ciudad */
+    /**
+     * @return Ciudad
+     */
     public String getCity() {
         return city;
     }
 
-    /** @param city Establece la ciudad */
+    /**
+     * @param city Establece la ciudad
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
-    /** @return Municipio */
+    /**
+     * @return Municipio
+     */
     public String getMunicipality() {
         return municipality;
     }
 
-    /** @param municipality Establece el municipio */
+    /**
+     * @param municipality Establece el municipio
+     */
     public void setMunicipality(String municipality) {
         this.municipality = municipality;
     }
 
-    /** @return Teléfono fijo */
+    /**
+     * @return Teléfono fijo
+     */
     public long getPhone() {
         return phone;
     }
 
-    /** @param phone Establece el teléfono fijo */
+    /**
+     * @param phone Establece el teléfono fijo
+     */
     public void setPhone(long phone) {
         this.phone = phone;
     }
 
-    /** @return Teléfono móvil */
+    /**
+     * @return Teléfono móvil
+     */
     public long getCell() {
         return cell;
     }
 
-    /** @param cell Establece el teléfono móvil */
+    /**
+     * @param cell Establece el teléfono móvil
+     */
     public void setCell(long cell) {
         this.cell = cell;
     }
 
-    /** @return DNI del usuario */
+    /**
+     * @return DNI del usuario
+     */
     public String getDni() {
         return dni;
     }
 
-    /** @param dni Establece el DNI del usuario */
+    /**
+     * @param dni Establece el DNI del usuario
+     */
     public void setDni(String dni) {
         this.dni = dni;
     }
 
-    /** @return Nombre del banco */
+    /**
+     * @return Nombre del banco
+     */
     public String getBank() {
         return bank;
     }
 
-    /** @param bank Establece el nombre del banco */
+    /**
+     * @param bank Establece el nombre del banco
+     */
     public void setBank(String bank) {
         this.bank = bank;
     }
 
-    /** @return Número de tarjeta de crédito */
+    /**
+     * @return Número de tarjeta de crédito
+     */
     public long getCreditCard() {
         return creditCard;
     }
 
-    /** @param creditCard Establece el número de tarjeta de crédito */
+    /**
+     * @param creditCard Establece el número de tarjeta de crédito
+     */
     public void setCreditCard(long creditCard) {
         this.creditCard = creditCard;
     }
 
-    /** @return Correo eléctronico */
+    /**
+     * @return Correo eléctronico
+     */
     public String getMail() {
         return mail;
     }
 
-    /** @param mail Establece el correo eléctronico */
+    /**
+     * @param mail Establece el correo eléctronico
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
-    
-    
+
 }

@@ -1,14 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.desguazame.desguazame_escritorio.controller;
 
+
 import com.desguazame.desguazame_escritorio.App;
-import com.desguazame.desguazame_escritorio.threads.WebSocket;
-import com.desguazame.desguazame_escritorio.util.AppGlobals;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
-import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
 import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import com.desguazame.desguazame_escritorio.view.StageWait;
-import io.socket.client.Socket;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
@@ -16,25 +17,49 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controlador JavaFX para la ventana de inicio de sesión.
+ * 
+ * <p>Gestiona los eventos del formulario de login, como el cambio a la ventana de registro,
+ * la autenticación del usuario y la navegación hacia la pantalla principal de búsqueda.
+ * También maneja la interfaz de carga durante el proceso de login.</p>
+ * 
+ * <p>Utiliza un hilo separado para realizar la autenticación de forma asíncrona
+ * y sincroniza la respuesta del servidor mediante un {@link CountDownLatch}.</p>
+ * 
+ * <p>Los campos del formulario son leídos dinámicamente desde el VBox contenedor
+ * mediante la clase {@link FormUtils}.</p>
+ * 
+ * @author Charlie
+ */
 public class ControllerLogin {
 
+    /** Contenedor principal del formulario de login que contiene los campos de entrada. */
     @FXML
     private VBox vBoxLogin;
 
     /**
-     * Método para cambiar a la ventana de registro.
+     * Cambia a la escena de registro del usuario.
      *
-     * @throws IOException
+     * @throws IOException si ocurre un error al cargar la escena "register".
      */
     @FXML
     private void changeRegister() throws IOException {
         App.setRoot("register");
     }
 
+    /**
+     * Evento que se lanza al hacer clic en el botón de login.
+     * 
+     * <p>Inicia una tarea asíncrona que muestra una ventana de carga mientras
+     * se realiza el proceso de autenticación del usuario. Al finalizar la tarea,
+     * se cambia a la escena principal si la autenticación es exitosa, o se muestra
+     * un mensaje de error si falla.</p>
+     *
+     * @throws IOException si ocurre un error durante el cambio de escena.
+     */
     @FXML
     private void onLoginButtonClick() throws IOException {
         StageWait stageWait = new StageWait();
@@ -43,7 +68,7 @@ public class ControllerLogin {
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                changeSearch();
+                changeSearch(); // Proceso de autenticación
                 return null;
             }
 
@@ -65,26 +90,29 @@ public class ControllerLogin {
     }
 
     /**
-     * Método para verificar login en el servidor y cambiar a la ventana de
-     * usuario.
+     * Realiza el proceso de login mediante socket y cambia a la ventana de búsqueda si es exitoso.
+     * 
+     * <p>Lee los datos del formulario, los envía al servidor a través del socket
+     * y espera la respuesta utilizando un {@link CountDownLatch}. Si la autenticación es válida,
+     * cambia a la escena "search".</p>
      *
-     * @throws IOException
+     * @throws IOException si ocurre un error al cambiar de escena.
      */
     private void changeSearch() throws IOException {
         CountDownLatch latch = new CountDownLatch(1);
         AtomicBoolean success = new AtomicBoolean(false);
+
         HashMap<String, String> campos = FormUtils.readNodeFields(vBoxLogin);
         socket.authUser(campos, latch, success);
 
-        // Esperar a que el socket devuelva la respuesta
+        // Esperar la respuesta del servidor en un hilo separado
         new Thread(() -> {
             try {
-                latch.await(); // Espera hasta que authUser() termine y haga latch.countDown()
+                latch.await(); // Bloquea hasta recibir respuesta
                 if (success.get()) {
-                    // Cambio de escena en el hilo de JavaFX
                     Platform.runLater(() -> {
                         try {
-                            App.setRoot("search");
+                            App.setRoot("search"); // Cambio de escena si autenticación fue exitosa
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

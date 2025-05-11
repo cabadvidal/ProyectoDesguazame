@@ -4,8 +4,11 @@
  */
 package com.desguazame.desguazame_escritorio.util;
 
+import com.desguazame.desguazame_escritorio.model.CarPart;
 import com.desguazame.desguazame_escritorio.model.Sockets;
 import com.desguazame.desguazame_escritorio.model.User;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,4 +18,5 @@ public class AppGlobals {
     public static User  user;
     public static String token;
     public static Sockets socket = new Sockets("http://192.168.1.122:10010");
+    public static List<CarPart> carList = new ArrayList<>();
 }

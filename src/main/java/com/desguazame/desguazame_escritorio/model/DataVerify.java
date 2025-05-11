@@ -10,16 +10,40 @@ import java.util.regex.Pattern;
 /**
  * Clase encargada de verificar la validez de distintos datos según su tipo y
  * contexto.
+ * <p>
+ * Esta clase proporciona una serie de métodos estáticos para validar distintos
+ * tipos de datos, como nombres, apellidos, números de teléfono, direcciones de
+ * correo electrónico, entre otros. Se usa principalmente para realizar
+ * validaciones en formularios o entradas de datos.</p>
+ *
+ * <p>
+ * Los métodos de esta clase permiten verificar si un dato cumple con los
+ * formatos esperados para varios campos comunes en aplicaciones de registro o
+ * gestión de información de usuarios.</p>
+ *
+ * <p>
+ * Ejemplo de uso:</p>
+ * <pre>{@code
+ * boolean esValido = DataVerify.verificarDato("TELEFONO", "123456789");
+ * }</pre>
+ *
+ * @author Charlie
  */
 public class DataVerify {
 
     /**
      * Verifica el valor de un dato según su tipo y la tabla de origen.
+     * <p>
+     * Este método evalúa el tipo de dato proporcionado (como "NOMBRE",
+     * "TELEFONO", "MAIL") y llama al método correspondiente para realizar la
+     * validación del valor proporcionado.</p>
      *
-     * @param tipo Tipo de dato (clave).
-     * @param valor Valor del dato a verificar.
-     * @return {@code true} si el dato es válido, {@code false} en caso
-     * contrario.
+     * @param tipo Tipo de dato (clave). Ejemplos: "NOMBRE", "APELLIDO_A",
+     * "DNI".
+     * @param valor Valor del dato a verificar. Este parámetro debe ser un valor
+     * que corresponda al tipo indicado.
+     * @return {@code true} si el dato es válido según su tipo, {@code false} en
+     * caso contrario.
      */
     public static boolean verificarDato(String tipo, String valor) {
         tipo = tipo.trim().toUpperCase();
@@ -50,10 +74,15 @@ public class DataVerify {
     /**
      * Verifica si un texto contiene solo letras (mayúsculas, minúsculas,
      * acentuadas o ñ) y espacios.
+     * <p>
+     * Este método comprueba que el texto ingresado esté formado únicamente por
+     * caracteres alfabéticos y espacios, permitiendo así validar nombres,
+     * apellidos y otros campos similares.</p>
      *
-     * @param dato El texto a verificar.
-     * @return {@code true} si el texto es válido, {@code false} en caso
-     * contrario.
+     * @param dato El texto a verificar. Se espera que este texto sea una cadena
+     * que contenga solo letras y espacios.
+     * @return {@code true} si el texto es válido (solo letras y espacios),
+     * {@code false} en caso contrario.
      */
     private static boolean verificarString(String dato) {
         return dato.trim().matches("^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\\s]+$");
@@ -62,10 +91,15 @@ public class DataVerify {
     /**
      * Verifica si un número corresponde a un teléfono fijo nacional válido de 9
      * cifras y con prefijo válido.
+     * <p>
+     * Este método valida si el número de teléfono corresponde a un formato
+     * correcto, considerando los prefijos válidos para teléfonos fijos en
+     * España.</p>
      *
-     * @param dato El número de teléfono a verificar.
-     * @return {@code true} si el número es válido, {@code false} en caso
-     * contrario.
+     * @param dato El número de teléfono a verificar. Se espera que este número
+     * sea una cadena numérica de 9 cifras.
+     * @return {@code true} si el número de teléfono es válido, {@code false} en
+     * caso contrario.
      */
     private static boolean verificarTelefono(String dato) {
         if (!dato.matches("^\\d{9}$")) {
@@ -81,10 +115,14 @@ public class DataVerify {
     /**
      * Verifica si un número corresponde a un móvil español válido (empieza por
      * 6 o 7 y tiene 9 cifras).
+     * <p>
+     * Este método valida los números de teléfono móvil, asegurándose de que
+     * empiecen por los dígitos 6 o 7 y contengan exactamente 9 cifras.</p>
      *
-     * @param dato El número de móvil a verificar.
-     * @return {@code true} si el número es válido, {@code false} en caso
-     * contrario.
+     * @param dato El número de móvil a verificar. Se espera que este número sea
+     * una cadena numérica de 9 cifras.
+     * @return {@code true} si el número de móvil es válido, {@code false} en
+     * caso contrario.
      */
     private static boolean verificarMovil(String dato) {
         dato = dato.trim().replaceAll("\\s+", "");
@@ -93,10 +131,15 @@ public class DataVerify {
 
     /**
      * Verifica si un número de cuenta bancaria (IBAN español) es válido.
+     * <p>
+     * Este método valida el formato del número de cuenta bancaria, asegurándose
+     * de que sea un IBAN español con el formato correcto y los cálculos de
+     * verificación adecuados.</p>
      *
-     * @param dato Número IBAN a verificar.
-     * @return {@code true} si el número es válido, {@code false} en caso
-     * contrario.
+     * @param dato Número IBAN a verificar. Se espera que el IBAN esté compuesto
+     * por 24 caracteres.
+     * @return {@code true} si el número de cuenta es válido, {@code false} en
+     * caso contrario.
      */
     private static boolean verificarNumeroCuenta(String dato) {
         dato = dato.replace(" ", "");
@@ -128,6 +171,10 @@ public class DataVerify {
 
     /**
      * Verifica si un DNI español es válido.
+     * <p>
+     * Este método comprueba que el formato del DNI sea válido, asegurándose de
+     * que esté compuesto por 7 u 8 cifras seguidas de una letra, y que la letra
+     * coincida con el cálculo basado en el número.</p>
      *
      * @param dato DNI a verificar (7 u 8 cifras seguidas de una letra).
      * @return {@code true} si el DNI es correcto, {@code false} en caso
@@ -157,10 +204,13 @@ public class DataVerify {
 
     /**
      * Verifica si una dirección de correo electrónico tiene un formato válido.
+     * <p>
+     * Este método valida si la dirección de correo electrónico cumple con un
+     * formato estándar de correo electrónico.</p>
      *
      * @param dato Dirección de correo electrónico.
-     * @return {@code true} si el formato es correcto, {@code false} en caso
-     * contrario.
+     * @return {@code true} si el formato del correo electrónico es válido,
+     * {@code false} en caso contrario.
      */
     private static boolean verificarEmail(String dato) {
         return Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", dato.trim());
@@ -168,6 +218,9 @@ public class DataVerify {
 
     /**
      * Verifica si un código postal español es válido (del 01000 al 52999).
+     * <p>
+     * Este método valida que el código postal esté dentro del rango válido para
+     * códigos postales españoles.</p>
      *
      * @param dato Código postal a verificar.
      * @return {@code true} si el código postal es válido, {@code false} en caso

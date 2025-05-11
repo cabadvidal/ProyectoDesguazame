@@ -52,8 +52,25 @@ public class Sockets {
         }
     }
 
+    /**
+     * Realiza la autenticación del usuario a través del socket.
+     * <p>
+     * Envía las credenciales al servidor mediante el evento "comprobar
+     * credenciales" y espera la respuesta a través del evento "token_cliente".
+     * Si las credenciales son válidas, se actualiza la instancia global del
+     * usuario y se establece el token. En caso de error, se muestra una ventana
+     * con el mensaje correspondiente.
+     * </p>
+     *
+     * @param campos HashMap que contiene los campos del formulario de login,
+     * típicamente "usuario" y "password".
+     * @param latch CountDownLatch utilizado para sincronizar la espera del hilo
+     * que invoca este método.
+     * @param success Variable atómica que indica si la autenticación fue
+     * exitosa.
+     */
     public void authUser(HashMap<String, String> campos, CountDownLatch latch, AtomicBoolean success) {
-     
+
         // Emitir las credenciales
         JSONObject data = new JSONObject();
         String[] key = {"usuario", "password"};
@@ -63,9 +80,9 @@ public class Sockets {
         if (!socket.connected()) {
             socket.connect();
         }
-        
+
         socket.emit("comprobar credenciales", data);
-        
+
         // Evento que maneja la respuesta del servidor con el token del cliente
         socket.on("token_cliente", args -> {
             JSONObject json = (JSONObject) args[0];
@@ -92,7 +109,7 @@ public class Sockets {
             success.set(true);
             latch.countDown();
         });
-        
+
         socket.on("error_registro", args -> {
             Platform.runLater(() -> JOptionError.showError("Error Autenticación", "Usuario o contraseña erroneos"));
             success.set(false);
@@ -101,7 +118,22 @@ public class Sockets {
 
     }
 
-    public void RegisterUser(HashMap<String, String> campos, CountDownLatch latch, AtomicBoolean success) {
+    /**
+     * Registra un nuevo usuario a través del socket.
+     * <p>
+     * Envía los datos de registro al servidor mediante el evento
+     * "registrar_usuario" y espera la respuesta a través de los eventos
+     * "usr_existe", "usr_registrado" o "error_registro". Según la respuesta,
+     * actualiza el valor de éxito y desbloquea el hilo llamador.
+     * </p>
+     *
+     * @param campos HashMap con los datos del formulario de registro, como
+     * "MAIL", "CONTRASENA", "NOMBRE", etc.
+     * @param latch CountDownLatch utilizado para sincronizar la espera del hilo
+     * que invoca este método.
+     * @param success Variable atómica que indica si el registro fue exitoso.
+     */
+    public void registerUser(HashMap<String, String> campos, CountDownLatch latch, AtomicBoolean success) {
         System.out.println("Se llama al registro de usuario");
         JSONObject data = new JSONObject();
         String[] key = {"MAIL", "CONTRASENA", "NOMBRE", "APELLIDO_A", "APELLIDO_B",
@@ -135,4 +167,46 @@ public class Sockets {
         });
     }
 
+    /**
+     * Envía una actividad al servidor a través de un socket y espera una
+     * respuesta para validar si el usuario está autenticado.
+     * <p>
+     * Este método se conecta al servidor si aún no está conectado, envía un
+     * mensaje con el tipo de actividad y el token de autenticación, y luego
+     * espera una respuesta para confirmar si el usuario es válido. Utiliza un
+     * {@link CountDownLatch} para sincronización y un {@link AtomicBoolean}
+     * para indicar el éxito.</p>
+     *
+     * @param type El tipo de actividad que realiza el usuario (por ejemplo:
+     * "mover", "leer", etc.).
+     * @param latch Mecanismo de sincronización que se libera una vez recibida
+     * la respuesta.
+     * @param success Variable atómica que se establece en true si la actividad
+     * fue válida (usuario autenticado).
+     */
+    public void activity(String type, CountDownLatch latch, AtomicBoolean success) {
+        if (!socket.connected()) {
+            socket.connect();
+        }
+
+        JSONObject data = new JSONObject();
+        data.put("token", token);
+        data.put("actividad", type);
+
+        socket.emit("actividad", data);
+
+        socket.on("respuesta actividad", args -> {
+            JSONObject json = (JSONObject) args[0];
+            boolean isActivity = json.getBoolean("valido");
+
+            if (!isActivity) {
+                Platform.runLater(()
+                        -> JOptionError.showError("Usuario no autentificado", args[0].toString())
+                );
+            }
+
+            success.set(isActivity);
+            latch.countDown();
+        });
+    }
 }

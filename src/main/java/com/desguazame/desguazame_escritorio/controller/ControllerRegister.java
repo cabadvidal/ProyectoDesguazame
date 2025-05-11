@@ -21,16 +21,41 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 
+/**
+ * Controlador de la vista de registro de usuarios en la aplicación JavaFX.
+ * <p>
+ * Esta clase se encarga de gestionar la interacción del usuario con el formulario de registro,
+ * realizar la validación de campos, enviar los datos al servidor y manejar las respuestas.
+ * También muestra una ventana de carga mientras se realiza la operación.
+ * </p>
+ * 
+ * @author Charlie
+ */
 public class ControllerRegister {
 
+    /**
+     * Contenedor principal del formulario de registro que contiene los campos de entrada.
+     */
     @FXML
     private HBox hBoxRegister;
 
+    /**
+     * Cambia la vista actual a la pantalla de inicio de sesión.
+     *
+     * @throws IOException si no se puede cargar la vista "login".
+     */
     @FXML
     private void changeLogin() throws IOException {
         App.setRoot("login");
     }
 
+    /**
+     * Método llamado cuando el usuario pulsa el botón de registro.
+     * <p>
+     * Lanza una tarea en segundo plano que realiza el registro del usuario. Mientras se realiza,
+     * muestra una ventana de carga. Si se produce un error, muestra un mensaje de error.
+     * </p>
+     */
     @FXML
     private void onRegisterButtonClick() {
         StageWait stageWait = new StageWait();
@@ -60,7 +85,17 @@ public class ControllerRegister {
         new Thread(task).start();
     }
 
-
+     /**
+     * Método encargado de validar los campos del formulario, convertir datos numéricos,
+     * enviar la información al servidor y crear el objeto {@code User} en caso de éxito.
+     * <p>
+     * Utiliza un {@link CountDownLatch} para esperar la respuesta del servidor y un {@link AtomicBoolean}
+     * para saber si el registro fue exitoso. Si falla la validación o hay un error de formato,
+     * se muestra una ventana de error.
+     * </p>
+     *
+     * @throws IOException si ocurre un error al redirigir la vista tras el registro exitoso.
+     */
     private void registerUser() throws IOException {
         HashMap<String, String> campos = FormUtils.readNodeFields(hBoxRegister);
         System.out.println("com.desguazame.desguazame_escritorio.controller.ControllerRegister.registerUser()" + campos.toString());
@@ -114,7 +149,7 @@ public class ControllerRegister {
         CountDownLatch latch = new CountDownLatch(1);
         AtomicBoolean success = new AtomicBoolean(false);
 
-        socket.RegisterUser(campos, latch, success);
+        socket.registerUser(campos, latch, success);
 
         try {
             // Esperar respuesta del servidor con timeout por seguridad (por ejemplo, 10s)
@@ -148,5 +183,4 @@ public class ControllerRegister {
             App.setRoot("search");
         }
     }
-
 }
