@@ -1,11 +1,12 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
+import multer from 'multer';
+import fs from 'fs';
 import { fileURLToPath } from "url";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { configServerIO } from "./src/sockets/sockets.js";
-import { format, transports } from "winston";
 import { logger } from "./src/log/log.js";
 
 
@@ -36,6 +37,29 @@ const io = new Server(server, {
 
 configServerIO(io);
 
+// Asegura compatibilidad con __dirname
+const carpetaDestino = path.join(__dirname, 'public', 'web', 'img', 'piezas');
+
+// Crear carpeta si no existe
+if (!fs.existsSync(carpetaDestino)) {
+    fs.mkdirSync(carpetaDestino, { recursive: true });
+}
+
+// Configuración de almacenamiento con nombre único
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, carpetaDestino);
+    },
+    filename: function (req, file, cb) {
+        const ext = path.extname(file.originalname);
+        const nombreUnico = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`;
+        cb(null, nombreUnico);
+    }
+});
+
+// Exportar el middleware upload para usarlo en rutas
+const upload = multer({ storage });
+
 // Iniciar el servidor
 server.listen(puerto, '0.0.0.0', () => {
     logger.info(`Servidor UP, UP, UP puerto escucha: ${puerto}`);
@@ -48,4 +72,4 @@ server.listen(puerto, '0.0.0.0', () => {
     });
 });
 
-export { app }
+export { app, upload }

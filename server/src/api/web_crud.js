@@ -5,7 +5,7 @@ import {
     verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
     agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
 } from "./funciones_crud.js";
-
+import { upload } from "../../desguace.js";
 /**
  * Llamadas a procedimientos para obtener nombre de columnas
  */
@@ -208,7 +208,7 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             break;
         case 'RESTABLECER_PASS':
             campo = Object.keys(datos)[0].toUpperCase();
-            valor = Object.values(datos)[0]; 
+            valor = Object.values(datos)[0];
             sql = `SELECT dc.ID_DATOS_COMUNES, dc.NOMBRE, dc.MAIL, dc.DNI_CIF, dc.${campo} 
             FROM DATOS_COMUNES dc 
             WHERE dc.${campo} LIKE LOWER(CONCAT('%', ?, '%'))`;
@@ -222,7 +222,7 @@ app.post('/ObtenerDatosTablas', (req, res) => {
     if (tabla === 'RESTABLECER_PASS') {
         console.warn(`la consulta sql = ${sql} \n
         el valor es = ${valor}`);
-        realizarConsulta(sql, [valor])  // <<< SOLO SQL Y VALORES
+        realizarConsulta(sql, [valor])
             .then(resultado => {
                 logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
                 console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
@@ -244,6 +244,35 @@ app.post('/ObtenerDatosTablas', (req, res) => {
                 res.status(500).json({ error: "Error en la consulta SQL" });
             });
     }
+});
+
+/**
+ * Obtener datos piezas para app movil y escritorio
+ */
+app.get('/ObtenerPiezas', async (req, res) => {
+    const SQL = `SELECT p.ID_PIEZAS, p.DESCRIPCION, p.PESO, p.PRECIO, p.REFERENCIA, p.FECHA_YEAR, p.IMAGENES, 
+    c.NOMBRE_CATEGORIA AS CATEGORIAS, dc_vendedor.RAZON_SOCIAL, m.NOMBRE_MODELO, mar.NOMBRE_MARCA 
+    FROM PIEZAS p
+    LEFT JOIN CATEGORIAS_PIEZAS c ON p.CATEGORIAS_FK = c.ID_CATEGORIAS_PIEZAS
+    LEFT JOIN VENDEDOR v ON p.VENDEDOR_FK = v.ID_VENDEDOR
+    LEFT JOIN DATOS_COMUNES dc_vendedor ON v.DATOS_COMUNES_FK = dc_vendedor.ID_DATOS_COMUNES
+    LEFT JOIN EMPLEADOS e ON p.EMPLEADO_FK = e.ID_EMPLEADOS
+    LEFT JOIN DATOS_COMUNES dc_empleado ON e.DATOS_COMUNES_FK = dc_empleado.ID_DATOS_COMUNES
+    LEFT JOIN PIEZAS_MODELOS pm ON p.ID_PIEZAS = pm.PIEZAS_FK
+    LEFT JOIN MODELO m ON pm.MODELO_FK = m.ID_MODELO
+    LEFT JOIN MARCAS mar ON m.MARCA_MODELO_FK = mar.ID_MARCAS 
+    WHERE p.VENDIDO = FALSE`;
+
+    realizarConsulta(SQL, null)
+        .then(resultado => {
+            logger.debug(`/src/api/web_crud.js POST: ObtenerPiezas ` + JSON.stringify(resultado));
+            console.log(`✅ Datos para la app obtenidos correctamente.`);
+            res.json(resultado);
+        })
+        .catch(error => {
+            console.error(`❌ Error al obtener datos de la tabla piezas: ${error}`);
+            res.status(500).json({ error: "Error en la consulta SQL" });
+        });
 });
 
 /**
@@ -282,6 +311,34 @@ app.put('/AgregarDatosTabla', async (req, res) => {
             break;
         default:
             return res.status(400).json({ error: "Tabla no soportada." });
+    }
+});
+
+/**
+ * Agregas datos para piezas
+ */
+app.post('/AgregarDatosTablaPiezas', upload.array('IMAGENES[]'), async (req, res) => {
+    let tabla = req.body.tabla;
+    if (!tabla) return res.status(400).json({ error: 'Tabla no especificada.' });
+
+    if (!verificarTabla(tabla)) {
+        return res.status(400).json({ error: 'Tabla incorrecta.' });
+    }
+
+    tabla = tabla.toUpperCase();
+
+    // Guardamos los nombres de archivo en el campo datos.IMAGENES
+    const nombresImagenes = req.files.map(file => file.filename).join(';');
+    let datos = req.body;
+    datos.IMAGENES = nombresImagenes;
+
+    switch (tabla) {
+        case 'PIEZAS':
+            await agregarPiezas(datos, res);
+            break;
+        // Otros casos para otras tablas
+        default:
+            return res.status(400).json({ error: 'Tabla no soportada.' });
     }
 });
 
@@ -354,7 +411,7 @@ app.delete('/EliminarRegistrosTabla', async (req, res) => {
     tabla = tabla.toUpperCase();
 
     console.log(`Datos recibidos en /src/api/web_crud.js los datos son: ${JSON.stringify(datos)}`);
-    switch(tabla) {
+    switch (tabla) {
         case 'CATEGORIAS':
             tabla = 'CATEGORIAS_PIEZAS';
             break;

@@ -174,6 +174,31 @@ async function agregarDatos(datos, tabla) {
 }
 
 /**
+ * Agrega datos a una tabla enviándolos al servidor.
+ * @param {FormData} formData - Datos a agregar.
+ * @param {string} tabla - Nombre de la tabla donde se agregarán los datos.
+ * @returns {Promise<Object>} - Respuesta del servidor.
+ */
+async function agregarDatosFormData(formData, tabla) {
+    // Aseguramos que la tabla esté en el FormData
+    formData.append('tabla', tabla);
+
+    return fetch('/AgregarDatosTablaPiezas', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Datos recibidos:', data);
+        return data;
+    })
+    .catch(error => {
+        console.error('Error al enviar los datos:', error);
+        return { error: 'No se pudieron enviar los datos.' };
+    });
+}
+
+/**
  * Actualiza datos de una tabla enviándolos al servidor.
  * @param {Object} datos - Datos a actualizar.
  * @param {string} tabla - Nombre de la tabla donde se actualizarán los datos.

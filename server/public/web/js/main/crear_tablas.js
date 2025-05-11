@@ -56,7 +56,7 @@ async function crearTablaAgregar(columnas, tabla) {
         marcas = await obtenerDatosFK('MARCAS');
     }
 
-    if (tabla.toUpperCase('PIEZAS')) {
+    if (tabla.toUpperCase() === 'PIEZAS') {
         empleados = await obtenerDatosFK('EMPLEADOS');
         vendedores = await obtenerDatosFK('VENDEDOR');
         modelos = await obtenerDatosFK('MODELOS');
@@ -262,6 +262,34 @@ async function crearTablaAgregar(columnas, tabla) {
             continue;
         }
 
+        if (columnas[i].COLUMN_NAME === 'IMAGENES' && tabla.toUpperCase() === 'PIEZAS') {
+
+            // Contenedor principal para los selects de modelos
+            let contenedorimagenes = document.createElement('div');
+            contenedorimagenes.className = 'contenedor-modelos';
+
+            // Botón para agregar más selects
+            let button_add = document.createElement('button');
+            button_add.type = 'button';
+            button_add.className = 'btn-add-modelo';
+            button_add.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#007bff" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="7" stroke="white" stroke-width="1.5" fill="#007bff" />
+                        <line x1="8" y1="4.5" x2="8" y2="11.5" stroke="white" stroke-width="1.5"/>
+                        <line x1="4.5" y1="8" x2="11.5" y2="8" stroke="white" stroke-width="1.5"/>
+                    </svg>`;
+
+            button_add.addEventListener('click', () => {
+                agregarImagenes(contenedorimagenes);
+            });
+
+            // Añadir todo al DOM
+            span.appendChild(button_add);
+            span.appendChild(contenedorimagenes);
+            div.appendChild(span);
+            div_table_container.appendChild(div);
+            continue;
+        }
         span.appendChild(input);
         div.appendChild(span);
         div_table_container.appendChild(div);
@@ -278,7 +306,11 @@ async function crearTablaAgregar(columnas, tabla) {
         let resultado = null;
         if (isDatos.isCorrecto) {
             console.log(`Datos correctos`);
-            resultado = await agregarDatos(datos, tabla.toUpperCase());
+            if(!tabla.includes('PIEZAS')) {
+                resultado = await agregarDatos(datos, tabla.toUpperCase());
+            } else {
+                resultado = await agregarDatosFormData(datos, tabla);
+            }
             popUpError(`✅ ${resultado.mensaje}`);
         } else {
             popUpError(`Los datos no son correctos en ${isDatos.key}`)
@@ -287,6 +319,40 @@ async function crearTablaAgregar(columnas, tabla) {
     // Agregar la tabla al contenedor    
     div_table_container.appendChild(button);
 }
+
+/**
+ * Crea un nuevo campo <input> para subir imagenes. Permite añadir múltiples imagenes.
+ * 
+ * @param {HTMLElement} contenedor - El elemento contenedor donde se insertará el inputFile.
+ */
+function agregarImagenes(contenedor) {
+    let div = document.createElement('div'); // contenedor para el select y su botón
+    div.className = 'modelo-select-div';
+
+    let inputFile = document.createElement('input');
+    inputFile.type = 'file';
+    inputFile.name = 'IMAGENES';
+    inputFile.accept = 'image/*';
+    inputFile.multiple = true;
+    // Botón eliminar
+    let button_delete = document.createElement('button');
+    button_delete.type = 'button';
+    button_delete.className = 'btn-remove-modelo';
+    button_delete.innerHTML = `
+     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" viewBox="0 0 16 16">
+         <circle cx="8" cy="8" r="7" stroke="white" stroke-width="1.5" fill="red" />
+         <line x1="4.5" y1="8" x2="11.5" y2="8" stroke="white" stroke-width="1.5"/>
+     </svg>`;
+
+    button_delete.addEventListener('click', () => {
+        div.remove();
+    });
+
+    div.appendChild(inputFile);
+    div.appendChild(button_delete);
+    contenedor.appendChild(div);
+}
+
 
 /**
  * Crea un nuevo campo <select> con una lista de modelos y un botón para eliminarlo,
@@ -348,6 +414,7 @@ function obtenerDatosAgregar(table) {
     let divs = Array.from(document.querySelectorAll('div')).filter(div => div.classList.contains(`class-name-agregar-${table}`));
     let filaDatos = {};
     let modelosArray = [];
+    let imagenesArray = [];
     divs.forEach(div => {
         // Seleccionar todos los span dentro del div
         let spans = div.querySelectorAll('span');
@@ -398,10 +465,39 @@ function obtenerDatosAgregar(table) {
         modelosSelects.forEach(select => {
             modelosArray.push(select.value);
         });
+        
+        // Recoge todas las imágenes de los inputs file
+        let imagenInputs = div.querySelectorAll('input[type="file"][name="IMAGENES"]');
+        imagenInputs.forEach(input => {
+            for (let i = 0; i < input.files.length; i++) {
+                imagenesArray.push(input.files[i]);
+            }
+        })
     });
 
     if (modelosArray.length > 0) {
         filaDatos['MODELOS_FK'] = modelosArray;
+    }
+
+    // Si es la tabla PIEZAS, usamos FormData para enviar las imágenes
+    if (table.toUpperCase().includes('PIEZAS')) {
+        let formData = new FormData();
+
+        // Añadimos los datos normales
+        for (let key in filaDatos) {
+            if (Array.isArray(filaDatos[key])) {
+                filaDatos[key].forEach(value => formData.append(`${key}[]`, value));
+            } else {
+                formData.append(key, filaDatos[key]);
+            }
+        }
+
+        // Añadimos las imágenes
+        imagenesArray.forEach((file, index) => {
+            formData.append('IMAGENES[]', file);
+        });
+
+        return formData;
     }
 
     console.log("Datos recogidos:", filaDatos);
@@ -1145,7 +1241,7 @@ function menuVerificarBorrado(id, tabla) {
     div.id = 'error_menu';
     let p = document.createElement('p');
     p.textContent = `Está seguro de que desea eliminar el registro con id: ${id} de la tabla: ${tabla}.`;
-    
+
     for (let i = 0; i < 2; i++) {
         let button = document.createElement('button');
         button.innerHTML = i === 0 ? '✅ Borrar' : '❌ Cancelar';
