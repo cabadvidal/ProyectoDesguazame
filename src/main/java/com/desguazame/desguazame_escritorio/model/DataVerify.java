@@ -36,7 +36,7 @@ public class DataVerify {
                 return verificarMovil(valor.trim());
             case "NUMERO_CUENTA":
                 return verificarNumeroCuenta(valor.trim());
-            case "DNI_CIF":
+            case "DNI":
                 return verificarDNI(valor.trim());
             case "MAIL":
                 return verificarEmail(valor.trim());
@@ -87,6 +87,7 @@ public class DataVerify {
      * contrario.
      */
     private static boolean verificarMovil(String dato) {
+        dato = dato.trim().replaceAll("\\s+", "");
         return dato.matches("^\\d{9}$") && (dato.startsWith("6") || dato.startsWith("7"));
     }
 
@@ -98,6 +99,7 @@ public class DataVerify {
      * contrario.
      */
     private static boolean verificarNumeroCuenta(String dato) {
+        dato = dato.replace(" ", "");
         dato = dato.trim();
         if (dato.length() != 24) {
             return false;
@@ -146,10 +148,10 @@ public class DataVerify {
 
         char letra = dato.charAt(dato.length() - 1);
         String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-        
+
         // Calcular letra esperada
         char letraEsperada = letras.charAt(numero % 23);
-        
+
         return letra == letraEsperada;
     }
 

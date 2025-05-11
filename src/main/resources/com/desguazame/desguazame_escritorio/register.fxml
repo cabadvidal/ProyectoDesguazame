@@ -201,7 +201,7 @@
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="DNI_CIF" maxWidth="300.0" promptText="Documento de identidad">
+                                <TextField fx:id="DNI" maxWidth="300.0" promptText="Documento de identidad">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
@@ -227,7 +227,7 @@
                                 </PasswordField>
                                 <VBox alignment="TOP_CENTER" style="-fx-background-color: transparent;">
                                     <children>
-                                        <Button fx:id="btnEnter" maxWidth="200.0" mnemonicParsing="false" onAction="#registerUser" styleClass="boton-entrar" text="Registrar" textAlignment="CENTER">
+                                        <Button fx:id="btnEnter" maxWidth="200.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" styleClass="boton-entrar" text="Registrar" textAlignment="CENTER">
                                             <font>
                                                 <Font name="System Bold Italic" size="22.0" />
                                             </font>

@@ -40,14 +40,14 @@
                               <Image url="@img/coche-transparente.png" />
                           </image>
                       </ImageView>
-                      <VBox alignment="CENTER" style="-fx-background-color: transparent;">
+                      <VBox fx:id="vBoxLogin" alignment="CENTER" style="-fx-background-color: transparent;">
                           <children>
                               <Label text="Usuario" textAlignment="CENTER">
                                   <font>
                                       <Font name="System Bold Italic" size="22.0" />
                                   </font>
                               </Label>
-                              <TextField fx:id="txtUser" maxWidth="300.0" promptText="Usuario">
+                              <TextField fx:id="usuario" maxWidth="300.0" promptText="Usuario">
                                   <VBox.margin>
                                       <Insets />
                                   </VBox.margin>
@@ -60,12 +60,12 @@
                                       <Font name="System Bold Italic" size="22.0" />
                                   </font>
                               </Label>
-                              <PasswordField fx:id="txtPassword" maxWidth="300.0" promptText="Contraseña">
+                              <PasswordField fx:id="password" maxWidth="300.0" promptText="Contraseña">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </PasswordField>
-                        <Button fx:id="btnEnter" maxWidth="200.0" mnemonicParsing="false" onAction="#changeSearch" styleClass="boton-entrar" text="Entrar" textAlignment="CENTER">
+                        <Button fx:id="btnEnter" maxWidth="200.0" mnemonicParsing="false" onAction="#onLoginButtonClick" styleClass="boton-entrar" text="Entrar" textAlignment="CENTER">
                            <font>
                               <Font name="System Bold Italic" size="22.0" />
                            </font>

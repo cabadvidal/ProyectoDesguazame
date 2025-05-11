@@ -18,11 +18,12 @@ public class User {
     private int codePostal;
     private String city;
     private String municipality;
-    private int phone;
-    private int cell;
+    private long phone;
+    private long cell;
     private String dni;
     private String bank;
-    private int creditCard;
+    private String mail;
+    private long creditCard;
 
     /**
      * Constructor de la clase Register.
@@ -39,9 +40,10 @@ public class User {
      * @param cell Teléfono móvil
      * @param dni DNI del usuario
      * @param bank Nombre del banco
+     * @param mail Dirección de correo eléctronico
      * @param creditCard Número de tarjeta de crédito
      */
-    public User(String name, String fName, String sName, String password, String address, int codePostal, String city, String municipality, int phone, int cell, String dni, String bank, int creditCard) {
+    public User(String name, String fName, String sName, String password, String address, int codePostal, String city, String municipality, long phone, long cell, String dni, String bank, String mail, long creditCard) {
         this.name = name;
         this.fName = fName;
         this.sName = sName;
@@ -54,6 +56,7 @@ public class User {
         this.cell = cell;
         this.dni = dni;
         this.bank = bank;
+        this.mail = mail;
         this.creditCard = creditCard;
     }
 
@@ -138,22 +141,22 @@ public class User {
     }
 
     /** @return Teléfono fijo */
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
     /** @param phone Establece el teléfono fijo */
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
     /** @return Teléfono móvil */
-    public int getCell() {
+    public long getCell() {
         return cell;
     }
 
     /** @param cell Establece el teléfono móvil */
-    public void setCell(int cell) {
+    public void setCell(long cell) {
         this.cell = cell;
     }
 
@@ -178,12 +181,24 @@ public class User {
     }
 
     /** @return Número de tarjeta de crédito */
-    public int getCreditCard() {
+    public long getCreditCard() {
         return creditCard;
     }
 
     /** @param creditCard Establece el número de tarjeta de crédito */
-    public void setCreditCard(int creditCard) {
+    public void setCreditCard(long creditCard) {
         this.creditCard = creditCard;
     }
+
+    /** @return Correo eléctronico */
+    public String getMail() {
+        return mail;
+    }
+
+    /** @param mail Establece el correo eléctronico */
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+    
+    
 }

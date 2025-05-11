@@ -38,7 +38,7 @@ public class JOptionError extends JOptionPane {
                 break;
             case "MOVIL":
                 title = clave;
-                message = "El movil introducido deben ser números de 9 dígitos en total.";
+                message = "El movil introducido deben ser números de 9 dígitos en total." + valor;
                 break;
             case "NUMERO_CUENTA":
                 title = clave.replace("_", " ");
@@ -57,7 +57,8 @@ public class JOptionError extends JOptionPane {
                 message = "El código postal introducido debe incluir 5 dígitos entre 01000 al 52999.";
                 break;
             default:
-                throw new AssertionError();
+                title = clave;
+                message = valor;
         }
 
         createError(title, message);

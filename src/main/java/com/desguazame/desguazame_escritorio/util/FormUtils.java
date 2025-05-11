@@ -5,6 +5,7 @@
 package com.desguazame.desguazame_escritorio.util;
 
 import java.util.HashMap;
+import java.util.Set;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -14,16 +15,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * Clase de utilidades para leer campos de formularios JavaFX contenidos en estructuras VBox y HBox.
+ * Clase de utilidades para leer campos de formularios JavaFX contenidos en
+ * estructuras VBox y HBox.
  */
 public class FormUtils {
 
     /**
-     * Extrae los valores de todos los {@link TextField}, {@link PasswordField}, {@link ComboBox} y {@link CheckBox}
-     * contenidos directa o recursivamente dentro de un contenedor {@link HBox}, asumiendo que contiene {@link VBox}.
+     * Extrae los valores de todos los
+     * {@link TextField}, {@link PasswordField}, {@link ComboBox} y
+     * {@link CheckBox} contenidos directa o recursivamente dentro de un
+     * contenedor {@link HBox}, asumiendo que contiene {@link VBox}.
      *
      * @param hBox El contenedor HBox raíz desde el cual leer los campos.
-     * @return Un {@link HashMap} que mapea los IDs de los nodos a sus valores de texto.
+     * @return Un {@link HashMap} que mapea los IDs de los nodos a sus valores
+     * de texto.
      */
     public static HashMap<String, String> readNodeFields(HBox hBox) {
         HashMap<String, String> campos = new HashMap<>();
@@ -38,22 +43,29 @@ public class FormUtils {
     }
 
     /**
-     * Extrae los valores de todos los {@link TextField}, {@link PasswordField}, {@link ComboBox} y {@link CheckBox}
-     * contenidos directa o recursivamente dentro de un contenedor {@link VBox} o anidados en otros contenedores VBox/HBox.
+     * Extrae los valores de todos los
+     * {@link TextField}, {@link PasswordField}, {@link ComboBox} y
+     * {@link CheckBox} contenidos directa o recursivamente dentro de un
+     * contenedor {@link VBox} o anidados en otros contenedores VBox/HBox.
      *
      * @param container El contenedor VBox raíz desde el cual leer los campos.
-     * @return Un {@link HashMap} que mapea los IDs de los nodos a sus valores de texto.
+     * @return Un {@link HashMap} que mapea los IDs de los nodos a sus valores
+     * de texto.
      */
     public static HashMap<String, String> readNodeFields(VBox container) {
         HashMap<String, String> campos = new HashMap<>();
-
+        Set<String> camposConTrim = Set.of("TELEFONO", "MOVIL", "NUMERO_CUENTA", "DNI", "MAIL", "CODIGO_POSTAL");
         for (Node node : container.getChildren()) {
             if (node instanceof TextField) {
                 TextField textField = (TextField) node;
-                putIfValid(campos, textField.getId(), textField.getText());
+                if (camposConTrim.contains(textField.getId())) {
+                    putIfValid(campos, textField.getId(), textField.getText().trim().replace(" ", ""));
+                } else {
+                    putIfValid(campos, textField.getId(), textField.getText());
+                }
             } else if (node instanceof PasswordField) {
                 PasswordField passwordField = (PasswordField) node;
-                putIfValid(campos, passwordField.getId(), passwordField.getText());
+                putIfValid(campos, passwordField.getId(), passwordField.getText().trim());
             } else if (node instanceof ComboBox) {
                 ComboBox<?> comboBox = (ComboBox<?>) node;
                 Object value = comboBox.getValue();
@@ -72,8 +84,8 @@ public class FormUtils {
     /**
      * Añade al mapa una entrada solo si el ID no es nulo ni vacío.
      *
-     * @param map   Mapa donde insertar la entrada.
-     * @param id    ID del nodo.
+     * @param map Mapa donde insertar la entrada.
+     * @param id ID del nodo.
      * @param value Valor del nodo.
      */
     private static void putIfValid(HashMap<String, String> map, String id, String value) {
