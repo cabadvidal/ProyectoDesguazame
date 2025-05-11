@@ -1,5 +1,5 @@
 import { authUsuarioFire, generarToken } from "./auth_user.js";
-import { registrarUsuario } from "./reg_user.js";
+import { registrarUsuario, eliminarUsuarioFIREBASE } from "./reg_user.js";
 import { realizarConsulta } from "../../../mysql/consultas_mysql.js";
 import { usuariosConectados } from "../sockets.js";
 import { logger } from "../../log/log.js";
@@ -51,7 +51,6 @@ export async function comprobarCredenciales(socket, datos) {
 
         logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: ${usuario} | Contraseña: ${password}`);
 
-        // Consulta que obtiene el número de mesas
         const sql = 'SELECT * FROM `DATOS_COMUNES` WHERE MAIL = ? AND CONTRASENA = SHA2(?, 256)';
 
         // Realiza la consulta a 'MySQL' 
@@ -62,7 +61,9 @@ export async function comprobarCredenciales(socket, datos) {
             return;
         }
 
-        const { ID_DATOS_COMUNES, NOMBRE, APELLIDO_A, APELLIDO_B, FIREBASE_UID } = resultado[0];
+        const { ID_DATOS_COMUNES, NOMBRE, APELLIDO_A, APELLIDO_B, FIREBASE_UID, DIRECCION, CODIGO_POSTAL, CIUDAD, MUNICIPIO, TELEFONO,
+            MOVIL, MAIL, DNI_CIF, NUMERO_CUENTA
+        } = resultado[0];
         logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: ${resultado[0].FIREBASE_UID}`);
 
         const sqlTipoUsuario = `SELECT 'EMPLEADO' AS TIPO_USUARIO, ID_EMPLEADOS AS ID, NUMERO_SS AS CAMPO1, TIPO_CUENTA AS CAMPO2 
@@ -102,7 +103,14 @@ export async function comprobarCredenciales(socket, datos) {
                 }
                 case 'CLIENTE': {
                     user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID);
-                    socket.emit('token_cliente', { 'token': token, 'nombre': NOMBRE, 'apellidos': apellidos });
+                    const sqlTarjeta = `SELECT DATOS_TARJETA FROM CLIENTE WHERE ID_CLIENTE = ?`;
+                    const resultadoTarjeta = await realizarConsulta(sqlTarjeta, [ID]);
+                    const TARJETA = resultadoTarjeta.length > 0 ? resultadoTarjeta[0].DATOS_TARJETA : null;
+                    socket.emit('token_cliente', {
+                        'token': token, 'nombre': NOMBRE, 'apellido_a': APELLIDO_A, 'apellido_b': APELLIDO_B, 'direccion': DIRECCION,
+                        'codigo_postal': CODIGO_POSTAL, 'ciudad': CIUDAD, 'municipio': MUNICIPIO, 'telefono': TELEFONO, 'movil': MOVIL,
+                        'mail': MAIL, 'dni': DNI_CIF, 'numero_cuenta': NUMERO_CUENTA, 'tarjeta_credito': TARJETA
+                    });
                     break;
                 }
             }
@@ -127,27 +135,47 @@ export async function comprobarCredenciales(socket, datos) {
  */
 export async function registroUsuario(socket, datos) {
     try {
-        const { mail, pass, nombre, apellido_a, apellido_b, direccion, codigo_postal,
-            ciudad, municipio, movil, dni } = datos;
+        const { MAIL, CONTRASENA, NOMBRE, APELLIDO_A, APELLIDO_B, DIRECCION, CODIGO_POSTAL,
+            CIUDAD, MUNICIPIO, TELEFONO, MOVIL, DNI, TARJETA_CREDITO, NUMERO_CUENTA } = datos;
         const sqlMail = `SELECT NOMBRE FROM DATOS_COMUNES WHERE MAIL = ?`;
-        const resultadoMail = await realizarConsulta(sqlMail, [mail]);
-        if (resultadoMail[0].NOMBRE) {
-            logger.debug(`src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: ${mail} ya está registrado.`);
-            console.warn(`⚠️ El usuario con mail ${mail} ya está registrado en el sistema.`)
+        const resultadoMail = await realizarConsulta(sqlMail, [MAIL]);
+        if (resultadoMail.length > 0 && resultadoMail[0].NOMBRE) {
+            logger.debug(`src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: ${MAIL} ya está registrado.`);
+            console.warn(`⚠️ El usuario con mail ${MAIL} ya está registrado en el sistema.`)
             socket.emit('usr_existe');
             return;
         }
-        const sqlRegistro = `INSERT INTO DATOS_COMUNES VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-        const resultado = await realizarConsulta(sqlRegistro, [nombre, apellido_a, apellido_b, pass, direccion, codigo_postal, ciudad, municipio, null, movil, mail, dni, null, null, null])
+        const sqlRegistro = ` INSERT INTO DATOS_COMUNES (
+        NOMBRE, APELLIDO_A, APELLIDO_B, CONTRASENA, DIRECCION, CODIGO_POSTAL,
+        CIUDAD, MUNICIPIO, TELEFONO, MOVIL, MAIL, DNI_CIF, FIREBASE_UID, RAZON_SOCIAL, NUMERO_CUENTA
+    ) VALUES (?, ?, ?, SHA2(?, 256), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        const resultado = await realizarConsulta(sqlRegistro, [NOMBRE, APELLIDO_A, APELLIDO_B, CONTRASENA, DIRECCION, CODIGO_POSTAL, CIUDAD, MUNICIPIO, TELEFONO, MOVIL, MAIL, DNI, null, null, NUMERO_CUENTA])
         if (resultado.insertId) {
             const ID = resultado.insertId;
-            logger.debug(`src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: ${mail} registrado en MySQL.`);
-            const FIREBASE_UID = registrarUsuario(mail, pass);
+            logger.debug(`src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: ${MAIL} registrado en MySQL.`);
+            const FIREBASE_UID = await registrarUsuario(MAIL, CONTRASENA);
+            if (!FIREBASE_UID) {
+                console.error("❌ No se pudo registrar en Firebase.");
+                socket.emit('error_registro', 'Error al registrar en Firebase');
+                return;
+            }
             const sql_UID = `UPDATE DATOS_COMUNES SET FIREBASE_UID = ? WHERE ID_DATOS_COMUNES = ?`;
-            await realizarConsulta(sql_UID, [FIREBASE_UID, ID]);
-
-            logger.debug(`src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: ${mail} actualizado con Firebase UID: ${FIREBASE_UID}.`);
-            socket.emit('usr_registrado');
+            logger.debug(`UPDATE DATOS_COMUNES SET FIREBASE_UID = '${FIREBASE_UID}' WHERE ID_DATOS_COMUNES = ${ID}`);
+            const resultadoUpdate = await realizarConsulta(sql_UID, [FIREBASE_UID, ID]);
+            if (resultadoUpdate < 0) {
+                await eliminarUsuarioFIREBASE(FIREBASE_UID);
+            }
+            const sqlRegistroCliente = `INSERT INTO CLIENTE (DATOS_TARJETA, DATOS_COMUNES_FK) VALUES (?, ?)`;
+            const resultadoCliente = await realizarConsulta(sqlRegistroCliente, [TARJETA_CREDITO, ID]);
+            if (resultadoCliente) {
+                logger.debug(`src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: ${MAIL} actualizado con Firebase UID: ${FIREBASE_UID}.`);
+                socket.emit('usr_registrado');
+                return;
+            }
+            const sqlBorrarCliente = `DELETE FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
+            await realizarConsulta(sqlBorrarCliente, [ID]);
+            await eliminarUsuarioFIREBASE(FIREBASE_UID);
+            socket.emit('error_registro', 'Error en el servidor');
         }
     } catch (error) {
         console.error(`❌ Error en registroUsuario: ${error.message}`);
@@ -166,7 +194,7 @@ export async function deslogueUsuario(token) {
         clearTimeout(user.timeout);
         if (user.socket) {
             user.socket.disconnect(true);
-        }
+        }
         usuariosConectados.splice(index, 1);
         console.warn(`⚠️ Usuario ${user.user} deslogueado por inactividad.`);
     }
@@ -183,7 +211,7 @@ export async function eliminarUsuario(token) {
         usuariosConectados.splice(index, 1);
         if (user.socket) {
             user.socket.disconnect(true);
-        }
+        }
         console.log("🔴 Usuario desconectado manualmente.");
     }
 }

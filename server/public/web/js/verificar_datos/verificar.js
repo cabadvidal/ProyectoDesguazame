@@ -196,7 +196,7 @@ function verificarDNI(dato) {
 
     let n_DNI = parseInt(dato.substring(0, (dato.length - 1))); // Obtener el número
     let letra = dato.substring(dato.length - 1); // Obtener la letra
-
+    
     let letras_DNI = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V",
         "H", "L", "C", "K", "E"];
 

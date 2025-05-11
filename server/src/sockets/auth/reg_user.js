@@ -25,7 +25,7 @@ export async function registrarUsuario(email, password) {
  * @param {string} FIREBASE_UID - UID del usuario que se desea eliminar.
  * @returns {Promise<boolean>} `true` si se elimina correctamente, `false` si ocurre un error.
  */
-export async function eliminarUsuario(FIREBASE_UID) {
+export async function eliminarUsuarioFIREBASE(FIREBASE_UID) {
   try {
     // Obtener el usuario por su UID usando Admin SDK
     const userRecord = await admin.auth().getUser(FIREBASE_UID);

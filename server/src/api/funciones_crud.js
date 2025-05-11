@@ -52,7 +52,7 @@ async function agregarEmpleado(datos, res) {
         if (!resultadoDatosComunes || !resultadoDatosComunes.insertId) {
             console.error("❌ Error src/api/funciones_crud.js al insertar en DATOS_COMUNES.");
             // Borrar registros
-            await eliminarUsuario(FIREBASE_UID);
+            await eliminarUsuarioFIREBASE(FIREBASE_UID);
             return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
         }
 
@@ -75,7 +75,7 @@ async function agregarEmpleado(datos, res) {
             const sqlBorrar = `DELETE FROM DATOS_COMUNES WHERE ID_DATOS_COMUNES = ?`;
             // Borrar registros
             await realizarConsulta(sqlBorrar, [idDatosComunes]);
-            await eliminarUsuario(FIREBASE_UID);
+            await eliminarUsuarioFIREBASE(FIREBASE_UID);
             return res.status(500).json({ error: `Error al agregar Empleado ${datos.NOMBRE}` });
         }
 

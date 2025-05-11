@@ -1,4 +1,4 @@
-import { comprobarCredenciales, deslogueUsuario, eliminarUsuario, verificarToken } from "./auth/credenciales.js";
+import { comprobarCredenciales, deslogueUsuario, eliminarUsuario, registroUsuario, verificarToken } from "./auth/credenciales.js";
 import { logger } from "../log/log.js";
 
 // Array que almacena los usuarios conectados
@@ -61,6 +61,11 @@ export function configServerIO(io) {
             } else {
                 console.warn("⚠️ Usuario desconectado sin registro.");
             }
+        });
+
+        socket.on('registrar_usuario', async(datos) => {
+            console.log(`✅ Se reliza el registro del usuario ${datos['MAIL']}`);
+            registroUsuario(socket, datos);
         });
     });
 
