@@ -1,5 +1,10 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 
+/**
+ * Método que consulta los datos de una factura y la genera mediante un script de php
+ * @param {int} id Contiene el id a realizar la consulta
+ * @returns 
+ */
 export async function generarFactura(id) {
     const sqlPiezas = `SELECT p.REFERENCIA, p.DESCRIPCION, p.PESO, lf.PRECIO, dc.RAZON_SOCIAL
         FROM FACTURA f

@@ -1,8 +1,6 @@
 import { comprobarCredenciales, deslogueUsuario, eliminarUsuario, registroUsuario, verificarToken } from "./auth/credenciales.js";
 import { logger } from "../log/log.js";
-
-// Array que almacena los usuarios conectados
-var usuariosConectados = [];
+import { realizarPago } from "../api/pay.js";
 
 /**
  * Configura los eventos de Socket.io
@@ -35,6 +33,7 @@ export function configServerIO(io) {
             }
         });
 
+        // Evento para gestionar la actividad del cliente
         socket.on('actividad', async (datos) => {
             const {token, actividad} = datos;
             if (verificarToken(token)) {
@@ -52,6 +51,7 @@ export function configServerIO(io) {
             }
         });
 
+        // Evento para desconectar al usuario
         socket.on('desconectar', async(token) => {
             const index = usuariosConectados.findIndex((user) => user.socket === socket);
             if (index !== -1) {
@@ -63,13 +63,16 @@ export function configServerIO(io) {
             }
         });
 
+        // Evento parea registrar un usuario
         socket.on('registrar_usuario', async(datos) => {
             console.log(`✅ Se reliza el registro del usuario ${datos['MAIL']}`);
             registroUsuario(socket, datos);
         });
+
+        // Evento para realizar el pago
+        socket.on('realizar pago', async(datos) => {
+            console.log(`✅ Se reliza el pago de con los siguientes datos: ${JSON.stringify(datos)}`);
+            realizarPago(datos, socket);
+        });
     });
-
-
 }
-
-export { usuariosConectados };

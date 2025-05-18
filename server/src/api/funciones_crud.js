@@ -1,6 +1,5 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { modificarContrasena } from "../sockets/auth/reg_user.js";
-import { usuariosConectados } from "../sockets/sockets.js";
 import { generarFactura } from "../factura/factura.js";
 
 const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'RESTABLECER_PASS',

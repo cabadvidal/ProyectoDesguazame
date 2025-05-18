@@ -1,7 +1,6 @@
 import { authUsuarioFire, generarToken } from "./auth_user.js";
 import { registrarUsuario, eliminarUsuarioFIREBASE } from "./reg_user.js";
 import { realizarConsulta } from "../../../mysql/consultas_mysql.js";
-import { usuariosConectados } from "../sockets.js";
 import { logger } from "../../log/log.js";
 
 // Clase para almacenar los datos de los usuarios que se conectan
@@ -19,6 +18,14 @@ class Usuario {
 
     setSocket(socket) {
         this.socket = socket;
+    }
+
+    /**
+     * Método que devuelve el ID del cliente conectado
+     * @returns Devuelve el ID
+     */
+    getID() {
+        return this.id;
     }
 
     /**
@@ -93,19 +100,20 @@ export async function comprobarCredenciales(socket, datos) {
 
             logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: ${token} para el Usuario; ${usuario}`);
             const apellidos = (APELLIDO_A + " " + APELLIDO_B).trim(); // Elimina espacios extra si un apellido es vacío
-            let user = null;
             switch (TIPO_USUARIO) {
                 case 'EMPLEADO': {
-                    user = new Usuario(usuario, password, uidFirebase, token, socket, CAMPO2, ID);
+                    const user = new Usuario(usuario, password, uidFirebase, token, socket, CAMPO2, ID);
                     logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || TIPO DE CUENTA en MySQL: ${CAMPO2}`);
+                    global.usuariosConectados .push(user);
                     socket.emit('token_empleado', { 'token': token, 'nombre': NOMBRE, 'apellidos': apellidos, 'tipo_cuenta': CAMPO2 });
                     break;
                 }
                 case 'CLIENTE': {
-                    user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID);
+                    const user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID);
                     const sqlTarjeta = `SELECT DATOS_TARJETA FROM CLIENTE WHERE ID_CLIENTE = ?`;
                     const resultadoTarjeta = await realizarConsulta(sqlTarjeta, [ID]);
                     const TARJETA = resultadoTarjeta.length > 0 ? resultadoTarjeta[0].DATOS_TARJETA : null;
+                    global.usuariosConectados .push(user);
                     socket.emit('token_cliente', {
                         'token': token, 'nombre': NOMBRE, 'apellido_a': APELLIDO_A, 'apellido_b': APELLIDO_B, 'direccion': DIRECCION,
                         'codigo_postal': CODIGO_POSTAL, 'ciudad': CIUDAD, 'municipio': MUNICIPIO, 'telefono': TELEFONO, 'movil': MOVIL,
@@ -114,7 +122,7 @@ export async function comprobarCredenciales(socket, datos) {
                     break;
                 }
             }
-            usuariosConectados.push(user);
+            
             console.log(`✅ Usuario: ${usuario} logueado correctamente. Tipo de cuenta: ${TIPO_USUARIO}.`);
         } else {
             // Enviar null si no se encuentra
@@ -187,15 +195,15 @@ export async function registroUsuario(socket, datos) {
  * Desloguea al usuario por inactividad.
  */
 export async function deslogueUsuario(token) {
-    const index = usuariosConectados.findIndex((user) => user.token === token);
+    const index = global.usuariosConectados .findIndex((user) => user.token === token);
     if (index !== -1) {
-        const user = usuariosConectados[index];
+        const user = global.usuariosConectados [index];
         user.socket.emit("deslogueado", "Sesión expirada por inactividad.");
         clearTimeout(user.timeout);
         if (user.socket) {
             user.socket.disconnect(true);
         }
-        usuariosConectados.splice(index, 1);
+        global.usuariosConectados .splice(index, 1);
         console.warn(`⚠️ Usuario ${user.user} deslogueado por inactividad.`);
     }
 }
@@ -204,11 +212,11 @@ export async function deslogueUsuario(token) {
  * Elimina un usuario cuando se desconecta manualmente.
  */
 export async function eliminarUsuario(token) {
-    const index = usuariosConectados.findIndex((user) => user.token === token);
+    const index = global.usuariosConectados .findIndex((user) => user.token === token);
     if (index !== -1) {
-        const user = usuariosConectados[index];
+        const user = global.usuariosConectados [index];
         clearTimeout(user.timeout);
-        usuariosConectados.splice(index, 1);
+        global.usuariosConectados .splice(index, 1);
         if (user.socket) {
             user.socket.disconnect(true);
         }
@@ -222,5 +230,5 @@ export async function eliminarUsuario(token) {
  * @returns Devuelve True si el token ya existe sino false
  */
 export function verificarToken(token) {
-    return usuariosConectados.some(user => user.token === token);
+    return global.usuariosConectados .some(user => user.token === token);
 }

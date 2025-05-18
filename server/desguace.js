@@ -18,6 +18,9 @@ const puerto = 10010;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Array que almacena los usuarios conectados
+global.usuariosConectados = global.usuariosConectados || [];
+
 // Habilita CORS en todas las rutas HTTP
 app.use(cors());
 
