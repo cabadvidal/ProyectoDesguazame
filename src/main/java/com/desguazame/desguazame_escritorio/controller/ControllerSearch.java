@@ -1,12 +1,16 @@
 package com.desguazame.desguazame_escritorio.controller;
 
 import com.desguazame.desguazame_escritorio.App;
+import com.desguazame.desguazame_escritorio.model.CarPart;
+import com.desguazame.desguazame_escritorio.model.SearchData;
 import com.desguazame.desguazame_escritorio.model.Sockets;
+import static com.desguazame.desguazame_escritorio.util.AppGlobals.carList;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.token;
 import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
+import com.desguazame.desguazame_escritorio.view.SearchView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +24,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,6 +47,14 @@ public class ControllerSearch implements Initializable {
     @FXML
     private Label welcome;
 
+    @FXML
+    private VBox vBoxMarket;
+    
+    @FXML
+    private Label lblCartCount;
+
+    private SearchView search;
+
     /**
      * Cierra la sesión actual y vuelve a la vista de login.
      *
@@ -52,6 +65,16 @@ public class ControllerSearch implements Initializable {
         user = null;
         token = "";
         App.setRoot("login");
+    }
+    
+    /**
+     * Cambia a la vista cart.
+     *
+     * @throws IOException si ocurre un error al cambiar a la vista "cart".
+     */
+    @FXML
+    private void changeCart() throws IOException {
+        App.setRoot("cart");
     }
 
     /**
@@ -86,6 +109,9 @@ public class ControllerSearch implements Initializable {
                 if (data != null) {
                     Platform.runLater(() -> {
                         System.out.println("Los datos de las piezas: " + data.toString());
+                        
+                        JSONArray dataArray = new JSONArray(data);
+                        new SearchData(vBoxMarket, dataArray, lblCartCount);
                     });
                 } else {
                     Platform.runLater(() -> {

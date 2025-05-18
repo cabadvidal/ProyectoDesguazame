@@ -4,8 +4,6 @@
  */
 package com.desguazame.desguazame_escritorio.model;
 
-import com.sun.javafx.scene.traversal.WeightedClosestCorner;
-
 /**
  *
  * @author Charlie
@@ -23,8 +21,9 @@ public class CarPart {
     private String sale;
     private String model;
     private String brand;
+    private String company;
 
-    public CarPart(int id, String description, int weight, double price, String reference, String year, String[] imagen, String categories, String sale, String model, String brand) {
+    public CarPart(int id, String description, int weight, double price, String reference, String year, String[] imagen, String categories, String sale, String model, String brand, String company) {
         this.id = id;
         this.description = description;
         this.weight = weight;
@@ -36,6 +35,7 @@ public class CarPart {
         this.sale = sale;
         this.model = model;
         this.brand = brand;
+        this.company = company;
     }
 
     public int getId() {
@@ -124,6 +124,14 @@ public class CarPart {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
         

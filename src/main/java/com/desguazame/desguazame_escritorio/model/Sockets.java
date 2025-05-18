@@ -80,7 +80,7 @@ public class Sockets {
         if (!socket.connected()) {
             socket.connect();
         }
-
+        System.out.println("com.desguazame.desguazame_escritorio.model.Sockets.authUser()" + data.toString());
         socket.emit("comprobar credenciales", data);
 
         // Evento que maneja la respuesta del servidor con el token del cliente
@@ -208,5 +208,9 @@ public class Sockets {
             success.set(isActivity);
             latch.countDown();
         });
+    }
+    
+    public void makePayment(JSONObject data) {
+        socket.emit("realizar pago", data);
     }
 }

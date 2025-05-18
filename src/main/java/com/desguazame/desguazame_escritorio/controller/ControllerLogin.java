@@ -7,6 +7,7 @@ package com.desguazame.desguazame_escritorio.controller;
 
 import com.desguazame.desguazame_escritorio.App;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
+import static com.desguazame.desguazame_escritorio.util.AppGlobals.socketURL;
 import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import com.desguazame.desguazame_escritorio.view.StageWait;
@@ -103,6 +104,7 @@ public class ControllerLogin {
         AtomicBoolean success = new AtomicBoolean(false);
 
         HashMap<String, String> campos = FormUtils.readNodeFields(vBoxLogin);
+
         socket.authUser(campos, latch, success);
 
         // Esperar la respuesta del servidor en un hilo separado

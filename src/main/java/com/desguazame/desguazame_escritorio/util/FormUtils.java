@@ -5,6 +5,8 @@
 package com.desguazame.desguazame_escritorio.util;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,9 +21,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
 
 /**
  * Clase de utilidades para leer campos de formularios JavaFX contenidos en
@@ -199,5 +205,37 @@ public class FormUtils {
             }
         }
         return json;
+    }
+
+    /**
+     * Función que lee el fichero 'conf.xml' y devuelve el contenido del
+     * 'tagName' que recibe como parámetro.
+     *
+     * @param tagName Contiene la etiqueta a consultar.
+     * @return Devuelve el contenido de la etiqueta.
+     */
+    public static String leerXML(String tagName) {
+        String url = null;
+        try {
+            // Leer el archivo XML desde recursos
+            InputStream inputStream = FormUtils.class.getClassLoader().getResourceAsStream("com/desguazame/desguazame_escritorio/xml/conf.xml");
+
+            if (inputStream == null) {
+                throw new FileNotFoundException("Archivo conf.xml no encontrado en resources/xml/");
+            }
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputStream);
+            doc.getDocumentElement().normalize();
+
+            // Obtener el contenido de la etiqueta pasada como 'tagName'
+            url = doc.getElementsByTagName(tagName).item(0).getTextContent();
+
+        } catch (ParserConfigurationException | IOException | org.xml.sax.SAXException e) {
+            System.err.println("Error al leer el XML: " + e);
+        }
+
+        return url;
     }
 }
