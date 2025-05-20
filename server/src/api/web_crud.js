@@ -90,7 +90,7 @@ app.post('/ObtenerDatosClaveForanea', (req, res) => {
             break;
         case 'MODELOS':
             sql = `SELECT ID_MODELO, NOMBRE_MODELO FROM MODELO`;
-            break
+            break;
         case 'FACTURAS':
             sql = `SELECT ID_PIEZAS, REFERENCIA FROM PIEZAS`;
             break;
@@ -273,6 +273,111 @@ app.get('/ObtenerPiezas', async (req, res) => {
             console.error(`❌ Error al obtener datos de la tabla piezas: ${error}`);
             res.status(500).json({ error: "Error en la consulta SQL" });
         });
+});
+
+/**
+ * Obtener datos para el menú vista search
+ */
+app.get('/ObtenerSearch', async (req, res) => {
+    console.log("✅ Ruta /ObtenerSearch ha sido llamada");
+    const {TABLA, MARCA} = req.query;
+    
+    if (!TABLA || !verificarTabla(TABLA)) {
+        return res.status(400).json({ error: "Tabla no encontrada." });
+    }
+    let sql = '';
+
+    switch (TABLA) {
+        case 'MARCAS':
+            sql = `SELECT ID_MARCAS, NOMBRE_MARCA FROM MARCAS`;
+            break;
+        case 'CATEGORIAS':
+            sql = `SELECT ID_CATEGORIAS_PIEZAS, NOMBRE_CATEGORIA FROM CATEGORIAS_PIEZAS`;
+            break;
+        case 'MODELOS':
+            sql = `SELECT m.ID_MODELO, m.NOMBRE_MODELO FROM MODELO m
+            LEFT JOIN MARCAS mar ON m.MARCA_MODELO_FK = mar.ID_MARCAS
+            WHERE mar.NOMBRE_MARCA = ?`;
+            break;
+    }
+    if (TABLA.includes('MODELOS')) {
+        logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || tabla consultada: ${TABLA}`);
+    realizarConsulta(sql, [MARCA])
+        .then(resultado => {
+            logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla ${TABLA} ` + JSON.stringify(resultado));
+            console.log(`✅ Datos clave foranea obtenidos correctamente para la tabla ${TABLA}`);
+            res.json(resultado);
+        })
+        .catch(error => {
+            console.error(`❌ Error al obtener datos de ObtenerSearch: ${error}`);
+            res.status(500).json({ error: "Error en la consulta SQL" });
+        });
+        return;
+    }
+    logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || tabla consultada: ${TABLA}`);
+    realizarConsulta(sql, TABLA)
+        .then(resultado => {
+            logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla ${TABLA} ` + JSON.stringify(resultado));
+            console.log(`✅ Datos clave foranea obtenidos correctamente para la tabla ${TABLA}`);
+            res.json(resultado);
+        })
+        .catch(error => {
+            console.error(`❌ Error al obtener datos de ObtenerSearch: ${error}`);
+            res.status(500).json({ error: "Error en la consulta SQL" });
+        });
+
+});
+
+/**
+ * Obtener datos de la búsqueda solicitada
+ */
+app.get('/Search', async (req, res) => {
+    const {TEXTO, CATEGORIAS, MARCAS, MODELOS} = req.query;
+    let sql = `SELECT p.ID_PIEZAS, p.DESCRIPCION, p.PESO, p.PRECIO, p.REFERENCIA, p.FECHA_YEAR, p.IMAGENES, 
+    c.NOMBRE_CATEGORIA AS CATEGORIAS, dc_vendedor.RAZON_SOCIAL, m.NOMBRE_MODELO, mar.NOMBRE_MARCA 
+    FROM PIEZAS p
+    LEFT JOIN CATEGORIAS_PIEZAS c ON p.CATEGORIAS_FK = c.ID_CATEGORIAS_PIEZAS
+    LEFT JOIN VENDEDOR v ON p.VENDEDOR_FK = v.ID_VENDEDOR
+    LEFT JOIN DATOS_COMUNES dc_vendedor ON v.DATOS_COMUNES_FK = dc_vendedor.ID_DATOS_COMUNES
+    LEFT JOIN EMPLEADOS e ON p.EMPLEADO_FK = e.ID_EMPLEADOS
+    LEFT JOIN DATOS_COMUNES dc_empleado ON e.DATOS_COMUNES_FK = dc_empleado.ID_DATOS_COMUNES
+    LEFT JOIN PIEZAS_MODELOS pm ON p.ID_PIEZAS = pm.PIEZAS_FK
+    LEFT JOIN MODELO m ON pm.MODELO_FK = m.ID_MODELO
+    LEFT JOIN MARCAS mar ON m.MARCA_MODELO_FK = mar.ID_MARCAS 
+    WHERE p.VENDIDO = FALSE`
+     const params = [];
+
+    if (TEXTO && TEXTO.trim() !== "") {
+        sql += " AND (p.DESCRIPCION LIKE ? OR p.REFERENCIA LIKE ?)";
+        const textoParam = `%${TEXTO}%`;
+        params.push(textoParam, textoParam);
+    }
+
+    if (CATEGORIAS && CATEGORIAS.trim() !== "") {
+        sql += " AND c.NOMBRE_CATEGORIA = ?";
+        params.push(CATEGORIAS);
+    }
+
+    if (MARCAS && MARCAS.trim() !== "") {
+        sql += " AND mar.NOMBRE_MARCA = ?";
+        params.push(MARCAS);
+    }
+
+    if (MODELOS && MODELOS.trim() !== "") {
+        sql += " AND m.NOMBRE_MODELO = ?";
+        params.push(MODELOS);
+    }
+
+    console.log("🔍 web_crud/Search Consulta de búsqueda dinámica SQL:", sql);
+    console.log("📦 web_crud/Search Parámetros de búsqueda:", params);
+
+    try {
+        const resultado = await realizarConsulta(sql, params);
+        res.json(resultado);
+    } catch (error) {
+        console.error("❌ Error en /Search:", error);
+        res.status(500).json({ error: "Error en la consulta SQL" });
+    }
 });
 
 /**

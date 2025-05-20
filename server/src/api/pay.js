@@ -25,8 +25,7 @@ import { verificarToken } from "../sockets/auth/credenciales.js";
  * 
  * @returns {void}
  * 
- * @emits socket.emit("Pago realizado con éxito") - Cuando el pago se realiza correctamente.
- * @emits socket.emit("Error realizar pago") - Cuando ocurre un error en cualquier paso del proceso.
+ * @emits socket.emit("pago", {valido: true | false}) - Cuando el pago se realiza correctamente true sino false.
  * 
  * @throws Error - Si hay fallos en la base de datos, en el token o en la lógica de inserción.
  */
@@ -40,38 +39,42 @@ export async function realizarPago(datos, socket) {
     const { BASE, IVA, TIPO_PAGO, TOKEN } = datos;
     if (!verificarToken(TOKEN)) {
         logger.error("❌ Token no válido: " + TOKEN)
-        socket.emit("Error realizar pago");
+        socket.emit("pago", { valido: false });
         return;
     }
 
-    let CLIENTE_FK = null;
-    global.usuariosConectados .forEach(usr => {
-        if (usr.token === TOKEN) CLIENTE_FK = usr.id;
-    });
-
-    if(CLIENTE_FK === null) {
-        socket.emit("Error realizar pago");
-        return;
-    }
-    // FUNCIONA HASTA AQUÍ
-    const resultadoFactura = await realizarConsulta(SQLFactura, [BASE, IVA, TIPO_PAGO, CLIENTE_FK]);
-
-    if (resultadoFactura && resultadoFactura.insertId) {
-        const ID_FACTURA = resultadoFactura.insertId;
-        const PIEZAS = datos.PIEZAS;
-        for (const pieza of PIEZAS) {
-            const resultadoLinea = await realizarConsulta(SQLLineaFactura, [pieza.ID_PIEZA, ID_FACTURA]);
-
-            if (resultadoLinea) {
-                const ID_LINEA = resultadoLinea.insertId;
-                await realizarConsulta(procedimientoActualizarLinea, [ID_LINEA]);
-                await realizarConsulta(SQLActualizarVendido, [pieza.ID_PIEZA]);
-            }
+    try {
+        let CLIENTE_FK = null;
+        global.usuariosConectados.forEach(usr => {
+            if (usr.token === TOKEN) CLIENTE_FK = usr.id;
+        });
+    
+        if (CLIENTE_FK === null) {
+            socket.emit("pago", { valido: false });
+            return;
         }
-        generarFactura(ID_FACTURA);
-        socket.emit("Pago realizado con éxito");
-    } else {
-        console.log("hasta los cojones de node")
-        socket.emit("Error realizar pago");
+        // FUNCIONA HASTA AQUÍ
+        const resultadoFactura = await realizarConsulta(SQLFactura, [BASE, IVA, TIPO_PAGO, CLIENTE_FK]);
+    
+        if (resultadoFactura && resultadoFactura.insertId) {
+            const ID_FACTURA = resultadoFactura.insertId;
+            const PIEZAS = datos.PIEZAS;
+            for (const pieza of PIEZAS) {
+                const resultadoLinea = await realizarConsulta(SQLLineaFactura, [pieza.ID_PIEZA, ID_FACTURA]);
+    
+                if (resultadoLinea) {
+                    const ID_LINEA = resultadoLinea.insertId;
+                    await realizarConsulta(procedimientoActualizarLinea, [ID_LINEA]);
+                    await realizarConsulta(SQLActualizarVendido, [pieza.ID_PIEZA]);
+                }
+            }
+            generarFactura(ID_FACTURA);
+            socket.emit("pago", { valido: true });
+        } else {
+            socket.emit("pago", { valido: false });
+        }
+    } catch (error) {
+        console.log("error al realizar pago src/api/pay.js " + error);
+        socket.emit("pago", { valido: false });
     }
 }
