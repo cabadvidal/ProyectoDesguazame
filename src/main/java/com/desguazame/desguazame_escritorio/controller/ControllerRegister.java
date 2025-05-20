@@ -8,18 +8,17 @@ import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
 import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import com.desguazame.desguazame_escritorio.view.StageWait;
-import java.io.IOException;
-import java.util.HashMap;
+import java.io.*;
+import java.util.*;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.fxml.FXML;
-import javafx.scene.layout.HBox;
+import java.util.concurrent.atomic.*;
+import java.util.logging.*;
+import javafx.application.*;
+import javafx.concurrent.*;
+import javafx.fxml.*;
+import javafx.scene.layout.*;
 
 /**
  * Controlador de la vista de registro de usuarios en la aplicación JavaFX.

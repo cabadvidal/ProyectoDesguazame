@@ -4,8 +4,8 @@
  */
 package com.desguazame.desguazame_escritorio.model;
 
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.regex.*;
 
 /**
  * Clase encargada de verificar la validez de distintos datos según su tipo y

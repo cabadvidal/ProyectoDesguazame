@@ -9,16 +9,12 @@ import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import io.socket.client.IO;
 import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
+import java.net.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
+import java.util.logging.*;
+import javafx.application.*;
 import org.json.JSONObject;
 
 /**
@@ -110,7 +106,7 @@ public class Sockets {
             latch.countDown();
         });
 
-        socket.on("error_registro", args -> {
+        socket.on("token", args -> {
             Platform.runLater(() -> JOptionError.showError("Error Autenticación", "Usuario o contraseña erroneos"));
             success.set(false);
             latch.countDown();
@@ -210,7 +206,23 @@ public class Sockets {
         });
     }
     
-    public void makePayment(JSONObject data) {
+    public void makePayment(JSONObject data, CountDownLatch latch, AtomicBoolean success) {
+        if (!socket.connected()) {
+            socket.connect();
+        }
+        
         socket.emit("realizar pago", data);
+        
+        socket.on("pago", args -> {
+            JSONObject json = (JSONObject) args[0];
+            boolean isPay = json.getBoolean("valido");
+            if (!isPay) {
+                Platform.runLater(()
+                        -> JOptionError.showError("Error pago", "Hubo un error al realizar el pago.")
+                );
+            }
+            success.set(isPay);
+            latch.countDown();
+        });
     }
 }

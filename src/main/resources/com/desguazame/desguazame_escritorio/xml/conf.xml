@@ -6,5 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 <conf>
     <imgurl>http://192.168.1.122:10010/img/piezas/</imgurl>
     <socketurl>http://192.168.1.122:10010</socketurl>
+    <searchmenuurl>http://192.168.1.122:10010/ObtenerSearch?TABLA=</searchmenuurl>
+    <searchData>http://192.168.1.122:10010/Search?</searchData>
 </conf>
 

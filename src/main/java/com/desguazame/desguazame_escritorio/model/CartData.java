@@ -6,8 +6,7 @@ package com.desguazame.desguazame_escritorio.model;
 
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.cartList;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.token;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.*;
 
 /**
  * Clase que encapsula los datos necesarios para realizar un pago a partir del

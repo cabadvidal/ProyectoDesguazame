@@ -6,10 +6,9 @@ package com.desguazame.desguazame_escritorio.model;
 
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.carList;
 import com.desguazame.desguazame_escritorio.view.SearchView;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import org.json.*;
 
 /**
  * Clase encargada de procesar y cargar los datos de búsqueda de piezas en la
@@ -58,6 +57,8 @@ public class SearchData {
      */
     public void chargeList(VBox vBox, JSONArray dataArray, Label lblCartCount) {
         carList.clear();
+        vBox.getChildren().clear();
+
         for (int i = 0; i < dataArray.length(); i++) {
             JSONObject dataObject = dataArray.getJSONObject(i);
 

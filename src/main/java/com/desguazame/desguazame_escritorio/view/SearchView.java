@@ -5,19 +5,13 @@
 package com.desguazame.desguazame_escritorio.view;
 
 import com.desguazame.desguazame_escritorio.model.CarPart;
-import com.desguazame.desguazame_escritorio.util.AppGlobals;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.carList;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.cartList;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.imgURL;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.geometry.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 
 /**
  * Clase que representa la vista de búsqueda y listado de piezas de automóvil.
@@ -70,7 +64,7 @@ public class SearchView {
             VBox vb = new VBox(10);
             vb.setStyle("-fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #f5f5f5;");
             vb.setPrefWidth(250);
-            vb.setAlignment(Pos.CENTER);
+            vb.setAlignment(Pos.TOP_CENTER);
 
             String[] aImagen = cp.getImagen();
 
@@ -92,7 +86,7 @@ public class SearchView {
             btnPrev.setOnAction(e -> {
                 currentIndex[0] = (currentIndex[0] - 1 + aImagen.length) % aImagen.length;
                 String imageFullUrl = imgURL + aImagen[currentIndex[0]];
-                imageView.setImage(new Image(imageFullUrl, 180, 180, true, true));
+                imageView.setImage(new Image(imageFullUrl, 150, 150, true, true));
             });
 
             btnNext.setOnAction(e -> {
@@ -106,12 +100,41 @@ public class SearchView {
 
             // Info de la pieza
             Label lbCategorie = new Label("Categoría: " + cp.getCategories());
+            lbCategorie.setWrapText(true);
+            lbCategorie.setMaxWidth(230);
+            lbCategorie.setPrefWidth(230);
+
             Label lbDescription = new Label("Descripción: " + cp.getDescription());
-            Label lbPrecio = new Label("Precio: " + cp.getPrice() + " €");
+            lbDescription.setWrapText(true);
+            lbDescription.setMaxWidth(230);
+            lbDescription.setPrefWidth(230);
+            lbDescription.setPrefHeight(Region.USE_COMPUTED_SIZE); // <- CLAVE
+            lbDescription.setMinHeight(Region.USE_PREF_SIZE);
+
             Label lbReferencia = new Label("Referencia: " + cp.getReference());
-            Label lbYear = new Label("Año: " + cp.getYear());
+            lbReferencia.setWrapText(true);
+            lbReferencia.setMaxWidth(230);
+            lbReferencia.setPrefWidth(230);
+
             Label lbMB = new Label("Marca: " + cp.getBrand() + " Modelo: " + cp.getModel());
+            lbMB.setWrapText(true);
+            lbMB.setMaxWidth(230);
+            lbMB.setPrefWidth(230);
+
             Label lbCompany = new Label("Empresa: " + cp.getCompany());
+            lbCompany.setWrapText(true);
+            lbCompany.setMaxWidth(230);
+            lbCompany.setPrefWidth(230);
+
+            Label lbPrecio = new Label("Precio: " + cp.getPrice() + " €");
+            lbPrecio.setWrapText(true);
+            lbPrecio.setMaxWidth(230);
+            lbPrecio.setPrefWidth(230);
+
+            Label lbYear = new Label("Año: " + cp.getYear());
+            lbYear.setWrapText(true);
+            lbYear.setMaxWidth(230);
+            lbYear.setPrefWidth(230);
 
             boolean isInCart = verifyCartList(cp);
             boolean[] isCart = {isInCart};

@@ -85,7 +85,7 @@
             </HBox>
             <HBox prefHeight="424.0" prefWidth="1649.0">
                <children>
-                  <ScrollPane prefHeight="424.0" prefWidth="1100.0">
+                  <ScrollPane prefHeight="424.0" prefWidth="1163.0">
                      <content>
                         <VBox fx:id="vBoxCart" prefHeight="424.0" prefWidth="1095.0" />
                      </content>

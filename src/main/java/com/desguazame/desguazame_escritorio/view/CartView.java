@@ -5,18 +5,11 @@
 package com.desguazame.desguazame_escritorio.view;
 
 import com.desguazame.desguazame_escritorio.model.CarPart;
-import static com.desguazame.desguazame_escritorio.util.AppGlobals.carList;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.cartList;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.geometry.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.text.*;
 
 /**
  * Clase que gestiona la vista del carrito de compra en la interfaz gráfica.
@@ -79,9 +72,9 @@ public class CartView {
                 createCartView();
             });
 
-            TextFlow tfReferencia = createStyledLabel("Referencia: ", cp.getReference());
-            TextFlow tfDescripcion = createStyledLabel("Descripción: ", cp.getDescription());
-            TextFlow tfPrecio = createStyledLabel("Precio: ", String.format("%.2f €", cp.getPrice()));
+            TextFlow tfReferencia = createStyledLabel("Referencia: ", cp.getReference(), 300);
+            TextFlow tfDescripcion = createStyledLabel("Descripción: ", cp.getDescription(), 400);
+            TextFlow tfPrecio = createStyledLabel("Precio: ", String.format("%.2f €", cp.getPrice()), 250);
 
             hb.getChildren().addAll(tfReferencia, tfDescripcion, tfPrecio, btnDelete);
             vBox.getChildren().add(hb);
@@ -96,14 +89,23 @@ public class CartView {
      * @param normalText Texto que se mostrará en estilo normal.
      * @return Un TextFlow que contiene ambos textos estilizados.
      */
-    private TextFlow createStyledLabel(String boldText, String normalText) {
+    private TextFlow createStyledLabel(String boldText, String normalText, int value) {
         Text bold = new Text(boldText);
         bold.setFont(Font.font("System", FontWeight.BOLD, 18));
 
         Text normal = new Text(normalText);
         normal.setFont(Font.font("System", FontWeight.NORMAL, 18));
+        TextFlow textFlow = new TextFlow(bold, normal);
+        textFlow.setMaxWidth(value); // o lo que necesites
+        textFlow.setPrefWidth(value);
 
-        return new TextFlow(bold, normal);
+// ESTOS DOS SON LOS MÁS IMPORTANTES:
+        textFlow.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        textFlow.setMinHeight(Region.USE_PREF_SIZE); // Opcional pero mejora el comportamiento
+
+// MUY IMPORTANTE: ACTIVA WRAP DEL TEXTO DENTRO DEL TextFlow
+        textFlow.setLineSpacing(2); // Opcional: mejora la legibilidad
+        return textFlow;
     }
 
     /**

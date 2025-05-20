@@ -8,8 +8,7 @@ import com.desguazame.desguazame_escritorio.model.CarPart;
 import com.desguazame.desguazame_escritorio.model.Sockets;
 import com.desguazame.desguazame_escritorio.model.User;
 import static com.desguazame.desguazame_escritorio.util.FormUtils.leerXML;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Clase de utilidades globales de la aplicación.
@@ -43,6 +42,16 @@ public class AppGlobals {
      * URL del servidor de sockets, leída desde el archivo de configuración XML.
      */
     public static String socketURL = leerXML("socketurl");
+    
+    /**
+     * URL del de la API para el menú de search, leída desde el archivo de configuración XML.
+     */
+    public static String searchMenuURL = leerXML("searchmenuurl");
+    
+    /**
+     * URL del de la API para realizar búsquedas en search, leída desde el archivo de configuración XML.
+     */
+    public static String searchData = leerXML("searchData");
 
     /**
      * Instancia de la clase {@code Sockets} usada para la comunicación en

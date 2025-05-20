@@ -12,21 +12,18 @@ import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
 import com.desguazame.desguazame_escritorio.view.CartView;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import static com.desguazame.desguazame_escritorio.view.JOptionError.showError;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.VBox;
-import org.json.JSONObject;
+import java.util.logging.*;
+import javafx.application.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import org.json.*;
 
 /**
  * Controlador FXML para la vista del carrito de compras.
@@ -142,7 +139,29 @@ public class ControllerCart implements Initializable {
             CartData cD = new CartData(metodoPago);
             JSONObject data = cD.getDataJSON();
             System.out.println("El resultado " + data.toString());
-            socket.makePayment(data);
+            CountDownLatch latch2 = new CountDownLatch(1);
+            AtomicBoolean success2 = new AtomicBoolean(false);
+            socket.makePayment(data, latch2, success2);
+            // Esperar la respuesta del servidor en un hilo separado
+            new Thread(() -> {
+                try {
+                    latch.await(); // Bloquea hasta recibir respuesta
+                    if (success2.get()) {
+                        Platform.runLater(() -> {
+                            try {
+                                App.setRoot("pay"); // Cambio de escena si autenticación fue exitosa
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+            
         }
+        
+        App.setRoot("pay");
     }
 }

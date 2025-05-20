@@ -7,18 +7,17 @@ package com.desguazame.desguazame_escritorio.controller;
 
 import com.desguazame.desguazame_escritorio.App;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
-import static com.desguazame.desguazame_escritorio.util.AppGlobals.socketURL;
 import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import com.desguazame.desguazame_escritorio.view.StageWait;
-import java.io.IOException;
-import java.util.HashMap;
+import java.io.*;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
+import javafx.application.*;
+import javafx.concurrent.*;
+import javafx.fxml.*;
+import javafx.scene.layout.*;
 
 /**
  * Controlador JavaFX para la ventana de inicio de sesión.
