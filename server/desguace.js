@@ -42,6 +42,7 @@ configServerIO(io);
 
 // Asegura compatibilidad con __dirname
 const carpetaDestino = path.join(__dirname, 'public', 'web', 'img', 'piezas');
+const carpetaFacturas = path.join(__dirname, 'public', 'facturas');
 
 // Crear carpeta si no existe
 if (!fs.existsSync(carpetaDestino)) {
@@ -75,4 +76,4 @@ server.listen(puerto, '0.0.0.0', () => {
     });
 });
 
-export { app, upload }
+export { app, upload, path, __dirname, fs }

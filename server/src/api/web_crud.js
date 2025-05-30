@@ -1,11 +1,11 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
-import { app } from "../../desguace.js";
+import { app, upload, path, __dirname, fs } from "../../desguace.js";
 import { logger } from "../log/log.js";
 import {
     verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
     agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
 } from "./funciones_crud.js";
-import { upload } from "../../desguace.js";
+
 /**
  * Llamadas a procedimientos para obtener nombre de columnas
  */
@@ -378,6 +378,33 @@ app.get('/Search', async (req, res) => {
         console.error("❌ Error en /Search:", error);
         res.status(500).json({ error: "Error en la consulta SQL" });
     }
+});
+
+/**
+ * Descargar factura
+ */
+app.get("/descargar/factura/:nombre", (req, res) => {
+    const nombreArchivo = req.params.nombre;
+
+    // Validación: solo permite archivos PDF
+    if (!/^factura_\d+\.pdf$/.test(nombreArchivo)) {
+        console.log(`❌ Nombre de archivo no válido ${nombreArchivo}`);
+        return res.status(400).send("Nombre de archivo no válido.");
+    }
+
+    const rutaFactura = path.join(__dirname, "src", "php", "facturas_generadas", nombreArchivo);
+
+    // Comprueba si el archivo existe
+    fs.access(rutaFactura, fs.constants.F_OK, (err) => {
+        if (err) {
+            console.log(`❌ Error el archivo no existe ${nombreArchivo}`);
+            return res.status(404).send("Archivo no encontrado.");
+        }
+
+        // Envía el archivo como descarga
+        console.log(`✅ Realizando descarga de la factura ${nombreArchivo}`);
+        res.download(rutaFactura, nombreArchivo);
+    });
 });
 
 /**

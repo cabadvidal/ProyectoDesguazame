@@ -69,7 +69,7 @@ export async function realizarPago(datos, socket) {
                 }
             }
             generarFactura(ID_FACTURA);
-            socket.emit("pago", { valido: true });
+            socket.emit("pago", { valido: true, ID_FACTURA: ID_FACTURA });
         } else {
             socket.emit("pago", { valido: false });
         }
