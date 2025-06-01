@@ -322,47 +322,40 @@ aside {
 
 /****************************/
 
-.class-name-agregar-empleados,
-.class-name-agregar-vendedores,
-.class-name-agregar-nominas,
-.class-name-agregar-piezas {
+.class-name-agregar {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Espaciado entre grupos */
     margin-bottom: 20px;
 }
 
-.class-name-agregar-empleados span,
-.class-name-agregar-vendedores span,
-.class-name-agregar-nominas span,
-.class-name-agregar-piezas span {
+.class-name-agregar span {
     display: flex;
     flex-direction: column;
     width: calc(33.33% - 20px); /* 3 columnas */
     min-width: 250px;
 }
 
-.class-name-agregar-empleados p,
-.class-name-agregar-vendedores p,
-.class-name-agregar-nominas p,
-.class-name-agregar-piezas p {
+.class-name-agregar p {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #080808;
+    color: white;
 }
 
-.class-name-agregar-empleados input,
-.class-name-agregar-vendedores input,
-.class-name-agregar-piezas input,
-.class-name-agregar-nominas input,
-.class-name-agregar-empleados select,
-.class-name-agregar-nominas select,
-.class-name-agregar-piezas select {
+.class-name-agregar input,
+.class-name-agregar select {
     width: 100%;
     padding: 8px;
     border: 0 0 0 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+.class-p-fichaje {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px auto;
 }
 
 .class-button-agregar {
@@ -404,20 +397,18 @@ aside {
     word-wrap: break-word; /* Asegura que las palabras largas se ajusten si es necesario */
     white-space: normal; /* Permite que el contenido se ajuste y no quede en una sola línea */
 }
+.class-name-consultar th {
+    color: white;
+}
 
 .class-name-consultar td input{
-    border-radius: 3px;
-    border: 1px solid rgb(8, 8, 8); /* Aplica borde a la tabla, encabezados y celdas */
+     border-radius: 3px;
+    border: 1px solid rgb(8, 8, 8);
     text-align: center;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100%;  /* Ajusta el input al tamaño de su celda */
-    max-width: 100px; /* Limita el tamaño máximo para evitar celdas grandes */
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 75%;
-    word-wrap: break-word; /* Asegura que las palabras largas se ajusten si es necesario */
-    white-space: normal; /* Permite que el contenido se ajuste y no quede en una sola línea */
+    width: 100%;
+    box-sizing: border-box; /* Muy importante para que padding no rompa el ancho */
+    font-size: 14px;
+    padding: 4px;
 }
 
 .class-name-consultar table th {
@@ -494,4 +485,16 @@ select:disabled {
   opacity: 1 !important;
   -webkit-text-fill-color: #000 !important; /* para Safari */
   pointer-events: none; /* Para que siga sin ser editable */
+}
+
+input[type="datetime-local"] {
+    width: 100%;              /* Ocupa todo el ancho del contenedor */
+    max-width: 300px;         /* O ajusta al valor que prefieras */
+    padding: 8px 12px;        /* Espaciado interno legible */
+    font-size: 16px;          /* Tamaño de fuente legible */
+    box-sizing: border-box;  /* Incluye padding dentro del width */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
 }

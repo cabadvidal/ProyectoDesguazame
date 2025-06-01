@@ -2,10 +2,11 @@ import { authUsuarioFire, generarToken } from "./auth_user.js";
 import { registrarUsuario, eliminarUsuarioFIREBASE } from "./reg_user.js";
 import { realizarConsulta } from "../../../mysql/consultas_mysql.js";
 import { logger } from "../../log/log.js";
+import { enviarMensaje } from "./fcm.js";
 
 // Clase para almacenar los datos de los usuarios que se conectan
 class Usuario {
-    constructor(user, pass, FIREBASE_UID, token, socket, tipo_cuenta, id) {
+    constructor(user, pass, FIREBASE_UID, token, socket, tipo_cuenta, id, tokenFcm) {
         this.user = typeof user === 'string' ? user : "Desconocido";
         this.pass = typeof user === 'string' ? pass : "Desconocido";
         this.FIREBASE_UID = FIREBASE_UID;
@@ -13,6 +14,7 @@ class Usuario {
         this.socket = socket;
         this.tipo_cuenta = tipo_cuenta;
         this.id = id;
+        this.tokenFcm = tokenFcm
         this.timeout = this.iniciarTimeout();
     }
 
@@ -54,9 +56,9 @@ class Usuario {
  */
 export async function comprobarCredenciales(socket, datos) {
     try {
-        const { usuario, password } = datos;
+        const { usuario, password, tokenFcm } = datos;
 
-        logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: ${usuario} | Contraseña: ${password}`);
+        logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: ${usuario} | Contraseña: ${password} |  tokenFcm: ${tokenFcm}`);
 
         const sql = 'SELECT * FROM `DATOS_COMUNES` WHERE MAIL = ? AND CONTRASENA = SHA2(?, 256)';
 
@@ -102,18 +104,18 @@ export async function comprobarCredenciales(socket, datos) {
             const apellidos = (APELLIDO_A + " " + APELLIDO_B).trim(); // Elimina espacios extra si un apellido es vacío
             switch (TIPO_USUARIO) {
                 case 'EMPLEADO': {
-                    const user = new Usuario(usuario, password, uidFirebase, token, socket, CAMPO2, ID);
+                    const user = new Usuario(usuario, password, uidFirebase, token, socket, CAMPO2, ID, null);
                     logger.debug(`src/sockets/auth/credenciales.js comprobarCredenciales() || TIPO DE CUENTA en MySQL: ${CAMPO2}`);
-                    global.usuariosConectados .push(user);
+                    global.usuariosConectados.push(user);
                     socket.emit('token_empleado', { 'token': token, 'nombre': NOMBRE, 'apellidos': apellidos, 'tipo_cuenta': CAMPO2 });
                     break;
                 }
                 case 'CLIENTE': {
-                    const user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID);
+                    const user = new Usuario(usuario, password, uidFirebase, token, socket, null, ID, tokenFcm);
                     const sqlTarjeta = `SELECT DATOS_TARJETA FROM CLIENTE WHERE ID_CLIENTE = ?`;
                     const resultadoTarjeta = await realizarConsulta(sqlTarjeta, [ID]);
                     const TARJETA = resultadoTarjeta.length > 0 ? resultadoTarjeta[0].DATOS_TARJETA : null;
-                    global.usuariosConectados .push(user);
+                    global.usuariosConectados.push(user);
                     socket.emit('token_cliente', {
                         'token': token, 'nombre': NOMBRE, 'apellido_a': APELLIDO_A, 'apellido_b': APELLIDO_B, 'direccion': DIRECCION,
                         'codigo_postal': CODIGO_POSTAL, 'ciudad': CIUDAD, 'municipio': MUNICIPIO, 'telefono': TELEFONO, 'movil': MOVIL,
@@ -122,6 +124,13 @@ export async function comprobarCredenciales(socket, datos) {
                     break;
                 }
             }
+
+            if (tokenFcm !== undefined) {
+                setTimeout(() => {
+                    enviarMensaje("Has iniciado sesión", `Con la cuenta de correo ${usuario}`, tokenFcm);
+                }, 30000); // 30seg
+            }
+             
             
             console.log(`✅ Usuario: ${usuario} logueado correctamente. Tipo de cuenta: ${TIPO_USUARIO}.`);
         } else {
@@ -195,15 +204,15 @@ export async function registroUsuario(socket, datos) {
  * Desloguea al usuario por inactividad.
  */
 export async function deslogueUsuario(token) {
-    const index = global.usuariosConectados .findIndex((user) => user.token === token);
+    const index = global.usuariosConectados.findIndex((user) => user.token === token);
     if (index !== -1) {
-        const user = global.usuariosConectados [index];
+        const user = global.usuariosConectados[index];
         user.socket.emit("deslogueado", "Sesión expirada por inactividad.");
         clearTimeout(user.timeout);
         if (user.socket) {
             user.socket.disconnect(true);
         }
-        global.usuariosConectados .splice(index, 1);
+        global.usuariosConectados.splice(index, 1);
         console.warn(`⚠️ Usuario ${user.user} deslogueado por inactividad.`);
     }
 }
@@ -212,11 +221,11 @@ export async function deslogueUsuario(token) {
  * Elimina un usuario cuando se desconecta manualmente.
  */
 export async function eliminarUsuario(token) {
-    const index = global.usuariosConectados .findIndex((user) => user.token === token);
+    const index = global.usuariosConectados.findIndex((user) => user.token === token);
     if (index !== -1) {
-        const user = global.usuariosConectados [index];
+        const user = global.usuariosConectados[index];
         clearTimeout(user.timeout);
-        global.usuariosConectados .splice(index, 1);
+        global.usuariosConectados.splice(index, 1);
         if (user.socket) {
             user.socket.disconnect(true);
         }
@@ -230,5 +239,26 @@ export async function eliminarUsuario(token) {
  * @returns Devuelve True si el token ya existe sino false
  */
 export function verificarToken(token) {
-    return global.usuariosConectados .some(user => user.token === token);
+    return global.usuariosConectados.some(user => user.token === token);
+}
+
+
+/**
+ * Verifica el usuario y devuelve su tokenFcm
+ * @param {String} token Contiene el token generado para el usuario que se acaba de conectar.
+ * @returns Devuelve el tokenFcm del usuario
+ */
+export function obtenerFCM(token) {
+    const usuario = global.usuariosConectados.find(user => user.token === token);
+    return usuario ? usuario.tokenFcm : null;
+}
+
+/**
+ * Obtener el ID del usuario
+ * @param {String} token Contiene el token generado para el usuario que se acaba de conectar.
+ * @returns Devuelve el id del usuario
+ */
+export function obtenerID(token) {
+    const usuario = global.usuariosConectados.find(user => user.token === token);
+    return usuario ? usuario.id : null;
 }

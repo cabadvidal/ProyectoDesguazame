@@ -1,9 +1,10 @@
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { modificarContrasena } from "../sockets/auth/reg_user.js";
 import { generarFactura } from "../factura/factura.js";
+import {obtenerID, verificarToken} from "../sockets/auth/credenciales.js";
 
-const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'RESTABLECER_PASS',
-    'FICHAR', 'VACACIONES', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO', 'PASSWORD', 'RESTABLECER_PASS'
+const tablas = ['CATEGORIAS', 'DATOS_COMUNES', 'VENDEDOR', 'VENDEDORES', 'CLIENTE', 'EMPLEADOS', 'NOMINAS', 'PAGUITA', 'RESTABLECER_PASS', 'FICHAJE',
+    'FICHAR', 'VACACIONES', 'VACAS', 'MARCAS', 'MODELOS', 'FACTURAS', 'PIEZAS', 'PIEZAS_MODELOS', 'LINEA_FACTURA', 'MODELO', 'PASSWORD', 'RESTABLECER_PASS'
 ];
 
 /**
@@ -192,6 +193,72 @@ async function agregarMarcas(datos, res) {
     } catch (error) {
         console.error(`❌ Error src/api/funciones_crud.js al insertar en Marcas: ${error}`);
         return res.status(500).json({ error: `Error al agregar Marcas ${datos.NOMBRE_MARCA}` });
+    }
+}
+
+/**
+ * Agrega una categoría de piezas en la base de datos.
+ * @param {Object} datos - Objeto que contiene la información de la categoría a agregar.
+ * @param {Object} res - Objeto de respuesta HTTP para enviar la respuesta al cliente. 
+ * @returns {Promise<void>} Retorna una respuesta JSON con el resultado de la operación.
+ */
+async function agregarCategorias(datos, res) {
+    try {
+        const sql = `INSERT INTO CATEGORIAS_PIEZAS (NOMBRE_CATEGORIA) VALUES (?)`;
+        const valores = [datos.NOMBRE_CATEGORIA];
+
+        const resultado = await realizarConsulta(sql, valores);
+
+        if (!resultado || !resultado.insertId) {
+            console.error("❌ Error al insertar en CATEGORIAS_PIEZAS.");
+            return res.status(500).json({ error: `Error al agregar categoría ${datos.NOMBRE_CATEGORIA}` });
+        }
+
+        console.log(`✅ Categoría agregada correctamente: ${datos.NOMBRE_CATEGORIA}`);
+        return res.status(200).json({ mensaje: `La categoría ${datos.NOMBRE_CATEGORIA} fue insertada correctamente.` });
+
+    } catch (error) {
+        console.error(`❌ Error al insertar categoría: ${error}`);
+        return res.status(500).json({ error: `Error al agregar categoría ${datos.NOMBRE_CATEGORIA}` });
+    }
+}
+
+/**
+ * Agrega un registro de vacaciones para un empleado.
+ * @param {Object} datos - Objeto con FECHA_INICIO, FECHA_FINAL, CONCEDIDAS (booleano) y EMPLEADOS_FK.
+ * @param {Object} res - Objeto de respuesta HTTP para enviar la respuesta al cliente.
+ * @returns {Promise<void>} Retorna una respuesta JSON con el resultado de la operación.
+ */
+async function agregarVacaciones(datos, res) {
+    try {
+        const { FECHA_INICIO, FECHA_FINAL, CONCEDIDAS = false, token } = datos;
+
+        if (!verificarToken(token)) {
+            return res.status(400).json({ error: "Usuario no válido." });
+        }
+
+        const EMPLEADOS_FK = obtenerID(token);
+
+        if (new Date(FECHA_FINAL) < new Date(FECHA_INICIO)) {
+            return res.status(400).json({ error: "La fecha final no puede ser anterior a la fecha de inicio." });
+        }
+
+        const sql = `INSERT INTO VACACIONES (FECHA_INICIO, FECHA_FINAL, CONCEDIDAS, EMPLEADOS_FK) VALUES (?, ?, ?, ?)`;
+        const valores = [FECHA_INICIO, FECHA_FINAL, CONCEDIDAS, EMPLEADOS_FK];
+
+        const resultado = await realizarConsulta(sql, valores);
+
+        if (!resultado || !resultado.insertId) {
+            console.error("❌ Error al insertar en VACACIONES.");
+            return res.status(500).json({ error: "Error al agregar las vacaciones." });
+        }
+
+        console.log(`✅ Vacaciones agregadas correctamente para empleado ID ${EMPLEADOS_FK}`);
+        return res.status(200).json({ mensaje: "Vacaciones insertadas correctamente en la base de datos." });
+
+    } catch (error) {
+        console.error(`❌ Error al insertar vacaciones: ${error}`);
+        return res.status(500).json({ error: "Error al agregar las vacaciones." });
     }
 }
 
@@ -778,8 +845,8 @@ async function modificarPassword(datos, res) {
  */
 async function eliminarRegistros(datos, tabla, res) {
     try {
-        
-        const objeto = datos[0]; 
+
+        const objeto = datos[0];
         const key = Object.keys(objeto)[0];
         const ID = objeto[key];
         const sql = `DELETE FROM ${tabla} WHERE ${key} = ?`;
@@ -803,6 +870,6 @@ async function eliminarRegistros(datos, tabla, res) {
 }
 
 export {
-    verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
-    agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
+    verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas, agregarCategorias,
+    agregarVacaciones, agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
 }

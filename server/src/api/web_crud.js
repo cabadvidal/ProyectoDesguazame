@@ -2,9 +2,10 @@ import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { app, upload, path, __dirname, fs } from "../../desguace.js";
 import { logger } from "../log/log.js";
 import {
-    verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas,
-    agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
+    verificarTabla, agregarEmpleado, agregarVendedores, agregarModelos, agregarMarcas, agregarPiezas, agregarCategorias,
+    agregarVacaciones, agregarNominas, modificarDatos, modificarPassword, eliminarRegistros
 } from "./funciones_crud.js";
+import { obtenerID, verificarToken } from "../sockets/auth/credenciales.js";
 
 /**
  * Llamadas a procedimientos para obtener nombre de columnas
@@ -39,6 +40,15 @@ app.post('/ObtenerNombreColumnas', (req, res) => {
             break;
         case 'PASSWORD':
             sql = 'CALL ObtenerNombresColumnasPassword();';
+            break;
+        case 'CATEGORIAS':
+            sql = 'CALL ObtenerNombresColumnasCategorias();';
+            break;
+        case 'FICHAR':
+            sql = 'CALL ObtenerNombresColumnasFichaje();';
+            break;
+        case 'VACACIONES':
+            sql = 'CALL ObtenerNombresColumnasVacaciones();';
             break;
     }
     logger.debug(`/src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: ${tabla}`);
@@ -152,6 +162,12 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             JOIN EMPLEADOS e ON n.EMPLEADOS_FK = e.ID_EMPLEADOS
             JOIN DATOS_COMUNES dc ON e.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
+        case 'PAGUITA':
+            sql = `
+            SELECT ID_NOMINAS, ESTADO, DATE_FORMAT(MES, '%Y-%m') AS MES   
+            FROM NOMINAS 
+            WHERE EMPLEADOS_FK = ?`;
+            break;
         case 'FICHAR':
             sql = `
             SELECT f.ID_FICHAJE, f.HORA_ENTRADA, f.HORA_SALIDA, dc.DNI_CIF
@@ -159,12 +175,24 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             LEFT JOIN EMPLEADOS e ON f.EMPLEADOS_FK = e.ID_EMPLEADOS
             LEFT JOIN DATOS_COMUNES dc ON e.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
             break;
+        case 'FICHAJE':
+            sql = `
+            SELECT ID_FICHAJE, HORA_ENTRADA, HORA_SALIDA
+            FROM FICHAJE 
+            WHERE EMPLEADOS_FK = ?`;
+            break;
         case 'VACACIONES':
             sql = `
             SELECT v.ID_VACACIONES, v.FECHA_INICIO, v.FECHA_FINAL, v.CONCEDIDAS, dc.DNI_CIF
             FROM VACACIONES v
             LEFT JOIN EMPLEADOS e ON v.EMPLEADOS_FK = e.ID_EMPLEADOS
             LEFT JOIN DATOS_COMUNES dc ON e.DATOS_COMUNES_FK = dc.ID_DATOS_COMUNES`;
+            break;
+        case 'VACAS':
+            sql = `
+            SELECT ID_VACACIONES, FECHA_INICIO, FECHA_FINAL, CONCEDIDAS
+            FROM VACACIONES 
+            WHERE EMPLEADOS_FK = ?`;
             break;
         case 'MARCAS':
             sql = `
@@ -219,30 +247,47 @@ app.post('/ObtenerDatosTablas', (req, res) => {
             break;
     }
     logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || tabla consultada: ${tabla}`);
-    if (tabla === 'RESTABLECER_PASS') {
-        console.warn(`la consulta sql = ${sql} \n
-        el valor es = ${valor}`);
-        realizarConsulta(sql, [valor])
-            .then(resultado => {
-                logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
-                console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
-                res.json(resultado);
-            })
-            .catch(error => {
-                console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
-                res.status(500).json({ error: "Error en la consulta SQL" });
-            });
-    } else {
-        realizarConsulta(sql, tabla)
-            .then(resultado => {
-                logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
-                console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
-                res.json(resultado);
-            })
-            .catch(error => {
-                console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
-                res.status(500).json({ error: "Error en la consulta SQL" });
-            });
+    switch (tabla) {
+        case 'RESTABLECER_PASS':
+            realizarConsulta(sql, [valor])
+                .then(resultado => {
+                    logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
+                    console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
+                    res.json(resultado);
+                })
+                .catch(error => {
+                    console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
+                    res.status(500).json({ error: "Error en la consulta SQL" });
+                });
+            break;
+        case 'FICHAJE': case 'VACAS': case 'PAGUITA':
+            valor = datos.token;
+            if(!verificarToken(valor)){
+                res.status(500).json({ error: "Usuario no valido" });
+            }
+            const ID = obtenerID(valor);
+            realizarConsulta(sql, [ID])
+                .then(resultado => {
+                    logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
+                    console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
+                    res.json(resultado);
+                })
+                .catch(error => {
+                    console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
+                    res.status(500).json({ error: "Error en la consulta SQL" });
+                });
+            break;
+        default:
+            realizarConsulta(sql, tabla)
+                .then(resultado => {
+                    logger.debug(`/src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla ${tabla} ` + JSON.stringify(resultado));
+                    console.log(`✅ Datos para la tabla ${tabla} obtenidos correctamente.`);
+                    res.json(resultado);
+                })
+                .catch(error => {
+                    console.error(`❌ Error al obtener datos de la tabla ${tabla}: ${error}`);
+                    res.status(500).json({ error: "Error en la consulta SQL" });
+                });
     }
 });
 
@@ -280,8 +325,8 @@ app.get('/ObtenerPiezas', async (req, res) => {
  */
 app.get('/ObtenerSearch', async (req, res) => {
     console.log("✅ Ruta /ObtenerSearch ha sido llamada");
-    const {TABLA, MARCA} = req.query;
-    
+    const { TABLA, MARCA } = req.query;
+
     if (!TABLA || !verificarTabla(TABLA)) {
         return res.status(400).json({ error: "Tabla no encontrada." });
     }
@@ -302,16 +347,16 @@ app.get('/ObtenerSearch', async (req, res) => {
     }
     if (TABLA.includes('MODELOS')) {
         logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || tabla consultada: ${TABLA}`);
-    realizarConsulta(sql, [MARCA])
-        .then(resultado => {
-            logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla ${TABLA} ` + JSON.stringify(resultado));
-            console.log(`✅ Datos clave foranea obtenidos correctamente para la tabla ${TABLA}`);
-            res.json(resultado);
-        })
-        .catch(error => {
-            console.error(`❌ Error al obtener datos de ObtenerSearch: ${error}`);
-            res.status(500).json({ error: "Error en la consulta SQL" });
-        });
+        realizarConsulta(sql, [MARCA])
+            .then(resultado => {
+                logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla ${TABLA} ` + JSON.stringify(resultado));
+                console.log(`✅ Datos clave foranea obtenidos correctamente para la tabla ${TABLA}`);
+                res.json(resultado);
+            })
+            .catch(error => {
+                console.error(`❌ Error al obtener datos de ObtenerSearch: ${error}`);
+                res.status(500).json({ error: "Error en la consulta SQL" });
+            });
         return;
     }
     logger.debug(`/src/api/web_crud.js GET: ObtenerSearch || tabla consultada: ${TABLA}`);
@@ -329,10 +374,98 @@ app.get('/ObtenerSearch', async (req, res) => {
 });
 
 /**
+ * Obtener datos fichar dia de hoy
+ */
+app.post('/ObtenerFicharHoy', async (req, res) => {
+    console.log("✅ Ruta /ObtenerFicharHoy llamada");
+    const { token } = req.body;
+
+    if (!verificarToken(token)) {
+        return res.status(400).json({ error: "Usuario no válido." });
+    }
+
+    const ID = obtenerID(token);
+
+    let sql = `SELECT ID_FICHAJE, HORA_ENTRADA 
+               FROM FICHAJE 
+               WHERE EMPLEADOS_FK = ? AND HORA_SALIDA IS NULL 
+               ORDER BY HORA_ENTRADA DESC LIMIT 1`;
+
+    try {
+        const resultado = await realizarConsulta(sql, [ID]);
+        console.log(`El resultado de los fichajes de hoy para el ID ${ID} es ${JSON.stringify(resultado)}`)
+        res.json(resultado);
+    } catch (error) {
+        console.error(`❌ Error en ObtenerFicharHoy: ${error}`);
+        res.status(500).json({ error: "Error en la consulta SQL" });
+    }
+});
+
+/**
+ * Fichar entrada
+ */
+app.post('/FicharEntrada', async (req, res) => {
+    const { token } = req.body;
+
+    if (!verificarToken(token)) {
+        return res.status(400).json({ error: "Usuario no válido." });
+    }
+
+    const ID = obtenerID(token);
+
+    // Verificar si ya hay un fichaje hoy sin salida
+    const sqlVerificacion = `
+        SELECT ID_FICHAJE FROM FICHAJE
+        WHERE EMPLEADOS_FK = ? 
+        AND DATE(HORA_ENTRADA) = CURDATE() 
+        LIMIT 1
+    `;
+
+    try {
+        const resultado = await realizarConsulta(sqlVerificacion, [ID]);
+        if (resultado.length > 0) {
+            return res.status(400).json({ error: "Ya existe un fichaje de entrada con salida." });
+        }
+
+        const sqlInsertar = `INSERT INTO FICHAJE (HORA_ENTRADA, EMPLEADOS_FK) VALUES (NOW(), ?)`;
+        await realizarConsulta(sqlInsertar, [ID]);
+
+        logger.debug(`/src/api/web_crud.js POST: FicharEntrada || Entrada registrada para empleado ID: ${ID}`);
+        res.json({ exito: true, mensaje: "✅ Fichaje de entrada registrado correctamente." });
+
+    } catch (error) {
+        console.error("❌ Error al registrar fichaje de entrada:", error);
+        res.status(500).json({ error: "Error al registrar la entrada." });
+    }
+});
+
+/**
+ * Fichar salida
+ */
+app.post('/FicharSalida', async (req, res) => {
+    const { id_fichaje } = req.body;
+
+    if (!id_fichaje) {
+        return res.status(400).json({ error: "ID de fichaje no proporcionado." });
+    }
+
+    const sql = `UPDATE FICHAJE SET HORA_SALIDA = NOW() WHERE ID_FICHAJE = ?`;
+
+    try {
+        await realizarConsulta(sql, [id_fichaje]);
+        logger.debug(`/src/api/web_crud.js POST: FicharSalida || Salida registrada para fichaje ID: ${id_fichaje}`);
+        res.json({ exito: true, mensaje: "✅ Fichaje de salida registrado correctamente." });
+    } catch (error) {
+        console.error("❌ Error al registrar fichaje de salida:", error);
+        res.status(500).json({ error: "Error al registrar la salida." });
+    }
+});
+
+/**
  * Obtener datos de la búsqueda solicitada
  */
 app.get('/Search', async (req, res) => {
-    const {TEXTO, CATEGORIAS, MARCAS, MODELOS} = req.query;
+    const { TEXTO, CATEGORIAS, MARCAS, MODELOS } = req.query;
     let sql = `SELECT p.ID_PIEZAS, p.DESCRIPCION, p.PESO, p.PRECIO, p.REFERENCIA, p.FECHA_YEAR, p.IMAGENES, 
     c.NOMBRE_CATEGORIA AS CATEGORIAS, dc_vendedor.RAZON_SOCIAL, m.NOMBRE_MODELO, mar.NOMBRE_MARCA 
     FROM PIEZAS p
@@ -345,7 +478,7 @@ app.get('/Search', async (req, res) => {
     LEFT JOIN MODELO m ON pm.MODELO_FK = m.ID_MODELO
     LEFT JOIN MARCAS mar ON m.MARCA_MODELO_FK = mar.ID_MARCAS 
     WHERE p.VENDIDO = FALSE`
-     const params = [];
+    const params = [];
 
     if (TEXTO && TEXTO.trim() !== "") {
         sql += " AND (p.DESCRIPCION LIKE ? OR p.REFERENCIA LIKE ?)";
@@ -440,6 +573,12 @@ app.put('/AgregarDatosTabla', async (req, res) => {
             break;
         case "NOMINAS":
             await agregarNominas(datos, res);
+            break;
+        case "VACACIONES":
+            await agregarVacaciones(datos, res);
+            break;
+        case "CATEGORIAS":
+            await agregarCategorias(datos, res);
             break;
         default:
             return res.status(400).json({ error: "Tabla no soportada." });

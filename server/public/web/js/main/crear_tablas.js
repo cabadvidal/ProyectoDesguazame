@@ -9,8 +9,9 @@ async function realizarAccionNav(dato, menu_seleccionado) {
     accion = accion.toLowerCase();
     menu_seleccionado = menu_seleccionado.replace('í', 'i');
     let datos = null;
+    console.log(` Accion: ${accion}`)
     switch (accion) {
-        case 'agregar':
+        case 'agregar': case 'solicitar':
             datos = await obtenerNombresColumnas(menu_seleccionado.toUpperCase());
             if (datos) {
                 crearTablaAgregar(datos, menu_seleccionado);
@@ -24,6 +25,27 @@ async function realizarAccionNav(dato, menu_seleccionado) {
             break;
         case 'modificar':
             modificarPassword();
+            break;
+        case 'fichar':
+            crearFormularioFichar();
+            break;
+        case 'ver':
+            let tipo = dato.trim().split(' ')[1];
+            console.log(`Tipo ${tipo}`)
+            switch (tipo) {
+                case 'Fichajes':
+                    datos = await consultarDatos('FICHAJE', { token: token });
+                    crearTablaConsulta(datos, 'FICHAR');
+                    break;
+                case 'Vacaciones':
+                    datos = await consultarDatos('VACAS', { token: token });
+                    crearTablaConsulta(datos, 'VACACIONES');
+                    break;
+                case 'Nominas':
+                    datos = await consultarDatos('PAGUITA', { token: token });
+                    crearTablaConsulta(datos, 'NOMINAS');
+                    break;
+            }
             break;
         default:
             console.warn(`❌ Acción no reconocida: ${accion}`);
@@ -63,10 +85,14 @@ async function crearTablaAgregar(columnas, tabla) {
         categorias = await obtenerDatosFK('CATEGORIAS');
     }
 
+    if (tabla.toUpperCase().includes('NOMINAS')) {
+        empleados = await obtenerDatosFK('EMPLEADOS');
+    }
+
     for (let i = 0; i < columnas.length; i++) {
         if (i % 3 === 0) {
             div = document.createElement('div');
-            div.className = `class-name-agregar-${tabla.toLowerCase()}`;
+            div.className = `class-name-agregar`;
         }
         let span = document.createElement('span');
         let p = document.createElement('p');
@@ -306,7 +332,7 @@ async function crearTablaAgregar(columnas, tabla) {
         let resultado = null;
         if (isDatos.isCorrecto) {
             console.log(`Datos correctos`);
-            if(!tabla.includes('PIEZAS')) {
+            if (!tabla.includes('PIEZAS')) {
                 resultado = await agregarDatos(datos, tabla.toUpperCase());
             } else {
                 resultado = await agregarDatosFormData(datos, tabla);
@@ -411,7 +437,7 @@ function agregarSelect(modelos, contenedor) {
  */
 function obtenerDatosAgregar(table) {
     // Seleccionamos todos los divs que coinciden con la clase correspondiente
-    let divs = Array.from(document.querySelectorAll('div')).filter(div => div.classList.contains(`class-name-agregar-${table}`));
+    let divs = Array.from(document.querySelectorAll('div')).filter(div => div.classList.contains(`class-name-agregar`));
     let filaDatos = {};
     let modelosArray = [];
     let imagenesArray = [];
@@ -460,12 +486,13 @@ function obtenerDatosAgregar(table) {
                 filaDatos[select.name] = select.value;
             }
         });
+
         // Aquí recogemos todos los selects MODELO_FK dentro del contenedor-modelos
         let modelosSelects = div.querySelectorAll('.contenedor-modelos select[name="MODELO_FK"]');
         modelosSelects.forEach(select => {
             modelosArray.push(select.value);
         });
-        
+
         // Recoge todas las imágenes de los inputs file
         let imagenInputs = div.querySelectorAll('input[type="file"][name="IMAGENES"]');
         imagenInputs.forEach(input => {
@@ -474,6 +501,10 @@ function obtenerDatosAgregar(table) {
             }
         })
     });
+
+    if (table.toUpperCase().includes('VACACIONES')) {
+        filaDatos['token'] = token;
+    }
 
     if (modelosArray.length > 0) {
         filaDatos['MODELOS_FK'] = modelosArray;
@@ -560,16 +591,18 @@ async function crearTablaConsulta(datos, tabla) {
 
         tr.appendChild(th);
     });
+    console.log(`Tipod e cuente: ${tipo_cuenta}`);
+    if (!(["FICHAR", "NOMINAS"].includes(tabla) && tipo_cuenta === 'GESTOR')) {
+        for (let i = 0; i < 2; i++) {
+            let th = document.createElement('th');
+            if (tabla === 'RESTABLECER_PASS') {
+                th.innerHTML = i === 0 ? 'MODIFICAR' : 'NUEVA CONTRASEÑA';
+            } else {
+                th.innerHTML = i === 0 ? 'MODIFICAR' : 'ELIMINAR';
+            }
 
-    for (let i = 0; i < 2; i++) {
-        let th = document.createElement('th');
-        if (tabla === 'RESTABLECER_PASS') {
-            th.innerHTML = i === 0 ? 'MODIFICAR' : 'NUEVA CONTRASEÑA';
-        } else {
-            th.innerHTML = i === 0 ? 'MODIFICAR' : 'ELIMINAR';
+            tr.appendChild(th);
         }
-
-        tr.appendChild(th);
     }
 
     table_head.appendChild(tr);
@@ -963,153 +996,158 @@ async function crearTablaConsulta(datos, tabla) {
         });
 
         let idFila = Object.values(fila)[0];
-        if (tabla !== 'RESTABLECER_PASS') {
-            // Crear los botones de modificar y eliminar
-            let td_Mod = document.createElement('td');
-            let button_Mod = document.createElement('button');
-            button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
-            button_Mod.addEventListener('click', async () => {
-                if (button_Mod.innerHTML === '✏️') {
-                    button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
-                    elementosFila.forEach((elemento, index) => {
-                        if (index !== 0) {  // Evitar que el primer elemento se habilite
-                            elemento.disabled = false;
-                        }
-                        if (elemento.name === 'BASE' || elemento.name === 'IVA' || elemento.name === 'BASE' || elemento.name === 'PRECIO_PIEZA'
-                            && tabla.toUpperCase() === 'FACTURAS') {
-                            elemento.disabled = true;
-                        }
 
-                        if (elemento.name === 'DNI_CIF' || elemento.name === 'FECHA_INICIO' || elemento.name === 'FECHA_FINAL' && tabla.toUpperCase() === 'VACACIONES') {
-                            elemento.disabled = true;
-                        }
+        if (!(["FICHAR", "NOMINAS"].includes(tabla) && tipo_cuenta === 'GESTOR')) {
 
-                        if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'FICHAR') {
-                            elemento.disabled = true;
-                        }
-                    });  // Habilitar inputs 
-                } else {
-                    button_Mod.innerHTML = '✏️';  // Volver al lápiz
-                    elementosFila.forEach(elemento => elemento.disabled = true);  // Deshabilitar edición
 
-                    // Obtener nuevos valores del input y select
-                    let nuevosDatos = elementosFila.map(el => el.value);
-                    console.log(`Los datos son ${nuevosDatos}`);
-                    let datosModificar = {};
-                    // Agregar los datos modificados como un JSON
-                    Object.keys(datos[0]).forEach((key, index) => {
-                        console.log(`El valor es ${nuevosDatos[index]} la clave es: ${key}`);
-                        if (key === 'NOMBRE_MARCA' && tabla.toUpperCase() === 'MODELOS') {
-                            datosModificar['MARCA_MODELO_FK'] = nuevosDatos[index].trim();
-                            return;
-                        }
-                        if (key === 'MES') {
-                            datosModificar[key] = nuevosDatos[index] + '-01';
-                            return;
-                        }
-                        if (key === 'EMPLEADOS_FK') {
-                            datosModificar[key] = nuevosDatos[index + 1];
-                            return;
-                        }
+            if (tabla !== 'RESTABLECER_PASS') {
+                // Crear los botones de modificar y eliminar
+                let td_Mod = document.createElement('td');
+                let button_Mod = document.createElement('button');
+                button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
+                button_Mod.addEventListener('click', async () => {
+                    if (button_Mod.innerHTML === '✏️') {
+                        button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
+                        elementosFila.forEach((elemento, index) => {
+                            if (index !== 0) {  // Evitar que el primer elemento se habilite
+                                elemento.disabled = false;
+                            }
+                            if (elemento.name === 'BASE' || elemento.name === 'IVA' || elemento.name === 'BASE' || elemento.name === 'PRECIO_PIEZA'
+                                && tabla.toUpperCase() === 'FACTURAS') {
+                                elemento.disabled = true;
+                            }
 
-                        if (tabla.toUpperCase() === 'FACTURAS' && key === 'DNI_CIF') {
-                            datosModificar['PIEZAS_FK'] = nuevosDatos[index];
-                            return
-                        }
-                        if (tabla.toUpperCase() === 'FACTURAS' && key === 'PIEZAS_FK') {
-                            datosModificar['PRECIO_PIEZA'] = nuevosDatos[index];
-                            return
-                        }
-                        if (tabla.toUpperCase() === 'FACTURAS' && key === 'FECHA') {
-                            let fecha = nuevosDatos[index];
-                            let formatFecha = fecha.substring(0, 10);
-                            datosModificar['FECHA'] = formatFecha;
-                            return
-                        }
-                        if (tabla.toUpperCase() === 'FACTURAS' && (key === 'REFERENCIA' || key === 'PRECIO_PIEZA')) { return }
-                        if (tabla.toUpperCase() === 'FICHAR' && key === 'DNI_CIF') { return }
+                            if (elemento.name === 'DNI_CIF' || elemento.name === 'FECHA_INICIO' || elemento.name === 'FECHA_FINAL' && tabla.toUpperCase() === 'VACACIONES') {
+                                elemento.disabled = true;
+                            }
 
-                        datosModificar[key] = nuevosDatos[index];
-                    });
-                    if (tabla.toUpperCase() === 'VACACIONES') {
-                        let fechaInicio = new Date(datosModificar['FECHA_INICIO']);
-                        let fechaFinal = new Date(datosModificar['FECHA_FINAL']);
-                        if (fechaInicio >= fechaFinal) {
-                            popUpError(`La fecha final: ${datosModificar['FECHA_FINAL']}, tiene que ser superior a la fecha de inicio: ${datosModificar['FECHA_INICIO']}.`)
-                            return;
+                            if (elemento.name === 'DNI_CIF' && tabla.toUpperCase() === 'FICHAR') {
+                                elemento.disabled = true;
+                            }
+                        });  // Habilitar inputs 
+                    } else {
+                        button_Mod.innerHTML = '✏️';  // Volver al lápiz
+                        elementosFila.forEach(elemento => elemento.disabled = true);  // Deshabilitar edición
+
+                        // Obtener nuevos valores del input y select
+                        let nuevosDatos = elementosFila.map(el => el.value);
+                        console.log(`Los datos son ${nuevosDatos}`);
+                        let datosModificar = {};
+                        // Agregar los datos modificados como un JSON
+                        Object.keys(datos[0]).forEach((key, index) => {
+                            console.log(`El valor es ${nuevosDatos[index]} la clave es: ${key}`);
+                            if (key === 'NOMBRE_MARCA' && tabla.toUpperCase() === 'MODELOS') {
+                                datosModificar['MARCA_MODELO_FK'] = nuevosDatos[index].trim();
+                                return;
+                            }
+                            if (key === 'MES') {
+                                datosModificar[key] = nuevosDatos[index] + '-01';
+                                return;
+                            }
+                            if (key === 'EMPLEADOS_FK') {
+                                datosModificar[key] = nuevosDatos[index + 1];
+                                return;
+                            }
+
+                            if (tabla.toUpperCase() === 'FACTURAS' && key === 'DNI_CIF') {
+                                datosModificar['PIEZAS_FK'] = nuevosDatos[index];
+                                return
+                            }
+                            if (tabla.toUpperCase() === 'FACTURAS' && key === 'PIEZAS_FK') {
+                                datosModificar['PRECIO_PIEZA'] = nuevosDatos[index];
+                                return
+                            }
+                            if (tabla.toUpperCase() === 'FACTURAS' && key === 'FECHA') {
+                                let fecha = nuevosDatos[index];
+                                let formatFecha = fecha.substring(0, 10);
+                                datosModificar['FECHA'] = formatFecha;
+                                return
+                            }
+                            if (tabla.toUpperCase() === 'FACTURAS' && (key === 'REFERENCIA' || key === 'PRECIO_PIEZA')) { return }
+                            if (tabla.toUpperCase() === 'FICHAR' && key === 'DNI_CIF') { return }
+
+                            datosModificar[key] = nuevosDatos[index];
+                        });
+                        if (tabla.toUpperCase() === 'VACACIONES') {
+                            let fechaInicio = new Date(datosModificar['FECHA_INICIO']);
+                            let fechaFinal = new Date(datosModificar['FECHA_FINAL']);
+                            if (fechaInicio >= fechaFinal) {
+                                popUpError(`La fecha final: ${datosModificar['FECHA_FINAL']}, tiene que ser superior a la fecha de inicio: ${datosModificar['FECHA_INICIO']}.`)
+                                return;
+                            }
                         }
+                        let resultado = await actualizarDatos(datosModificar, tabla);
+                        popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
+                        console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
                     }
-                    let resultado = await actualizarDatos(datosModificar, tabla);
-                    popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
-                    console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
-                }
-            });
+                });
 
-            td_Mod.appendChild(button_Mod);
-            tr_body.appendChild(td_Mod);
+                td_Mod.appendChild(button_Mod);
+                tr_body.appendChild(td_Mod);
 
-            let td_Del = document.createElement('td');
-            let button_Del = document.createElement('button');
-            button_Del.innerHTML = '❌';  // Ícono de eliminar
-            button_Del.addEventListener('click', async () => {
-                if (menuVerificarBorrado(idFila, tabla)) {
-                    let key = Object.keys(fila)[0];
-                    let datosEliminar = [{ [key]: idFila }];
-                    console.log(`Eliminar registro con ID: ${idFila}`);
-                    let resultado = await eliminarDatos(datosEliminar, tabla);
-                    popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
-                }
-                return;
-            });
-            td_Del.appendChild(button_Del);
-            tr_body.appendChild(td_Del);
-        } else {
-            let td_Mod = document.createElement('td');
-            let button_Mod = document.createElement('button');
-            let input_pass = document.createElement('input');
-            button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
-            button_Mod.addEventListener('click', async () => {
-                if (button_Mod.innerHTML === '✏️') {
-                    button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
-                    input_pass.disabled = false;
-                } else {
-                    button_Mod.innerHTML = '✏️';  // Volver al lápiz
-                    input_pass.disabled = true;
-
-                    // Obtener nuevos valores del input y select
-                    let nuevosDatos = elementosFila.map(el => el.value);
-                    console.log(`Los datos son ${nuevosDatos}`);
-                    let datosModificar = {};
-                    datosModificar['ID_DATOS_COMUNES'] = idFila;
-                    let value = input_pass.value;
-                    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,20}$/;;
-                    const esValida = regex.test(value);
-                    if (!esValida) {
-                        popUpError(`❌ La contraseña: ${value}. Tiene que tener una longitud entre 8 y 20 caracteres.` +
-                            `Contener números, letras minúsculas y mayúsculas.` +
-                            `Y al menos uno de los siguientes caracteres:` +
-                            `¡ " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ \\\` { | } ~ _`);
-                        return;
+                let td_Del = document.createElement('td');
+                let button_Del = document.createElement('button');
+                button_Del.innerHTML = '❌';  // Ícono de eliminar
+                button_Del.addEventListener('click', async () => {
+                    if (menuVerificarBorrado(idFila, tabla)) {
+                        let key = Object.keys(fila)[0];
+                        let datosEliminar = [{ [key]: idFila }];
+                        console.log(`Eliminar registro con ID: ${idFila}`);
+                        let resultado = await eliminarDatos(datosEliminar, tabla);
+                        popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
                     }
-                    datosModificar[tabla] = input_pass.value;
+                    return;
+                });
+                td_Del.appendChild(button_Del);
+                tr_body.appendChild(td_Del);
+            } else {
+                let td_Mod = document.createElement('td');
+                let button_Mod = document.createElement('button');
+                let input_pass = document.createElement('input');
+                button_Mod.innerHTML = '✏️';  // Ícono de lápiz para modificar
+                button_Mod.addEventListener('click', async () => {
+                    if (button_Mod.innerHTML === '✏️') {
+                        button_Mod.innerHTML = '💾';  // Cambiar a icono de guardar
+                        input_pass.disabled = false;
+                    } else {
+                        button_Mod.innerHTML = '✏️';  // Volver al lápiz
+                        input_pass.disabled = true;
+
+                        // Obtener nuevos valores del input y select
+                        let nuevosDatos = elementosFila.map(el => el.value);
+                        console.log(`Los datos son ${nuevosDatos}`);
+                        let datosModificar = {};
+                        datosModificar['ID_DATOS_COMUNES'] = idFila;
+                        let value = input_pass.value;
+                        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*\s).{8,20}$/;;
+                        const esValida = regex.test(value);
+                        if (!esValida) {
+                            popUpError(`❌ La contraseña: ${value}. Tiene que tener una longitud entre 8 y 20 caracteres.` +
+                                `Contener números, letras minúsculas y mayúsculas.` +
+                                `Y al menos uno de los siguientes caracteres:` +
+                                `¡ " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ \\\` { | } ~ _`);
+                            return;
+                        }
+                        datosModificar[tabla] = input_pass.value;
 
 
-                    let resultado = await actualizarDatos(datosModificar, tabla);
-                    popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
-                    console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
-                }
-            });
-            td_Mod.appendChild(button_Mod);
-            tr_body.appendChild(td_Mod);
+                        let resultado = await actualizarDatos(datosModificar, tabla);
+                        popUpError(`${resultado.mensaje ? resultado.mensaje : resultado.error}`);
+                        console.log(`Guardando cambios para ID: ${idFila}`, JSON.stringify(datosModificar));
+                    }
+                });
+                td_Mod.appendChild(button_Mod);
+                tr_body.appendChild(td_Mod);
 
-            let td_pass = document.createElement('td');
+                let td_pass = document.createElement('td');
 
-            input_pass.placeholder = 'Nueva Contraseña';
-            input_pass.name = 'RESTABLECER_PASS';
-            input_pass.disabled = true;
+                input_pass.placeholder = 'Nueva Contraseña';
+                input_pass.name = 'RESTABLECER_PASS';
+                input_pass.disabled = true;
 
-            td_pass.appendChild(input_pass);
-            tr_body.appendChild(td_pass);
+                td_pass.appendChild(input_pass);
+                tr_body.appendChild(td_pass);
+            }
         }
 
         table_body.appendChild(tr_body);
@@ -1254,3 +1292,40 @@ function menuVerificarBorrado(id, tabla) {
     div.appendChild(p);
     menu.appendChild(div);
 }
+
+/**
+ * Función que crea la interfaz para que el usuario pueda fichar
+ */
+async function crearFormularioFichar() {
+    let datos = await obtenerDatosFichaje();
+    let div = document.getElementById('table-container');
+    div.innerHTML = '';
+
+    let button = document.createElement('button');
+
+    if (datos.length > 0) {
+        // Hay fichaje sin salida => mostrar para fichar salida
+        let p = document.createElement('p');
+        p.textContent = 'Fichaje de entrada: ' + datos[0].HORA_ENTRADA;
+        p.className = `class-p-fichaje`;
+        div.appendChild(p);
+
+        button.textContent = 'Fichar salida';
+        button.id = 'fichar_salida';
+        button.className = 'class-button-agregar';
+        button.addEventListener('click', function () {
+            agregarFichaje(true, datos[0].ID_FICHAJE);
+        });
+    } else {
+        // No hay fichaje hoy => mostrar para fichar entrada
+        button.textContent = 'Fichar entrada';
+        button.id = 'fichar_entrada';
+        button.className = 'class-button-agregar';
+        button.addEventListener('click', function () {
+            agregarFichaje(false);
+        });
+    }
+
+    div.appendChild(button);
+}
+

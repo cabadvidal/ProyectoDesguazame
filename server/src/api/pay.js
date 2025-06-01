@@ -1,7 +1,8 @@
 import { logger } from "../log/log.js";
 import { realizarConsulta } from "../../mysql/consultas_mysql.js";
 import { generarFactura } from "../factura/factura.js";
-import { verificarToken } from "../sockets/auth/credenciales.js";
+import { verificarToken, obtenerFCM } from "../sockets/auth/credenciales.js";
+import { enviarMensaje } from "../sockets/auth/fcm.js";
 
 /**
  * Realiza el proceso completo de pago de una factura:
@@ -48,20 +49,20 @@ export async function realizarPago(datos, socket) {
         global.usuariosConectados.forEach(usr => {
             if (usr.token === TOKEN) CLIENTE_FK = usr.id;
         });
-    
+
         if (CLIENTE_FK === null) {
             socket.emit("pago", { valido: false });
             return;
         }
         // FUNCIONA HASTA AQUÍ
         const resultadoFactura = await realizarConsulta(SQLFactura, [BASE, IVA, TIPO_PAGO, CLIENTE_FK]);
-    
+
         if (resultadoFactura && resultadoFactura.insertId) {
             const ID_FACTURA = resultadoFactura.insertId;
             const PIEZAS = datos.PIEZAS;
             for (const pieza of PIEZAS) {
                 const resultadoLinea = await realizarConsulta(SQLLineaFactura, [pieza.ID_PIEZA, ID_FACTURA]);
-    
+
                 if (resultadoLinea) {
                     const ID_LINEA = resultadoLinea.insertId;
                     await realizarConsulta(procedimientoActualizarLinea, [ID_LINEA]);
@@ -73,6 +74,14 @@ export async function realizarPago(datos, socket) {
         } else {
             socket.emit("pago", { valido: false });
         }
+        console.log(`Compra realizada`);
+        const tokenFcm = obtenerFCM();
+        if (tokenFcm && tokenFcm !== null) {
+            setTimeout(() => {
+                enviarMensaje("Has realizado una compra", `Pedido tramitado. Muchas gracisa por su compra`, tokenFcm);
+            }, 1200000); // 20 min
+        }
+
     } catch (error) {
         console.log("error al realizar pago src/api/pay.js " + error);
         socket.emit("pago", { valido: false });

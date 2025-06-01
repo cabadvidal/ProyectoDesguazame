@@ -283,3 +283,73 @@ async function eliminarDatos(datos, tabla) {
             });
     });
 }
+
+/**
+ * Obtener datos de fichaje del día de hoy
+ * @returns {Promise<Object>} - Respuesta del servidor.
+ */
+async function obtenerDatosFichaje() {
+    return new Promise((resolve, reject) => {
+        confirmarConexion(`Obtener datos del fichaje: FICHAR`)
+            .then((valido) => {
+                if (!valido) {
+                    console.log("Conexión no válida");
+                    popUpError('❌ No se han podido obtener datos.');
+                    reject("Conexión no válida");
+                    return;
+                }
+
+                fetch(`/ObtenerFicharHoy`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ token: token })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Datos recibidos:", data);
+                        resolve(data);
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener los datos:", error);
+                        popUpError('❌ No se han podido obtener datos.');
+                        reject(error);
+                    });
+            })
+            .catch(() => {
+                console.log("Error al confirmar conexión");
+                popUpError('❌ No se han podido obtener datos.');
+                reject("Error al confirmar conexión");
+            });
+    });
+}
+
+/**
+ * Gestiona el agregar el fichaje de entrada o de salida
+ * @param {*} id Contiene el id del empleado o el id del fichaje actualizar
+ * @param {*} isSalida Indica si es un fichaje de entrada o salida
+ */
+function agregarFichaje(isSalida, idFichaje = null) {
+    const ruta = isSalida ? "/FicharSalida" : "/FicharEntrada";
+    const body = isSalida ? { id_fichaje: idFichaje } : { token: token };
+
+    fetch(ruta, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.exito) {
+                popUpError(data.mensaje);
+                crearFormularioFichar();
+            } else {
+                popUpError(data.error || "❌ Error inesperado");
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            popUpError("❌ Error al fichar.");
+        });
+}

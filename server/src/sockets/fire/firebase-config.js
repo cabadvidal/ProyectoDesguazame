@@ -32,5 +32,6 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 admin.initializeApp({
   credential: admin.credential.cert(path.resolve(__dirname, 'service-account-file.json'))
 });
+
 // Exportar auth
 export { auth, admin };

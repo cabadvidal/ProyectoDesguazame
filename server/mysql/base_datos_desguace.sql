@@ -269,6 +269,53 @@ END //
 
 DELIMITER ;
 
+-- OBTENER NOMBRE COLUMNAS CATEGORIAS
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerNombresColumnasCategorias()
+BEGIN
+    SELECT COLUMN_NAME 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_SCHEMA = DATABASE() 
+    AND (TABLE_NAME = 'CATEGORIAS_PIEZAS')
+    AND COLUMN_KEY NOT IN ('PRI', 'MUL');  -- Excluye claves primarias y foráneas
+END //
+
+DELIMITER ;
+
+-- OBTENER NOMBRE COLUMNAS FICHAJE
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerNombresColumnasFichaje()
+BEGIN
+    SELECT COLUMN_NAME 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_SCHEMA = DATABASE() 
+    AND (TABLE_NAME = 'FICHAJE')
+    AND COLUMN_KEY NOT IN ('PRI', 'MUL');  -- Excluye claves primarias y foráneas
+END //
+
+DELIMITER ;
+
+-- OBTENER NOMBRE COLUMNAS VACACIONES
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerNombresColumnasVacaciones()
+BEGIN
+    SELECT COLUMN_NAME 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_SCHEMA = DATABASE() 
+    AND (TABLE_NAME = 'VACACIONES')
+    AND COLUMN_KEY NOT IN ('PRI', 'MUL')  -- Excluye claves primarias y foráneas
+    AND COLUMN_NAME NOT IN ('CONCEDIDAS');
+END //
+
+DELIMITER ;
+
+
 -- OBTENER NOMBRE COLUMNAS MODELOS
 
 DELIMITER //
@@ -352,48 +399,6 @@ BEGIN
 END$$
 
 DELIMITER ;
-
-
--- Insertar categorías de piezas de coches
-INSERT INTO CATEGORIAS_PIEZAS (NOMBRE) VALUES 
-('Motor'),
-('Transmisión'),
-('Frenos'),
-('Suspensión'),
-('Escape'),
-('Sistema eléctrico'),
-('Carrocería'),
-('Interior');
-
--- Insertar marcas de coches
-INSERT INTO MARCAS (NOMBRE_MARCA) VALUES 
-('Toyota'),
-('Ford'),
-('Volkswagen'),
-('BMW'),
-('Mercedes-Benz'),
-('Audi'),
-('Honda'),
-('Nissan');
-
--- Insertar modelos de coches (relacionados con las marcas)
-INSERT INTO MODELO (NOMBRE_MODELO, MARCA_MODELO_FK) VALUES 
-('Corolla', 1), -- Toyota
-('Camry', 1), 
-('Ranger', 2), -- Ford
-('Mustang', 2),
-('Golf', 3), -- Volkswagen
-('Passat', 3),
-('Serie 3', 4), -- BMW
-('Serie 5', 4),
-('Clase A', 5), -- Mercedes-Benz
-('Clase C', 5),
-('A3', 6), -- Audi
-('A4', 6),
-('Civic', 7), -- Honda
-('Accord', 7),
-('Altima', 8), -- Nissan
-('Sentra', 8);
 
 
 -- Disparador para CATEGORIAS_PIEZAS

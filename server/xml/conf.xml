@@ -9,13 +9,6 @@
         <puerto>3306</puerto>
     </mysql>
 
-    <mongo>
-        <direccion>mongodb://localhost:27017</direccion>
-        <bbdd>karbo_cabad</bbdd>
-        <coleccion>pedidos</coleccion>
-        <coleccion2>facturas</coleccion2>
-    </mongo>
-
     <firebase>
         <apiKey>AIzaSyBKKFwR-6PWmlu-iYcayKITZHUocvvo5Dk</apiKey>
         <authDomain>desguace-adb3a.firebaseapp.com</authDomain>
