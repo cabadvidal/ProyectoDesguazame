@@ -4,8 +4,10 @@
  */
 package com.desguazame.desguazame_escritorio.model;
 
+import com.desguazame.desguazame_escritorio.util.AppGlobals;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.token;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
+import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -102,6 +104,8 @@ public class Sockets {
                 user.setMail(json.getString("mail"));
                 user.setCreditCard(Long.parseLong(json.getString("tarjeta_credito")));
             }
+            FormUtils.writeBIN("USER", campos.get("usuario"));
+            FormUtils.writeBIN("PASS", campos.get("password"));
             success.set(true);
             latch.countDown();
         });
@@ -152,6 +156,8 @@ public class Sockets {
 
         socket.on("usr_registrado", args -> {
             System.out.println("✅ Usuario registrado correctamente");
+            FormUtils.writeBIN("USER", campos.get("MAIL"));
+            FormUtils.writeBIN("PASS", campos.get("CONTRASENA"));
             success.set(true);
             latch.countDown();
         });
@@ -205,14 +211,23 @@ public class Sockets {
             latch.countDown();
         });
     }
-    
+
+    /**
+     * Solicita al servidor que realice un pago con los datos especificados.
+     *
+     * @param data JSONObject con los datos necesarios para el pago.
+     * @param latch Mecanismo de sincronización que se libera una vez recibida
+     * la respuesta.
+     * @param success Variable atómica que se establece en true si el pago
+     * fue válido (Pago existoso).
+     */
     public void makePayment(JSONObject data, CountDownLatch latch, AtomicBoolean success) {
         if (!socket.connected()) {
             socket.connect();
         }
-        
+
         socket.emit("realizar pago", data);
-        
+
         socket.on("pago", args -> {
             JSONObject json = (JSONObject) args[0];
             boolean isPay = json.getBoolean("valido");
@@ -220,6 +235,8 @@ public class Sockets {
                 Platform.runLater(()
                         -> JOptionError.showError("Error pago", "Hubo un error al realizar el pago.")
                 );
+            } else {
+                AppGlobals.idFactura = json.getInt("ID_FACTURA");
             }
             success.set(isPay);
             latch.countDown();

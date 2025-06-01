@@ -17,6 +17,20 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 /**
+ * Clase que representa una animación visual de confeti dentro de una interfaz JavaFX.
+ * <p>
+ * Utiliza un hilo en segundo plano que genera rectángulos de colores de forma periódica,
+ * aplicando animaciones de caída y rotación para simular el efecto visual de confeti descendente.
+ * La animación se ejecuta sobre un {@link javafx.scene.layout.Pane} proporcionado al constructor.
+ * </p>
+ *
+ * <p>
+ * Esta clase está pensada para ser usada con:
+ * <ul>
+ *     <li>Superficies de celebración o feedback visual tras eventos exitosos.</li>
+ *     <li>Indicadores animados de éxito o recompensa.</li>
+ * </ul>
+ * </p>
  *
  * @author Charlie
  */
@@ -26,11 +40,20 @@ public class ConfettiView extends Thread {
     private final boolean running = true;
     private final Random random = new Random();
 
+    /**
+     * Crea una instancia del efecto de confeti para el {@code overlayPane} especificado.
+     * 
+     * @param overlayPane el contenedor sobre el cual se mostrarán los rectángulos animados.
+     */
     public ConfettiView(Pane overlayPane) {
         this.overlayPane = overlayPane;
         setDaemon(true); // Para que se cierre con la app
     }
 
+    /**
+     * Método principal del hilo. Lanza una tarea periódica en el hilo de la UI
+     * para crear y animar confeti sobre el contenedor especificado.
+     */
     @Override
     public void run() {
         while (running) {
@@ -50,6 +73,12 @@ public class ConfettiView extends Thread {
         }
     }
 
+    /**
+     * Crea un rectángulo con color aleatorio que representa un fragmento de confeti.
+     *
+     * @param width el ancho máximo del contenedor para posicionar aleatoriamente el confeti.
+     * @return un nuevo nodo {@link Rectangle} estilizado y posicionado.
+     */
     private Rectangle createConfetti(double width) {
         Rectangle rect = new Rectangle(6, 12);
         rect.setArcWidth(3);
@@ -60,6 +89,12 @@ public class ConfettiView extends Thread {
         return rect;
     }
 
+    /**
+     * Aplica las animaciones de caída y rotación al fragmento de confeti.
+     *
+     * @param confetti el nodo a animar.
+     * @param height   la altura máxima hasta donde debe caer el confeti.
+     */
     private void animateConfetti(Node confetti, double height) {
         double fallDuration = 3 + random.nextDouble() * 2;
 

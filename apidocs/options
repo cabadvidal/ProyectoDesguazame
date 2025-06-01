@@ -1,0 +1,26 @@
+-classpath
+'C:/Users/carlo/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-win.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar;C:/Users/carlo/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-win.jar;C:/Users/carlo/.m2/repository/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.17/tyrus-standalone-client-1.17.jar;C:/Users/carlo/.m2/repository/org/json/json/20230618/json-20230618.jar;C:/Users/carlo/.m2/repository/io/socket/socket.io-client/2.1.2/socket.io-client-2.1.2.jar;C:/Users/carlo/.m2/repository/io/socket/engine.io-client/2.1.0/engine.io-client-2.1.0.jar;C:/Users/carlo/.m2/repository/com/squareup/okhttp3/okhttp/3.12.12/okhttp-3.12.12.jar;C:/Users/carlo/.m2/repository/com/squareup/okio/okio/1.15.0/okio-1.15.0.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'11'
+-sourcepath
+'C:/Users/carlo/Documents/NetBeansProjects/2-1/desguazame_escritorio/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/carlo/Documents/NetBeansProjects/2-1/desguazame_escritorio/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'desguazame_escritorio 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/carlo/Documents/NetBeansProjects/2-1/desguazame_escritorio/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'desguazame_escritorio 1.0-SNAPSHOT API'

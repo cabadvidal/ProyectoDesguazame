@@ -76,5 +76,4 @@ public class CartData {
     public JSONObject getDataJSON() {
         return dataJSON;
     }
-
 }

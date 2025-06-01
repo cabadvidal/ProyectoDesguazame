@@ -6,6 +6,7 @@ package com.desguazame.desguazame_escritorio.controller;
  */
 import com.desguazame.desguazame_escritorio.App;
 import com.desguazame.desguazame_escritorio.model.CartData;
+import com.desguazame.desguazame_escritorio.util.AppGlobals;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.token;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
@@ -14,15 +15,19 @@ import com.desguazame.desguazame_escritorio.view.JOptionError;
 import static com.desguazame.desguazame_escritorio.view.JOptionError.showError;
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.*;
 import javafx.application.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javax.swing.JOptionPane;
 import org.json.*;
 
 /**
@@ -114,54 +119,80 @@ public class ControllerCart implements Initializable {
      * vistas.
      */
     @FXML
-    private void changePay() throws IOException {
+    private void changePay() {
         RadioButton selectedRadio = (RadioButton) optionGroup.getSelectedToggle();
         if (selectedRadio == null) {
             showError("Tipo pago", "Seleccione el tipo de pago a realizar.");
             return;
         }
+
+        String metodoPago = selectedRadio.getText();
+        CartData cD = new CartData(metodoPago);
+        JSONObject data = cD.getDataJSON();
+
         CountDownLatch latch = new CountDownLatch(1);
-        AtomicBoolean success = new AtomicBoolean(false);
-        socket.activity("Realizar pago", latch, success);
+        AtomicBoolean activityOK = new AtomicBoolean(false);
+        socket.activity("Realizar pago", latch, activityOK);
 
-        try {
-            // Esperar respuesta del servidor con timeout por seguridad (por ejemplo, 10s)
-            if (!latch.await(10, TimeUnit.SECONDS)) {
-                Platform.runLater(() -> JOptionError.showError("Timeout", "No se recibió respuesta del servidor."));
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ControllerRegister.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        // Si la actividad fue exitosa, obtener los datos de las piezas para realizar el pago
-        if (success.get()) {
-            String metodoPago = selectedRadio.getText();
-
-            CartData cD = new CartData(metodoPago);
-            JSONObject data = cD.getDataJSON();
-            System.out.println("El resultado " + data.toString());
-            CountDownLatch latch2 = new CountDownLatch(1);
-            AtomicBoolean success2 = new AtomicBoolean(false);
-            socket.makePayment(data, latch2, success2);
-            // Esperar la respuesta del servidor en un hilo separado
-            new Thread(() -> {
-                try {
-                    latch.await(); // Bloquea hasta recibir respuesta
-                    if (success2.get()) {
-                        Platform.runLater(() -> {
-                            try {
-                                App.setRoot("pay"); // Cambio de escena si autenticación fue exitosa
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        new Thread(() -> {
+            try {
+                if (!latch.await(10, TimeUnit.SECONDS)) {
+                    Platform.runLater(() -> JOptionError.showError("Timeout", "No se recibió respuesta del servidor."));
+                    return;
                 }
-            }).start();
-            
-        }
-        
-        App.setRoot("pay");
+
+                if (!activityOK.get()) {
+                    Platform.runLater(() -> JOptionError.showError("Error", "No se pudo iniciar el proceso de pago."));
+                    return;
+                }
+
+                CountDownLatch latchPago = new CountDownLatch(1);
+                AtomicBoolean pagoOK = new AtomicBoolean(false);
+                socket.makePayment(data, latchPago, pagoOK);
+
+                if (!latchPago.await(10, TimeUnit.SECONDS)) {
+                    Platform.runLater(() -> JOptionError.showError("Timeout", "No se recibió confirmación del pago."));
+                    return;
+                }
+
+                if (!pagoOK.get()) {
+                    Platform.runLater(() -> JOptionError.showError("Pago fallido", "El servidor no aceptó el pago."));
+                    return;
+                }
+
+                String nombreFactura = "factura_" + AppGlobals.idFactura + ".pdf";
+                String urlCompleta = AppGlobals.facturaURL.endsWith("/") ? AppGlobals.facturaURL + nombreFactura : AppGlobals.facturaURL + "/" + nombreFactura;
+                Path destino = Paths.get(System.getProperty("user.home"), "Downloads", nombreFactura);
+
+                boolean descargada = false;
+                int intentos = 0;
+
+                while (!descargada && intentos < 5) {
+                    try (InputStream in = new URL(urlCompleta).openStream()) {
+                        Files.copy(in, destino, StandardCopyOption.REPLACE_EXISTING);
+                        descargada = true;
+                    } catch (IOException e) {
+                        Thread.sleep(2000); 
+                        intentos++;
+                    }
+                }
+
+                if (descargada) {
+                    Platform.runLater(() -> {
+                        JOptionPane.showMessageDialog(null, "Factura descargada con éxito:\n" + destino.toString());
+                        try {
+                            App.setRoot("pay");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                } else {
+                    Platform.runLater(() -> JOptionError.showError("Descarga fallida", "No se pudo obtener la factura tras varios intentos."));
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }

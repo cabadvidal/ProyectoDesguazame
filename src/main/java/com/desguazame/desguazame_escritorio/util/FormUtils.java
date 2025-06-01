@@ -10,6 +10,9 @@ import java.util.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.xml.parsers.*;
 import org.json.*;
 import org.w3c.dom.Document;
@@ -90,7 +93,7 @@ public class FormUtils {
      */
     public static HashMap<String, String> readNodeFields(VBox container) {
         HashMap<String, String> campos = new HashMap<>();
-        Set<String> camposConTrim = Set.of("TELEFONO", "MOVIL", "NUMERO_CUENTA", "DNI", "MAIL", "CODIGO_POSTAL");
+        Set<String> camposConTrim = Set.of("TELEFONO", "MOVIL", "NUMERO_CUENTA", "DNI", "MAIL", "CODIGO_POSTAL", "TARJETA_CREDITO");
         for (Node node : container.getChildren()) {
             if (node instanceof TextField) {
                 TextField textField = (TextField) node;
@@ -222,5 +225,109 @@ public class FormUtils {
         }
 
         return url;
+    }
+
+    /**
+     * Guarda un valor cifrado en binario asociado a una clave (tipo).
+     * <p>
+     * El valor se cifra utilizando el algoritmo AES en modo CBC con padding y
+     * se almacena en un archivo binario "data.bin". Si el archivo ya existe, se
+     * mantiene su contenido y se actualiza el valor indicado.</p>
+     *
+     * @param type Clave identificadora del dato (por ejemplo, "USER" o "PASS").
+     * @param value Valor que se desea cifrar y guardar.
+     */
+    public static void writeBIN(String type, String value) {
+        try {
+            File file = new File("data.bin");
+            HashMap<String, byte[]> data;
+
+            // Si existe, cargamos contenido previo
+            if (file.exists()) {
+                try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+                    data = (HashMap<String, byte[]>) in.readObject();
+                }
+            } else {
+                data = new HashMap<>();
+            }
+
+            // Ciframos el valor
+            byte[] encrypted = encrypt(value);
+            data.put(type.toUpperCase(), encrypted);
+
+            // Guardamos
+            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+                out.writeObject(data);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Lee un valor cifrado desde el archivo binario y lo descifra.
+     * <p>
+     * Este método busca el dato asociado a la clave indicada, lo descifra
+     * utilizando AES y devuelve el texto original.</p>
+     *
+     * @param type Clave identificadora del dato.
+     * @return El valor descifrado correspondiente a la clave, o {@code null} si
+     * no existe o ocurre un error.
+     */
+    public static String readBIN(String type) {
+        try {
+            File file = new File("data.bin");
+            if (!file.exists()) {
+                return "";
+            }
+
+            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+                HashMap<String, byte[]> data = (HashMap<String, byte[]>) in.readObject();
+                byte[] encrypted = data.get(type.toUpperCase());
+                if (encrypted != null) {
+                    return decrypt(encrypted);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    /**
+     * Cifra un texto plano utilizando AES/CBC/PKCS5Padding.
+     *
+     * @param plainText Texto a cifrar.
+     * @return Array de bytes cifrados.
+     * @throws Exception Si ocurre un error durante el proceso de cifrado.
+     */
+    private static byte[] encrypt(String plainText) throws Exception {
+        final String AES_KEY = "1234567890abcdef";
+        final String AES_IV = "abcdef1234567890";
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        IvParameterSpec ivSpec = new IvParameterSpec(AES_IV.getBytes());
+        SecretKeySpec keySpec = new SecretKeySpec(AES_KEY.getBytes(), "AES");
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+        return cipher.doFinal(plainText.getBytes());
+    }
+
+    /**
+     * Descifra un array de bytes cifrados con AES/CBC/PKCS5Padding.
+     *
+     * @param cipherBytes Array de bytes cifrados.
+     * @return Texto descifrado.
+     * @throws Exception Si ocurre un error durante el descifrado.
+     */
+    private static String decrypt(byte[] cipherBytes) throws Exception {
+        final String AES_KEY = "1234567890abcdef";
+        final String AES_IV = "abcdef1234567890";
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        IvParameterSpec ivSpec = new IvParameterSpec(AES_IV.getBytes());
+        SecretKeySpec keySpec = new SecretKeySpec(AES_KEY.getBytes(), "AES");
+        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+        byte[] decrypted = cipher.doFinal(cipherBytes);
+        return new String(decrypted);
     }
 }

@@ -4,9 +4,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
 -->
 <conf>
-    <imgurl>http://192.168.1.122:10010/img/piezas/</imgurl>
-    <socketurl>http://192.168.1.122:10010</socketurl>
-    <searchmenuurl>http://192.168.1.122:10010/ObtenerSearch?TABLA=</searchmenuurl>
-    <searchData>http://192.168.1.122:10010/Search?</searchData>
+    <imgurl>http://83.37.180.236:10010/img/piezas/</imgurl>
+    <socketurl>http://83.37.180.236:10010</socketurl>
+    <searchmenuurl>http://83.37.180.236:10010/ObtenerSearch?TABLA=</searchmenuurl>
+    <searchData>http://83.37.180.236:10010/Search?</searchData>
+    <facturaurl>http://83.37.180.236:10010/descargar/factura/</facturaurl>
 </conf>
 

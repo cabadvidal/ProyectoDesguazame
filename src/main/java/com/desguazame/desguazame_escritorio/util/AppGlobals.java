@@ -8,6 +8,7 @@ import com.desguazame.desguazame_escritorio.model.CarPart;
 import com.desguazame.desguazame_escritorio.model.Sockets;
 import com.desguazame.desguazame_escritorio.model.User;
 import static com.desguazame.desguazame_escritorio.util.FormUtils.leerXML;
+import static com.desguazame.desguazame_escritorio.util.FormUtils.readBIN;
 import java.util.*;
 
 /**
@@ -75,4 +76,24 @@ public class AppGlobals {
      * XML.
      */
     public static String imgURL = leerXML("imgurl");
+    
+    /**
+     * Carga el usuario almacenado en el binario
+     */
+    public static String USR = readBIN("USER");
+            
+    /**
+     * Carga la contraseña almacenada en el binario
+     */
+    public static String PASS = readBIN("PASS");
+    
+    /**
+     * URL para descargar las facturas
+     */
+    public static String facturaURL = leerXML("facturaurl");
+    
+    /**
+     * Contiene el id de la factura generada
+     */
+    public static int idFactura = 0;
 }

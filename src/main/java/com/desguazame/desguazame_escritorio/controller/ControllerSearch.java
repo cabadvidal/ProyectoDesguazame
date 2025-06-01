@@ -26,13 +26,23 @@ import javafx.scene.layout.*;
 import org.json.*;
 
 /**
- * Controlador de la vista de búsqueda de la aplicación JavaFX.
+ * Controlador JavaFX para la vista de búsqueda de piezas en la aplicación de escritorio Desguazame.
  * <p>
- * Esta clase se encarga de mostrar un mensaje de bienvenida al usuario
- * autenticado y permite cerrar sesión y volver a la pantalla de login.
+ * Esta clase gestiona la interacción del usuario con los elementos gráficos de la pantalla
+ * de búsqueda, incluyendo carga de datos desde el backend, manejo del carrito, filtros por categoría,
+ * marca y modelo, así como navegación entre pantallas.
  * </p>
  *
- * Implementa {@link Initializable} para ejecutar acciones al cargar la vista.
+ * <p>
+ * Funciones principales:
+ * <ul>
+ *     <li>Mostrar mensaje de bienvenida personalizado.</li>
+ *     <li>Cargar categorías, marcas y modelos disponibles desde el servidor.</li>
+ *     <li>Ejecutar búsquedas dinámicas filtradas.</li>
+ *     <li>Actualizar la vista de resultados de búsqueda en tiempo real.</li>
+ *     <li>Gestionar navegación a otras vistas como login o carrito.</li>
+ * </ul>
+ * </p>
  *
  * @author Charlie
  */
@@ -58,7 +68,7 @@ public class ControllerSearch implements Initializable {
 
     @FXML
     private ComboBox<String> cbModel;
-    
+
     @FXML
     private TextField txtSearch;
 
@@ -174,7 +184,7 @@ public class ControllerSearch implements Initializable {
         System.out.println("resultado " + data.toString());
         ObservableList<String> brandList = FXCollections.observableArrayList();
         brandList.add("Marcas");
-        
+
         for (int i = 0; i < data.length(); i++) {
             JSONObject obj = data.getJSONObject(i);
             brandList.add(obj.getString("NOMBRE_MARCA")); // extraemos solo el nombre
@@ -200,7 +210,7 @@ public class ControllerSearch implements Initializable {
         System.out.println("resultado " + data.toString());
         ObservableList<String> categoryList = FXCollections.observableArrayList();
         categoryList.add("Categorías");
-        
+
         for (int i = 0; i < data.length(); i++) {
             JSONObject obj = data.getJSONObject(i);
             categoryList.add(obj.getString("NOMBRE_CATEGORIA"));
@@ -227,7 +237,7 @@ public class ControllerSearch implements Initializable {
         System.out.println("resultado " + data.toString());
         ObservableList<String> modelList = FXCollections.observableArrayList();
         modelList.add("Modelos");
-        
+
         for (int i = 0; i < data.length(); i++) {
             JSONObject obj = data.getJSONObject(i);
             modelList.add(obj.getString("NOMBRE_MODELO"));
@@ -235,7 +245,15 @@ public class ControllerSearch implements Initializable {
 
         cbModel.setItems(modelList);
     }
-    
+
+    /**
+     * Realiza una búsqueda dinámica de piezas con los filtros seleccionados (texto, categoría, marca, modelo).
+     * <p>
+     * Si la búsqueda es válida y el servidor responde correctamente, los datos se actualizan en el contenedor {@code VBox}.
+     * </p>
+     *
+     * @throws IOException si ocurre un error durante la construcción de la URL.
+     */
     @FXML
     private void searchAPI() throws IOException {
         String txtS = txtSearch.getText();
@@ -243,19 +261,19 @@ public class ControllerSearch implements Initializable {
         String brand = cbBrand.getValue();
         String model = cbModel.getValue();
         String url = searchData;
-        if(!txtS.equals("Buscar...")){
+        if (!txtS.equals("Buscar...")) {
             url += "TEXTO=" + txtS;
         }
-        if(!category.equals("Categorías")) {
+        if (category != null && !category.equals("Categorías")) {
             url += url.charAt(url.length() - 1) == '?' ? "CATEGORIAS=" + category : "&CATEGORIAS=" + category;
         }
-        if(!brand.equals("Marcas")) {
+        if (brand != null && !brand.equals("Marcas")) {
             url += url.charAt(url.length() - 1) == '?' ? "MARCAS=" + brand : "&MARCAS=" + brand;
         }
-        if(!model.equals("Modelos")) {
+        if (model != null && !model.equals("Modelos")) {
             url += url.charAt(url.length() - 1) == '?' ? "MODELOS=" + model : "&MODELOS=" + model;
         }
-        
+
         CountDownLatch latch = new CountDownLatch(1);
         AtomicBoolean success = new AtomicBoolean(false);
         socket.activity("Realizar búsqueda", latch, success);
@@ -268,7 +286,7 @@ public class ControllerSearch implements Initializable {
         } catch (InterruptedException ex) {
             Logger.getLogger(ControllerRegister.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         if (success.get()) {
             // Usar CompletableFuture para leer los datos de forma asincrónica
             CompletableFuture<JSONArray> future = CompletableFuture.supplyAsync(() -> {

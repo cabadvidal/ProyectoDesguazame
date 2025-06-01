@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.desguazame.desguazame_escritorio"},{"l":"com.desguazame.desguazame_escritorio.controller"},{"l":"com.desguazame.desguazame_escritorio.model"},{"l":"com.desguazame.desguazame_escritorio.util"},{"l":"com.desguazame.desguazame_escritorio.view"}];updateSearchResults();

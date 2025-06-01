@@ -96,15 +96,14 @@ public class CartView {
         Text normal = new Text(normalText);
         normal.setFont(Font.font("System", FontWeight.NORMAL, 18));
         TextFlow textFlow = new TextFlow(bold, normal);
-        textFlow.setMaxWidth(value); // o lo que necesites
+        textFlow.setMaxWidth(value); 
         textFlow.setPrefWidth(value);
 
-// ESTOS DOS SON LOS MÁS IMPORTANTES:
-        textFlow.setPrefHeight(Region.USE_COMPUTED_SIZE);
-        textFlow.setMinHeight(Region.USE_PREF_SIZE); // Opcional pero mejora el comportamiento
 
-// MUY IMPORTANTE: ACTIVA WRAP DEL TEXTO DENTRO DEL TextFlow
-        textFlow.setLineSpacing(2); // Opcional: mejora la legibilidad
+        textFlow.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        textFlow.setMinHeight(Region.USE_PREF_SIZE);
+
+        textFlow.setLineSpacing(2); 
         return textFlow;
     }
 

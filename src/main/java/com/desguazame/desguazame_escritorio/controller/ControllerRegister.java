@@ -1,7 +1,7 @@
 package com.desguazame.desguazame_escritorio.controller;
 
 import com.desguazame.desguazame_escritorio.App;
-import com.desguazame.desguazame_escritorio.model.DataVerify;
+import com.desguazame.desguazame_escritorio.model.DataVerifyProcess;
 import com.desguazame.desguazame_escritorio.model.User;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.user;
@@ -99,9 +99,9 @@ public class ControllerRegister {
         HashMap<String, String> campos = FormUtils.readNodeFields(hBoxRegister);
         System.out.println("com.desguazame.desguazame_escritorio.controller.ControllerRegister.registerUser()" + campos.toString());
         for (Map.Entry<String, String> entry : campos.entrySet()) {
-            String clave = entry.getKey();
-            String valor = "NUMERO_CUENTA".equals(clave) ? entry.getValue().replace(" ", "") : entry.getValue();
-            if (!DataVerify.verificarDato(clave, valor)) {
+            String clave = entry.getKey();           
+            String valor = "NUMERO_CUENTA".equals(clave) || "TARJETA_CREDITO".equals(clave) ? entry.getValue().replace(" ", "") : entry.getValue();
+            if (!DataVerifyProcess.verificarDato(clave, valor)) {
                 JOptionError.showError(clave, valor);
                 return;
             }
@@ -152,7 +152,7 @@ public class ControllerRegister {
 
         try {
             // Esperar respuesta del servidor con timeout por seguridad (por ejemplo, 10s)
-            if (!latch.await(10, TimeUnit.SECONDS)) {
+            if (!latch.await(20, TimeUnit.SECONDS)) {
                 Platform.runLater(() -> JOptionError.showError("Timeout", "No se recibió respuesta del servidor."));
             }
         } catch (InterruptedException ex) {
@@ -179,7 +179,7 @@ public class ControllerRegister {
                 user.setCreditCard(creditCard);
             }
 
-            App.setRoot("search");
+            App.setRoot("login");
         }
     }
 }

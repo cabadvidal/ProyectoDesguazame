@@ -4,41 +4,58 @@
  */
 package com.desguazame.desguazame_escritorio.controller;
 
-
 import com.desguazame.desguazame_escritorio.App;
+import static com.desguazame.desguazame_escritorio.util.AppGlobals.PASS;
+import static com.desguazame.desguazame_escritorio.util.AppGlobals.USR;
 import static com.desguazame.desguazame_escritorio.util.AppGlobals.socket;
 import com.desguazame.desguazame_escritorio.util.FormUtils;
 import com.desguazame.desguazame_escritorio.view.JOptionError;
 import com.desguazame.desguazame_escritorio.view.StageWait;
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javafx.application.*;
 import javafx.concurrent.*;
 import javafx.fxml.*;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
 /**
  * Controlador JavaFX para la ventana de inicio de sesión.
- * 
- * <p>Gestiona los eventos del formulario de login, como el cambio a la ventana de registro,
- * la autenticación del usuario y la navegación hacia la pantalla principal de búsqueda.
- * También maneja la interfaz de carga durante el proceso de login.</p>
- * 
- * <p>Utiliza un hilo separado para realizar la autenticación de forma asíncrona
- * y sincroniza la respuesta del servidor mediante un {@link CountDownLatch}.</p>
- * 
- * <p>Los campos del formulario son leídos dinámicamente desde el VBox contenedor
+ *
+ * <p>
+ * Gestiona los eventos del formulario de login, como el cambio a la ventana de
+ * registro, la autenticación del usuario y la navegación hacia la pantalla
+ * principal de búsqueda. También maneja la interfaz de carga durante el proceso
+ * de login.</p>
+ *
+ * <p>
+ * Utiliza un hilo separado para realizar la autenticación de forma asíncrona y
+ * sincroniza la respuesta del servidor mediante un {@link CountDownLatch}.</p>
+ *
+ * <p>
+ * Los campos del formulario son leídos dinámicamente desde el VBox contenedor
  * mediante la clase {@link FormUtils}.</p>
- * 
+ *
  * @author Charlie
  */
-public class ControllerLogin {
+public class ControllerLogin implements Initializable {
 
-    /** Contenedor principal del formulario de login que contiene los campos de entrada. */
+    /**
+     * Contenedor principal del formulario de login que contiene los campos de
+     * entrada.
+     */
     @FXML
     private VBox vBoxLogin;
+
+    @FXML
+    private TextField usuario;
+
+    @FXML
+    private PasswordField password;
 
     /**
      * Cambia a la escena de registro del usuario.
@@ -52,11 +69,12 @@ public class ControllerLogin {
 
     /**
      * Evento que se lanza al hacer clic en el botón de login.
-     * 
-     * <p>Inicia una tarea asíncrona que muestra una ventana de carga mientras
-     * se realiza el proceso de autenticación del usuario. Al finalizar la tarea,
-     * se cambia a la escena principal si la autenticación es exitosa, o se muestra
-     * un mensaje de error si falla.</p>
+     *
+     * <p>
+     * Inicia una tarea asíncrona que muestra una ventana de carga mientras se
+     * realiza el proceso de autenticación del usuario. Al finalizar la tarea,
+     * se cambia a la escena principal si la autenticación es exitosa, o se
+     * muestra un mensaje de error si falla.</p>
      *
      * @throws IOException si ocurre un error durante el cambio de escena.
      */
@@ -90,11 +108,13 @@ public class ControllerLogin {
     }
 
     /**
-     * Realiza el proceso de login mediante socket y cambia a la ventana de búsqueda si es exitoso.
-     * 
-     * <p>Lee los datos del formulario, los envía al servidor a través del socket
-     * y espera la respuesta utilizando un {@link CountDownLatch}. Si la autenticación es válida,
-     * cambia a la escena "search".</p>
+     * Realiza el proceso de login mediante socket y cambia a la ventana de
+     * búsqueda si es exitoso.
+     *
+     * <p>
+     * Lee los datos del formulario, los envía al servidor a través del socket y
+     * espera la respuesta utilizando un {@link CountDownLatch}. Si la
+     * autenticación es válida, cambia a la escena "search".</p>
      *
      * @throws IOException si ocurre un error al cambiar de escena.
      */
@@ -123,5 +143,21 @@ public class ControllerLogin {
                 e.printStackTrace();
             }
         }).start();
+    }
+
+    private void onLoad() throws IOException {
+        usuario.setText(USR);
+        password.setText(PASS);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            try {
+                onLoad(); // Se ejecutará cuando la ventana esté completamente cargada
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
