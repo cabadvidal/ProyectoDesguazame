@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.search.SearchFragment">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="243dp"
+        android:layout_height="174dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="84dp"
+        android:src="@mipmap/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spCategory"
+        android:layout_width="274dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="@color/purple_700"
+        android:popupBackground="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Spinner
+        android:id="@+id/spBrand"
+        android:layout_width="274dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="@color/purple_700"
+        android:popupBackground="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spCategory" />
+
+    <Spinner
+        android:id="@+id/spModel"
+        android:layout_width="274dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="@color/purple_700"
+        android:popupBackground="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spBrand" />
+
+    <EditText
+        android:id="@+id/eTextSearch"
+        android:layout_width="264dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="68dp"
+        android:ems="10"
+        android:hint="Palabra a buscar"
+        android:inputType="text"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spModel" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="110dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="82dp"
+        android:text="Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eTextSearch" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

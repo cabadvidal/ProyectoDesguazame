@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "584737072535",
+    "project_id": "desguace-adb3a",
+    "storage_bucket": "desguace-adb3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584737072535:android:f5d15194437be4052750d2",
+        "android_client_info": {
+          "package_name": "com.example.desguazame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584737072535-5v6u75clcrfc5nqd6156i21olsg94kgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGFo6hSGiT3tS-GwXd5iPADdoysQz8Kt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584737072535-5v6u75clcrfc5nqd6156i21olsg94kgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

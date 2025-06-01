@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Desguazame</string>
+    <string name="navigation_drawer_open">Abrir navegación</string>
+    <string name="navigation_drawer_close">Cerrar navegación</string>
+    <string name="nav_header_title">Desguazame</string>
+    <string name="nav_header_subtitle">desguazame@desguazame.com</string>
+    <string name="nav_header_desc">Cabecera de navegación</string>
+    <string name="action_settings">Opciones</string>
+
+    <string name="menu_login">Autentificarse</string>
+    <string name="menu_logout">Deslogarse</string>
+    <string name="menu_search">Búsqueda</string>
+    <string name="menu_cart">Carrito</string>
+    <string name="menu_register">Registrarse</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

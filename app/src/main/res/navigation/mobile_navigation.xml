@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_login">
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.desguazame.ui.login.LoginFragment"
+        android:label="@string/menu_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_nav_home_to_nav_gallery"
+            app:destination="@id/nav_search" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.desguazame.ui.search.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultFragment"
+            app:destination="@id/nav_search_result" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_search_result"
+        android:name="com.example.desguazame.ui.search.SearchResultFragment"
+        android:label="Resultados"
+        tools:layout="@layout/fragment_search_result" >
+        <action
+            android:id="@+id/action_nav_search_result_to_nav_cart"
+            app:destination="@id/nav_cart" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.desguazame.ui.cart.CartFragment"
+        android:label="@string/menu_cart"
+        tools:layout="@layout/fragment_cart">
+    <action
+        android:id="@+id/action_nav_cart_to_nav_finalcart"
+        app:destination="@id/nav_finalcart" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_finalcart"
+        android:name="com.example.desguazame.ui.cart.FinalCartFragment"
+        android:label="Finalizar compra"
+        tools:layout="@layout/fragment_finalcart" />
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="com.example.desguazame.ui.register.RegisterFragment"
+        android:label="Resgitro usuario"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_nav_register_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+</navigation>
