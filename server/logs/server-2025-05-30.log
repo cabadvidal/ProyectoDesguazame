@@ -1,0 +1,37 @@
+[30-05-2025 18:44:04] [INFO] ✅ Cliente conectado con ID: GsB7ui1BRJpwtQ9YAAAT
+[30-05-2025 23:57:42] [INFO] ✅ Cliente conectado con ID: 1TdhhD66ycjvCiKIAAAV
+[30-05-2025 23:57:42] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[30-05-2025 23:57:42] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[30-05-2025 23:57:42] [INFO] Conexión exitosa a MySQL
+[30-05-2025 23:57:42] [INFO] Resultados de la consulta: [object Object]
+[30-05-2025 23:57:42] [INFO] Conexión a MySQL cerrada
+[30-05-2025 23:57:42] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[30-05-2025 23:57:42] [INFO] Conexión exitosa a MySQL
+[30-05-2025 23:57:42] [INFO] Resultados de la consulta: [object Object]
+[30-05-2025 23:57:42] [INFO] Conexión a MySQL cerrada
+[30-05-2025 23:57:42] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 6bded9020d098b77a9c9720c1d9ee86f0d4d55f77bd54123addcad1779dcac6d para el Usuario; cliente@cliente.com
+[30-05-2025 23:57:42] [INFO] Conexión exitosa a MySQL
+[30-05-2025 23:57:42] [INFO] Resultados de la consulta: [object Object]
+[30-05-2025 23:57:42] [INFO] Conexión a MySQL cerrada
+[30-05-2025 23:57:42] [INFO] ✅ Usuario: cliente@cliente.com logueado correctamente. Tipo de cuenta: CLIENTE.
+[30-05-2025 23:57:43] [INFO] ✅ Ruta /ObtenerSearch ha sido llamada
+[30-05-2025 23:57:43] [DEBUG] /src/api/web_crud.js GET: ObtenerSearch || tabla consultada: CATEGORIAS
+[30-05-2025 23:57:43] [INFO] Conexión exitosa a MySQL
+[30-05-2025 23:57:43] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[30-05-2025 23:57:43] [INFO] Conexión a MySQL cerrada
+[30-05-2025 23:57:43] [DEBUG] /src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[30-05-2025 23:57:43] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[30-05-2025 23:57:43] [INFO] ✅ Ruta /ObtenerSearch ha sido llamada
+[30-05-2025 23:57:43] [DEBUG] /src/api/web_crud.js GET: ObtenerSearch || tabla consultada: MODELOS
+[30-05-2025 23:57:43] [INFO] Conexión exitosa a MySQL
+[30-05-2025 23:57:43] [INFO] Resultados de la consulta: [object Object],[object Object]
+[30-05-2025 23:57:43] [INFO] Conexión a MySQL cerrada
+[30-05-2025 23:57:43] [DEBUG] /src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"}]
+[30-05-2025 23:57:43] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[30-05-2025 23:57:43] [INFO] ✅ Ruta /ObtenerSearch ha sido llamada
+[30-05-2025 23:57:43] [DEBUG] /src/api/web_crud.js GET: ObtenerSearch || tabla consultada: MARCAS
+[30-05-2025 23:57:43] [INFO] Conexión exitosa a MySQL
+[30-05-2025 23:57:43] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[30-05-2025 23:57:43] [INFO] Conexión a MySQL cerrada
+[30-05-2025 23:57:43] [DEBUG] /src/api/web_crud.js GET: ObtenerSearch || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[30-05-2025 23:57:43] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS

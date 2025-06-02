@@ -1,0 +1,875 @@
+[25-05-2025 11:09:54] [INFO] ✅ Cliente conectado con ID: hr_ePx0MuDaT2vMOAAAh
+[25-05-2025 12:09:28] [INFO] ✅ Cliente conectado con ID: a6TmgKEGrz_3KezCAAAj
+[25-05-2025 12:09:28] [INFO] ✅ Se reliza el registro del usuario fran@cliente.com
+[25-05-2025 12:09:28] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:09:28] [INFO] Resultados de la consulta: 
+[25-05-2025 12:09:28] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:09:28] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:09:28] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:09:28] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:09:28] [DEBUG] src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: fran@cliente.com registrado en MySQL.
+[25-05-2025 12:09:28] [ERROR] Error registering user: auth/weak-password Firebase: Password should be at least 6 characters (auth/weak-password).
+[25-05-2025 12:09:28] [ERROR] ❌ No se pudo registrar en Firebase.
+[25-05-2025 12:09:36] [INFO] ✅ Se reliza el registro del usuario fran@cliente.com
+[25-05-2025 12:09:36] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:09:36] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:09:36] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:09:36] [DEBUG] src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: fran@cliente.com ya está registrado.
+[25-05-2025 12:09:36] [WARN] ⚠️ El usuario con mail fran@cliente.com ya está registrado en el sistema.
+[25-05-2025 12:09:42] [INFO] ✅ Se reliza el registro del usuario fran@cliente.com
+[25-05-2025 12:09:42] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:09:42] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:09:42] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:09:42] [DEBUG] src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: fran@cliente.com ya está registrado.
+[25-05-2025 12:09:42] [WARN] ⚠️ El usuario con mail fran@cliente.com ya está registrado en el sistema.
+[25-05-2025 12:10:27] [INFO] ✅ Se reliza el registro del usuario fran@cliente.com
+[25-05-2025 12:10:27] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:10:27] [INFO] Resultados de la consulta: 
+[25-05-2025 12:10:27] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:10:27] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:10:27] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:10:27] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:10:27] [DEBUG] src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: fran@cliente.com registrado en MySQL.
+[25-05-2025 12:10:27] [ERROR] Error registering user: auth/weak-password Firebase: Password should be at least 6 characters (auth/weak-password).
+[25-05-2025 12:10:27] [ERROR] ❌ No se pudo registrar en Firebase.
+[25-05-2025 12:37:20] [INFO] ✅ Cliente conectado con ID: ehUcPGTgYK1pusUPAAAl
+[25-05-2025 12:37:20] [INFO] ✅ Se reliza el registro del usuario fran@cliente.com
+[25-05-2025 12:37:20] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:37:20] [INFO] Resultados de la consulta: 
+[25-05-2025 12:37:20] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:37:20] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:37:20] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:37:20] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:37:20] [DEBUG] src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: fran@cliente.com registrado en MySQL.
+[25-05-2025 12:37:21] [INFO] User registered successfully: fXH66rJ22cfd5aTGPI8lUA52NMd2
+[25-05-2025 12:37:21] [DEBUG] UPDATE DATOS_COMUNES SET FIREBASE_UID = 'fXH66rJ22cfd5aTGPI8lUA52NMd2' WHERE ID_DATOS_COMUNES = 39
+[25-05-2025 12:37:21] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:37:21] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:37:21] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:37:21] [INFO] Conexión exitosa a MySQL
+[25-05-2025 12:37:21] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 12:37:21] [INFO] Conexión a MySQL cerrada
+[25-05-2025 12:37:21] [DEBUG] src/sockets/auth/credenciales.js registroUsuario() || Usuario con mail: fran@cliente.com actualizado con Firebase UID: fXH66rJ22cfd5aTGPI8lUA52NMd2.
+[25-05-2025 13:13:36] [INFO] ✅ Cliente conectado con ID: t6zDqrB_qbYhAcg3AAAn
+[25-05-2025 13:14:12] [INFO] ✅ Cliente conectado con ID: m13Tg23XX9-Mc5L8AAAp
+[25-05-2025 13:14:26] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:14:26] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:14:26] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:14:26] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:14:26] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:14:26] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:14:26] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:14:26] [INFO] Resultados de la consulta: 
+[25-05-2025 13:14:26] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:14:26] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:14:38] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:14:38] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: cliente123
+[25-05-2025 13:14:38] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:14:38] [INFO] Resultados de la consulta: 
+[25-05-2025 13:14:38] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:14:38] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'ID_DATOS_COMUNES' of 'resultado[0]' as it is undefined.
+[25-05-2025 13:14:44] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:14:44] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123
+[25-05-2025 13:14:44] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:14:44] [INFO] Resultados de la consulta: 
+[25-05-2025 13:14:44] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:14:44] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'ID_DATOS_COMUNES' of 'resultado[0]' as it is undefined.
+[25-05-2025 13:15:20] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:15:20] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:15:20] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:20] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:15:20] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:20] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:15:20] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:20] [INFO] Resultados de la consulta: 
+[25-05-2025 13:15:20] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:20] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:15:33] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:15:33] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: admin@desguace.com | Contraseña: admin123
+[25-05-2025 13:15:33] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:33] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:15:33] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:33] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: e98bQlrVHre5NB1CRLgKi5MGa6A3
+[25-05-2025 13:15:33] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:33] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:15:33] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:34] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa para el Usuario; admin@desguace.com
+[25-05-2025 13:15:34] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || TIPO DE CUENTA en MySQL: ADM
+[25-05-2025 13:15:34] [INFO] ✅ Usuario: admin@desguace.com logueado correctamente. Tipo de cuenta: EMPLEADO.
+[25-05-2025 13:15:41] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:15:41] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para agregar a la tabla: PASSWORD con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa
+[25-05-2025 13:15:41] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[25-05-2025 13:15:41] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: PASSWORD
+[25-05-2025 13:15:41] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:41] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[25-05-2025 13:15:41] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:41] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla PASSWORD [{"COLUMN_NAME":"NOMBRE"},{"COLUMN_NAME":"APELLIDO_A"},{"COLUMN_NAME":"APELLIDO_B"},{"COLUMN_NAME":"DIRECCION"},{"COLUMN_NAME":"CODIGO_POSTAL"},{"COLUMN_NAME":"CIUDAD"},{"COLUMN_NAME":"MUNICIPIO"},{"COLUMN_NAME":"TELEFONO"},{"COLUMN_NAME":"MOVIL"},{"COLUMN_NAME":"MAIL"},{"COLUMN_NAME":"DNI_CIF"}]
+[25-05-2025 13:15:41] [INFO] ✅ Obtenidas las columnas correctamente para la tabla PASSWORD
+[25-05-2025 13:15:50] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:15:50] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para la tabla: RESTABLECER_PASS con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa
+[25-05-2025 13:15:50] [INFO] ✅ Ruta /ObtenerDatosTablas ha sido llamada
+[25-05-2025 13:15:50] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosTablas || tabla consultada: RESTABLECER_PASS
+[25-05-2025 13:15:50] [WARN] la consulta sql = SELECT dc.ID_DATOS_COMUNES, dc.NOMBRE, dc.MAIL, dc.DNI_CIF, dc.NOMBRE 
+            FROM DATOS_COMUNES dc 
+            WHERE dc.NOMBRE LIKE LOWER(CONCAT('%', ?, '%')) 
+
+        el valor es = Cliente
+[25-05-2025 13:15:50] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:50] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:15:50] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:50] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla RESTABLECER_PASS [{"ID_DATOS_COMUNES":36,"NOMBRE":"cliente","MAIL":"cliente@cliente.com","DNI_CIF":"32346668C"}]
+[25-05-2025 13:15:50] [INFO] ✅ Datos para la tabla RESTABLECER_PASS obtenidos correctamente.
+[25-05-2025 13:15:55] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:15:55] [INFO] El usuario: admin@desguace.com, realiza la actividad Modificar datos para la tabla: RESTABLECER_PASS con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa
+[25-05-2025 13:15:55] [INFO] ✅Ruta /ModificarDatosTabla ha sido llamada
+[25-05-2025 13:15:55] [INFO] la tabla q mando es : RESTABLECER_PASS
+[25-05-2025 13:15:55] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:55] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:15:55] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:55] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:15:55] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:15:55] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:15:57] [INFO] ✅ Contraseña actualizada correctamente para el UID: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:15:57] [INFO] Correo enviado de notificación de cambio de contraseña.
+[25-05-2025 13:15:57] [INFO] ✅ src/api/funciones_crud.js Se ha modificado la contraseña Cliente123@ para el identificador: 36.
+[25-05-2025 13:15:58] [INFO]  src/sockets/notify Correo enviado: 250 2.0.0 OK  1748171758 5b1f17b1804b1-447f7d975cfsm210342805e9.38 - gsmtp
+[25-05-2025 13:16:00] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:16:00] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:16:00] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:16:00] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:16:00] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:16:00] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:16:00] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:16:00] [INFO] Resultados de la consulta: 
+[25-05-2025 13:16:00] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:16:00] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:16:13] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:16:13] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:16:13] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:16:13] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:16:13] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:16:13] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:16:13] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:16:13] [INFO] Resultados de la consulta: 
+[25-05-2025 13:16:13] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:16:13] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:16:44] [INFO] ✅ Cliente conectado con ID: -ATopuzJnirshJuHAAAr
+[25-05-2025 13:16:58] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:16:58] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:16:58] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:16:58] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:16:58] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:16:58] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:16:58] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:16:58] [INFO] Resultados de la consulta: 
+[25-05-2025 13:16:58] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:16:58] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:17:20] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:17:20] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:17:20] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:17:20] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:17:20] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:17:20] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:17:20] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:17:20] [INFO] Resultados de la consulta: 
+[25-05-2025 13:17:20] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:17:20] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:18:40] [INFO] ✅ Cliente conectado con ID: zcxE2psHsBHxryVUAAAt
+[25-05-2025 13:18:40] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:18:40] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:19:13] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:19:13] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:19:13] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:19:13] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:19:13] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:19:13] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:19:13] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:19:13] [INFO] Resultados de la consulta: 
+[25-05-2025 13:19:13] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:19:13] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'TIPO_USUARIO' of 'resultado_tipo_usuario[0]' as it is undefined.
+[25-05-2025 13:20:17] [INFO] ✅ Cliente conectado con ID: 1ve2HRKLQ97wYkSIAAAv
+[25-05-2025 13:20:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:20:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:22:38] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[25-05-2025 13:22:38] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[25-05-2025 13:22:38] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:22:38] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:22:38] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:22:38] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[25-05-2025 13:22:38] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:22:38] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:22:38] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:22:39] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: b93b15c69b4ca4703f8358c63f698a3a8ee2d9e00014b575f1a17665e43564a5 para el Usuario; cliente@cliente.com
+[25-05-2025 13:22:39] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:22:39] [INFO] Resultados de la consulta: [object Object]
+[25-05-2025 13:22:39] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:22:39] [INFO] ✅ Usuario: cliente@cliente.com logueado correctamente. Tipo de cuenta: CLIENTE.
+[25-05-2025 13:22:39] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[25-05-2025 13:22:39] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: b93b15c69b4ca4703f8358c63f698a3a8ee2d9e00014b575f1a17665e43564a5
+[25-05-2025 13:22:39] [INFO] Conexión exitosa a MySQL
+[25-05-2025 13:22:39] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object]
+[25-05-2025 13:22:39] [INFO] Conexión a MySQL cerrada
+[25-05-2025 13:22:39] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas [{"ID_PIEZAS":7,"DESCRIPCION":"Recambio de PARAGOLPES TRASERO para un vehículo modelo 3 ACTIVE TOURER","PESO":"5.00","PRECIO":"344.98","REFERENCIA":"7039781","FECHA_YEAR":"2016","IMAGENES":"1747769330303-417243931.jpeg;1747769330305-609259582.jpeg;1747769330309-920827759.jpeg","CATEGORIAS":"Carrocería","RAZON_SOCIAL":"Desguaces García S.L.","NOMBRE_MODELO":"Serie 3","NOMBRE_MARCA":"BMW"},{"ID_PIEZAS":8,"DESCRIPCION":"MOTOR ELÉCTRICO BMW I3 0.6 IB1 W20K06A 12358629034 125KW 170CV","PESO":"150.00","PRECIO":"1575.00","REFERENCIA":"IB1 W20K06A","FECHA_YEAR":"2019","IMAGENES":"1747769511426-572163210.jpeg;1747769511428-579745880.jpeg;1747769511429-245382931.jpeg","CATEGORIAS":"Motor","RAZON_SOCIAL":"Desguaces García S.L.","NOMBRE_MODELO":"Serie 3","NOMBRE_MARCA":"BMW"},{"ID_PIEZAS":9,"DESCRIPCION":"BRAZO SUSPENSION DELANTERO DERECHO TOYOTA COROLLA VERSION INDEFINIDA (2003)","PESO":"4.00","PRECIO":"44.00","REFERENCIA":"SIN REFERENCIA","FECHA_YEAR":"2003","IMAGENES":"1747769681457-732202419.jpeg;1747769681458-436255445.jpeg","CATEGORIAS":"Suspensión","RAZON_SOCIAL":"Desguaces García S.L.","NOMBRE_MODELO":"Corolla","NOMBRE_MARCA":"Toyota"},{"ID_PIEZAS":10,"DESCRIPCION":"PUENTE DELANTERO TOYOTA COROLLA VERSION INDEFINIDA","PESO":"25.00","PRECIO":"110.00","REFERENCIA":"SIN REFERENCIA","FECHA_YEAR":"2002","IMAGENES":"1747769846814-298537683.jpeg;1747769846819-855421540.jpeg;1747769846822-678339628.jpeg","CATEGORIAS":"Suspensión","RAZON_SOCIAL":"Desguaces García S.L.","NOMBRE_MODELO":"Corolla","NOMBRE_MARCA":"Toyota"},{"ID_PIEZAS":11,"DESCRIPCION":"BLOQUE MOTOR VOLKSWAGEN PASSAT 1.9 TDI (3B3) (2000-2005) 130CV AWX (2003) AWXAVBAVFBGWBHW","PESO":"90.00","PRECIO":"250.00","REFERENCIA":"AWX AVB AVF BGW BHW","FECHA_YEAR":"2000","IMAGENES":"1747770022838-118047525.jpeg;1747770022841-856344510.jpeg;1747770022843-848220481.jpeg;1747770022846-880220400.jpeg","CATEGORIAS":"Motor","RAZON_SOCIAL":"Desguaces García S.L.","NOMBRE_MODELO":"Passat","NOMBRE_MARCA":"Volkswagen"}]
+[25-05-2025 13:22:39] [INFO] ✅ Datos para la app obtenidos correctamente.
+[25-05-2025 13:22:56] [INFO] ✅ Cliente conectado con ID: aSfidJ0euK7KTD0oAAAx
+[25-05-2025 13:24:35] [INFO] ✅ Cliente conectado con ID: Wq8L-xNRj2F40yqdAAAz
+[25-05-2025 13:24:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:24:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:26:37] [INFO] ✅ Cliente conectado con ID: ZlTktTSTEY-ScPnkAAA1
+[25-05-2025 13:26:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:26:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:28:14] [INFO] ✅ Cliente conectado con ID: XI2sGNU2Zg441lK9AAA3
+[25-05-2025 13:28:14] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:28:14] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:30:16] [INFO] ✅ Cliente conectado con ID: UAx1GzqKv8CzzQU-AAA5
+[25-05-2025 13:30:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:30:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:32:18] [INFO] ✅ Cliente conectado con ID: _veBD1Gh9z-_Quc2AAA7
+[25-05-2025 13:32:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:32:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:34:20] [INFO] ✅ Cliente conectado con ID: tHTEbj66Tl3xHOqJAAA9
+[25-05-2025 13:34:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:34:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:36:21] [INFO] ✅ Cliente conectado con ID: 6X9jMmSPfaRuDz4FAAA_
+[25-05-2025 13:36:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:36:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:37:39] [WARN] ⚠️ Usuario cliente@cliente.com deslogueado por inactividad.
+[25-05-2025 13:38:23] [INFO] ✅ Cliente conectado con ID: YOelAvUG-G0NmCoSAABB
+[25-05-2025 13:38:23] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:38:23] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:40:24] [INFO] ✅ Cliente conectado con ID: G7A-tW7uvPLKGexeAABD
+[25-05-2025 13:40:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:40:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:42:26] [INFO] ✅ Cliente conectado con ID: vN8HnXbMLN1gNMR2AABF
+[25-05-2025 13:42:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:42:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:44:28] [INFO] ✅ Cliente conectado con ID: Mp2ti2l1xR5IeqisAABH
+[25-05-2025 13:44:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:44:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:46:30] [INFO] ✅ Cliente conectado con ID: JwJS42lAfFNjCDDRAABJ
+[25-05-2025 13:46:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:46:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:48:32] [INFO] ✅ Cliente conectado con ID: zJ5JEG-va10gduX1AABL
+[25-05-2025 13:48:32] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:48:32] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:50:33] [INFO] ✅ Cliente conectado con ID: sHICdgihJ_oTKkb7AABN
+[25-05-2025 13:50:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:50:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:52:34] [INFO] ✅ Cliente conectado con ID: uhTQ7mPSbU70Yo47AABP
+[25-05-2025 13:52:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:52:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:54:35] [INFO] ✅ Cliente conectado con ID: jPB4t2ekK0yMgEbOAABR
+[25-05-2025 13:54:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:54:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:56:36] [INFO] ✅ Cliente conectado con ID: WaLt2X3zsX3FOtz1AABT
+[25-05-2025 13:56:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:56:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 13:58:37] [INFO] ✅ Cliente conectado con ID: X3hUcPxtmSFtz-KEAABV
+[25-05-2025 13:58:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 13:58:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:00:13] [INFO] ✅ Cliente conectado con ID: 8RnuAgoiYZPY6PNgAABX
+[25-05-2025 14:00:13] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:00:13] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:02:15] [INFO] ✅ Cliente conectado con ID: jH8LurvW5UXpjmIPAABZ
+[25-05-2025 14:02:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:02:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:04:16] [INFO] ✅ Cliente conectado con ID: YCxvkeCncHTGFToVAABb
+[25-05-2025 14:04:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:04:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:06:18] [INFO] ✅ Cliente conectado con ID: 5j2vziCOnvurC3haAABd
+[25-05-2025 14:06:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:06:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:08:20] [INFO] ✅ Cliente conectado con ID: Amjs9poj-BC20IuZAABf
+[25-05-2025 14:08:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:08:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:10:21] [INFO] ✅ Cliente conectado con ID: h4I9-S8Z8F9yWfB5AABh
+[25-05-2025 14:10:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:10:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:12:22] [INFO] ✅ Cliente conectado con ID: 4ntA4ctpSzT6gihJAABj
+[25-05-2025 14:12:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:12:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:14:24] [INFO] ✅ Cliente conectado con ID: q8BtaEeYWIFlLw7_AABl
+[25-05-2025 14:14:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:14:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:16:26] [INFO] ✅ Cliente conectado con ID: _ZNWmpiN3a01uAgtAABn
+[25-05-2025 14:16:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:16:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:18:27] [INFO] ✅ Cliente conectado con ID: 0nR7NCcJbS_zYCQ_AABp
+[25-05-2025 14:18:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:18:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:20:28] [INFO] ✅ Cliente conectado con ID: 0CMLuJyr5dvhNEIeAABr
+[25-05-2025 14:20:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:20:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:22:29] [INFO] ✅ Cliente conectado con ID: 6z2ZyFNNlPv8qmKEAABt
+[25-05-2025 14:22:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:22:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:24:30] [INFO] ✅ Cliente conectado con ID: Q2jJwblIHkm4D2mLAABv
+[25-05-2025 14:24:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:24:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:26:32] [INFO] ✅ Cliente conectado con ID: I5ELSJRWI3uwZMhzAABx
+[25-05-2025 14:26:32] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:26:32] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:28:34] [INFO] ✅ Cliente conectado con ID: odKRpa46wAxcGJc1AABz
+[25-05-2025 14:28:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:28:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:30:36] [INFO] ✅ Cliente conectado con ID: _ONWKCjFSc5jkLrAAAB1
+[25-05-2025 14:30:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:30:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:32:37] [INFO] ✅ Cliente conectado con ID: 50uMRB-Ol9aVLHILAAB3
+[25-05-2025 14:32:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:32:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:34:13] [INFO] ✅ Cliente conectado con ID: BcmJuMgWbMnbuztuAAB5
+[25-05-2025 14:34:13] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:34:13] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:36:15] [INFO] ✅ Cliente conectado con ID: Ep_m73ZVQMxrEuLxAAB7
+[25-05-2025 14:36:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:36:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:38:17] [INFO] ✅ Cliente conectado con ID: btpl4ny0dlmjmbzTAAB9
+[25-05-2025 14:38:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:38:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:40:18] [INFO] ✅ Cliente conectado con ID: WV-TkaQQl8izropNAAB_
+[25-05-2025 14:40:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:40:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:42:20] [INFO] ✅ Cliente conectado con ID: tEaCei60rUdrMU5ZAACB
+[25-05-2025 14:42:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:42:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:44:21] [INFO] ✅ Cliente conectado con ID: dHCPQuvZ3UdBNq7tAACD
+[25-05-2025 14:44:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:44:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:46:22] [INFO] ✅ Cliente conectado con ID: 8jdvzf7xWB0blyYHAACF
+[25-05-2025 14:46:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:46:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:48:24] [INFO] ✅ Cliente conectado con ID: oQT7k8v4jWC08hTUAACH
+[25-05-2025 14:48:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:48:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:50:26] [INFO] ✅ Cliente conectado con ID: 1xfsi7jLHxsbToqKAACJ
+[25-05-2025 14:50:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:50:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:52:28] [INFO] ✅ Cliente conectado con ID: 80B3DOfrY5KG9ufAAACL
+[25-05-2025 14:52:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:52:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:54:30] [INFO] ✅ Cliente conectado con ID: 2nSpjHt8vl27r2lEAACN
+[25-05-2025 14:54:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:54:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:56:32] [INFO] ✅ Cliente conectado con ID: ISy7n8GMIUA1J1pgAACP
+[25-05-2025 14:56:32] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:56:32] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 14:58:34] [INFO] ✅ Cliente conectado con ID: CjYupEEzrGgtHoAEAACR
+[25-05-2025 14:58:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 14:58:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:00:35] [INFO] ✅ Cliente conectado con ID: _5PobUgQCkcHwVPCAACT
+[25-05-2025 15:00:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:00:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:02:37] [INFO] ✅ Cliente conectado con ID: UbPgqYMC8HvqDQBRAACV
+[25-05-2025 15:02:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:02:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:04:14] [INFO] ✅ Cliente conectado con ID: 9CMR8hlUNLzXcryrAACX
+[25-05-2025 15:04:14] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:04:14] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:06:15] [INFO] ✅ Cliente conectado con ID: b0OdioHT1vniXWPFAACZ
+[25-05-2025 15:06:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:06:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:08:17] [INFO] ✅ Cliente conectado con ID: ugNhP3zNnY3RFXtzAACb
+[25-05-2025 15:08:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:08:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:10:19] [INFO] ✅ Cliente conectado con ID: c8oQll9ZXw3XAS4dAACd
+[25-05-2025 15:10:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:10:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:12:20] [INFO] ✅ Cliente conectado con ID: 7rRLoyM6kOV2jLCRAACf
+[25-05-2025 15:12:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:12:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:14:21] [INFO] ✅ Cliente conectado con ID: 0OdKHHHXmOWO6wyDAACh
+[25-05-2025 15:14:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:14:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:16:22] [INFO] ✅ Cliente conectado con ID: 81UGqgCb7VOlsz16AACj
+[25-05-2025 15:16:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:16:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:18:24] [INFO] ✅ Cliente conectado con ID: CNQOBywLDI_BWlZkAACl
+[25-05-2025 15:18:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:18:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:20:26] [INFO] ✅ Cliente conectado con ID: YFwrwS9ewl-EBTHpAACn
+[25-05-2025 15:20:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:20:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:22:27] [INFO] ✅ Cliente conectado con ID: AH-SMgdoM_lf3FbdAACp
+[25-05-2025 15:22:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:22:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:24:29] [INFO] ✅ Cliente conectado con ID: RcNWrIJaNbpZiBocAACr
+[25-05-2025 15:24:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:24:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:26:30] [INFO] ✅ Cliente conectado con ID: X8lxBBc4_Nv4u4A4AACt
+[25-05-2025 15:26:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:26:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:28:32] [INFO] ✅ Cliente conectado con ID: oAeWXS6Ypq6CJkgeAACv
+[25-05-2025 15:28:32] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:28:32] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:30:34] [INFO] ✅ Cliente conectado con ID: Q3suV3Qau8_MRdRiAACx
+[25-05-2025 15:30:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:30:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:32:36] [INFO] ✅ Cliente conectado con ID: RjMCUnoDUNmBphPNAACz
+[25-05-2025 15:32:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:32:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:34:38] [INFO] ✅ Cliente conectado con ID: g04Ql8k674w6Ll3pAAC1
+[25-05-2025 15:34:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:34:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:36:15] [INFO] ✅ Cliente conectado con ID: KPKYPqqbv4CxukJBAAC3
+[25-05-2025 15:36:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:36:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:38:17] [INFO] ✅ Cliente conectado con ID: JXl-uz_YEoZnU_r1AAC5
+[25-05-2025 15:38:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:38:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:40:19] [INFO] ✅ Cliente conectado con ID: 109-oKnz3dF3kjFnAAC7
+[25-05-2025 15:40:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:40:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:42:20] [INFO] ✅ Cliente conectado con ID: jhV9FOQskoClhBC7AAC9
+[25-05-2025 15:42:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:42:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:44:21] [INFO] ✅ Cliente conectado con ID: -ctPHdUP0pKWrh3ZAAC_
+[25-05-2025 15:44:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:44:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:46:22] [INFO] ✅ Cliente conectado con ID: 21Ef0zne_JsbWEJtAADB
+[25-05-2025 15:46:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:46:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:48:24] [INFO] ✅ Cliente conectado con ID: 2oSEXBtk7VeLAtZAAADD
+[25-05-2025 15:48:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:48:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:50:25] [INFO] ✅ Cliente conectado con ID: 9O_zRv2OEODyT0bgAADF
+[25-05-2025 15:50:25] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:50:25] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:52:27] [INFO] ✅ Cliente conectado con ID: 7_SWeeEg0PyfEDi-AADH
+[25-05-2025 15:52:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:52:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:54:28] [INFO] ✅ Cliente conectado con ID: KEb9sNPdnUl2rTx2AADJ
+[25-05-2025 15:54:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:54:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:56:29] [INFO] ✅ Cliente conectado con ID: bKX7gfQHhvhNLRQkAADL
+[25-05-2025 15:56:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:56:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 15:58:31] [INFO] ✅ Cliente conectado con ID: oVGPhaerDXe6aKqaAADN
+[25-05-2025 15:58:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 15:58:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:00:33] [INFO] ✅ Cliente conectado con ID: Fs6W-Yca7-C3TX3rAADP
+[25-05-2025 16:00:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:00:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:02:34] [INFO] ✅ Cliente conectado con ID: jsu3wkH4eozxeHS7AADR
+[25-05-2025 16:02:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:02:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:04:36] [INFO] ✅ Cliente conectado con ID: 8JlMyRmFIp7Ox1wBAADT
+[25-05-2025 16:04:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:04:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:06:38] [INFO] ✅ Cliente conectado con ID: BS5Pqq5-p0f3jBMvAADV
+[25-05-2025 16:06:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:06:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:08:15] [INFO] ✅ Cliente conectado con ID: UFHsEyFOyXj9KFHYAADX
+[25-05-2025 16:08:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:08:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:10:17] [INFO] ✅ Cliente conectado con ID: Xcv7yPETBvFAaimeAADZ
+[25-05-2025 16:10:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:10:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:12:19] [INFO] ✅ Cliente conectado con ID: Zrof5MDL4HiaDjORAADb
+[25-05-2025 16:12:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:12:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:14:21] [INFO] ✅ Cliente conectado con ID: v_LY0ieZ4i2MXiq_AADd
+[25-05-2025 16:14:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:14:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:16:22] [INFO] ✅ Cliente conectado con ID: PG0YKMCk2UOGgScmAADf
+[25-05-2025 16:16:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:16:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:18:24] [INFO] ✅ Cliente conectado con ID: RG3Pvm79JfFqRfEUAADh
+[25-05-2025 16:18:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:18:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:20:26] [INFO] ✅ Cliente conectado con ID: VETCzJ7HBBPxCBy8AADj
+[25-05-2025 16:20:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:20:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:22:27] [INFO] ✅ Cliente conectado con ID: XYS9c9tq3H54YUk_AADl
+[25-05-2025 16:22:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:22:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:24:28] [INFO] ✅ Cliente conectado con ID: CshEImSXdOGfgz-bAADn
+[25-05-2025 16:24:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:24:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:26:29] [INFO] ✅ Cliente conectado con ID: tcjtDUzHXDjMPmmiAADp
+[25-05-2025 16:26:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:26:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:28:31] [INFO] ✅ Cliente conectado con ID: RJW2YmkrYH_sSMgmAADr
+[25-05-2025 16:28:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:28:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:30:33] [INFO] ✅ Cliente conectado con ID: yWeEOJF00-rWzOQlAADt
+[25-05-2025 16:30:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:30:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:32:35] [INFO] ✅ Cliente conectado con ID: a1UVP_LHgQZyojoRAADv
+[25-05-2025 16:32:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:32:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:34:36] [INFO] ✅ Cliente conectado con ID: L3j8UzWFUGjIiNl1AADx
+[25-05-2025 16:34:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:34:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:36:37] [INFO] ✅ Cliente conectado con ID: 5HA4oeQ3qs1_B5ZXAADz
+[25-05-2025 16:36:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:36:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:38:14] [INFO] ✅ Cliente conectado con ID: VHhe3VOMqQFpRdcRAAD1
+[25-05-2025 16:38:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:38:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:40:15] [INFO] ✅ Cliente conectado con ID: TJcSA7JjGrpc3X85AAD3
+[25-05-2025 16:40:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:40:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:42:18] [INFO] ✅ Cliente conectado con ID: elQK1-wC3M4ZwGJGAAD5
+[25-05-2025 16:42:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:42:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:44:27] [INFO] ✅ Cliente conectado con ID: tXmFNJKYU8IB8GNVAAD7
+[25-05-2025 16:44:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:44:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:46:29] [INFO] ✅ Cliente conectado con ID: NPO_5wb57q9UxBIPAAD9
+[25-05-2025 16:46:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:46:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:48:31] [INFO] ✅ Cliente conectado con ID: rn3x5Qbrw3Nkv8nNAAD_
+[25-05-2025 16:48:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:48:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:50:33] [INFO] ✅ Cliente conectado con ID: K7BbfczEONW7s2-qAAEB
+[25-05-2025 16:50:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:50:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:52:34] [INFO] ✅ Cliente conectado con ID: KSY7UEFdhaQKUVl1AAED
+[25-05-2025 16:52:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:52:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:54:35] [INFO] ✅ Cliente conectado con ID: 3UCTAYCq-MLW-OeGAAEF
+[25-05-2025 16:54:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:54:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:56:36] [INFO] ✅ Cliente conectado con ID: vraMM3tVfm-51kfLAAEH
+[25-05-2025 16:56:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:56:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 16:58:38] [INFO] ✅ Cliente conectado con ID: S4qLdVwM_DmWZOkCAAEJ
+[25-05-2025 16:58:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 16:58:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:00:14] [INFO] ✅ Cliente conectado con ID: Tmwl3hplCjQNj7WHAAEL
+[25-05-2025 17:00:14] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:00:14] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:02:15] [INFO] ✅ Cliente conectado con ID: qlASA5yToiiydFrEAAEN
+[25-05-2025 17:02:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:02:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:04:17] [INFO] ✅ Cliente conectado con ID: 14QWLGbEfm34s4dcAAEP
+[25-05-2025 17:04:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:04:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:06:19] [INFO] ✅ Cliente conectado con ID: yZY95U191YZwK0iwAAER
+[25-05-2025 17:06:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:06:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:08:21] [INFO] ✅ Cliente conectado con ID: xCiMowx_boMcBMI_AAET
+[25-05-2025 17:08:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:08:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:10:23] [INFO] ✅ Cliente conectado con ID: oeY3UMWSBrobX7KYAAEV
+[25-05-2025 17:10:23] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:10:23] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:12:25] [INFO] ✅ Cliente conectado con ID: coOO0oE8_LLzOb-_AAEX
+[25-05-2025 17:12:25] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:12:25] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:14:27] [INFO] ✅ Cliente conectado con ID: lfuPpwwSG08ZtiotAAEZ
+[25-05-2025 17:14:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:14:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:16:29] [INFO] ✅ Cliente conectado con ID: Mtnraxe9rTj5MtIRAAEb
+[25-05-2025 17:16:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:16:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:18:31] [INFO] ✅ Cliente conectado con ID: Y8_NcRMmfUP23O2UAAEd
+[25-05-2025 17:18:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:18:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:20:33] [INFO] ✅ Cliente conectado con ID: ToMH9qkYeZW6_DrkAAEf
+[25-05-2025 17:20:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:20:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:22:34] [INFO] ✅ Cliente conectado con ID: vyI2Ok4Gp8xdZsZmAAEh
+[25-05-2025 17:22:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:22:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:24:36] [INFO] ✅ Cliente conectado con ID: i9JHW9bgYnVuU9HVAAEj
+[25-05-2025 17:24:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:24:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:26:38] [INFO] ✅ Cliente conectado con ID: Wk6hkvT8x_TJv_gzAAEl
+[25-05-2025 17:26:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:26:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:28:14] [INFO] ✅ Cliente conectado con ID: Aq6i8FRDfAKLOiy0AAEn
+[25-05-2025 17:28:14] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:28:14] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:30:16] [INFO] ✅ Cliente conectado con ID: AovuzfyUOBaanfquAAEp
+[25-05-2025 17:30:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:30:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:32:18] [INFO] ✅ Cliente conectado con ID: 9GNwcboerLxLDO03AAEr
+[25-05-2025 17:32:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:32:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:34:19] [INFO] ✅ Cliente conectado con ID: X3NFzYY1FieJWzzIAAEt
+[25-05-2025 17:34:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:34:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:36:20] [INFO] ✅ Cliente conectado con ID: LrHl1l1eL88nUhmbAAEv
+[25-05-2025 17:36:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:36:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:38:22] [INFO] ✅ Cliente conectado con ID: ni-JV6fS7FrmgxulAAEx
+[25-05-2025 17:38:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:38:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:40:24] [INFO] ✅ Cliente conectado con ID: eOmu4mtvKq_AxnNxAAEz
+[25-05-2025 17:40:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:40:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:42:25] [INFO] ✅ Cliente conectado con ID: 0aJ48Cqyys2vwKosAAE1
+[25-05-2025 17:42:25] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:42:25] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:44:27] [INFO] ✅ Cliente conectado con ID: td-HCObZC80HL6E0AAE3
+[25-05-2025 17:44:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:44:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:46:28] [INFO] ✅ Cliente conectado con ID: UktQKHQNLTx1cV5wAAE5
+[25-05-2025 17:46:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:46:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:48:30] [INFO] ✅ Cliente conectado con ID: KjRr2yjCQcsdm96eAAE7
+[25-05-2025 17:48:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:48:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:50:31] [INFO] ✅ Cliente conectado con ID: S2Yfn0sHzgZu52RsAAE9
+[25-05-2025 17:50:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:50:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:52:33] [INFO] ✅ Cliente conectado con ID: m9cAy-z5V2Gfr20DAAE_
+[25-05-2025 17:52:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:52:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:54:35] [INFO] ✅ Cliente conectado con ID: -WHI-uS-jZKYgknDAAFB
+[25-05-2025 17:54:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:54:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:56:37] [INFO] ✅ Cliente conectado con ID: D5MTLRy1QcZWPmayAAFD
+[25-05-2025 17:56:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:56:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 17:58:39] [INFO] ✅ Cliente conectado con ID: 2fi0jiwfK8KOjHHUAAFF
+[25-05-2025 17:58:39] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 17:58:39] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:00:15] [INFO] ✅ Cliente conectado con ID: c7peJB4yyWAiPmpqAAFH
+[25-05-2025 18:00:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:00:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:02:17] [INFO] ✅ Cliente conectado con ID: IEZgucDIJQiRc69yAAFJ
+[25-05-2025 18:02:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:02:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:04:18] [INFO] ✅ Cliente conectado con ID: ZeO3ATbWT4Uz-XgEAAFL
+[25-05-2025 18:04:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:04:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:06:19] [INFO] ✅ Cliente conectado con ID: sZspGyypFfqSsB4FAAFN
+[25-05-2025 18:06:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:06:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:08:21] [INFO] ✅ Cliente conectado con ID: av2Av2upwpxdfbQoAAFP
+[25-05-2025 18:08:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:08:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:10:23] [INFO] ✅ Cliente conectado con ID: gYGou-BJLpcOLgU6AAFR
+[25-05-2025 18:10:23] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:10:23] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:12:24] [INFO] ✅ Cliente conectado con ID: G1qnMW-m7Hki4ve6AAFT
+[25-05-2025 18:12:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:12:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:14:26] [INFO] ✅ Cliente conectado con ID: Td-_9t50SajcfkrPAAFV
+[25-05-2025 18:14:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:14:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:16:28] [INFO] ✅ Cliente conectado con ID: 7UwqtJ6eQ5kI3YstAAFX
+[25-05-2025 18:16:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:16:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:18:29] [INFO] ✅ Cliente conectado con ID: Ibz_mkgVF0sl92fsAAFZ
+[25-05-2025 18:18:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:18:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:20:30] [INFO] ✅ Cliente conectado con ID: 6GP-nIflXRf5yseoAAFb
+[25-05-2025 18:20:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:20:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:22:32] [INFO] ✅ Cliente conectado con ID: Sh8W3-9EkMmPovQ2AAFd
+[25-05-2025 18:22:32] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:22:32] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:24:34] [INFO] ✅ Cliente conectado con ID: gpYEXzJKQuHb2JUYAAFf
+[25-05-2025 18:24:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:24:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:26:36] [INFO] ✅ Cliente conectado con ID: J2zRC1JwVqGZczycAAFh
+[25-05-2025 18:26:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:26:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:28:37] [INFO] ✅ Cliente conectado con ID: 0ofnUEyHXMJpX_LmAAFj
+[25-05-2025 18:28:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:28:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:30:39] [INFO] ✅ Cliente conectado con ID: yFwrcxUR1dX8Sy_FAAFl
+[25-05-2025 18:30:39] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:30:39] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:32:15] [INFO] ✅ Cliente conectado con ID: gU_taxm2xebp91YpAAFn
+[25-05-2025 18:32:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:32:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:34:17] [INFO] ✅ Cliente conectado con ID: pNLbFaAcdnIGnzFHAAFp
+[25-05-2025 18:34:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:34:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:36:19] [INFO] ✅ Cliente conectado con ID: wRvy4QA5L1TyMZ8qAAFr
+[25-05-2025 18:36:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:36:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:38:20] [INFO] ✅ Cliente conectado con ID: DjnTeo3mCp9mp1U_AAFt
+[25-05-2025 18:38:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:38:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:40:21] [INFO] ✅ Cliente conectado con ID: hXLpChe2UKWChjC7AAFv
+[25-05-2025 18:40:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:40:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:42:23] [INFO] ✅ Cliente conectado con ID: Blcl5MD-94azbAd5AAFx
+[25-05-2025 18:42:23] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:42:23] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:44:24] [INFO] ✅ Cliente conectado con ID: kOdR77ra4q4lkPVDAAFz
+[25-05-2025 18:44:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:44:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:46:26] [INFO] ✅ Cliente conectado con ID: ijDJAkMm9UxT15TlAAF1
+[25-05-2025 18:46:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:46:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:48:27] [INFO] ✅ Cliente conectado con ID: O5O9-7UwUuupUu0wAAF3
+[25-05-2025 18:48:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:48:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:50:29] [INFO] ✅ Cliente conectado con ID: x-wIqSCfk8DqVJNIAAF5
+[25-05-2025 18:50:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:50:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:52:31] [INFO] ✅ Cliente conectado con ID: OwrCGpAkKBQU-YHfAAF7
+[25-05-2025 18:52:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:52:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:54:33] [INFO] ✅ Cliente conectado con ID: 3JgvR6ao2LKRm-NFAAF9
+[25-05-2025 18:54:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:54:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:56:35] [INFO] ✅ Cliente conectado con ID: OnDAaap-JkvTa7EfAAF_
+[25-05-2025 18:56:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:56:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 18:58:37] [INFO] ✅ Cliente conectado con ID: bd12JM1HzILop5oBAAGB
+[25-05-2025 18:58:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 18:58:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:00:39] [INFO] ✅ Cliente conectado con ID: fftCqIhnKaTuBCcEAAGD
+[25-05-2025 19:00:39] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:00:39] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:02:16] [INFO] ✅ Cliente conectado con ID: Io5pOeg6K8AhG9E5AAGF
+[25-05-2025 19:02:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:02:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:04:18] [INFO] ✅ Cliente conectado con ID: rJynRK23CL5xO4yzAAGH
+[25-05-2025 19:04:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:04:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:06:19] [INFO] ✅ Cliente conectado con ID: 4t093aEyhofK_tEJAAGJ
+[25-05-2025 19:06:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:06:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:08:21] [INFO] ✅ Cliente conectado con ID: 5XGo4o5ZMOIosShdAAGL
+[25-05-2025 19:08:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:08:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:10:22] [INFO] ✅ Cliente conectado con ID: 6I5fgyiboVS_-KYuAAGN
+[25-05-2025 19:10:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:10:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:12:24] [INFO] ✅ Cliente conectado con ID: u3FzmfptWg9VPPqYAAGP
+[25-05-2025 19:12:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:12:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:14:26] [INFO] ✅ Cliente conectado con ID: mZqvkEB3oiQevwoUAAGR
+[25-05-2025 19:14:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:14:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:16:27] [INFO] ✅ Cliente conectado con ID: _cjhBVvyeHP8W8VAAAGT
+[25-05-2025 19:16:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:16:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:18:28] [INFO] ✅ Cliente conectado con ID: Vx42c6mQlXL31vKPAAGV
+[25-05-2025 19:18:28] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:18:28] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:20:29] [INFO] ✅ Cliente conectado con ID: xfv2XXoNzWRxfzGVAAGX
+[25-05-2025 19:20:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:20:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:22:31] [INFO] ✅ Cliente conectado con ID: 1EETJ4FAPPI0cHkOAAGZ
+[25-05-2025 19:22:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:22:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:24:33] [INFO] ✅ Cliente conectado con ID: E9Wfp5UmFQi-KoipAAGb
+[25-05-2025 19:24:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:24:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:26:34] [INFO] ✅ Cliente conectado con ID: Uz-q4o3Y8qd8a3tgAAGd
+[25-05-2025 19:26:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:26:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:28:36] [INFO] ✅ Cliente conectado con ID: d0eK9YviQENvUhWfAAGf
+[25-05-2025 19:28:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:28:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:30:37] [INFO] ✅ Cliente conectado con ID: Zy4bvKeGvPKbyKXrAAGh
+[25-05-2025 19:30:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:30:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:32:38] [INFO] ✅ Cliente conectado con ID: VdOC6jCbdP72Ftb5AAGj
+[25-05-2025 19:32:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:32:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:34:15] [INFO] ✅ Cliente conectado con ID: _cnK7DaKodO-27XTAAGl
+[25-05-2025 19:34:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:34:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:36:16] [INFO] ✅ Cliente conectado con ID: GYip0ZgT5QcunYJ3AAGn
+[25-05-2025 19:36:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:36:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:38:17] [INFO] ✅ Cliente conectado con ID: qpz_FN_DDCt96W8SAAGp
+[25-05-2025 19:38:17] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:38:17] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:40:18] [INFO] ✅ Cliente conectado con ID: 1wJ2j-YLenJV-au8AAGr
+[25-05-2025 19:40:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:40:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:42:20] [INFO] ✅ Cliente conectado con ID: V6CRy-5uC5ljq3JTAAGt
+[25-05-2025 19:42:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:42:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:44:22] [INFO] ✅ Cliente conectado con ID: l2UKUF3Um1c9oOuWAAGv
+[25-05-2025 19:44:22] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:44:22] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:46:24] [INFO] ✅ Cliente conectado con ID: WPVSPhaNWDfMHs6XAAGx
+[25-05-2025 19:46:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:46:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:48:25] [INFO] ✅ Cliente conectado con ID: W5IuFGrf8SvXTyTmAAGz
+[25-05-2025 19:48:25] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:48:25] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:50:26] [INFO] ✅ Cliente conectado con ID: JWXPNonmqn21oQcpAAG1
+[25-05-2025 19:50:26] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:50:26] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:52:27] [INFO] ✅ Cliente conectado con ID: J_wFR4EARtSZn0TiAAG3
+[25-05-2025 19:52:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:52:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:54:29] [INFO] ✅ Cliente conectado con ID: guSKX7gkHvf_X4zrAAG5
+[25-05-2025 19:54:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:54:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:56:31] [INFO] ✅ Cliente conectado con ID: URZNNo2aNExc19VrAAG7
+[25-05-2025 19:56:31] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:56:31] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 19:58:33] [INFO] ✅ Cliente conectado con ID: hLGyasdtx0WI_JKCAAG9
+[25-05-2025 19:58:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 19:58:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:00:34] [INFO] ✅ Cliente conectado con ID: PmmocAEofxZA5W4NAAG_
+[25-05-2025 20:00:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:00:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:02:35] [INFO] ✅ Cliente conectado con ID: mKTzhFI1_4SKBV0LAAHB
+[25-05-2025 20:02:35] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:02:35] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:04:37] [INFO] ✅ Cliente conectado con ID: KD-b_RXRC4EAwpKLAAHD
+[25-05-2025 20:04:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:04:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:06:38] [INFO] ✅ Cliente conectado con ID: iaOEvwGn67SnDlYhAAHF
+[25-05-2025 20:06:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:06:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:08:14] [INFO] ✅ Cliente conectado con ID: nc6pHBXH1Y76Xl6GAAHH
+[25-05-2025 20:08:14] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:08:14] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:10:15] [INFO] ✅ Cliente conectado con ID: TWI6S3umJ3UqbWlHAAHJ
+[25-05-2025 20:10:15] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:10:15] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:12:16] [INFO] ✅ Cliente conectado con ID: vfJJsBZ3RaSsla25AAHL
+[25-05-2025 20:12:16] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:12:16] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:14:18] [INFO] ✅ Cliente conectado con ID: GgJUnheIhdmalVh7AAHN
+[25-05-2025 20:14:18] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:14:18] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:16:19] [INFO] ✅ Cliente conectado con ID: 5QzyEW_37h8ktPviAAHP
+[25-05-2025 20:16:19] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:16:19] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:18:20] [INFO] ✅ Cliente conectado con ID: yFMOdi8c13giMnXSAAHR
+[25-05-2025 20:18:20] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:18:20] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:20:21] [INFO] ✅ Cliente conectado con ID: 7zISme63a-xA0IZMAAHT
+[25-05-2025 20:20:21] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:20:21] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:22:23] [INFO] ✅ Cliente conectado con ID: BTUignor_CaWDBCfAAHV
+[25-05-2025 20:22:23] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:22:23] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:24:25] [INFO] ✅ Cliente conectado con ID: ph8yHIBEH4mP44nZAAHX
+[25-05-2025 20:24:25] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:24:25] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:26:27] [INFO] ✅ Cliente conectado con ID: NB-HE8FNGi6DiZ3IAAHZ
+[25-05-2025 20:26:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:26:27] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:28:29] [INFO] ✅ Cliente conectado con ID: NHAEn3yR-736CZpaAAHb
+[25-05-2025 20:28:29] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:28:29] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:30:30] [INFO] ✅ Cliente conectado con ID: TxdS04Q3XIxGAMHeAAHd
+[25-05-2025 20:30:30] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:30:30] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:32:32] [INFO] ✅ Cliente conectado con ID: b1sLo9GNNlYM-yGYAAHf
+[25-05-2025 20:32:32] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:32:32] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:34:33] [INFO] ✅ Cliente conectado con ID: OxyT0MjshzPqkGhRAAHh
+[25-05-2025 20:34:33] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:34:33] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:36:34] [INFO] ✅ Cliente conectado con ID: jcqsjdKXyK3RsmYHAAHj
+[25-05-2025 20:36:34] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:36:34] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:38:36] [INFO] ✅ Cliente conectado con ID: dNwqatESyWF7ox45AAHl
+[25-05-2025 20:38:36] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:38:36] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:40:37] [INFO] ✅ Cliente conectado con ID: PBZzrCfpq82RBUmnAAHn
+[25-05-2025 20:40:37] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:40:37] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.
+[25-05-2025 20:42:38] [INFO] ✅ Cliente conectado con ID: w2Bzq_VWFVzSOf09AAHp
+[25-05-2025 20:42:38] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[25-05-2025 20:42:38] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 878ae0c98db9ff0f1d0ca1a62ff99ed0446c8ee3fd18f029cd3a59807c4be9aa.

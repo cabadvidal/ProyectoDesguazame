@@ -1,0 +1,183 @@
+[19-05-2025 20:57:56] [INFO] Firebase Configuración: cargada
+[19-05-2025 20:57:56] [INFO] MySQL Configuración: cargada
+[19-05-2025 20:57:56] [INFO] Parámetros de mysql:[object Object]
+[19-05-2025 20:57:56] [INFO] Servidor UP, UP, UP puerto escucha: 10010
+[19-05-2025 20:57:56] [INFO] Rutas cargadas correctamente
+[19-05-2025 20:57:58] [INFO] ✅ Cliente conectado con ID: T-8nxEVZknsGkbVmAAAB
+[19-05-2025 20:58:21] [INFO] ✅ Cliente conectado con ID: cqBEOEZNdF6hP3OBAAAD
+[19-05-2025 20:58:21] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[19-05-2025 20:58:21] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[19-05-2025 20:58:21] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:58:21] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 20:58:21] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:58:21] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[19-05-2025 20:58:21] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:58:21] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 20:58:21] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:58:22] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d para el Usuario; cliente@cliente.com
+[19-05-2025 20:58:22] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:58:22] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 20:58:22] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:58:22] [INFO] ✅ Usuario: cliente@cliente.com logueado correctamente. Tipo de cuenta: CLIENTE.
+[19-05-2025 20:58:22] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 20:58:22] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d
+[19-05-2025 20:58:22] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:58:22] [INFO] Resultados de la consulta: 
+[19-05-2025 20:58:22] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:58:22] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 20:58:22] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 20:58:35] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 20:58:35] [INFO] El usuario: cliente@cliente.com, realiza la actividad Realizar pago con el token: 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d
+[19-05-2025 20:58:35] [INFO] ✅ Se reliza el pago de con los siguientes datos: {"IVA":0,"PIEZAS":[],"TOKEN":"4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d","BASE":0,"TIPO_PAGO":"TARJETA"}
+[19-05-2025 20:58:35] [INFO] PUTO TOKEN DE MIERDA: user 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d se compara con 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d
+[19-05-2025 20:58:35] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:58:35] [ERROR] Error al realizar la consulta: Error: CONSTRAINT `CHK_BASE` failed for `DESGUACE`.`FACTURA`
+[19-05-2025 20:58:35] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:58:35] [INFO] hasta los cojones de node
+[19-05-2025 20:59:02] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 20:59:02] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d
+[19-05-2025 20:59:02] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:59:02] [INFO] Resultados de la consulta: 
+[19-05-2025 20:59:02] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:59:02] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 20:59:02] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 20:59:07] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 20:59:07] [INFO] El usuario: cliente@cliente.com, realiza la actividad Realizar pago con el token: 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d
+[19-05-2025 20:59:07] [INFO] ✅ Se reliza el pago de con los siguientes datos: {"IVA":0,"PIEZAS":[],"TOKEN":"4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d","BASE":0,"TIPO_PAGO":"TRANSFERENCIA"}
+[19-05-2025 20:59:07] [INFO] PUTO TOKEN DE MIERDA: user 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d se compara con 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d
+[19-05-2025 20:59:07] [INFO] Conexión exitosa a MySQL
+[19-05-2025 20:59:07] [ERROR] Error al realizar la consulta: Error: CONSTRAINT `CHK_BASE` failed for `DESGUACE`.`FACTURA`
+[19-05-2025 20:59:07] [INFO] Conexión a MySQL cerrada
+[19-05-2025 20:59:07] [INFO] hasta los cojones de node
+[19-05-2025 21:03:26] [INFO] ✅ Cliente conectado con ID: vsG471iu6k9i4W9ZAAAF
+[19-05-2025 21:03:26] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[19-05-2025 21:03:26] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[19-05-2025 21:03:26] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:03:26] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:03:26] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:03:26] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[19-05-2025 21:03:26] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:03:26] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:03:26] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:03:27] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb para el Usuario; cliente@cliente.com
+[19-05-2025 21:03:27] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:03:27] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:03:27] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:03:27] [INFO] ✅ Usuario: cliente@cliente.com logueado correctamente. Tipo de cuenta: CLIENTE.
+[19-05-2025 21:03:27] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:03:27] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb
+[19-05-2025 21:03:27] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:03:27] [INFO] Resultados de la consulta: 
+[19-05-2025 21:03:27] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:03:27] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 21:03:27] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 21:03:31] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:03:31] [INFO] El usuario: cliente@cliente.com, realiza la actividad Realizar pago con el token: 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb
+[19-05-2025 21:03:31] [INFO] ✅ Se reliza el pago de con los siguientes datos: {"IVA":0,"PIEZAS":[],"TOKEN":"212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb","BASE":0,"TIPO_PAGO":"TRANSFERENCIA"}
+[19-05-2025 21:03:31] [INFO] PUTO TOKEN DE MIERDA: user 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d se compara con 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb
+[19-05-2025 21:03:31] [INFO] PUTO TOKEN DE MIERDA: user 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb se compara con 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb
+[19-05-2025 21:03:31] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:03:31] [ERROR] Error al realizar la consulta: Error: CONSTRAINT `CHK_BASE` failed for `DESGUACE`.`FACTURA`
+[19-05-2025 21:03:31] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:03:31] [INFO] hasta los cojones de node
+[19-05-2025 21:05:35] [INFO] ✅ Cliente conectado con ID: JQBTMCpTG8dniFG6AAAH
+[19-05-2025 21:05:35] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[19-05-2025 21:05:35] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[19-05-2025 21:05:35] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:05:35] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:05:35] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:05:35] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[19-05-2025 21:05:35] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:05:35] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:05:35] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:05:36] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd para el Usuario; cliente@cliente.com
+[19-05-2025 21:05:36] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:05:36] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:05:36] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:05:36] [INFO] ✅ Usuario: cliente@cliente.com logueado correctamente. Tipo de cuenta: CLIENTE.
+[19-05-2025 21:05:36] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:05:36] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd
+[19-05-2025 21:05:36] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:05:36] [INFO] Resultados de la consulta: 
+[19-05-2025 21:05:36] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:05:36] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 21:05:36] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 21:05:41] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:05:41] [INFO] El usuario: cliente@cliente.com, realiza la actividad Realizar pago con el token: 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd
+[19-05-2025 21:05:41] [INFO] ✅ Se reliza el pago de con los siguientes datos: {"IVA":0,"PIEZAS":[],"TOKEN":"83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd","BASE":0,"TIPO_PAGO":"TARJETA"}
+[19-05-2025 21:05:41] [INFO] PUTO TOKEN DE MIERDA: user 4905e458ebeb8d60f09c010385ca8068dd0de161b2ad8997dfeddcbaefee897d se compara con 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd
+[19-05-2025 21:05:41] [INFO] PUTO TOKEN DE MIERDA: user 212a183fa9569c40bf83f04db13dc6e1c437aef7ade2d543c545b280b5333cfb se compara con 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd
+[19-05-2025 21:05:41] [INFO] PUTO TOKEN DE MIERDA: user 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd se compara con 83be4b9ca6c18658660f5bdcbca8daa7403187cbf22f6e02ccb41872aec9e9cd
+[19-05-2025 21:05:41] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:05:41] [ERROR] Error al realizar la consulta: Error: CONSTRAINT `CHK_BASE` failed for `DESGUACE`.`FACTURA`
+[19-05-2025 21:05:41] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:05:41] [INFO] hasta los cojones de node
+[19-05-2025 21:14:07] [WARN] ⚠️ Usuario cliente@cliente.com deslogueado por inactividad.
+[19-05-2025 21:18:31] [WARN] ⚠️ Usuario cliente@cliente.com deslogueado por inactividad.
+[19-05-2025 21:20:41] [WARN] ⚠️ Usuario cliente@cliente.com deslogueado por inactividad.
+[19-05-2025 21:34:54] [INFO] ✅ Cliente conectado con ID: e7VbDi-QIKbiUSepAAAJ
+[19-05-2025 21:35:31] [INFO] ✅ Cliente conectado con ID: P0OLMmkFNiZZy_VhAAAL
+[19-05-2025 21:35:31] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[19-05-2025 21:35:31] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario:  | Contraseña: 
+[19-05-2025 21:35:31] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:35:31] [INFO] Resultados de la consulta: 
+[19-05-2025 21:35:31] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:35:31] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'ID_DATOS_COMUNES' of 'resultado[0]' as it is undefined.
+[19-05-2025 21:35:50] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[19-05-2025 21:35:50] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario: cliente@cliente.com | Contraseña: Cliente123@
+[19-05-2025 21:35:50] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:35:50] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:35:50] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:35:50] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || FIREBASE_UID en MySQL: RWTXa22oD4NYl13wp1SBaooaWMV2
+[19-05-2025 21:35:50] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:35:50] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:35:50] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:35:50] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || El token es: 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8 para el Usuario; cliente@cliente.com
+[19-05-2025 21:35:50] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:35:50] [INFO] Resultados de la consulta: [object Object]
+[19-05-2025 21:35:50] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:35:50] [INFO] ✅ Usuario: cliente@cliente.com logueado correctamente. Tipo de cuenta: CLIENTE.
+[19-05-2025 21:35:50] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:35:50] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:35:50] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:35:50] [INFO] Resultados de la consulta: 
+[19-05-2025 21:35:50] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:35:50] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 21:35:50] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 21:35:58] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:35:58] [INFO] El usuario: cliente@cliente.com, realiza la actividad Realizar pago con el token: 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:35:58] [INFO] ✅ Se reliza el pago de con los siguientes datos: {"IVA":0,"PIEZAS":[],"TOKEN":"9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8","BASE":0,"TIPO_PAGO":"TRANSFERENCIA"}
+[19-05-2025 21:35:58] [INFO] PUTO TOKEN DE MIERDA: user 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8 se compara con 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:35:58] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:35:58] [ERROR] Error al realizar la consulta: Error: CONSTRAINT `CHK_BASE` failed for `DESGUACE`.`FACTURA`
+[19-05-2025 21:35:58] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:35:58] [INFO] hasta los cojones de node
+[19-05-2025 21:36:03] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:36:03] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:36:03] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:36:03] [INFO] Resultados de la consulta: 
+[19-05-2025 21:36:03] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:36:03] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 21:36:03] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 21:36:14] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:36:14] [INFO] El usuario: cliente@cliente.com, realiza la actividad Realizar pago con el token: 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:36:14] [INFO] ✅ Se reliza el pago de con los siguientes datos: {"IVA":0,"PIEZAS":[],"TOKEN":"9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8","BASE":0,"TIPO_PAGO":"TARJETA"}
+[19-05-2025 21:36:14] [INFO] PUTO TOKEN DE MIERDA: user 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8 se compara con 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:36:14] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:36:14] [ERROR] Error al realizar la consulta: Error: CONSTRAINT `CHK_BASE` failed for `DESGUACE`.`FACTURA`
+[19-05-2025 21:36:14] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:36:14] [INFO] hasta los cojones de node
+[19-05-2025 21:36:31] [INFO] ⏳ Temporizador reiniciado para cliente@cliente.com
+[19-05-2025 21:36:31] [INFO] El usuario: cliente@cliente.com, realiza la actividad Obtener datos piezas con el token: 9e82aff42e2bce920144a17b3fd1b65170009a19577f93d4bc5e8ae47e4c93d8
+[19-05-2025 21:36:31] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:36:31] [INFO] Resultados de la consulta: 
+[19-05-2025 21:36:31] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:36:31] [DEBUG] /src/api/web_crud.js POST: ObtenerPiezas []
+[19-05-2025 21:36:31] [INFO] ✅ Datos para la app obtenidos correctamente.
+[19-05-2025 21:36:35] [DEBUG] src/sockets/sockets.js los datos recibidos [object Object]
+[19-05-2025 21:36:35] [DEBUG] src/sockets/auth/credenciales.js comprobarCredenciales() || Usuario:  | Contraseña: 
+[19-05-2025 21:36:35] [INFO] Conexión exitosa a MySQL
+[19-05-2025 21:36:35] [INFO] Resultados de la consulta: 
+[19-05-2025 21:36:35] [INFO] Conexión a MySQL cerrada
+[19-05-2025 21:36:35] [ERROR] ❌ Error al comprobar el código: TypeError: Cannot destructure property 'ID_DATOS_COMUNES' of 'resultado[0]' as it is undefined.
+[19-05-2025 21:51:31] [WARN] ⚠️ Usuario cliente@cliente.com deslogueado por inactividad.

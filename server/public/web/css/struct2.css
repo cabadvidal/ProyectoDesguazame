@@ -89,7 +89,7 @@ section {
 }
 
 aside {
-    flex: 0 0 10%; /* Ocupa el 20% del ancho de main */
+    flex: 0 0 15%; /* Ocupa el 20% del ancho de main */
     background-color: rgba(0, 0, 0, 0.6);
     padding: 2%;
     overflow: auto;
@@ -328,6 +328,11 @@ aside {
     gap: 20px; /* Espaciado entre grupos */
     margin-bottom: 20px;
 }
+.class-name-pass span,
+.class-name-pass {
+    display: flex;
+    flex-direction: row;
+}
 
 .class-name-agregar span {
     display: flex;
@@ -335,13 +340,14 @@ aside {
     width: calc(33.33% - 20px); /* 3 columnas */
     min-width: 250px;
 }
-
+.class-name-pass p,
 .class-name-agregar p {
     font-weight: bold;
     margin-bottom: 5px;
     color: white;
 }
-
+.class-name-pass input,
+.class-name-pass select,
 .class-name-agregar input,
 .class-name-agregar select {
     width: 100%;

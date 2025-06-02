@@ -69,6 +69,8 @@ async function realizarAccionNav(dato, menu_seleccionado) {
  */
 async function crearTablaAgregar(columnas, tabla) {
     console.log(columnas);
+    let div_menu_container = document.getElementById('menu-container');
+    div_menu_container.innerHTML = '';
     let div_table_container = document.getElementById('table-container');
     tabla = tabla.toUpperCase();
     div_table_container.innerHTML = '';
@@ -541,6 +543,12 @@ function obtenerDatosAgregar(table) {
  * @param {string} tabla Contiene el nombre de la tabla a la que hacen referencia los datos.
  */
 async function crearTablaConsulta(datos, tabla) {
+    
+    if(!tabla.toUpperCase().includes("RESTABLECER_PASS")){
+        let div_menu_container = document.getElementById('menu-container');
+        div_menu_container.innerHTML = '';
+    }
+    
     let div_table_container = document.getElementById('table-container');
     div_table_container.innerHTML = '';  // Limpiar el contenedor de la tabla
 
@@ -1197,7 +1205,7 @@ async function menuModPassword(div_table_container, div_menu_container) {
     console.log(COLUMNAS)
 
     div = document.createElement('div');
-    div.className = `class-name-agregar-restablecer-pass`;
+    div.className = `class-name-pass`;
 
     let span = document.createElement('span');
     let p = document.createElement('p');
@@ -1230,6 +1238,7 @@ async function menuModPassword(div_table_container, div_menu_container) {
 
     let button_buscar = document.createElement('button');
     button_buscar.textContent = 'BUSCAR';
+    button_buscar.className = 'class-button-agregar';
     button_buscar.addEventListener('click', async () => {
         console.log(`LLamar a buscar lalallalalaal ${input.value} valor a buscar ${input.name}`);
         let datos = {};

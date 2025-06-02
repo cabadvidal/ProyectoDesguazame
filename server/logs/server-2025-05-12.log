@@ -1,0 +1,356 @@
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para la tabla: PIEZAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosTablas ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosTablas || tabla consultada: PIEZAS
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosTablas || Resultado de la consulta de creación de la tabla PIEZAS [{"ID_PIEZAS":1,"DESCRIPCION":"Motor 2.0 TDI","PESO":"150.00","PRECIO_COMPRA":"800.00","PRECIO":"1200.00","REFERENCIA":"MOT-001","FECHA_YEAR":"2020","FECHA_INICIO_VENTA":"2022-12-30T23:00:00.000Z","IMAGENES":"motor.jpg","CATEGORIAS":"Motor","RAZON_SOCIAL":"Desguaces García S.L.","EMPLEADO":"51652951B","VENDIDO":1,"NOMBRE_MODELO":"Corolla","NOMBRE_MARCA":"Toyota","CLIENTE":"69104461H","ID_PIEZAS_MODELOS":1},{"ID_PIEZAS":2,"DESCRIPCION":"Frenos delanteros","PESO":"5.00","PRECIO_COMPRA":"100.00","PRECIO":"200.00","REFERENCIA":"FRE-001","FECHA_YEAR":"2021","FECHA_INICIO_VENTA":"2022-12-30T23:00:00.000Z","IMAGENES":"frenos.jpg","CATEGORIAS":"Frenos","RAZON_SOCIAL":"Desguaces García S.L.","EMPLEADO":"51652951B","VENDIDO":1,"NOMBRE_MODELO":"Corolla","NOMBRE_MARCA":"Toyota","CLIENTE":"69104461H","ID_PIEZAS_MODELOS":2},{"ID_PIEZAS":3,"DESCRIPCION":"Transmisión automática","PESO":"80.00","PRECIO_COMPRA":"500.00","PRECIO":"800.00","REFERENCIA":"TRA-001","FECHA_YEAR":"2019","FECHA_INICIO_VENTA":"2022-12-30T23:00:00.000Z","IMAGENES":"transmision.jpg","CATEGORIAS":"Transmisión","RAZON_SOCIAL":"Desguaces García S.L.","EMPLEADO":"51652951B","VENDIDO":1,"NOMBRE_MODELO":"Corolla","NOMBRE_MARCA":"Toyota","CLIENTE":"69104461H","ID_PIEZAS_MODELOS":3},{"ID_PIEZAS":4,"DESCRIPCION":"Esto es una transmisión","PESO":"1133.00","PRECIO_COMPRA":"13.00","PRECIO":"222.00","REFERENCIA":"1452","FECHA_YEAR":"1950","FECHA_INICIO_VENTA":"2025-04-19T22:00:00.000Z","IMAGENES":"asdasdas.jpg","CATEGORIAS":"Transmisión","RAZON_SOCIAL":"Desguaces García S.L.","EMPLEADO":"51652951B","VENDIDO":0,"NOMBRE_MODELO":null,"NOMBRE_MARCA":null,"CLIENTE":null,"ID_PIEZAS_MODELOS":null}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos para la tabla PIEZAS obtenidos correctamente.
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MARCAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MARCAS
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CATEGORIAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CATEGORIAS
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MODELOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MODELOS
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"},{"ID_MODELO":3,"NOMBRE_MODELO":"Ranger"},{"ID_MODELO":4,"NOMBRE_MODELO":"Mustang"},{"ID_MODELO":5,"NOMBRE_MODELO":"Golf"},{"ID_MODELO":6,"NOMBRE_MODELO":"Passat"},{"ID_MODELO":7,"NOMBRE_MODELO":"Serie 3"},{"ID_MODELO":8,"NOMBRE_MODELO":"Serie 5"},{"ID_MODELO":9,"NOMBRE_MODELO":"Clase A"},{"ID_MODELO":10,"NOMBRE_MODELO":"Clase C"},{"ID_MODELO":11,"NOMBRE_MODELO":"A3"},{"ID_MODELO":12,"NOMBRE_MODELO":"A4"},{"ID_MODELO":13,"NOMBRE_MODELO":"Civic"},{"ID_MODELO":14,"NOMBRE_MODELO":"Accord"},{"ID_MODELO":15,"NOMBRE_MODELO":"Altima"},{"ID_MODELO":16,"NOMBRE_MODELO":"Sentra"}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: EMPLEADOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: EMPLEADOS
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object],[object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","DNI_CIF":"51652951B"},{"ID_EMPLEADOS":2,"NOMBRE":"María","DNI_CIF":"68380581V"}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla EMPLEADOS
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: VENDEDOR con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: VENDEDOR
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla VENDEDOR [{"ID_VENDEDOR":1,"RAZON_SOCIAL":"Desguaces García S.L.","DNI_CIF":"D46462396","MAIL":"vendedor@mail.com","DIRECCION":"Calle Real 12","CODIGO_POSTAL":28004,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345681","MOVIL":"612345681","NUMERO_CUENTA":"ES8300004444444444"}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla VENDEDOR
+[12-05-2025 00:00:00] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:00] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CLIENTE con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:00] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CLIENTE
+[12-05-2025 00:00:00] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:00] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object]
+[12-05-2025 00:00:00] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:00] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CLIENTE [{"ID_CLIENTE":1,"NOMBRE":"Carlos","DNI_CIF":"69104461H"},{"ID_CLIENTE":2,"NOMBRE":"cads","DNI_CIF":"53166632Q"},{"ID_CLIENTE":4,"NOMBRE":"cliente","DNI_CIF":"32346668C"}]
+[12-05-2025 00:00:00] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CLIENTE
+[12-05-2025 00:00:01] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:01] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para agregar a la tabla: PIEZAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:01] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: PIEZAS
+[12-05-2025 00:00:01] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:01] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:01] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla PIEZAS [{"COLUMN_NAME":"DNI_CIF"},{"COLUMN_NAME":"RAZON_SOCIAL"},{"COLUMN_NAME":"NOMBRE_MARCA"},{"COLUMN_NAME":"NOMBRE_MODELO"},{"COLUMN_NAME":"NOMBRE_CATEGORIA"},{"COLUMN_NAME":"DESCRIPCION"},{"COLUMN_NAME":"PESO"},{"COLUMN_NAME":"PRECIO_COMPRA"},{"COLUMN_NAME":"PRECIO"},{"COLUMN_NAME":"REFERENCIA"},{"COLUMN_NAME":"FECHA_YEAR"},{"COLUMN_NAME":"FECHA_INICIO_VENTA"},{"COLUMN_NAME":"IMAGENES"}]
+[12-05-2025 00:00:01] [INFO] ✅ Obtenidas las columnas correctamente para la tabla PIEZAS
+[12-05-2025 00:00:01] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:01] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MARCAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:01] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MARCAS
+[12-05-2025 00:00:01] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:01] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:01] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[12-05-2025 00:00:01] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS
+[12-05-2025 00:00:01] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:01] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: EMPLEADOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:01] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: EMPLEADOS
+[12-05-2025 00:00:01] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:01] [INFO] Resultados de la consulta: [object Object],[object Object]
+[12-05-2025 00:00:01] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","DNI_CIF":"51652951B"},{"ID_EMPLEADOS":2,"NOMBRE":"María","DNI_CIF":"68380581V"}]
+[12-05-2025 00:00:01] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla EMPLEADOS
+[12-05-2025 00:00:01] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:01] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: VENDEDOR con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:01] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: VENDEDOR
+[12-05-2025 00:00:01] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:01] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:00:01] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla VENDEDOR [{"ID_VENDEDOR":1,"RAZON_SOCIAL":"Desguaces García S.L.","DNI_CIF":"D46462396","MAIL":"vendedor@mail.com","DIRECCION":"Calle Real 12","CODIGO_POSTAL":28004,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345681","MOVIL":"612345681","NUMERO_CUENTA":"ES8300004444444444"}]
+[12-05-2025 00:00:01] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla VENDEDOR
+[12-05-2025 00:00:01] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:01] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MODELOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:01] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MODELOS
+[12-05-2025 00:00:01] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:01] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:01] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"},{"ID_MODELO":3,"NOMBRE_MODELO":"Ranger"},{"ID_MODELO":4,"NOMBRE_MODELO":"Mustang"},{"ID_MODELO":5,"NOMBRE_MODELO":"Golf"},{"ID_MODELO":6,"NOMBRE_MODELO":"Passat"},{"ID_MODELO":7,"NOMBRE_MODELO":"Serie 3"},{"ID_MODELO":8,"NOMBRE_MODELO":"Serie 5"},{"ID_MODELO":9,"NOMBRE_MODELO":"Clase A"},{"ID_MODELO":10,"NOMBRE_MODELO":"Clase C"},{"ID_MODELO":11,"NOMBRE_MODELO":"A3"},{"ID_MODELO":12,"NOMBRE_MODELO":"A4"},{"ID_MODELO":13,"NOMBRE_MODELO":"Civic"},{"ID_MODELO":14,"NOMBRE_MODELO":"Accord"},{"ID_MODELO":15,"NOMBRE_MODELO":"Altima"},{"ID_MODELO":16,"NOMBRE_MODELO":"Sentra"}]
+[12-05-2025 00:00:01] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[12-05-2025 00:00:01] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:01] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CATEGORIAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:01] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CATEGORIAS
+[12-05-2025 00:00:01] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:01] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:01] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:01] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[12-05-2025 00:00:01] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[12-05-2025 00:00:02] [INFO] ✅ Cliente conectado con ID: VDoIUAGKw3u4NL9jAAAD
+[12-05-2025 00:00:02] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:02] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79.
+[12-05-2025 00:00:02] [INFO] ✅ Cliente conectado con ID: f-4NYgldQ0gPDTivAAAF
+[12-05-2025 00:00:02] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:02] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79.
+[12-05-2025 00:00:02] [INFO] ✅ Cliente conectado con ID: mPDEdnqBEgemq2uAAAAH
+[12-05-2025 00:00:02] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:02] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79.
+[12-05-2025 00:00:05] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:05] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para agregar a la tabla: PIEZAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:05] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: PIEZAS
+[12-05-2025 00:00:05] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:05] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:05] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla PIEZAS [{"COLUMN_NAME":"DNI_CIF"},{"COLUMN_NAME":"RAZON_SOCIAL"},{"COLUMN_NAME":"NOMBRE_MARCA"},{"COLUMN_NAME":"NOMBRE_MODELO"},{"COLUMN_NAME":"NOMBRE_CATEGORIA"},{"COLUMN_NAME":"DESCRIPCION"},{"COLUMN_NAME":"PESO"},{"COLUMN_NAME":"PRECIO_COMPRA"},{"COLUMN_NAME":"PRECIO"},{"COLUMN_NAME":"REFERENCIA"},{"COLUMN_NAME":"FECHA_YEAR"},{"COLUMN_NAME":"FECHA_INICIO_VENTA"},{"COLUMN_NAME":"IMAGENES"}]
+[12-05-2025 00:00:05] [INFO] ✅ Obtenidas las columnas correctamente para la tabla PIEZAS
+[12-05-2025 00:00:05] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:05] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MARCAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:05] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MARCAS
+[12-05-2025 00:00:05] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:05] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:05] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[12-05-2025 00:00:05] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS
+[12-05-2025 00:00:05] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:05] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: EMPLEADOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:05] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: EMPLEADOS
+[12-05-2025 00:00:05] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:05] [INFO] Resultados de la consulta: [object Object],[object Object]
+[12-05-2025 00:00:05] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","DNI_CIF":"51652951B"},{"ID_EMPLEADOS":2,"NOMBRE":"María","DNI_CIF":"68380581V"}]
+[12-05-2025 00:00:05] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla EMPLEADOS
+[12-05-2025 00:00:05] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:05] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: VENDEDOR con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:05] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: VENDEDOR
+[12-05-2025 00:00:05] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:05] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:00:05] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla VENDEDOR [{"ID_VENDEDOR":1,"RAZON_SOCIAL":"Desguaces García S.L.","DNI_CIF":"D46462396","MAIL":"vendedor@mail.com","DIRECCION":"Calle Real 12","CODIGO_POSTAL":28004,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345681","MOVIL":"612345681","NUMERO_CUENTA":"ES8300004444444444"}]
+[12-05-2025 00:00:05] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla VENDEDOR
+[12-05-2025 00:00:05] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:05] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MODELOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:05] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MODELOS
+[12-05-2025 00:00:05] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:05] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:05] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"},{"ID_MODELO":3,"NOMBRE_MODELO":"Ranger"},{"ID_MODELO":4,"NOMBRE_MODELO":"Mustang"},{"ID_MODELO":5,"NOMBRE_MODELO":"Golf"},{"ID_MODELO":6,"NOMBRE_MODELO":"Passat"},{"ID_MODELO":7,"NOMBRE_MODELO":"Serie 3"},{"ID_MODELO":8,"NOMBRE_MODELO":"Serie 5"},{"ID_MODELO":9,"NOMBRE_MODELO":"Clase A"},{"ID_MODELO":10,"NOMBRE_MODELO":"Clase C"},{"ID_MODELO":11,"NOMBRE_MODELO":"A3"},{"ID_MODELO":12,"NOMBRE_MODELO":"A4"},{"ID_MODELO":13,"NOMBRE_MODELO":"Civic"},{"ID_MODELO":14,"NOMBRE_MODELO":"Accord"},{"ID_MODELO":15,"NOMBRE_MODELO":"Altima"},{"ID_MODELO":16,"NOMBRE_MODELO":"Sentra"}]
+[12-05-2025 00:00:05] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[12-05-2025 00:00:05] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:00:05] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CATEGORIAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:00:05] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CATEGORIAS
+[12-05-2025 00:00:05] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:00:05] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:00:05] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:00:05] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[12-05-2025 00:00:05] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[12-05-2025 00:02:10] [INFO] ✅ Cliente conectado con ID: dSPbuyC0RAx29zU5AAAJ
+[12-05-2025 00:02:10] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:10] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79.
+[12-05-2025 00:02:12] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:12] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para agregar a la tabla: PIEZAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:02:12] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: PIEZAS
+[12-05-2025 00:02:12] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:02:12] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:02:12] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla PIEZAS [{"COLUMN_NAME":"DNI_CIF"},{"COLUMN_NAME":"RAZON_SOCIAL"},{"COLUMN_NAME":"NOMBRE_MARCA"},{"COLUMN_NAME":"NOMBRE_MODELO"},{"COLUMN_NAME":"NOMBRE_CATEGORIA"},{"COLUMN_NAME":"DESCRIPCION"},{"COLUMN_NAME":"PESO"},{"COLUMN_NAME":"PRECIO_COMPRA"},{"COLUMN_NAME":"PRECIO"},{"COLUMN_NAME":"REFERENCIA"},{"COLUMN_NAME":"FECHA_YEAR"},{"COLUMN_NAME":"FECHA_INICIO_VENTA"},{"COLUMN_NAME":"IMAGENES"}]
+[12-05-2025 00:02:12] [INFO] ✅ Obtenidas las columnas correctamente para la tabla PIEZAS
+[12-05-2025 00:02:12] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:12] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MARCAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:02:12] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MARCAS
+[12-05-2025 00:02:12] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:02:12] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:02:12] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[12-05-2025 00:02:12] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS
+[12-05-2025 00:02:12] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:12] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: EMPLEADOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:02:12] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: EMPLEADOS
+[12-05-2025 00:02:12] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:02:12] [INFO] Resultados de la consulta: [object Object],[object Object]
+[12-05-2025 00:02:12] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","DNI_CIF":"51652951B"},{"ID_EMPLEADOS":2,"NOMBRE":"María","DNI_CIF":"68380581V"}]
+[12-05-2025 00:02:12] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla EMPLEADOS
+[12-05-2025 00:02:12] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:12] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: VENDEDOR con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:02:12] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: VENDEDOR
+[12-05-2025 00:02:12] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:02:12] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:02:12] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla VENDEDOR [{"ID_VENDEDOR":1,"RAZON_SOCIAL":"Desguaces García S.L.","DNI_CIF":"D46462396","MAIL":"vendedor@mail.com","DIRECCION":"Calle Real 12","CODIGO_POSTAL":28004,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345681","MOVIL":"612345681","NUMERO_CUENTA":"ES8300004444444444"}]
+[12-05-2025 00:02:12] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla VENDEDOR
+[12-05-2025 00:02:12] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:12] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MODELOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:02:12] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MODELOS
+[12-05-2025 00:02:12] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:02:12] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:02:12] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"},{"ID_MODELO":3,"NOMBRE_MODELO":"Ranger"},{"ID_MODELO":4,"NOMBRE_MODELO":"Mustang"},{"ID_MODELO":5,"NOMBRE_MODELO":"Golf"},{"ID_MODELO":6,"NOMBRE_MODELO":"Passat"},{"ID_MODELO":7,"NOMBRE_MODELO":"Serie 3"},{"ID_MODELO":8,"NOMBRE_MODELO":"Serie 5"},{"ID_MODELO":9,"NOMBRE_MODELO":"Clase A"},{"ID_MODELO":10,"NOMBRE_MODELO":"Clase C"},{"ID_MODELO":11,"NOMBRE_MODELO":"A3"},{"ID_MODELO":12,"NOMBRE_MODELO":"A4"},{"ID_MODELO":13,"NOMBRE_MODELO":"Civic"},{"ID_MODELO":14,"NOMBRE_MODELO":"Accord"},{"ID_MODELO":15,"NOMBRE_MODELO":"Altima"},{"ID_MODELO":16,"NOMBRE_MODELO":"Sentra"}]
+[12-05-2025 00:02:12] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[12-05-2025 00:02:12] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:02:12] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CATEGORIAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:02:12] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CATEGORIAS
+[12-05-2025 00:02:12] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:02:12] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:02:12] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:02:12] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[12-05-2025 00:02:12] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[12-05-2025 00:04:24] [INFO] ✅ Cliente conectado con ID: x1eqDGkC3Y9Ena6yAAAL
+[12-05-2025 00:04:24] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:24] [WARN] ⚠️ El usuario: admin@desguace.com se ha reconectado con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79.
+[12-05-2025 00:04:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:27] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para agregar a la tabla: PIEZAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:04:27] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: PIEZAS
+[12-05-2025 00:04:27] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:04:27] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:04:27] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla PIEZAS [{"COLUMN_NAME":"DNI_CIF"},{"COLUMN_NAME":"RAZON_SOCIAL"},{"COLUMN_NAME":"NOMBRE_MARCA"},{"COLUMN_NAME":"NOMBRE_MODELO"},{"COLUMN_NAME":"NOMBRE_CATEGORIA"},{"COLUMN_NAME":"DESCRIPCION"},{"COLUMN_NAME":"PESO"},{"COLUMN_NAME":"PRECIO_COMPRA"},{"COLUMN_NAME":"PRECIO"},{"COLUMN_NAME":"REFERENCIA"},{"COLUMN_NAME":"FECHA_YEAR"},{"COLUMN_NAME":"FECHA_INICIO_VENTA"},{"COLUMN_NAME":"IMAGENES"}]
+[12-05-2025 00:04:27] [INFO] ✅ Obtenidas las columnas correctamente para la tabla PIEZAS
+[12-05-2025 00:04:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:27] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MARCAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:04:27] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MARCAS
+[12-05-2025 00:04:27] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:04:27] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:04:27] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[12-05-2025 00:04:27] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS
+[12-05-2025 00:04:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:27] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: EMPLEADOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:04:27] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: EMPLEADOS
+[12-05-2025 00:04:27] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:04:27] [INFO] Resultados de la consulta: [object Object],[object Object]
+[12-05-2025 00:04:27] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","DNI_CIF":"51652951B"},{"ID_EMPLEADOS":2,"NOMBRE":"María","DNI_CIF":"68380581V"}]
+[12-05-2025 00:04:27] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla EMPLEADOS
+[12-05-2025 00:04:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:27] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: VENDEDOR con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:04:27] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: VENDEDOR
+[12-05-2025 00:04:27] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:04:27] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:04:27] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla VENDEDOR [{"ID_VENDEDOR":1,"RAZON_SOCIAL":"Desguaces García S.L.","DNI_CIF":"D46462396","MAIL":"vendedor@mail.com","DIRECCION":"Calle Real 12","CODIGO_POSTAL":28004,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345681","MOVIL":"612345681","NUMERO_CUENTA":"ES8300004444444444"}]
+[12-05-2025 00:04:27] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla VENDEDOR
+[12-05-2025 00:04:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:27] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MODELOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:04:27] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MODELOS
+[12-05-2025 00:04:27] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:04:27] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:04:27] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"},{"ID_MODELO":3,"NOMBRE_MODELO":"Ranger"},{"ID_MODELO":4,"NOMBRE_MODELO":"Mustang"},{"ID_MODELO":5,"NOMBRE_MODELO":"Golf"},{"ID_MODELO":6,"NOMBRE_MODELO":"Passat"},{"ID_MODELO":7,"NOMBRE_MODELO":"Serie 3"},{"ID_MODELO":8,"NOMBRE_MODELO":"Serie 5"},{"ID_MODELO":9,"NOMBRE_MODELO":"Clase A"},{"ID_MODELO":10,"NOMBRE_MODELO":"Clase C"},{"ID_MODELO":11,"NOMBRE_MODELO":"A3"},{"ID_MODELO":12,"NOMBRE_MODELO":"A4"},{"ID_MODELO":13,"NOMBRE_MODELO":"Civic"},{"ID_MODELO":14,"NOMBRE_MODELO":"Accord"},{"ID_MODELO":15,"NOMBRE_MODELO":"Altima"},{"ID_MODELO":16,"NOMBRE_MODELO":"Sentra"}]
+[12-05-2025 00:04:27] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[12-05-2025 00:04:27] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:04:27] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CATEGORIAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:04:27] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CATEGORIAS
+[12-05-2025 00:04:27] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:04:27] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:04:27] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:04:27] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[12-05-2025 00:04:27] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[12-05-2025 00:07:46] [INFO] ✅ Cliente conectado con ID: Qr7MfPLeiltKUHsOAAAN
+[12-05-2025 00:07:48] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:07:48] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para agregar a la tabla: PIEZAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:07:48] [INFO] ✅ Ruta /ObtenerNombreColumnas ha sido llamada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || tabla consultada: PIEZAS
+[12-05-2025 00:07:48] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:07:48] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:07:48] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerNombreColumnas || Resultado de la consulta de creación de la tabla PIEZAS [{"COLUMN_NAME":"DNI_CIF"},{"COLUMN_NAME":"RAZON_SOCIAL"},{"COLUMN_NAME":"NOMBRE_MARCA"},{"COLUMN_NAME":"NOMBRE_MODELO"},{"COLUMN_NAME":"NOMBRE_CATEGORIA"},{"COLUMN_NAME":"DESCRIPCION"},{"COLUMN_NAME":"PESO"},{"COLUMN_NAME":"PRECIO_COMPRA"},{"COLUMN_NAME":"PRECIO"},{"COLUMN_NAME":"REFERENCIA"},{"COLUMN_NAME":"FECHA_YEAR"},{"COLUMN_NAME":"FECHA_INICIO_VENTA"},{"COLUMN_NAME":"IMAGENES"}]
+[12-05-2025 00:07:48] [INFO] ✅ Obtenidas las columnas correctamente para la tabla PIEZAS
+[12-05-2025 00:07:48] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:07:48] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MARCAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:07:48] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MARCAS
+[12-05-2025 00:07:48] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:07:48] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:07:48] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MARCAS [{"ID_MARCAS":1,"NOMBRE_MARCA":"Toyota"},{"ID_MARCAS":2,"NOMBRE_MARCA":"Ford"},{"ID_MARCAS":3,"NOMBRE_MARCA":"Volkswagen"},{"ID_MARCAS":4,"NOMBRE_MARCA":"BMW"},{"ID_MARCAS":5,"NOMBRE_MARCA":"Mercedes-Benz"},{"ID_MARCAS":6,"NOMBRE_MARCA":"Audi"},{"ID_MARCAS":7,"NOMBRE_MARCA":"Honda"},{"ID_MARCAS":8,"NOMBRE_MARCA":"Nissan"}]
+[12-05-2025 00:07:48] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MARCAS
+[12-05-2025 00:07:48] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:07:48] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: EMPLEADOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:07:48] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: EMPLEADOS
+[12-05-2025 00:07:48] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:07:48] [INFO] Resultados de la consulta: [object Object],[object Object]
+[12-05-2025 00:07:48] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla EMPLEADOS [{"ID_EMPLEADOS":1,"NOMBRE":"Juan","DNI_CIF":"51652951B"},{"ID_EMPLEADOS":2,"NOMBRE":"María","DNI_CIF":"68380581V"}]
+[12-05-2025 00:07:48] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla EMPLEADOS
+[12-05-2025 00:07:48] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:07:48] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: VENDEDOR con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:07:48] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: VENDEDOR
+[12-05-2025 00:07:48] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:07:48] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:07:48] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla VENDEDOR [{"ID_VENDEDOR":1,"RAZON_SOCIAL":"Desguaces García S.L.","DNI_CIF":"D46462396","MAIL":"vendedor@mail.com","DIRECCION":"Calle Real 12","CODIGO_POSTAL":28004,"CIUDAD":"Madrid","MUNICIPIO":"Madrid","TELEFONO":"912345681","MOVIL":"612345681","NUMERO_CUENTA":"ES8300004444444444"}]
+[12-05-2025 00:07:48] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla VENDEDOR
+[12-05-2025 00:07:48] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:07:48] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: MODELOS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:07:48] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: MODELOS
+[12-05-2025 00:07:48] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:07:48] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:07:48] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla MODELOS [{"ID_MODELO":1,"NOMBRE_MODELO":"Corolla"},{"ID_MODELO":2,"NOMBRE_MODELO":"Camry"},{"ID_MODELO":3,"NOMBRE_MODELO":"Ranger"},{"ID_MODELO":4,"NOMBRE_MODELO":"Mustang"},{"ID_MODELO":5,"NOMBRE_MODELO":"Golf"},{"ID_MODELO":6,"NOMBRE_MODELO":"Passat"},{"ID_MODELO":7,"NOMBRE_MODELO":"Serie 3"},{"ID_MODELO":8,"NOMBRE_MODELO":"Serie 5"},{"ID_MODELO":9,"NOMBRE_MODELO":"Clase A"},{"ID_MODELO":10,"NOMBRE_MODELO":"Clase C"},{"ID_MODELO":11,"NOMBRE_MODELO":"A3"},{"ID_MODELO":12,"NOMBRE_MODELO":"A4"},{"ID_MODELO":13,"NOMBRE_MODELO":"Civic"},{"ID_MODELO":14,"NOMBRE_MODELO":"Accord"},{"ID_MODELO":15,"NOMBRE_MODELO":"Altima"},{"ID_MODELO":16,"NOMBRE_MODELO":"Sentra"}]
+[12-05-2025 00:07:48] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla MODELOS
+[12-05-2025 00:07:48] [INFO] ⏳ Temporizador reiniciado para admin@desguace.com
+[12-05-2025 00:07:48] [INFO] El usuario: admin@desguace.com, realiza la actividad Solicitar datos para clave foranea de la tabla: CATEGORIAS con el token: 509d6a7eb01e3db7ee438f1d80bea98cf06a4e0794ca4e44396dba78f0eefe79
+[12-05-2025 00:07:48] [INFO] ✅ Ruta /ObtenerDatosClaveForanea ha sido llamada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || tabla consultada: CATEGORIAS
+[12-05-2025 00:07:48] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:07:48] [INFO] Resultados de la consulta: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+[12-05-2025 00:07:48] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:07:48] [DEBUG] /src/api/web_crud.js POST: ObtenerDatosClaveForanea || Resultado de la consulta de creación de la tabla CATEGORIAS [{"ID_CATEGORIAS_PIEZAS":1,"NOMBRE_CATEGORIA":"Motor"},{"ID_CATEGORIAS_PIEZAS":2,"NOMBRE_CATEGORIA":"Transmisión"},{"ID_CATEGORIAS_PIEZAS":3,"NOMBRE_CATEGORIA":"Frenos"},{"ID_CATEGORIAS_PIEZAS":4,"NOMBRE_CATEGORIA":"Suspensión"},{"ID_CATEGORIAS_PIEZAS":5,"NOMBRE_CATEGORIA":"Escape"},{"ID_CATEGORIAS_PIEZAS":6,"NOMBRE_CATEGORIA":"Sistema eléctrico"},{"ID_CATEGORIAS_PIEZAS":7,"NOMBRE_CATEGORIA":"Carrocería"}]
+[12-05-2025 00:07:48] [INFO] ✅ Datos clave foranea obtenidos correctamente para la tabla CATEGORIAS
+[12-05-2025 00:08:19] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:08:19] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:08:19] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:08:19] [INFO] Conexión exitosa a MySQL
+[12-05-2025 00:08:19] [INFO] Resultados de la consulta: [object Object]
+[12-05-2025 00:08:19] [INFO] Conexión a MySQL cerrada
+[12-05-2025 00:08:19] [INFO] ✅ Datos agregados correctamente en src/api/funciones_crud.js en la tabla Piezas con: MOT-002

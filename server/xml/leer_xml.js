@@ -29,12 +29,7 @@ export async function cargarParametros(opcion) {
             bbdd: resultado.conf.mysql[0].bbdd[0],
             puerto: resultado.conf.mysql[0].puerto[0],
         };
-        const mongo = {
-            direccion: resultado.conf.mongo[0].direccion[0],
-            bbdd: resultado.conf.mongo[0].bbdd[0],
-            coleccion: resultado.conf.mongo[0].coleccion[0],
-            coleccion2: resultado.conf.mongo[0].coleccion2[0],
-        };
+
         const firebase = {
             apiKey: resultado.conf.firebase[0].apiKey[0],
             authDomain: resultado.conf.firebase[0].authDomain[0],
@@ -50,9 +45,7 @@ export async function cargarParametros(opcion) {
             case 'mysql':
                 console.log('MySQL Configuración: cargada');
                 return mysql;
-            case 'mongo':
-                console.log('Mongo Configuración: cargada');
-                return mongo;
+
             case 'firebase':
                 console.log('Firebase Configuración: cargada');
                 return firebase;
