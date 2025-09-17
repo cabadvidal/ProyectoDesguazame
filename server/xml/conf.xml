@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <conf>
-    <url>https://www.dam2.colexio-karbo.com:6010</url>
     <mysql>
         <direccion>127.0.0.1</direccion>
         <usuario>root</usuario>
