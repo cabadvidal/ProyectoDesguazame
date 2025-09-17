@@ -17,12 +17,12 @@
     </mongo>
 
     <firebase>
-        <apiKey>AIzaSyBKKFwR-6PWmlu-iYcayKITZHUocvvo5Dk</apiKey>
+        <apiKey></apiKey>
         <authDomain>desguace-adb3a.firebaseapp.com</authDomain>
         <projectId>desguace-adb3a</projectId>
         <storageBucket>desguace-adb3a.firebasestorage.app</storageBucket>
         <messagingSenderId>584737072535</messagingSenderId>
-        <appId>1:584737072535:web:147b1d03427210f02750d2</appId>
+        <appId></appId>
         <measurementId>G-Y7NJGR829P</measurementId>
     </firebase>
 </conf>
