@@ -21,7 +21,7 @@
         <authDomain>desguace-adb3a.firebaseapp.com</authDomain>
         <projectId>desguace-adb3a</projectId>
         <storageBucket>desguace-adb3a.firebasestorage.app</storageBucket>
-        <messagingSenderId>584737072535</messagingSenderId>
+        <messagingSenderId></messagingSenderId>
         <appId></appId>
         <measurementId>G-Y7NJGR829P</measurementId>
     </firebase>
